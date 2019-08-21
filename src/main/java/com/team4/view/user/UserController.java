@@ -96,4 +96,12 @@ public class UserController {
 		return "showUsers";  //회원전체보기
 	}
 
+
+	/*@RequestMapping(value="/register.do")
+	public String test1(UserVO vo, Model model) throws ClassNotFoundException, SQLException {
+		userService.insertUser(vo);
+		return "redirect:";
+
+	}*/
+
 }
