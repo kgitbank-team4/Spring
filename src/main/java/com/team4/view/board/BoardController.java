@@ -1,6 +1,7 @@
 package com.team4.view.board;
 
 import com.team4.biz.board.service.BoardService;
+import com.team4.biz.board.vo.ArticleVO;
 import com.team4.biz.board.vo.BoardVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +15,17 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-    @RequestMapping(value = "/selectBoardList.do")
+    /*@RequestMapping(value = "/selectBoardList.do")
     public String selectBoardList(BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
         model.addAttribute("boardList",boardService.selectBoardList(vo));
         return "getBoardList";
+    }*/
+    @RequestMapping(value = "/selectArtList.do")
+    public String selectArtList(ArticleVO vo,Model model) throws SQLException, ClassNotFoundException{
+        model.addAttribute("ArtList",boardService.selectArtList(vo));
+
+        return "getArtList.do";
     }
+
 
 }

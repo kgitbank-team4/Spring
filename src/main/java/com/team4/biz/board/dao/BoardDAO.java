@@ -12,6 +12,7 @@ public interface BoardDAO {
     //글 읽기 입력 수정 삭제
     public void insert(ArticleVO vo);//글쓰기
     public void update(ArticleVO vo);//글수정
+    public void hide(ArticleVO vo);
     public void delete(ArticleVO vo);//글삭제
     public ArticleVO select(ArticleVO vo);//글읽기
     public List<ArticleVO> selectList(ArticleVO vo);//글목록
