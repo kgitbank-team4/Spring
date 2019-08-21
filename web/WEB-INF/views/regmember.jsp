@@ -103,25 +103,25 @@
       	  <div class="border1">
       	  	<h4>회원가입</h4>
       	  	<br>
-	        <form action="regmember.do">
+	        <form action="signup.do">
 			  <div class="form-group">
 			  		<em style="color:red">*</em>
 			    	<h6>아이디</h6>
-			    <input type="text" class="form-control" id="userID">
+			    <input type="text" class="form-control" id="userID" name="username">
 			  </div>
 			  <div class="form-group">
 			  		 <em style="color:red">*</em>
 			   		 <h6>비밀번호</h6>
-			    <input type="password" class="form-control" id="userPW">
+			    <input type="password" class="form-control" id="userPW" name="password">
 			  </div>
 			  <div class="form-group">
 			  		 <em style="color:red">*</em>
 			   		 <h6>닉네임</h6>
-			    <input type="text" class="form-control" id="userNICK">
+			    <input type="text" class="form-control" id="userNICK" name="nickname">
 			  </div>
 			  <div class="form-group">
 			   		 <h6>전화번호</h6>
-			    <input type="text" class="form-control" id="userTEL">
+			    <input type="text" class="form-control" id="userTEL" name="tel">
 			  </div>
 			  <div class="form-btn" style="text-align: right">
 			    <button type="submit" class="btn btn-default">회원가입</button>
