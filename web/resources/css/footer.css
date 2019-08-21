@@ -1,0 +1,165 @@
+
+/* Start Footer Section */
+
+.footer-section {
+   /*  border-bottom: 1px solid #808080; */
+    background: #ffffff;
+    color: #000000;
+    font-weight: 400;
+    padding: 20px 0 30px 0;
+    margin: 0 0 0 350px;
+}
+.footer-section .footer-address li{
+	margin : 0 0 0 -41px;
+	list-style: none;
+	font-size: 15px;
+}
+.footer-section p {
+    color: #999;
+}
+
+.footer-section .section-title {
+    color: #000000;
+}
+
+.footer-section .section-heading-2 span:after {
+    background: #434343;
+}
+
+.footer-section .section-heading-2 .section-title:after {
+    background-color: #363636;
+}
+
+.footer-section .section-heading-2 h3{
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.footer-address ul li {
+	font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    padding: 5px 0;
+}
+
+.footer-address ul li .fa {
+    color: #6a6a6a;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.footer-address ul li a {
+    color: #000000;
+}
+
+.footer-address ul li a:hover {
+    color: #FF432E;
+}
+
+
+.latest-tweet .media-body {
+    padding: 5px 14px 5px 6px;
+}
+
+.latest-tweet .media-body p {
+    font-size: 13px;
+    color: #aaa;
+}
+
+.latest-tweet h4.media-heading {
+    font-size: 10px;
+    color: #FF432E;
+}
+
+
+.footer-social ul.social-list li {
+    padding-right: 2px;
+}
+
+.footer-social ul.social-list li a i {
+    font-size: 18px;
+	display: block;
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+}
+
+.footer-social ul.social-list li a {
+    background: #2e2e2e;
+    color: #9d9d9d;
+    transition: background 0.3s;
+    -webkit-transition: background 0.3s;
+    -moz-transition: background 0.3s;
+    -o-transition: background 0.3s;
+}
+
+.footer-social ul.social-list li a:hover {
+    background: #FF432E;
+    color: #000;
+}
+
+.flickr-widget li {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 23.97%;
+}
+
+.flickr-widget li img {
+    width: 100%;
+    height: auto;
+}
+
+@media only screen and (max-width: 992px) {
+	.footer-section {    
+   		 margin: 0 0 0 80px;
+	}
+}
+
+
+/* End Footer Section */
+
+
+
+
+/* Start Copyright Section */
+
+.copyright-section {
+    font-size: 12px;
+    padding: 20px 0;
+    background: #d9d9d9;
+    color: #000000;
+    padding-top: 30px;
+}
+
+.copyright {
+    font-size: 16px;
+    margin: 0 0 0 36px;
+}
+
+.copyright-section a {
+    color: #000000;
+}
+
+.copyright-section a:hover {
+    color: #FF432E;
+}
+
+.copyright-menu li {
+    display: inline;
+    padding-left: 10px;
+}
+
+.copyright-menu li a {
+    color: #000000;
+    font-weight: 500;
+}
+
+.copyright-menu li a.active {
+    color: #000000;
+    font-size: 13px;
+}
+
+.copyright-menu li a:hover {
+    color: #FF432E;
+}
+/* End Copyright Section */
