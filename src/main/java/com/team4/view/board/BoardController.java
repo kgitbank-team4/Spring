@@ -15,16 +15,10 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-    /*@RequestMapping(value = "/selectBoardList.do")
-    public String selectBoardList(BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
-        model.addAttribute("boardList",boardService.selectBoardList(vo));
-        return "getBoardList";
-    }*/
-    @RequestMapping(value = "/selectArtList.do")
-    public String selectArtList(ArticleVO vo,Model model) throws SQLException, ClassNotFoundException{
+    @RequestMapping(value = "/home.do")
+    public String selectBoardList(ArticleVO vo, Model model) throws SQLException, ClassNotFoundException {
         model.addAttribute("ArtList",boardService.selectArtList(vo));
-
-        return "getArtList.do";
+        return "home";
     }
 
 

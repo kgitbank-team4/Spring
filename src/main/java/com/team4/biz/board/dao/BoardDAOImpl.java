@@ -47,7 +47,7 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public List<ArticleVO> selectList(ArticleVO vo) {
-        return null;
+        return sqlSession.selectList(namespace+".selectArtList",vo);
     }
 
     @Override
