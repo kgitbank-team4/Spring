@@ -135,7 +135,6 @@
 		  <ul class="nav nav-tabs tab2" role="tablist">
 		    <li role="presentation" class="active tablist1"><a href="#free" aria-controls="free" role="tab" data-toggle="tab">자유게시판</a></li>
 		    <li role="presentation" class="tablist2"><a href="#qa" aria-controls="qa" role="tab" data-toggle="tab">Q & A</a></li>
-		  	<li role="presentation" class="tablist3"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">공지사항</a></li>
 		  </ul>
 		  <!-- Tab panes -->
 		  <div class="tab-content">
@@ -159,7 +158,6 @@
 		    	</table>
 		    </div>
 		    <div role="tabpanel" class="tab-pane" id="qa">qa</div>
-		    <div role="tabpanel" class="tab-pane" id="info">공지</div>
 		  </div>
 		</div>       
       </div>
@@ -193,6 +191,37 @@
 		    </div>
 		    <div role="tabpanel" class="tab-pane" id="weather">weather</div>		    
 		  </div>
+		</div>       
+      </div>
+		  <div class="col-md-6 post-tabs" role="navigation">
+	    <div role="tabpanel">
+		  <ul class="nav nav-tabs tab4" role="tablist">
+			<li role="presentation" class="active tablist3"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">공지사항</a></li>		    
+		  </ul>
+		  <!-- Tab panes -->
+		  <div class="tab-content">
+		    <div role="tabpanel" class="tab-pane active" id="info">
+		    	<table class="table table-hover tab-table1">
+		    		<tr>	    			
+		    			<td style="color: red">아시</td>
+		    			<td><a href="#">오키나와 다녀왔습니다</a></td>
+		    			<td>1</td> 
+		    		</tr>
+		    		<tr>  			
+		    			<td style="color: red">유럽</td>
+		    			<td><a href="#">유럽 다녀왔습니다</a></td>
+		    			<td>1</td>   			
+		    		</tr>
+		    		<tr>  			
+		    			<td style="color: red">아시아</td>
+		    			<td><a href="#">인천 다녀왔습니다</a></td>
+		    			<td>1</td>   			
+		    		</tr>
+		    	</table>
+		    </div>
+		  </div>
+		</div>       
+      </div>
 		</div>       
       </div>
     </div>

@@ -52,3 +52,29 @@
 .post-tab11 .post-tabs{
 	margin: 10px 0px;
 }
+
+@media only screen and (max-width: 1620px) {
+	.post-tab11{
+		margin: 0 0 0 0px;
+	}
+}
+@media only screen and (max-width: 1420px) {
+	.post-tab11{
+		margin: 0 0 0 -50px;
+	}
+}
+@media only screen and (max-width: 1220px) {
+	.post-tab11{
+		margin: 0 0 0 -80px;
+	}
+}
+@media only screen and (max-width: 1020px) {
+	.post-tab11{
+		margin: 0 0 0 -200px;
+	}
+}
+@media only screen and (max-width: 768px) {
+	.post-tab11{
+		margin: 0 0 0 -100px;
+	}
+}
