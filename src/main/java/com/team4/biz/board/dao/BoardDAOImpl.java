@@ -30,6 +30,10 @@ public class BoardDAOImpl implements BoardDAO{
     public void update(ArticleVO vo) {
 
     }
+    @Override
+    public void hide(ArticleVO vo){
+
+    }
 
     @Override
     public void delete(ArticleVO vo) {

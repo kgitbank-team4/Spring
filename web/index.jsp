@@ -13,17 +13,17 @@
   <title>Spring - Travel Community Site</title>
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
   <!-- Bootstrap core CSS -->
-  <link href="WEB-INF/views/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template -->
-  <link href="WEB-INF/views/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
-  <link href="/resources/css/clean-blog.min.css" rel="stylesheet">
-  <link href="WEB-INF/views/css/header.css" rel="stylesheet">
-  <link href="WEB-INF/views/css/footer.css" rel="stylesheet">
-  <link href="WEB-INF/views/css/main.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
 
 </head>
 
@@ -82,7 +82,7 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('WEB-INF/views/img/home-bg.png')">
+  <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -365,10 +365,10 @@
         
         
   <!-- Bootstrap core JavaScript -->
-  <script src="WEB-INF/views/vendor/jquery/jquery.min.js"></script>
-  <script src="WEB-INF/views/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
-  <script src="WEB-INF/views/js/clean-blog.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
   
 	
 	
