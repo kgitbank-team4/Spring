@@ -6,3 +6,4 @@
 .settings/
 /lib/
 *.iml
+web/WEB-INF/applicationContext.xml
