@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface BoardService {
     public BoardVO selectBoard(BoardVO vo) throws ClassNotFoundException, SQLException;
-    public List<BoardVO> selectBoardList(BoardVO vo) throws ClassNotFoundException, SQLException;
+    /*public List<BoardVO> selectBoardList(BoardVO vo) throws ClassNotFoundException, SQLException;*/
 
     //글관련 서비스
     public boolean insertArt(ArticleVO vo) throws ClassNotFoundException, SQLException;
@@ -15,8 +15,8 @@ public interface BoardService {
     public boolean hideArt(ArticleVO vo) throws ClassNotFoundException, SQLException;
     public boolean updateArt(ArticleVO vo) throws ClassNotFoundException, SQLException;
     public ArticleVO selectArt(ArticleVO vo) throws ClassNotFoundException, SQLException;
-    public List<ArticleVO> selectAllArtList(ArticleVO vo) throws ClassNotFoundException, SQLException;
-    public List<ArticleVO> selectArtList(ArticleVO vo) throws ClassNotFoundException, SQLException;
+    public List<ArticleVO> selectAllArtList(BoardVO vo) throws ClassNotFoundException, SQLException;
+    public List<ArticleVO> selectArtList(BoardVO vo) throws ClassNotFoundException, SQLException;
 
     //댓글관련 서비스
     public boolean insertComment(CommentsVO vo) throws ClassNotFoundException, SQLException;

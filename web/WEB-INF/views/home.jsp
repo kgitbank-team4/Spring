@@ -41,7 +41,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="index.html">SPRING</a>
+        <a class="navbar-brand" href="home.do">SPRING</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -67,10 +67,10 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                    <a href="freeboard.do?board_id=103" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">자유게시판</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
                         <li><a class="nav-link" href="#">Q & A</a></li>
                         <li><a class="nav-link" href="#">공지사항</a></li>
                     </ul>

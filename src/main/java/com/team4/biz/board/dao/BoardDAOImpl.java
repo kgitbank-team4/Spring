@@ -16,10 +16,10 @@ public class BoardDAOImpl implements BoardDAO{
         return null;
     }
 
-    @Override
+    /*@Override
     public List<BoardVO> selectList(BoardVO vo) {
         return sqlSession.selectList(namespace+".selectBoardList",vo);
-    }
+    }*/
 
     @Override
     public void insert(ArticleVO vo) {
@@ -46,12 +46,12 @@ public class BoardDAOImpl implements BoardDAO{
     }
 
     @Override
-    public List<ArticleVO> selectAllList(ArticleVO vo) {
+    public List<ArticleVO> selectAllList(BoardVO vo) {
         return sqlSession.selectList(namespace+".selectAllArtList",vo);
     }
 
     @Override
-    public List<ArticleVO> selectList(ArticleVO vo) {
+    public List<ArticleVO> selectList(BoardVO vo) {
         return sqlSession.selectList(namespace+".selectArtList",vo);
     }
 

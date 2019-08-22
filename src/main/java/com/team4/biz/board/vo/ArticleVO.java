@@ -13,6 +13,7 @@ public class ArticleVO {
     private Date date_created;
     private String category;
     private String visible;
+    private int comment_cnt;
 
     public int getId() {
         return id;
@@ -93,4 +94,13 @@ public class ArticleVO {
     public void setVisible(String visible) {
         this.visible = visible;
     }
+
+    public int getComment_cnt() {
+        return comment_cnt;
+    }
+
+    public void setComment_cnt(int comment_cnt) {
+        this.comment_cnt = comment_cnt;
+    }
 }
+

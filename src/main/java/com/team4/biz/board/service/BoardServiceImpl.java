@@ -17,10 +17,10 @@ public class BoardServiceImpl implements BoardService{
         return boardDAO.select(vo);
     }
 
-    @Override
+    /*@Override
     public List<BoardVO> selectBoardList(BoardVO vo) throws ClassNotFoundException, SQLException {
         return boardDAO.selectList(vo);
-    }
+    }*/
 
     @Override
     public boolean insertArt(ArticleVO vo) throws ClassNotFoundException, SQLException {
@@ -52,12 +52,12 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public List<ArticleVO> selectAllArtList(ArticleVO vo) throws ClassNotFoundException, SQLException {
+    public List<ArticleVO> selectAllArtList(BoardVO vo) throws ClassNotFoundException, SQLException {
         return boardDAO.selectAllList(vo);
     }
 
     @Override
-    public List<ArticleVO> selectArtList(ArticleVO vo) throws ClassNotFoundException, SQLException {
+    public List<ArticleVO> selectArtList(BoardVO vo) throws ClassNotFoundException, SQLException {
         return boardDAO.selectList(vo);
     }
 
