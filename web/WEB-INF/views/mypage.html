@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,18 +10,18 @@
 
   <title>Spring - Travel Community Site</title>
   <!-- Bootstrap core CSS -->
-  <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
-  <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/regmember.css" rel="stylesheet">
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+  <link href="css/header.css" rel="stylesheet">
+  <link href="css/footer.css" rel="stylesheet">
+  <link href="css/mypage.css" rel="stylesheet">
 </head>
 
 <body>
@@ -75,7 +73,7 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
+  <header class="masthead" style="background-image: url('img/home-bg.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -90,38 +88,143 @@
   </header>
 
 <!-- Main Content -->
-  <div class="container">
+  <div class="container mypage1">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
       	<section class="xm">
-      	  <div class="border1">
-      	  	<h4>회원가입</h4>
-      	  	<br>
-	        <form action="regmember.do">
-			  <div class="form-group">
-			  		<em style="color:red">*</em>
-			    	<h6>아이디</h6>
-			    <input type="text" class="form-control" id="userID">
+      	  <div class="mypage-border">
+      	    <h4>마이페이지</h4>
+      	    <br>
+      	    <ul class="nav nav-pills navpills" id="pills-tab" role="tablist">
+			  <li class="nav-item">
+			    <a class="nav-link active" id="pills-inform-tab" data-toggle="pill" href="#pills-inform" role="tab" aria-controls="pills-inform" aria-selected="true">회원정보보기</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="pills-write-tab" data-toggle="pill" href="#pills-write" role="tab" aria-controls="pills-write" aria-selected="false">내가 작성한 글</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="pills-write22-tab" data-toggle="pill" href="#pills-write22" role="tab" aria-controls="pills-write22" aria-selected="false">내 댓글</a>
+			  </li>
+			</ul>
+			<div class="tab-content" id="pills-tabContent">
+			  <div class="tab-pane fade show active" id="pills-inform" role="tabpanel" aria-labelledby="pills-home-tab">
+			  	<div class="mypage-table">
+				  	  <table class="table table-hover">
+				  	  	<tr>
+				  	  	  <td class="table-header">아이디</td>
+				  	  	  <td class="table-child">kw22228</td>
+				  	  	</tr>
+				  	  	<tr>
+				  	  	  <td class="table-header">닉네임</td>
+				  	  	  <td class="table-child">여행가자ㅏㅏ</td>
+				  	  	</tr>
+				  	  	<tr>
+				  	  	  <td class="table-header">휴대폰번호</td>
+				  	  	  <td class="table-child">010-1234-5678</td>
+				  	  	</tr>
+				  	  	<tr class="tablebt-tr">
+				  	  	  <td colspan="2" style="text-align: right">
+				  	  	  	<input type="submit" value="회원정보수정" class="tablebt" data-target="#modal2" data-toggle="modal">
+				  	  	  	<input type="submit" value="탈퇴하기" class="tablebt" data-target="#modal3" data-toggle="modal">
+				  	  	  	
+				  	  	  </td>
+				  	  	</tr>
+				  	  </table>
+			  	</div>
 			  </div>
-			  <div class="form-group">
-			  		 <em style="color:red">*</em>
-			   		 <h6>비밀번호</h6>
-			    <input type="password" class="form-control" id="userPW">
+			  <div class="tab-pane fade" id="pills-write" role="tabpanel" aria-labelledby="pills-profile-tab">	
+			  	<div class="mypage-table">
+			  	  <table class="table table-hover">
+			  	  	<tr class="table-header">
+			  	  	  <td>No.</td>
+			  	  	  <td>제목</td>
+			  	  	  <td>날짜</td>
+			  	  	  <td>조회수</td>
+			  	  	  <td>추천수</td>
+			  	  	</tr>
+			  	  	<tr class="table-child">
+			  	  	  <td>1</td>
+			  	  	  <td><a href="#">############</a></td>
+			  	  	  <td>####-##-##</td>
+			  	  	  <td>##</td>
+			  	  	  <td>#</td>
+			  	  	</tr>
+			  	  	<tr class="table-child">
+			  	  	  <td>1</td>
+			  	  	  <td><a href="#">############</a></td>
+			  	  	  <td>####-##-##</td>
+			  	  	  <td>##</td>
+			  	  	  <td>#</td>
+			  	  	</tr>
+			  	  </table>
+			  	  <div class="container page1">
+		            <div class="row">
+		               <div class="col-lg-5 col-md-5">
+		                  <div class="container">
+		                     <div class="text-center">
+		                        <ul class="pagination">
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">처음</a></li>
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">1</a></li>
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">2</a></li>
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">끝</a></li>
+		                        </ul>
+		                     </div>
+		                  </div>
+		               </div>
+		            </div>
+		         </div>
+			  	</div>
 			  </div>
-			  <div class="form-group">
-			  		 <em style="color:red">*</em>
-			   		 <h6>닉네임</h6>
-			    <input type="text" class="form-control" id="userNICK">
+			  <div class="tab-pane fade" id="pills-write22" role="tabpanel" aria-labelledby="pills-contact-tab">
+			  	<div class="mypage-table">
+			  	  <table class="table table-hover">
+			  	  	<tr class="table-header">
+			  	  	  <td>No.</td>
+			  	  	  <td>댓글</td>
+			  	  	  <td>게시글제목</td>
+			  	  	  <td>추천수</td>
+			  	  	</tr>
+			  	  	<tr class="table-child">
+			  	  	  <td>1</td>
+			  	  	  <td><a href="#">############</a></td>
+			  	  	  <td>####-##-##</td>
+			  	  	  <td>#</td>
+			  	  	</tr>
+			  	  	<tr class="table-child">
+			  	  	  <td>1</td>
+			  	  	  <td><a href="#">############</a></td>
+			  	  	  <td>####-##-##</td>
+			  	  	  <td>#</td>
+			  	  	</tr>
+			  	  </table>
+			  	  <div class="container page1">
+		            <div class="row">
+		               <div class="col-lg-5 col-md-5">
+		                  <div class="container">
+		                     <div class="text-center">
+		                        <ul class="pagination">
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">처음</a></li>
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">1</a></li>
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">2</a></li>
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">끝</a></li>
+		                        </ul>
+		                     </div>
+		                  </div>
+		               </div>
+		            </div>
+		         </div>
+			  	</div>
 			  </div>
-			  <div class="form-group">
-			   		 <h6>전화번호</h6>
-			    <input type="text" class="form-control" id="userTEL">
 			  </div>
-			  <div class="form-btn" style="text-align: right">
-			    <button type="submit" class="btn btn-default">회원가입</button>
-			    <a href="index.jsp">취소</a>
-			  </div>
-			</form>
+			</div>
 		  </div>
 		</section>
       </div>
@@ -276,7 +379,7 @@
         		<div class="modal-dialog">
         			<div class="modal-content">
         				<div class="modal-header">
-        					<span>Login</span>
+        					<span>로그인</span>
         					<button class="close" data-dismiss="modal">&times;</button>
         				</div>
         				<div class="modal-body">
@@ -284,7 +387,7 @@
 							  <div class="form-group">
 							    <label for="loginID" class="col-sm-2 control-label">ID</label>
 							    <div class="col-sm-10">
-							      <input type="email" class="form-control" id="loginID" placeholder="ID">
+							      <input type="text" class="form-control" id="loginID" placeholder="ID">
 							    </div>
 							  </div>
 							  <div class="form-group">
@@ -305,7 +408,7 @@
 							  <div class="form-group">
 							    <div class="col-sm-offset-2 col-sm-10" style="text-align: right">
 							      <button type="submit" class="btn btn-default">로그인</button>
-							      <a href="regmember.jsp">회원가입</a>
+							      <a href="regmember.html">회원가입</a>
 							    </div>							    
 							  </div>
 							</form>
@@ -315,14 +418,109 @@
         	</div>
         </div>
         
+        <!-- 회원정보 수정 모달 -->
+        <div class="row">
+        	<div class="modal" id="modal2" tabindex="-1">
+        		<div class="modal-dialog">
+        			<div class="modal-content">
+        				<div class="modal-header">
+        					<span>회원정보수정</span>
+        					<button class="close" data-dismiss="modal">&times;</button>
+        				</div>
+        				<div class="modal-body">
+        				  <div class="mypage-border">
+        				    <div class="mypage-table">
+        				      <form action="userUPDATE.do">
+	        					<table class="table table-bordered modal-table">
+	        					  <tr>
+	        					    <td class="table-header">아이디</td>
+	        					    <td class="table-child">kw22228</td>
+	        					  </tr>
+	        					  <tr>
+	        					    <td class="table-header">현재비밀번호</td>
+	        					    <td class="table-child">
+	        					    	<input type="password" name="">
+	        					    </td>
+	        					  </tr>
+	        					  <tr>
+	        					    <td class="table-header">신규비밀번호</td>
+	        					    <td class="table-child">
+	        					    	<input type="password" name="">
+	        					    </td>
+	        					  </tr>
+	        					  <tr>
+	        					    <td class="table-header">신규비밀번호 확인</td>
+	        					    <td class="table-child">
+	        					    	<input type="password" name="">
+	        					    </td>
+	        					  </tr>
+	        					  <tr>
+	        					    <td class="table-header">닉네임</td>
+	        					    <td class="table-child">여행가자ㅏㅏㅏ</td>
+	        					  </tr>
+	        					  <tr>
+	        					    <td class="table-header">휴대폰번호</td>
+	        					    <td class="table-child">010-1234-56789</td>
+	        					  </tr>
+	        					  <tr class="tablebt-tr">
+							  	  	 <td colspan="2" style="text-align: right">
+							  	  	  <input type="submit" value="수정하기" class="tablebt">
+							  	  	 </td>
+							  	  </tr>
+	        					</table>
+	        				  </form>
+        					</div>
+        				  </div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
         
-        
+        <!-- 회원탈퇴 모달 -->
+        <div class="row">
+        	<div class="modal" id="modal3" tabindex="-1">
+        		<div class="modal-dialog">
+        			<div class="modal-content">
+        				<div class="modal-header">
+        					<span>탈퇴하기</span>
+        					<button class="close" data-dismiss="modal">&times;</button>
+        				</div>
+        				<div class="modal-body">
+        				  <div class="mypage-border">
+        				    <div class="mypage-table">
+        				      <form action="userDELETE.do">
+	        					<table class="table table-bordered modal-table">
+	        					  <tr>
+	        					    <td class="table-header">아이디</td>
+	        					    <td class="table-child">kw22228</td>
+	        					  </tr>
+	        					  <tr>
+	        					    <td class="table-header">비밀번호</td>
+	        					    <td class="table-child">
+	        					    	<input type="password" name="">
+	        					    </td>
+	        					  </tr>	        					  
+	        					  <tr class="tablebt-tr">
+							  	  	 <td colspan="2" style="text-align: right">
+							  	  	  <input type="submit" value="탈퇴하기" class="tablebt">
+							  	  	 </td>
+							  	  </tr>
+	        					</table>
+	        				  </form>
+        					</div>
+        				  </div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
   <!-- Bootstrap core JavaScript -->
-  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
+  <script src="js/clean-blog.min.js"></script>
 
 </body>
 

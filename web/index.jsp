@@ -64,15 +64,9 @@
           		  <li><a class="nav-link" href="#">공지사항</a></li>
           	  </ul>
             </li>
-            <li class="dropdown">
-          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-          	  	  aria-haspopup="true" aria-expanded="false">마이페이지</a>
-          	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">회원정보보기</a></li>
-          		  <li><a class="nav-link" href="#">내가 작성한 글</a></li>
-          		  <li><a class="nav-link" href="#">내 댓글</a></li>          		  
-          	  </ul>
-            </li>
+            <li class="nav-item">
+	          <a class="nav-link-login" href="mypage.html">마이페이지</a>
+	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
 	        </li>
