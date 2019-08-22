@@ -15,6 +15,7 @@ public interface BoardService {
     public boolean hideArt(ArticleVO vo) throws ClassNotFoundException, SQLException;
     public boolean updateArt(ArticleVO vo) throws ClassNotFoundException, SQLException;
     public ArticleVO selectArt(ArticleVO vo) throws ClassNotFoundException, SQLException;
+    public List<ArticleVO> selectAllArtList(ArticleVO vo) throws ClassNotFoundException, SQLException;
     public List<ArticleVO> selectArtList(ArticleVO vo) throws ClassNotFoundException, SQLException;
 
     //댓글관련 서비스

@@ -52,6 +52,11 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
+    public List<ArticleVO> selectAllArtList(ArticleVO vo) throws ClassNotFoundException, SQLException {
+        return boardDAO.selectAllList(vo);
+    }
+
+    @Override
     public List<ArticleVO> selectArtList(ArticleVO vo) throws ClassNotFoundException, SQLException {
         return boardDAO.selectList(vo);
     }

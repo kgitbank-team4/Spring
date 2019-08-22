@@ -16,9 +16,29 @@ public class BoardController {
     private BoardService boardService;
 
     @RequestMapping(value = "/home.do")
-    public String selectBoardList(ArticleVO vo, Model model) throws SQLException, ClassNotFoundException {
-        model.addAttribute("ArtList",boardService.selectArtList(vo));
+    public String home(ArticleVO vo, Model model) throws SQLException, ClassNotFoundException {
+        model.addAttribute("AllArtList",boardService.selectAllArtList(vo));
         return "home";
+    }
+    @RequestMapping(value = "/freeboard.do")//자유
+    public String freeboard(ArticleVO vo,Model model) throws SQLException, ClassNotFoundException{
+        model.addAttribute("ArtList",boardService.selectArtList(vo));
+        return "freeboard";
+    }
+    @RequestMapping(value = "/hugiboard.do")//후기
+    public String hugiboard(ArticleVO vo,Model model) throws SQLException, ClassNotFoundException{
+        model.addAttribute("ArtList",boardService.selectArtList(vo));
+        return "hugiboard";
+    }
+    @RequestMapping(value = "/qaboard.do")//Q & A
+    public String qaboard(ArticleVO vo,Model model) throws SQLException, ClassNotFoundException{
+        model.addAttribute("ArtList",boardService.selectArtList(vo));
+        return "qaboard";
+    }
+    @RequestMapping(value = "/info.do")//공지사항
+    public String infoboard(ArticleVO vo,Model model) throws SQLException, ClassNotFoundException{
+        model.addAttribute("ArtList",boardService.selectArtList(vo));
+        return "info";
     }
 
 

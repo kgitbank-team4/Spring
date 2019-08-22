@@ -15,7 +15,8 @@ public interface BoardDAO {
     public void hide(ArticleVO vo);
     public void delete(ArticleVO vo);//글삭제
     public ArticleVO select(ArticleVO vo);//글읽기
-    public List<ArticleVO> selectList(ArticleVO vo);//글목록
+    public List<ArticleVO> selectAllList(ArticleVO vo);//글목록
+    public List<ArticleVO> selectList(ArticleVO vo);
 
     //댓글 읽기 입력 수정 삭제
     public void insert(CommentsVO vo); //댓글쓰기
