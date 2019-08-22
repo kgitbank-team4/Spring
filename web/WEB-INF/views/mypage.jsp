@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -23,7 +21,7 @@
   <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/regmember.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/mypage.css" rel="stylesheet">
 </head>
 
 <body>
@@ -31,7 +29,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="index.html">SPRING</a>
+      <a class="navbar-brand" href="home.do">SPRING</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -64,7 +62,7 @@
           	  </ul>
             </li>
             <li class="nav-item">
-	          <a class="nav-link-login" href="mypage.do">마이페이지</a>
+	          <a class="nav-link-login" href="mypage.html">마이페이지</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
@@ -90,122 +88,143 @@
   </header>
 
 <!-- Main Content -->
-  <div class="container">
+  <div class="container mypage1">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
       	<section class="xm">
-      	  <div class="border1">
-      	  	<h4>회원가입</h4>
-      	  	<br>
-	        <form action="signup.do">
-			  <!-- <div class="form-group"> -->
-			  <table>
-			  <tr>
-			  <td>
-			  <div class="form-group">
-			  <em style="color:red">*</em>
-			    <h6>아이디</h6>
-			    </div>
-			    </td>
-			    </tr>
-			    <tr>			    
-			    <td>
-			    <input type="text" class="form-control" id="userID" name="username">			    		  
-			  </td>
-			  <td id="checkbox1">
-			  <input type="button" value="id중복체크" id="checkbtn">			  
-			  </td>
-			  <tr>
-			  <td>
-			  <div class="form-group">
-			  		 <em style="color:red">*</em>
-			   		 <h6>비밀번호</h6>
+      	  <div class="mypage-border">
+      	    <h4>마이페이지</h4>
+      	    <br>
+      	    <ul class="nav nav-pills navpills" id="pills-tab" role="tablist">
+			  <li class="nav-item">
+			    <a class="nav-link active" id="pills-inform-tab" data-toggle="pill" href="#pills-inform" role="tab" aria-controls="pills-inform" aria-selected="true">회원정보보기</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="pills-write-tab" data-toggle="pill" href="#pills-write" role="tab" aria-controls="pills-write" aria-selected="false">내가 작성한 글</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="pills-write22-tab" data-toggle="pill" href="#pills-write22" role="tab" aria-controls="pills-write22" aria-selected="false">내 댓글</a>
+			  </li>
+			</ul>
+			<div class="tab-content" id="pills-tabContent">
+			  <div class="tab-pane fade show active" id="pills-inform" role="tabpanel" aria-labelledby="pills-home-tab">
+			  	<div class="mypage-table">
+				  	  <table class="table table-hover">
+				  	  	<tr>
+				  	  	  <td class="table-header">아이디</td>
+				  	  	  <td class="table-child">${user.username}</td>
+				  	  	</tr>
+				  	  	<tr>
+				  	  	  <td class="table-header">닉네임</td>
+				  	  	  <td class="table-child">${user.nickname}</td>
+				  	  	</tr>
+				  	  	<tr>
+				  	  	  <td class="table-header">휴대폰번호</td>
+				  	  	  <td class="table-child">${user.tel}</td>
+				  	  	</tr>
+				  	  	<tr class="tablebt-tr">
+				  	  	  <td colspan="2" style="text-align: right">
+				  	  	  	<input type="submit" value="회원정보수정" class="tablebt" data-target="#modal2" data-toggle="modal">
+				  	  	  	<input type="submit" value="탈퇴하기" class="tablebt" data-target="#modal3" data-toggle="modal">
+				  	  	  	
+				  	  	  </td>
+				  	  	</tr>
+				  	  </table>
+			  	</div>
 			  </div>
-			  </td>
-			  <tr>
-			  <td>
-			  <input type="password" class="form-control" id="userPW" name="password">
-			  </td>
-			  </tr>
-			  <tr>
-			  <td>
-			   <div class="form-group">
-			  		 <em style="color:red">*</em>
-			   		 <h6>비밀번호 확인</h6>
+			  <div class="tab-pane fade" id="pills-write" role="tabpanel" aria-labelledby="pills-profile-tab">	
+			  	<div class="mypage-table">
+			  	  <table class="table table-hover">
+			  	  	<tr class="table-header">
+			  	  	  <td>No.</td>
+			  	  	  <td>제목</td>
+			  	  	  <td>날짜</td>
+			  	  	  <td>조회수</td>
+			  	  	  <td>추천수</td>
+			  	  	</tr>
+			  	  	<tr class="table-child">
+			  	  	  <td>1</td>
+			  	  	  <td><a href="#">############</a></td>
+			  	  	  <td>####-##-##</td>
+			  	  	  <td>##</td>
+			  	  	  <td>#</td>
+			  	  	</tr>
+			  	  	<tr class="table-child">
+			  	  	  <td>1</td>
+			  	  	  <td><a href="#">############</a></td>
+			  	  	  <td>####-##-##</td>
+			  	  	  <td>##</td>
+			  	  	  <td>#</td>
+			  	  	</tr>
+			  	  </table>
+			  	  <div class="container page1">
+		            <div class="row">
+		               <div class="col-lg-5 col-md-5">
+		                  <div class="container">
+		                     <div class="text-center">
+		                        <ul class="pagination">
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">처음</a></li>
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">1</a></li>
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">2</a></li>
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">끝</a></li>
+		                        </ul>
+		                     </div>
+		                  </div>
+		               </div>
+		            </div>
+		         </div>
+			  	</div>
 			  </div>
-			  </td>
-			  </tr>
-			  <tr>
-			  <td>
-			   <input type="password" class="form-control" id="userPWCK">
-			   </td>
-			   </tr>
-			   <tr>
-			   <td>
-			   <div class="form-group">
-			  		 <em style="color:red">*</em>
-			   		 <h6>닉네임</h6>
-			   </div>
-			   </td>
-			   </tr>
-			   <tr>
-			   <td>
-			   	<input type="text" class="form-control" id="userNICK" name="nickname">
-			   	</td>
-			   	<td id="checkbox1">
-			   	<input type="button" value="닉네임 중복체크" id="checkbtn">
-			   	</td>
-			   	</tr>
-			   	<tr>
-			   	<td>
-			   	<div class="form-group">
-			   		 <h6>전화번호</h6>
-			   	</div>
-			   	</td>
-			   	<tr>
-			   	<td>
-			   	<input type="text" class="form-control" id="userTEL" name="tel">
-			   	</td>
-			   	</tr>
-			   	<tr>
-			   	<td colspan="2" align="center">
-			   	<div class="form-group">			  		 
-			  		 <input type="checkbox" name="agree" id="agree_id" value='agree'>
-			  		 <em style="color:red">*</em>
-			   		 <h6>개인정보수집 동의(필수)</h6>
-			   </div>
-			   	<tr>
-			   	<td>
-			   	<div class="form-btn" style="text-align: right">
-			    <button type="submit" class="btn btn-default">회원가입</button>
-			    <a href="home.do">취소</a>
-			    </div>
-			    </td>
-			    </tr>			    			  
-			  </table>
-			  		<!-- <em style="color:red">*</em>
-			    	<h6>아이디</h6>
-			    <input type="text" class="form-control" id="userID" name="username">			    
+			  <div class="tab-pane fade" id="pills-write22" role="tabpanel" aria-labelledby="pills-contact-tab">
+			  	<div class="mypage-table">
+			  	  <table class="table table-hover">
+			  	  	<tr class="table-header">
+			  	  	  <td>No.</td>
+			  	  	  <td>댓글</td>
+			  	  	  <td>게시글제목</td>
+			  	  	  <td>추천수</td>
+			  	  	</tr>
+			  	  	<tr class="table-child">
+			  	  	  <td>1</td>
+			  	  	  <td><a href="#">############</a></td>
+			  	  	  <td>####-##-##</td>
+			  	  	  <td>#</td>
+			  	  	</tr>
+			  	  	<tr class="table-child">
+			  	  	  <td>1</td>
+			  	  	  <td><a href="#">############</a></td>
+			  	  	  <td>####-##-##</td>
+			  	  	  <td>#</td>
+			  	  	</tr>
+			  	  </table>
+			  	  <div class="container page1">
+		            <div class="row">
+		               <div class="col-lg-5 col-md-5">
+		                  <div class="container">
+		                     <div class="text-center">
+		                        <ul class="pagination">
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">처음</a></li>
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">1</a></li>
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">2</a></li>
+		                           <li class="page-item"><a class="page-link"
+		                              href="javascript:void(0);">끝</a></li>
+		                        </ul>
+		                     </div>
+		                  </div>
+		               </div>
+		            </div>
+		         </div>
+			  	</div>
 			  </div>
-			  <div class="form-group">
-			  		 <em style="color:red">*</em>
-			   		 <h6>비밀번호</h6>
-			    <input type="password" class="form-control" id="userPW" name="password">
 			  </div>
-			  <div class="form-group">
-			  		 <em style="color:red">*</em>
-			   		 <h6>닉네임</h6>
-			    <input type="text" class="form-control" id="userNICK" name="nickname">
-			  </div>
-			  <div class="form-group">
-			   		 <h6>전화번호</h6>
-			    <input type="text" class="form-control" id="userTEL" name="tel">
-			  </div>
-			  <div class="form-btn" style="text-align: right">
-			    <button type="submit" class="btn btn-default">회원가입</button>
-			    <a href="home.do">취소</a>
-			  </div> -->
-			</form>
+			</div>
 		  </div>
 		</section>
       </div>
@@ -360,7 +379,7 @@
         		<div class="modal-dialog">
         			<div class="modal-content">
         				<div class="modal-header">
-        					<span>Login</span>
+        					<span>로그인</span>
         					<button class="close" data-dismiss="modal">&times;</button>
         				</div>
         				<div class="modal-body">
@@ -368,7 +387,7 @@
 							  <div class="form-group">
 							    <label for="loginID" class="col-sm-2 control-label">ID</label>
 							    <div class="col-sm-10">
-							      <input type="email" class="form-control" id="loginID" placeholder="ID">
+							      <input type="text" class="form-control" id="loginID" placeholder="ID">
 							    </div>
 							  </div>
 							  <div class="form-group">
@@ -389,7 +408,7 @@
 							  <div class="form-group">
 							    <div class="col-sm-offset-2 col-sm-10" style="text-align: right">
 							      <button type="submit" class="btn btn-default">로그인</button>
-							      <a href="regmember.jsp">회원가입</a>
+							      <a href="regmember.html">회원가입</a>
 							    </div>							    
 							  </div>
 							</form>
@@ -399,15 +418,136 @@
         	</div>
         </div>
         
+        <!-- 회원정보 수정 모달 -->
+        <div class="row">
+        	<div class="modal" id="modal2" tabindex="-1">
+        		<div class="modal-dialog">
+        			<div class="modal-content">
+        				<div class="modal-header">
+        					<span>회원정보수정</span>
+        					<button class="close" data-dismiss="modal">&times;</button>
+        				</div>
+        				<div class="modal-body">
+        				  <div class="mypage-border">
+        				    <div class="mypage-table">
+        				      <form action="userUPDATE.do">
+        				      <input type="hidden" name="id" value="${user.id}">
+	        					<table class="table table-bordered modal-table">
+	        					  <tr>
+	        					    <td class="table-header">아이디</td>
+	        					    <td class="table-child">${user.username}</td>
+	        					  </tr>
+	        					  <tr>
+	        					    <td class="table-header">현재비밀번호</td>
+	        					    <td class="table-child">
+	        					    	<input type="password" name="oldpassword" id="pw">
+	        					    </td>
+	        					  </tr>
+	        					  <tr>
+	        					    <td class="table-header">신규비밀번호</td>
+	        					    <td class="table-child">
+	        					    	<input type="password" name="password" id="pw2">
+	        					    </td>
+	        					  </tr>
+	        					  <tr>
+	        					    <td class="table-header">신규비밀번호 확인</td>
+	        					    <td class="table-child">
+	        					    	<input type="password" name="passwordcheck" id="pwcheck">
+	        					    </td>
+	        					  </tr>
+	        					  <tr>
+	        					    <td class="table-header">닉네임</td>
+	        					    <td class="table-child">
+	        					    <input type="text" name="nickname" placeholder="${user.nickname}">
+	        					    </td>
+	        					  </tr>
+	        					  <tr>
+	        					    <td class="table-header">휴대폰번호</td>
+	        					    <td class="table-child">
+	        					    <input type="text" name="tel" placeholder="${user.tel}">
+	        					    </td>
+	        					  </tr>
+	        					  <tr class="tablebt-tr">
+							  	  	 <td colspan="2" style="text-align: right">
+							  	  	  <input type="submit" value="수정하기" class="tablebt">							  	  	  
+							  	  	 </td>
+							  	  </tr>
+	        					</table>
+	        				  </form>
+        					</div>
+        				  </div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
         
-        
+        <!-- 회원탈퇴 모달 -->
+        <div class="row">
+        	<div class="modal" id="modal3" tabindex="-1">
+        		<div class="modal-dialog">
+        			<div class="modal-content">
+        				<div class="modal-header">
+        					<span>탈퇴하기</span>
+        					<button class="close" data-dismiss="modal">&times;</button>
+        				</div>
+        				<div class="modal-body">
+        				  <div class="mypage-border">
+        				    <div class="mypage-table">
+        				      <form name="form2" action="userDELETE.do">
+        				      <input type="hidden" name="id" value="${user.id}">
+	        					<table class="table table-bordered modal-table">
+	        					  <tr>
+	        					    <td class="table-header">아이디</td>
+	        					    <td class="table-child">${user.username}</td>
+	        					  </tr>
+	        					  <tr>
+	        					    <td class="table-header">비밀번호</td>
+	        					    <td class="table-child">
+	        					    	<input type="password" name="password" id="pw_id">
+	        					    	<input type="hidden" id="pw_ck" value="${user.password}">
+	        					    </td>
+	        					  </tr>	        					  
+	        					  <tr class="tablebt-tr">
+							  	  	 <td colspan="2" style="text-align: right">
+							  	  	  <input type="button" value="탈퇴하기" class="tablebt" onclick="javascript:outcheck()">
+							  	  	 </td>
+							  	  </tr>
+	        					</table>
+	        				  </form>
+        					</div>
+        				  </div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
   <!-- Bootstrap core JavaScript -->
   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
+  <script src="${pageContext.request.contextPath}/js/clean-blog.min.js"></script>
 
 </body>
-
+<script>
+function check(){
+	var pw = document.getElementById("pw_id").value;
+	var pwck = document.getElementById("pw_ck").value;
+	if(pw == ''){
+		alert('비밀번호를 입력하세요');
+		document.getElementById("pw_id").focus();
+		return false;
+	}else if(pw != pwck){
+		alert('비밀번호를 확인하세요');
+		//document.getElementById("pw_id").focus();
+		return false;
+	}
+	return true;
+}
+function outcheck(){
+	if(check())
+		document.form2.submit();
+}
+</script>
 </html>

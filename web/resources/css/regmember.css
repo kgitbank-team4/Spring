@@ -35,3 +35,20 @@ em{
 	
 	color: #30a4b8
 }
+
+table{
+	width: 100%;
+	
+}
+
+table #checkbox1{
+	width : 15%;
+}
+
+table #checkbtn{
+	background-color: #ffffff;
+	font-size: medium;
+	font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+ 	outline : 0;	
+	}
+	

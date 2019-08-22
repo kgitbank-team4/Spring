@@ -38,7 +38,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="index.html">SPRING</a>
+        <a class="navbar-brand" href="home.do">SPRING</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -71,13 +71,14 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                       aria-haspopup="true" aria-expanded="false">마이페이지</a>
-                    <ul class="dropdown-menu">
+                    <!-- <a href="mypage.do" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-haspopup="true" aria-expanded="false"> -->
+                       <a href="mypage.do">마이페이지</a>
+<!--                     <ul class="dropdown-menu">
                         <li><a class="nav-link" href="#">회원정보보기</a></li>
                         <li><a class="nav-link" href="#">내가 작성한 글</a></li>
                         <li><a class="nav-link" href="#">내 댓글</a></li>
-                    </ul>
+                    </ul> -->
                 </li>
                 <li class="nav-item">
                     <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
