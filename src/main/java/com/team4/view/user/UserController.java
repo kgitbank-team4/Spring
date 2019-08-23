@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -13,14 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team4.biz.user.service.UserService;
 import com.team4.biz.user.vo.UserVO;
 
 @Controller
 public class UserController {
-
-	//boolean result = true;
 	
 	@Autowired
 	private UserService userService;
@@ -62,12 +61,38 @@ public class UserController {
 		session.setAttribute("user", user);
 		return "home"; 
 	}
+	//아이디 중복체크
+	@ResponseBody
+	@RequestMapping(value="/idcheck.do")
+	public String CheckID(@RequestParam("username") String username, HttpSession session) throws ClassNotFoundException, SQLException {
+		boolean result1 = userService.idcheck(username);
+		//System.out.println(result1);
+		if(result1) 
+			return "fail";
+		else
+			return "success";
+	}
+	//닉네임 중복체크
+	@ResponseBody
+	@RequestMapping(value="/nicknamecheck.do")
+	public String CheckNick(@RequestParam("nickname") String nickname, HttpSession session) throws ClassNotFoundException, SQLException {
+		boolean result1 = userService.nicknamecheck(nickname);
+		if(result1)
+			return "fail";
+		else
+			return "success";
+	}
+	
 	
 	//로그아웃
 	@RequestMapping(value="/logout.do")
-	public String Logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:home.do";
+	public String Logout(HttpSession session, HttpServletResponse response) throws IOException {
+		session.removeAttribute("user");
+		response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println("<script>alert('로그아웃되었습니다!');</script>");
+        out.flush();
+		return "home";
 	}
 		
 	//마이페이지

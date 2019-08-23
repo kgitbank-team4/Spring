@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team4.biz.user.dao.UserDAO">
-  <insert id="insertUser" parameterType="UserVO">
-<!--   <selectKey resultType="int" keyProperty="id" order="BEFORE">
-  select users_SEQ.nextval from dual
-  </selectKey>  -->
-        insert into users(id,username,password,nickname,tel,date_created) values (null, #{username}, #{password}, #{nickname}, #{tel}, sysdate)
-    </insert>
-    <update id="updateUser" parameterType="UserVO">
-        update users set password=#{password}, nickname=#{nickname}, tel=#{tel} where id=#{id}
-    </update>
-    <delete id="deleteUser" parameterType="UserVO">
-        delete from users where id=#{id}
-    </delete>
-    <select id="selectOneUser" parameterType="UserVO" resultType="UserVO">
-        select * from users where username=#{username} and password=#{password}
-    </select>
-    <select id="selectAllUser" resultType="UserVO">
-        select * from users order by id asc
-    </select>
+	<insert id="insertUser" parameterType="UserVO">
+		insert into users(id,username,password,nickname,tel,date_created) values
+		(null, #{username}, #{password}, #{nickname}, #{tel}, sysdate)
+	</insert>
+	<update id="updateUser" parameterType="UserVO">
+		update users set password=#{password}, nickname=#{nickname}, tel=#{tel}
+		where id=#{id}
+	</update>
+	<delete id="deleteUser" parameterType="UserVO">
+		delete from users where id=#{id}
+	</delete>
+	<select id="selectOneUser" parameterType="UserVO"
+		resultType="UserVO">
+		select * from users where username=#{username} and password=#{password}
+	</select>
+	<select id="selectAllUser" resultType="UserVO">
+		select * from users order by id asc
+	</select>
+
+	<select id="selectUsername" parameterType="string" resultType="string">
+		select username from users where username=#{username} 
+	</select>
+	
+	<select id="selectNickname" parameterType="string" resultType="string">
+		select nickname from users where nickname=#{nickname} 
+	</select>
 </mapper>

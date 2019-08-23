@@ -80,14 +80,28 @@
                         <li><a class="nav-link" href="#">내 댓글</a></li>
                     </ul> -->
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
+                <li class="nav-item login login-active">
+                    <a class="nav-link-login" data-target="#modal1" data-toggle="modal" >로그인</a>
                 </li>
+                <li class="nav-item logout login-inactive">
+                     <a class="nav-link-login" href="logout.do">로그아웃</a>                   
+                </li>
+				
             </ul>
         </div>
     </div>
 </nav>
-
+<script>
+$(document).ready(function(){
+	
+	if( ${user.id} != null ) {
+		$("#mainNav .container #navbarResponsive .login").removeClass("login-active");
+		$("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");
+		$("#mainNav .container #navbarResponsive .login").addClass("login-inactive");
+		$("#mainNav .container #navbarResponsive .logout").addClass("login-active");
+	}
+});
+</script>
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
@@ -397,8 +411,6 @@
 <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Custom scripts for this template -->
 <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
-
-
 
 
 </body>

@@ -22,6 +22,20 @@
   <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/mypage.css" rel="stylesheet">
+
+<script>
+window.onload = function(){
+	onlyNumberFunc(document.getElementById("userTEL")); //숫자만 입력
+}
+	
+function onlyNumberFunc(t){
+		var regexp = /[^0-9]/gi;
+  		t.onkeyup = function(e){
+    	var v = this.value;
+    	this.value = v.replace(regexp,'');
+	}
+}
+</script>
 </head>
 
 <body>
@@ -64,14 +78,28 @@
             <li class="nav-item">
 	          <a class="nav-link-login" href="mypage.html">마이페이지</a>
 	        </li>
-	        <li class="nav-item">
+<!-- 	        <li class="nav-item">
 	          <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
-	        </li>
+	        </li> -->
+	        <li class="nav-item logout login-inactive">
+              <a class="nav-link-login" href="logout.do">로그아웃</a>                   
+            </li>
         </ul>
       </div>
     </div>
   </nav>
+<!-- <script>
 
+$(document).ready(function() {
+	if(${user.id}!=null){
+		$("#mainNav .container #navbarResponsive .login").removeClass("login-active");
+		$("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");
+		$("#mainNav .container #navbarResponsive .login").addClass("login-inactive");
+		$("#mainNav .container #navbarResponsive .logout").addClass("login-active");
+	}
+});
+
+</script> -->
   <!-- Page Header -->
   <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
@@ -374,7 +402,7 @@
         
         
         <!-- Start Modal -->
-        <div class="row">
+<!--         <div class="row">
         	<div class="modal" id="modal1" tabindex="-1">
         		<div class="modal-dialog">
         			<div class="modal-content">
@@ -383,17 +411,17 @@
         					<button class="close" data-dismiss="modal">&times;</button>
         				</div>
         				<div class="modal-body">
-        					<form class="form-horizontal" action="regmember.html">
+        					<form class="form-horizontal" action="login.do">
 							  <div class="form-group">
 							    <label for="loginID" class="col-sm-2 control-label">ID</label>
 							    <div class="col-sm-10">
-							      <input type="text" class="form-control" id="loginID" placeholder="ID">
+							      <input type="text" class="form-control" id="loginID" placeholder="ID" name="username">
 							    </div>
 							  </div>
 							  <div class="form-group">
 							    <label for="loginPW" class="col-sm-2 control-label">Password</label>
 							    <div class="col-sm-10">
-							      <input type="password" class="form-control" id="loginPW" placeholder="Password">
+							      <input type="password" class="form-control" id="loginPW" placeholder="Password" name="password">
 							    </div>
 							  </div>
 							  <div class="form-group">
@@ -408,7 +436,7 @@
 							  <div class="form-group">
 							    <div class="col-sm-offset-2 col-sm-10" style="text-align: right">
 							      <button type="submit" class="btn btn-default">로그인</button>
-							      <a href="regmember.html">회원가입</a>
+							      <a href="regmember.do">회원가입</a>
 							    </div>							    
 							  </div>
 							</form>
@@ -416,7 +444,7 @@
         			</div>
         		</div>
         	</div>
-        </div>
+        </div> -->
         
         <!-- 회원정보 수정 모달 -->
         <div class="row">
@@ -430,8 +458,9 @@
         				<div class="modal-body">
         				  <div class="mypage-border">
         				    <div class="mypage-table">
-        				      <form action="userUPDATE.do">
+        				      <form name="form1" action="userUPDATE.do">
         				      <input type="hidden" name="id" value="${user.id}">
+        				      <input type="hidden" value="${user.password}" id="originpw">
 	        					<table class="table table-bordered modal-table">
 	        					  <tr>
 	        					    <td class="table-header">아이디</td>
@@ -440,36 +469,38 @@
 	        					  <tr>
 	        					    <td class="table-header">현재비밀번호</td>
 	        					    <td class="table-child">
-	        					    	<input type="password" name="oldpassword" id="pw">
+	        					    	<input type="password" id="pw">
 	        					    </td>
 	        					  </tr>
 	        					  <tr>
 	        					    <td class="table-header">신규비밀번호</td>
 	        					    <td class="table-child">
-	        					    	<input type="password" name="password" id="pw2">
+	        					    	<input type="password" name="password" id="newpw">
 	        					    </td>
 	        					  </tr>
 	        					  <tr>
 	        					    <td class="table-header">신규비밀번호 확인</td>
 	        					    <td class="table-child">
-	        					    	<input type="password" name="passwordcheck" id="pwcheck">
+	        					    	<input type="password" id="pwck">
 	        					    </td>
 	        					  </tr>
 	        					  <tr>
 	        					    <td class="table-header">닉네임</td>
 	        					    <td class="table-child">
-	        					    <input type="text" name="nickname" placeholder="${user.nickname}">
-	        					    </td>
+	        					    <input type="text" name="nickname" id="userNICK" placeholder="${user.nickname}">
+	        					    <input type="button" onclick="nicknameCheck()" value="중복체크" id="checkbtn">
+									<br><span id="nameresult"></span>
+									</td>	        					 
 	        					  </tr>
 	        					  <tr>
 	        					    <td class="table-header">휴대폰번호</td>
 	        					    <td class="table-child">
-	        					    <input type="text" name="tel" placeholder="${user.tel}">
+	        					    <input type="text" name="tel" placeholder="${user.tel}" id="userTEL">
 	        					    </td>
 	        					  </tr>
 	        					  <tr class="tablebt-tr">
 							  	  	 <td colspan="2" style="text-align: right">
-							  	  	  <input type="submit" value="수정하기" class="tablebt">							  	  	  
+							  	  	  <input type="button" onclick="javascript:updatecheck()" value="수정하기" class="tablebt">							  	  	  
 							  	  	 </td>
 							  	  </tr>
 	        					</table>
@@ -531,6 +562,24 @@
 
 </body>
 <script>
+//회원정보수정 체크
+function upcheck(){
+
+	var originpw = document.getElementById("originpw").value;
+	var pw = document.getElementById("pw").value;
+	var newpw = document.getElementById("newpw").value;
+	var pwck = document.getElementById("pwck").value;
+	var nickname = document.getElementById("userNICK").value;
+	var tel = document.getElementById("userTEL").value;
+	
+}
+function updatecheck(){
+	if(upcheck())
+		document.form1.submit();
+}
+
+
+//회원탈퇴 체크
 function check(){
 	var pw = document.getElementById("pw_id").value;
 	var pwck = document.getElementById("pw_ck").value;

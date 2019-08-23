@@ -42,4 +42,24 @@ public class UserDAOImpl implements UserDAO {
 		return sqlSession.selectList(namespace+".selectAllUser");
 	}
 
+	@Override
+	public String idSearch(String username) {
+		String result = null;
+		try {
+			result =  sqlSession.selectOne(namespace+".selectUsername", username);
+		}catch(Exception e){	
+		}
+		return result;
+	}
+
+	@Override
+	public String nicknameSearch(String nickname) {
+		String result = null;
+		try {
+			result = sqlSession.selectOne(namespace+".selectNickname", nickname);
+		}catch(Exception e) {
+		}
+		return result;
+	}
+
 }
