@@ -62,6 +62,11 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
+    public List<ArticleVO> searchArtList(BoardVO vo) throws ClassNotFoundException, SQLException {
+        return boardDAO.searchList(vo);
+    }
+
+    @Override
     public boolean insertComment(CommentsVO vo) throws ClassNotFoundException, SQLException {
         boardDAO.insert(vo);
         return true;

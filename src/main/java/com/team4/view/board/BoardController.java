@@ -42,6 +42,11 @@ public class BoardController {
         model.addAttribute("ArtList",boardService.selectArtList(vo));
         return "info";
     }
+    @RequestMapping(value = "/search.do")
+    public String searchArt(BoardVO vo, Model model) throws SQLException, ClassNotFoundException{
+        model.addAttribute("ArtList",boardService.searchArtList(vo));
+        return "freeboard";
+    }
 
 
 }

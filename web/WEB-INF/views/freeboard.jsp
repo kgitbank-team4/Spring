@@ -57,17 +57,16 @@
                 <div id="well" class="well-sm">
                     <div class="d-flex">
                         <div class="p-2">
-                            <select>
-                                <option value="제목" selected>제목<span class="caret"></span></option>
-                                <option value="닉네임">닉네임</option>
+                            <select id="selectbox">
+                                <option value="title" selected>제목<span class="caret"></span></option>
+                                <option value="nick">닉네임</option>
                                 <option value="닉네임+제목">닉네임+제목</option>
                             </select>
                         </div>
-
                         <div class="p-2">
                             <div class="input-group">
-                                <input class="form-control" placeholder="검색"/> <span
-                                    class="input-group-addon"><i class="fas fa-search"></i></span>
+                                <input class="form-control" id="searchinput" placeholder="검색"/> <span
+                                    class="input-group-addon"><a href="#" onclick=x()><i class="fas fa-search"></i></a></span>
                             </div>
                         </div>
                         <div class="ml-auto p-2">
@@ -154,6 +153,11 @@
             $(this).addClass("active");
         });
     });
+    function x() {
+        var target = $("#selectbox option:selected").val();
+        var keyword = $("#searchinput").val();
+        location.href='search.do?id=103&search_style='+target+'&keyword='+keyword
+    }
 </script>
 
 

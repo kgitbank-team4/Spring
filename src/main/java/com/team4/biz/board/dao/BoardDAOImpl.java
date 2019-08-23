@@ -56,6 +56,11 @@ public class BoardDAOImpl implements BoardDAO{
     }
 
     @Override
+    public List<ArticleVO> searchList(BoardVO vo) {
+        return sqlSession.selectList(namespace+".searchArt",vo);
+    }
+
+    @Override
     public void insert(CommentsVO vo) {
 
     }
