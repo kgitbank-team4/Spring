@@ -14,3 +14,5 @@ public interface UserDAO {
 	public String idSearch(String username);
 	public String nicknameSearch(String nickname);
 }
+
+

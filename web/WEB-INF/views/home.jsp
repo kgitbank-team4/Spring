@@ -6,7 +6,7 @@
 <%@ page import="com.team4.biz.board.service.BoardServiceImpl" %>
 <%@ page import="com.team4.biz.board.vo.ArticleVO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,9 +21,12 @@
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
-    <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+          type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
@@ -57,15 +60,15 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">정보</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">운항 정보</a></li>
+                        <li><a class="nav-link" href="#" onclick="x()">운항 정보</a></li>
                         <li><a class="nav-link" href="#">날씨 정보</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                    <a href="freeboard.do?board_id=103" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">자유게시판</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
                         <li><a class="nav-link" href="#">Q & A</a></li>
                         <li><a class="nav-link" href="#">공지사항</a></li>
                     </ul>
@@ -122,19 +125,31 @@ $(document).ready(function(){
         <div class="col-md-6 post-tabs" role="navigation">
             <div role="tabpanel">
                 <ul class="nav nav-tabs tab1" role="tablist">
-                    <li role="presentation" class="active tablist1"><a href="#hugi" aria-controls="hugi" role="tab" data-toggle="tab">후기</a></li>
-                    <li role="presentation" class="tablist2"><a href="#picture" aria-controls="picture" role="tab" data-toggle="tab">사진</a></li>
+                    <li role="presentation" class="active tablist1"><a href="#hugi" aria-controls="hugi" role="tab"
+                                                                       data-toggle="tab">후기</a></li>
+                    <li role="presentation" class="tablist2"><a href="#picture" aria-controls="picture" role="tab"
+                                                                data-toggle="tab">사진</a></li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="hugi">
                         <table class="table table-hover tab-table1">
-                            <c:forEach var="ArtList" items="${ArtList}" begin="0" end="4">
-                            <tr>
-                                <td style="color: red">${ArtList.category}</td>
-                                <td><a href="#">${ArtList.title}</a></td>
-                                <td>${ArtList.view_cnt}</td>
-                            </tr>
+                            <c:set var="cnt" value="1"/>
+                            <c:set var="doneLoop" value="false"/>
+                            <c:forEach var="ArtList" items="${AllArtList}">
+                                <c:if test="${not doneLoop}">
+                                    <c:if test="${ArtList.board_id eq 101}">
+                                        <tr>
+                                            <td style="color: red">${ArtList.category}</td>
+                                            <td><a href="#">${ArtList.title}</a></td>
+                                            <td>${ArtList.view_cnt}</td>
+                                            <c:set var="cnt" value="${cnt+1}"/>
+                                        </tr>
+                                        <c:if test="${cnt>5}">
+                                            <c:set var="doneLoop" value="true"/>
+                                        </c:if>
+                                    </c:if>
+                                </c:if>
                             </c:forEach>
                         </table>
                     </div>
@@ -145,39 +160,65 @@ $(document).ready(function(){
         <div class="col-md-6 post-tabs" role="navigation">
             <div role="tabpanel">
                 <ul class="nav nav-tabs tab2" role="tablist">
-                    <li role="presentation" class="active tablist1"><a href="#free" aria-controls="free" role="tab" data-toggle="tab">자유게시판</a></li>
-                    <li role="presentation" class="tablist2"><a href="#qa" aria-controls="qa" role="tab" data-toggle="tab">Q & A</a></li>
+                    <li role="presentation" class="active tablist1"><a href="#free" aria-controls="free" role="tab"
+                                                                       data-toggle="tab">자유게시판</a></li>
+                    <li role="presentation" class="tablist2"><a href="#qa" aria-controls="qa" role="tab"
+                                                                data-toggle="tab">Q & A</a></li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="free">
                         <table class="table table-hover tab-table1">
-                            <tr>
-                                <td style="color: red">아시</td>
-                                <td><a href="#">오키나와 다녀왔습니다</a></td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td style="color: red">유럽</td>
-                                <td><a href="#">유럽 다녀왔습니다</a></td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td style="color: red">아시아</td>
-                                <td><a href="#">인천 다녀왔습니다</a></td>
-                                <td>1</td>
-                            </tr>
+                            <c:set var="cnt" value="1"/>
+                            <c:set var="doneLoop" value="false"/>
+                            <c:forEach var="ArtList2" items="${AllArtList}">
+                                <c:if test="${not doneLoop}">
+                                    <c:if test="${ArtList2.board_id eq 103}">
+                                        <tr>
+                                            <td style="color: red">${ArtList2.category}</td>
+                                            <td><a href="#">${ArtList2.title}</a></td>
+                                            <td>${ArtList2.view_cnt}</td>
+                                            <c:set var="cnt" value="${cnt+1}"/>
+                                        </tr>
+                                        <c:if test="${cnt>5}">
+                                            <c:set var="doneLoop" value="true"/>
+                                        </c:if>
+                                    </c:if>
+                                </c:if>
+                            </c:forEach>
                         </table>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="qa">qa</div>
+                    <div role="tabpanel" class="tab-pane" id="qa">
+                        <table class="table table-hover tab-table1">
+                            <c:set var="cnt" value="1"/>
+                            <c:set var="doneLoop" value="false"/>
+                            <c:forEach var="ArtList" items="${AllArtList}">
+                                <c:if test="${not doneLoop}">
+                                    <c:if test="${ArtList.board_id eq 104}">
+                                        <tr>
+                                            <td style="color: red">${ArtList.category}</td>
+                                            <td><a href="#">${ArtList.title}</a></td>
+                                            <td>${ArtList.view_cnt}</td>
+                                            <c:set var="cnt" value="${cnt+1}"/>
+                                        </tr>
+                                        <c:if test="${cnt>5}">
+                                            <c:set var="doneLoop" value="true"/>
+                                        </c:if>
+                                    </c:if>
+                                </c:if>
+                            </c:forEach>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-6 post-tabs" role="navigation">
             <div role="tabpanel">
                 <ul class="nav nav-tabs tab3" role="tablist">
-                    <li role="presentation" class="active tablist1"><a href="#airport" aria-controls="airport" role="tab" data-toggle="tab">운항 정보</a></li>
-                    <li role="presentation" class="tablist2"><a href="#weather" aria-controls="weather" role="tab" data-toggle="tab">날씨 정보</a></li>
+                    <li role="presentation" class="active tablist1"><a href="#airport" aria-controls="airport"
+                                                                       role="tab" data-toggle="tab">운항 정보</a></li>
+                    <li role="presentation" class="tablist2"><a href="#weather" aria-controls="weather" role="tab"
+                                                                data-toggle="tab">날씨 정보</a></li>
 
                 </ul>
                 <!-- Tab panes -->
@@ -208,27 +249,30 @@ $(document).ready(function(){
         <div class="col-md-6 post-tabs" role="navigation">
             <div role="tabpanel">
                 <ul class="nav nav-tabs tab4" role="tablist">
-                    <li role="presentation" class="active tablist3"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">공지사항</a></li>
+                    <li role="presentation" class="active tablist3"><a href="#info" aria-controls="info" role="tab"
+                                                                       data-toggle="tab">공지사항</a></li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="info">
                         <table class="table table-hover tab-table1">
-                            <tr>
-                                <td style="color: red">아시</td>
-                                <td><a href="#">오키나와 다녀왔습니다</a></td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td style="color: red">유럽</td>
-                                <td><a href="#">유럽 다녀왔습니다</a></td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td style="color: red">아시아</td>
-                                <td><a href="#">인천 다녀왔습니다</a></td>
-                                <td>1</td>
-                            </tr>
+                            <c:set var="cnt" value="1"/>
+                            <c:set var="doneLoop" value="false"/>
+                            <c:forEach var="ArtList" items="${AllArtList}">
+                                <c:if test="${not doneLoop}">
+                                    <c:if test="${ArtList.board_id eq 105}">
+                                        <tr>
+                                            <td style="color: red">${ArtList.category}</td>
+                                            <td><a href="#">${ArtList.title}</a></td>
+                                            <td>${ArtList.view_cnt}</td>
+                                            <c:set var="cnt" value="${cnt+1}"/>
+                                        </tr>
+                                        <c:if test="${cnt>5}">
+                                            <c:set var="doneLoop" value="true"/>
+                                        </c:if>
+                                    </c:if>
+                                </c:if>
+                            </c:forEach>
                         </table>
                     </div>
                 </div>
@@ -241,15 +285,15 @@ $(document).ready(function(){
 
 <!-- Main Content js -->
 <script>
-    $(".tab1 li").on("click", function(){
+    $(".tab1 li").on("click", function () {
         $(".tab1 li").removeClass("active");
         $(this).addClass("active");
     });
-    $(".tab2 li").on("click", function(){
+    $(".tab2 li").on("click", function () {
         $(".tab2 li").removeClass("active");
         $(this).addClass("active");
     });
-    $(".tab3 li").on("click", function(){
+    $(".tab3 li").on("click", function () {
         $(".tab3 li").removeClass("active");
         $(this).addClass("active");
     });
@@ -269,9 +313,11 @@ $(document).ready(function(){
                 <div class="footer-address">
                     <ul>
                         <li class="footer-contact"><i class="fa fa-home"></i>서울시 종로구 KGITBANK</li>
-                        <li class="footer-contact"><i class="fa fa-envelope"></i><a href="#"> KGITBANK@naver.com</a></li>
+                        <li class="footer-contact"><i class="fa fa-envelope"></i><a href="#"> KGITBANK@naver.com</a>
+                        </li>
                         <li class="footer-contact"><i class="fa fa-phone"></i> 010-456-7890</li>
-                        <li class="footer-contact"><i class="fa fa-globe"></i><a href="#" target="_blank"> www.google.com</a></li>
+                        <li class="footer-contact"><i class="fa fa-globe"></i><a href="#" target="_blank">
+                            www.google.com</a></li>
                     </ul>
                 </div>
             </div>
@@ -434,12 +480,14 @@ function getCookie(cookieName){
                             <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="username" id="inputId1" placeholder="ID">
+
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Password">
+                                <input type="password" class="form-control" name="password" id="inputPassword3"
+                                       placeholder="Password">
                             </div>
                         </div>
                         <div class="form-group">
@@ -465,12 +513,26 @@ function getCookie(cookieName){
 </div>
 
 
-
 <!-- Bootstrap core JavaScript -->
 <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Custom scripts for this template -->
 <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
+<script>
+    function x() {
+        var d = new Date();
+        var stime = d.getHours();
+        if(stime>23){
+            var dtime = stime+1-24;
+        }
+        else
+            var dtime = stime+1
+
+
+        location.href="airinfo.do?schStTime="+stime+"00&schEdTime="+dtime+"00&schLineType=D&schIOType=O&schAirCode=GMP"
+    }
+</script>
+
 
 
 </body>

@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService{
 	public boolean deleteUser(UserVO vo) throws ClassNotFoundException, SQLException {
 		userDAO.deleteUser(vo);
 		return true;
+
 	}
 
 	@Override

@@ -3,6 +3,9 @@ package com.team4.biz.board.vo;
 public class BoardVO {
     private int id;
     private String boardname;
+    private String sort;
+    private String keyword;
+    private String search_style;
 
     public int getId() {
         return id;
@@ -18,5 +21,29 @@ public class BoardVO {
 
     public void setBoardname(String boardname) {
         this.boardname = boardname;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+    public String getSearch_style() {
+        return search_style;
+    }
+
+    public void setSearch_style(String search_style) {
+        this.search_style = search_style;
     }
 }

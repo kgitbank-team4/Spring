@@ -1,5 +1,8 @@
 package com.team4.biz.board.service;
 
+import com.team4.biz.board.api.service.AirService;
+import com.team4.biz.board.api.service.ApiService;
+import com.team4.biz.board.api.vo.AirVO;
 import com.team4.biz.board.dao.BoardDAO;
 import com.team4.biz.board.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +15,17 @@ import java.util.List;
 public class BoardServiceImpl implements BoardService{
     @Autowired
     BoardDAO boardDAO;
+    @Autowired
+    ApiService apiService;
     @Override
     public BoardVO selectBoard(BoardVO vo) throws ClassNotFoundException, SQLException {
         return boardDAO.select(vo);
     }
 
-    @Override
+    /*@Override
     public List<BoardVO> selectBoardList(BoardVO vo) throws ClassNotFoundException, SQLException {
         return boardDAO.selectList(vo);
-    }
+    }*/
 
     @Override
     public boolean insertArt(ArticleVO vo) throws ClassNotFoundException, SQLException {
@@ -52,8 +57,18 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public List<ArticleVO> selectArtList(ArticleVO vo) throws ClassNotFoundException, SQLException {
+    public List<ArticleVO> selectAllArtList(BoardVO vo) throws ClassNotFoundException, SQLException {
+        return boardDAO.selectAllList(vo);
+    }
+
+    @Override
+    public List<ArticleVO> selectArtList(BoardVO vo) throws ClassNotFoundException, SQLException {
         return boardDAO.selectList(vo);
+    }
+
+    @Override
+    public List<ArticleVO> searchArtList(BoardVO vo) throws ClassNotFoundException, SQLException {
+        return boardDAO.searchList(vo);
     }
 
     @Override
@@ -111,6 +126,11 @@ public class BoardServiceImpl implements BoardService{
     @Override
     public VoteVO selectVote(VoteVO vo) throws ClassNotFoundException, SQLException {
         return boardDAO.select(vo);
+    }
+
+    @Override
+    public List<AirVO> getAirInfo(AirVO vo) throws ClassNotFoundException, SQLException {
+        return apiService.getAirInfo(vo);
     }
 
 }

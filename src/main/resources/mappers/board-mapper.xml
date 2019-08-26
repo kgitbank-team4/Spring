@@ -7,9 +7,23 @@
     <select id="selectBoardName" parameterType="BoardVO" resultType="BoardVO">
         select boardname from BOARD where id=#{id}
     </select>
-    <select id="selectArtList" resultType="ArticleVO">
+    <select id="selectAllArtList" resultType="ArticleVO">
         select * from ARTICLE order by DATE_CREATED desc
     </select>
+    <select id="selectArtList" parameterType="BoardVO" resultType="ArticleVO">
+        select * from ARTICLE where BOARD_ID=#{id} order by
+        case when #{sort}='lately' then DATE_CREATED end desc,
+        case when #{sort}='view' then VIEW_CNT end desc,
+        case when #{sort}='up' then UP_CNT end desc,
+        case when #{sort}='comment' then COMMENT_CNT end desc
+    </select>
+    <select id="searchArt" parameterType="BoardVO" resultType="ArticleVO">
+        select * from ARTICLE where BOARD_ID=#{id}
+        and (case when #{search_style}='title' then TITLE ELSE WRITER end) like '%'||#{keyword}||'%'
+    </select>
+    <!--select * from ARTICLE where BOARD_ID=#{id}
+    and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%'||#{keyword}||'%'-->
+    <!--where BOARD_ID=#{id} and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%게시판%'-->
     <!--<insert id="insertBoard" parameterType="BoardVO">
         insert into BOARD(seq,title,writer,content) values ((select nvl(max(seq),0)+1 from board),#{title},#{writer},#{content})
     </insert>
