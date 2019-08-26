@@ -30,6 +30,12 @@ public class BoardDAOImpl implements BoardDAO{
     public void update(ArticleVO vo) {
 
     }
+
+    @Override
+    public void updateToNick(ArticleVO vo) {
+        sqlSession.update(namespace+".updateToNick",vo);
+    }
+
     @Override
     public void hide(ArticleVO vo){
 
@@ -62,7 +68,7 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public List<ArticleVO> searchListFromUser(BoardVO vo) {
-        return null;
+        return sqlSession.selectList(namespace+".searchArtFromUser",vo);
     }
 
     @Override

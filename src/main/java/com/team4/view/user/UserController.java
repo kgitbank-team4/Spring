@@ -100,12 +100,13 @@ public class UserController {
 		if(session.getAttribute("user") == null) {
 			response.setContentType("text/html; charset=UTF-8");
 	        PrintWriter out = response.getWriter();
-	        out.println("<script>alert('로그인 후 이용해주세요');</script>");
-	        out.flush();
-	        return "forward:home.do";
+			out.println("<script>alert('로그인 후 이용해주세요');</script>");
+			out.flush();
+			return "forward:home.do";
 		}
-		else
-			return "mypage";
+		else {
+			return "forward:mypageboard.do";
+		}
 	}
 	//회원정보 수정
 	@RequestMapping(value="/userUPDATE.do")
@@ -113,7 +114,7 @@ public class UserController {
 		userService.updateUser(vo);
 		UserVO user = userService.selectOneUser(vo);
 		session.setAttribute("user", user);
-		return "mypage";
+		return "redirect:mypage.do";
 	}
 		
 	//회원탈퇴

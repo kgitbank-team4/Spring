@@ -4,11 +4,13 @@ import com.team4.biz.board.api.vo.AirVO;
 import com.team4.biz.board.service.BoardService;
 import com.team4.biz.board.vo.ArticleVO;
 import com.team4.biz.board.vo.BoardVO;
+import com.team4.biz.user.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
 @Controller
@@ -69,6 +71,22 @@ public class BoardController {
         }
         return "airport";
     }
-
+    @RequestMapping(value = "/mypageboard.do")
+    public String getMyArt(BoardVO vo, Model model,HttpSession session) throws SQLException, ClassNotFoundException{
+        UserVO uvo = (UserVO)session.getAttribute("user");
+        vo.setWriter_id(uvo.getId());
+        System.out.println(uvo.getNickname());
+        model.addAttribute("myArtList",boardService.searchArtListFromUser(vo));
+        return "mypage";
+    }
+    /*@RequestMapping(value ="/UpdateUserBoard.do")
+    public String updateToNick(ArticleVO vo,HttpSession session) throws SQLException, ClassNotFoundException{
+        UserVO user = (UserVO)session.getAttribute("user");
+        vo.setWriter_id(user.getId());
+        vo.setWriter(user.getNickname());
+        boardService.updateArtNick(vo);
+        return "redirect:mypage.do";
+    }
+*/
 
 }
