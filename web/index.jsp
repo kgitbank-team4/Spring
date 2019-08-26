@@ -59,7 +59,7 @@
           	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
           	  	  aria-haspopup="true" aria-expanded="false">커뮤니티</a>
           	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">자유게시판</a></li>
+          		  <li><a class="nav-link" href="freeboard.jsp">자유게시판</a></li>
           		  <li><a class="nav-link" href="#">Q & A</a></li>
           		  <li><a class="nav-link" href="#">공지사항</a></li>
           	  </ul>
@@ -304,7 +304,7 @@
                         <div class="footer-address">
                             <ul>
                                 <li class="footer-contact"><a href="#">공지사항</a></li>
-                                <li class="footer-contact"><a href="#">자유게시판</a></li>
+                                <li class="footer-contact"><a href="freeboard.jsp">자유게시판</a></li>
                                 <li class="footer-contact"><a href="#">Q & A</a></li>
                             </ul>
                         </div>
