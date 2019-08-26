@@ -7,30 +7,33 @@
 
 #bootstrap-override3{
 	font-family: 'S-CoreDream-3Light'; 
+	font-size:14px;
 }
-#bootstrap-override3 #td{
-	text-align:center;
-}
-#bootstrap-override3 .well .well-sm{
-	border:0px;
-	box-shadow:none;
+#bootstrap-override3 h3
+#bootstrap-override3 table{
+	font-family: 'S-CoreDream-3Light'; 
+	border-bottom:1px lightgray;
 }
 #bootstrap-override3 #well{
-	min-height:14px;
-	padding:13px;
+	min-height:10px;
+	padding:5px;
 	background-color:#f5f5f5;
 	border-radius:4px;
 	margin-bottom:7px;
 }
-#bootstrap-override3 #p-2{
-	align-items:flex-end;
+#bootstrap-override3 td{
+	width:7rem;
 }
-#bootstrap-override2 #container {
-	width: 100%;
-	padding-right: 10px;
-	padding-left: 10px;
-	margin-right: auto;
-	margin-left: auto;
+.form2{
+	display:inline;
+}
+.btn11{
+	width:40px;
+	margin:0;
+	padding:7px;
+	border:0;
+	border-radius:4px;
+	background-color:transparent;
 }
 .ul1 ul li {
   list-style: none;
@@ -48,21 +51,47 @@
   color: black;
   font-weight: bold;
  }
-.thumbnail-wrappper{ 
-	width: 25%; 
-} 
-.thumbnail{ 
-	position: relative; 
-	padding-top: 100%; /* 1:1 ratio */ 
-	overflow: hidden; 
-} 
-img{ 
-	position: absolute; 
-	top: 0; 
-	left: 0; 
-	right: 0; 
-	bottom: 0; 
-	max-width: 100%; 
-	height: auto; 
+#div{
+	max-width:150px;
+	height:115px;
+	overflow:hidden;
+}
+#divtext{
+	margin-left:20px;
+	line-height:0.5;
+}
+#td{
+	padding-left:20px;
+	width:15rem;
+	line-height:10px;
+}
+.fix1:after{
+	content: " ";
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
+}
+.list1{
+	margin-top:10px;
+}
+.content11{
+	overflow:hidden;
+	width:90%;
+	height:auto;
+	margin-right:0;
+	padding-right:0;
+}
+#bootstrap-override3 table{
+	margin-top:10px;
+}
+#bootstrap-override3 table tr{
+	margin-bottom:10px;
+}
+#bootstrap-override3 a{
+	text-decoration:none;
+}
+#bootstrap-override3 ul li{
+	border:0;
 }
 
