@@ -1,5 +1,6 @@
 package com.team4.biz.board.service;
 
+import com.team4.biz.board.api.vo.AirVO;
 import com.team4.biz.board.vo.*;
 
 import java.sql.SQLException;
@@ -34,5 +35,8 @@ public interface BoardService {
     //추천관련 서비스
     public boolean insertVote(VoteVO vo) throws ClassNotFoundException, SQLException;
     public VoteVO selectVote(VoteVO vo) throws ClassNotFoundException, SQLException;
+
+    //Api서비스
+    public List<AirVO> getAirInfo(AirVO vo) throws ClassNotFoundException, SQLException;
 
 }

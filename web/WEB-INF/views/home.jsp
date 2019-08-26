@@ -62,7 +62,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">정보</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">운항 정보</a></li>
+                        <li><a class="nav-link" href="#" onclick="x()">운항 정보</a></li>
                         <li><a class="nav-link" href="#">날씨 정보</a></li>
                     </ul>
                 </li>
@@ -445,6 +445,19 @@
 <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Custom scripts for this template -->
 <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
+<script>
+    function x() {
+        var d = new Date();
+        var stime = d.getHours();
+        if(stime>23){
+            var dtime = stime+1-24;
+        }
+        else
+            var dtime = stime+1
+
+        location.href="airinfo.do?schStTime="+stime+"00&schEdTime="+dtime+"00&schLineType=D&schIOType=O&schAirCode=GMP"
+    }
+</script>
 
 
 </body>

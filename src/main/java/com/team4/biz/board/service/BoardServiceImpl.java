@@ -1,5 +1,8 @@
 package com.team4.biz.board.service;
 
+import com.team4.biz.board.api.service.AirService;
+import com.team4.biz.board.api.service.ApiService;
+import com.team4.biz.board.api.vo.AirVO;
 import com.team4.biz.board.dao.BoardDAO;
 import com.team4.biz.board.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,8 @@ import java.util.List;
 public class BoardServiceImpl implements BoardService{
     @Autowired
     BoardDAO boardDAO;
+    @Autowired
+    ApiService apiService;
     @Override
     public BoardVO selectBoard(BoardVO vo) throws ClassNotFoundException, SQLException {
         return boardDAO.select(vo);
@@ -121,6 +126,11 @@ public class BoardServiceImpl implements BoardService{
     @Override
     public VoteVO selectVote(VoteVO vo) throws ClassNotFoundException, SQLException {
         return boardDAO.select(vo);
+    }
+
+    @Override
+    public List<AirVO> getAirInfo(AirVO vo) throws ClassNotFoundException, SQLException {
+        return apiService.getAirInfo(vo);
     }
 
 }

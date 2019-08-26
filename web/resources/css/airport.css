@@ -1,0 +1,124 @@
+@font-face { 
+	font-family: 'S-CoreDream-3Light'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); 
+	font-weight: normal; 
+	font-style: normal; 
+}
+#bootstrap-override{
+	font-family: 'S-CoreDream-3Light'; 
+}
+.navbar-brand {
+	font-size:40px;
+}
+#bootstrap-override #td{
+	text-align:center;
+}
+#bootstrap-override .well .well-sm{
+	border:0px;
+	box-shadow:none;
+}
+#bootstrap-override #well ul{
+	min-height:14px;
+	padding:13px;
+	background-color:#f5f5f5;
+	border-radius:4px;
+	margin-bottom:7px;
+}
+#bootstrap-override #p-2{
+	align-items:flex-end;
+}
+.ul1 ul li {
+  list-style: none;
+  margin-left: 0;
+ }
+.ul1 ul > li > a {
+  color: #797D7F;
+  text-decoration: none;
+ }
+.ul1 ul > li:hover > a,
+.ul1 ul > li:focus > a,
+.ul1 ul > li:active > a,
+.ul1 ul > li.active >a {
+  color: black;
+  font-weight: bold;
+ }
+
+
+
+
+
+/* ---------------------------------------------------------- */
+
+.navpills li a{
+	width:440px;
+	text-align: center;
+}
+
+.airport-container .airport-table{
+	text-align: center;
+	font-size:15px;
+}
+
+.airport-container .airport-table .table-head{
+	font-weight: 600;
+}
+
+.airport-container .airport-table .airport-drop{
+	width: 180px;
+}
+
+.airport-container .airport-table .table-head2{
+	background:#c0c0c0;
+	font-weight: 600;
+}
+
+.airport-container .airport-table .secondtb #출발{
+	background-color: skyblue;
+}
+.airport-container .airport-table .secondtb #탑승중{
+	background-color: orange;
+}
+.airport-container .airport-table .secondtb #도착{
+	background-color: violet;
+}
+.airport-container .airport-table .secondtb #탑승장{
+	background-color: turquoise;
+}
+.airport-container .airport-table .secondtb #수속중{
+	background-color: #396cff;
+}
+.airport-container .airport-table .secondtb #지연{
+	background-color: #c82333;
+}
+.airport-container .airport-table .secondtb #탑승구{
+	background-color: #82ff74;
+}
+
+
+@media only screen and (max-width: 992px){
+	.airport-container .airport-table{
+	}
+	
+	/* .airport-container .airport-table .firsttb tr td:nth-child(n){
+		display:block;
+	} */
+	
+	.airport-container .airport-table .firsttb tr #tablegroup1,
+	.airport-container .airport-table .firsttb tr #tablegroup2,
+	.airport-container .airport-table .firsttb tr #tablegroup3,
+	.airport-container .airport-table .firsttb tr #tablegroup4,
+	.airport-container .airport-table .firsttb tr #tablegroup5{
+		display: inline-block;
+		width:50%;
+	}
+	
+	.airport-container .airport-table .firsttb tr #tablegroup6{
+		display: block;
+		width:100%;
+	}
+	
+	.airport-container .airport-table .secondtb{
+		width:800px;
+		overflow:auto;
+	}
+}
