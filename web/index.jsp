@@ -1,9 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
+<%
+	response.sendRedirect("home.do");
+%>
+<%--
+<%@ page import="com.team4.biz.user.dao.UserDAO" %>
+<%@ page import="com.team4.biz.user.dao.UserDAOImpl" %>
+<%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
+<%@ page import="com.team4.biz.board.service.BoardService" %>
+<%@ page import="com.team4.biz.board.service.BoardServiceImpl" %>
+<%@ page import="com.team4.biz.board.vo.ArticleVO" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+	<%
+		//BoardService boardService = new BoardServiceImpl();
+	%>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -104,7 +119,7 @@
 		    <div role="tabpanel" class="tab-pane active" id="hugi">
 		    	<table class="table table-hover tab-table1">
 		    		<tr>	    			
-		    			<td style="color: red">아시아</td>
+		    			<td style="color: red"></td>
 		    			<td><a href="#">오키나와 다녀왔습니다</a></td>
 		    			<td>1</td> 
 		    		</tr>
@@ -399,3 +414,4 @@
 </body>
 
 </html>
+--%>

@@ -2,7 +2,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team4.biz.user.dao.UserDAO">
   <insert id="inserUser" parameterType="UserVO">
-        insert into users values (users_SEQ.nextval, #{username},#{password},#{nickname},#{tel},sysdate)
+        insert into users values (null, #{username},#{password},#{nickname},#{tel},sysdate)
     </insert>
     <update id="updateUser" parameterType="UserVO">
         update users set password=#{password}, nickname=#{nickname}, tel=#{tel} where id=#{id}

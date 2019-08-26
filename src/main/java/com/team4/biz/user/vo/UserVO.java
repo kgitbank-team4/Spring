@@ -3,7 +3,6 @@ package com.team4.biz.user.vo;
 import java.util.Date;
 
 public class UserVO {
-
 	private int id;
 	private String username;
 	private String password;
