@@ -6,26 +6,31 @@
 }
 #bootstrap-override{
 	font-family: 'S-CoreDream-3Light'; 
+	font-size:14px;
 }
-.navbar-brand {
-	font-size:40px;
+#bootstrap-override h3{
+	font-family: 'S-CoreDream-3Light'; 
 }
-#bootstrap-override #td{
+#bootstrap-override th td{
 	text-align:center;
 }
-#bootstrap-override .well .well-sm{
-	border:0px;
-	box-shadow:none;
-}
 #bootstrap-override #well{
-	min-height:14px;
-	padding:13px;
+	min-height:10px;
+	padding:5px;
 	background-color:#f5f5f5;
 	border-radius:4px;
 	margin-bottom:7px;
 }
-#bootstrap-override #p-2{
-	align-items:flex-end;
+.form2{
+	display:inline;
+}
+.btn11{
+	width:40px;
+	margin:0;
+	padding:7px;
+	border:0;
+	border-radius:4px;
+	background-color:transparent;
 }
 .ul1 ul li {
   list-style: none;

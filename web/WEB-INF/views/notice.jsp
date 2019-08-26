@@ -1,27 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.team4.biz.user.dao.UserDAO" %>
-<%@ page import="com.team4.biz.user.dao.UserDAOImpl" %>
-<%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
-<%@ page import="com.team4.biz.board.service.BoardService" %>
-<%@ page import="com.team4.biz.board.service.BoardServiceImpl" %>
-<%@ page import="com.team4.biz.board.vo.ArticleVO" %>
-<!DOCTYPE html>
-<html lang="en">
 
+
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  
-<title>Spring - Travel Community Site</title>
-  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>공지사항</title>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
   <!-- Bootstrap core CSS -->
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
   
   
  <!-- Bootstrap core CSS -->
@@ -38,11 +33,13 @@
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
+  <!-- Custom styles for this template -->
+  
+  <!-- 수정css -->
+   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
 </head>
-
 <body>
 
 <!-- Navigation -->
@@ -117,7 +114,7 @@
 		<div class="row">
 			<div class="col">
 				<div class="container">
-					<h3>자유게시판</h3>
+					<h3>공지사항</h3>
 					<hr>
 					<div id="well" class="d-flex">
 						<div class="p-2 align-self-center">
@@ -134,11 +131,6 @@
 									<i class="fas fa-search fa-lg"></i>
 								</button>
 							</div>
-						</div>
-						<div class="p-2 ml-auto">
-							<button class="btn">
-								<i class="fas fa-pencil-alt"></i>글쓰기
-							</button>
 						</div>
 					</div>
 				</div>
@@ -389,8 +381,4 @@
   <!-- Custom scripts for this template -->
   <script src="js/clean-blog.min.js"></script>
 </body>
-</html>
-  
-</body>
-
 </html>

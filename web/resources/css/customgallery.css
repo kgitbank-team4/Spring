@@ -6,33 +6,40 @@
 }
 #bootstrap-override2{
 	font-family: 'S-CoreDream-3Light'; 
+	font-size:14px;
 }
-#bootstrap-override2 .well .well-sm{
-	border:0px;
-	box-shadow:none;
+#bootstrap-override2 h3{
+	font-family: 'S-CoreDream-3Light'; 
 }
 #bootstrap-override2 #well{
-	min-height:14px;
-	padding:13px;
+	min-height:10px;
+	padding:5px;
 	background-color:#f5f5f5;
 	border-radius:4px;
 	margin-bottom:7px;
 }
-#bootstrap-override2 #p-2{
-	align-items:flex-end;
-}
-
-#bootstrap-override2 .row .container table{
+#bootstrap-override2 #table{
 	border-spacing: 60px 60px;
 	border-collapse: separate;
 	border:none;
 }
-#bootstrap-override2 #container {
-	width: 100%;
-	padding-right: 10px;
-	padding-left: 10px;
-	margin-right: auto;
-	margin-left: auto;
+#bootstrap-override2 #well{
+	min-height:10px;
+	padding:5px;
+	background-color:#f5f5f5;
+	border-radius:4px;
+	margin-bottom:7px;
+}
+.form2{
+	display:inline;
+}
+.btn11{
+	width:40px;
+	margin:0;
+	padding:7px;
+	border:0;
+	border-radius:4px;
+	background-color:transparent;
 }
 .ul1 ul li {
   list-style: none;
@@ -51,7 +58,7 @@
   font-weight: bold;
  }
  #card{
- 	width:25rem;
+ 	width:15rem;
  }
 
 
