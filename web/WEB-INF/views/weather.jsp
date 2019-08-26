@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -297,10 +299,6 @@
   </script>
   <!-- END MAIN JS -->
   <hr>
- 
- 
- 
- 
  
   <!-- Start Footer Section -->
   <section id="footer-section" class="footer-section">

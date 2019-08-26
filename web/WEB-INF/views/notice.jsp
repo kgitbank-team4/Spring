@@ -1,41 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.team4.biz.user.dao.UserDAO" %>
-<%@ page import="com.team4.biz.user.dao.UserDAOImpl" %>
-<%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
-<%@ page import="com.team4.biz.board.service.BoardService" %>
-<%@ page import="com.team4.biz.board.service.BoardServiceImpl" %>
-<%@ page import="com.team4.biz.board.vo.ArticleVO" %>
-<!DOCTYPE html>
-<html lang="en">
 
+
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  
-  <title>Spring - Travel Community Site</title>
-  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>공지사항</title>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
   <!-- Bootstrap core CSS -->
+  <!-- Custom fonts for this template -->
+  <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  
+  
+ <!-- Bootstrap core CSS -->
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/customfree.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
+
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
-  <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/customgallery.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
   
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <!-- 수정css -->
+   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
 </head>
 <body>
 
@@ -105,13 +108,13 @@
       </div>
     </div>
   </header>
-
-
-	<div class="container" id="bootstrap-override2">
+  
+  <!-- 태이블 -->
+	<div class="container" id="bootstrap-override">
 		<div class="row">
 			<div class="col">
 				<div class="container">
-					<h3>포토갤러리</h3>
+					<h3>공지사항</h3>
 					<hr>
 					<div id="well" class="d-flex">
 						<div class="p-2 align-self-center">
@@ -129,13 +132,9 @@
 								</button>
 							</div>
 						</div>
-						<div class="p-2 ml-auto">
-							<button type="button" class="btn">
-								<i class="fas fa-pencil-alt"></i>사진올리기
-							</button>
-						</div>
 					</div>
 				</div>
+
 				<div class="container ul1">
 					<ul class="list-inline">
 						<li class="list-inline-item"><a href="#" class="active">최신순</a></li>
@@ -144,139 +143,66 @@
 						<li class="list-inline-item"><a href="#">댓글순</a></li>
 					</ul>
 				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row" id="bootstrap-override2">
-		<div class="col-11">
-			<div class="container">
-				<table id="table">
-					<tr>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/trip.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/post-sample-image.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/trip.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/cat.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/post-sample-image.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/moja.png" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/post-sample-image.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/trip.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
+				<br>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">번호</th>
+							<th scope="col">제목</th>
+							<th scope="col">글쓴이</th>
+							<th scope="col">날짜</th>
+							<th scope="col">조회수</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>첫번째글</td>
+							<td>닉네임</td>
+							<td>2019-08-22</td>
+							<td>15</td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>두번째글</td>
+							<td>닉네임</td>
+							<td>2019-08-22</td>
+							<td>33</td>
+						</tr>
+						<tr>
+							<th scope="row">3</th>
+							<td>세번째글</td>
+							<td>닉네임</td>
+							<td>2019-08-22</td>
+							<td>11</td>
+						</tr>
+					</tbody>
 				</table>
+
+				<hr>
+				<!-- 페이징 -->
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<ul class="pagination justify-content-center">
+								<li class="page-item"><a class="page-link"
+									href="javascript:void(0);">처음</a></li>
+								<li class="page-item"><a class="page-link"
+									href="javascript:void(0);">1</a></li>
+								<li class="page-item"><a class="page-link"
+									href="javascript:void(0);">2</a></li>
+								<li class="page-item"><a class="page-link"
+									href="javascript:void(0);">끝</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<hr>
-			<!-- 페이징 -->
-	<div class="container" id="bootstrap-override2">
-		<div class="row">
-			<div class="col">
-				<ul class="pagination justify-content-center">
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">처음</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">1</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">2</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">끝</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<!-- Start Footer Section -->
+	
+	
+<!-- Start Footer Section -->
   <section id="footer-section" class="footer-section">
             <div class="container">
                 <div class="row">
@@ -454,12 +380,5 @@
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
   <script src="js/clean-blog.min.js"></script>
-			
 </body>
-</html>
-	
-	
-  
-</body>
-
 </html>

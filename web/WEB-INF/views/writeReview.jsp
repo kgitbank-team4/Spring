@@ -1,41 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.team4.biz.user.dao.UserDAO" %>
-<%@ page import="com.team4.biz.user.dao.UserDAOImpl" %>
-<%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
-<%@ page import="com.team4.biz.board.service.BoardService" %>
-<%@ page import="com.team4.biz.board.service.BoardServiceImpl" %>
-<%@ page import="com.team4.biz.board.vo.ArticleVO" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  
-  <title>Spring - Travel Community Site</title>
-  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<meta charset="UTF-8">
+<title>여행후기쓰기</title>
+
   <!-- Bootstrap core CSS -->
+  <!-- Custom fonts for this template -->
+  <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  
+ <!-- Bootstrap core CSS -->
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/customwriteReview.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/gradientBtn.css">
+
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
-  <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/customgallery.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+  
+  <!-- summernote editor -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   
+  <link href="${pageContext.request.contextPath}/resources/summernoteEditor/plugins/summernote-bs4.css" rel="stylesheet">
+  <script src="${pageContext.request.contextPath}/resources/summernoteEditor/plugins/summernote-bs4.js"></script>
+  <!-- summer note korean language pack -->
+  <script src="${pageContext.request.contextPath}/resources/summernoteEditor/lang/summernote-ko-KR.js"></script>
 </head>
 <body>
 
@@ -106,178 +112,58 @@
     </div>
   </header>
 
-
-	<div class="container" id="bootstrap-override2">
+	<!-- write -->
+	<div class="container" id="bootstrap-override3">
 		<div class="row">
 			<div class="col">
 				<div class="container">
-					<h3>포토갤러리</h3>
+					<h3>후기게시판 - 글쓰기</h3>
 					<hr>
-					<div id="well" class="d-flex">
-						<div class="p-2 align-self-center">
-							<select>
-								<option value="제목" selected>제목<span class="caret"></span></option>
-								<option value="닉네임">닉네임</option>
-								<option value="닉네임+제목">닉네임+제목</option>
-							</select>
-						</div>
-						<div class="p-2 align-self-center">
-							<div class="input-group">
-								<input type="text" class="form-control form2" placeholder="검색">
-								<button class="btn11" type="submit">
-									<i class="fas fa-search fa-lg"></i>
-								</button>
+					<div id="well">
+						<div class="d-flex flex-row">
+							<div class="p-2">
+								<select name="" id="">
+									<option value="분류" selected>분류<span class="caret"></span></option>
+									<option value="아시아">아시아</option>
+									<option value="미국">미국</option>
+									<option value="호주">호주</option>
+								</select>
 							</div>
+							<div class="p-2">
+								<input type="text" class="form-control" name="title" id="title"
+									placeholder="제목을 입력하세요.">
+									<div class="p-2">
+									<input type="checkbox" id="" name="" value="commentOk">&nbsp;&nbsp;댓글허용
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="checkbox" id="" name="" value="htmlOk">&nbsp;&nbsp;HTML
+									</div>
+							</div>
+							<div class="p-2 ml-auto">
+								<input type="text" class="form-control" name="writer"
+									id="writer" placeholder="닉네임">
+							</div>	
 						</div>
-						<div class="p-2 ml-auto">
-							<button type="button" class="btn">
-								<i class="fas fa-pencil-alt"></i>사진올리기
-							</button>
+						<div class="container">
+							<iframe src="writeEditor.jsp" id="editor_iframe"
+								name="editor_iframe" width="100%" height="655" title="후가게시판글쓰기"
+								frameborder="0"></iframe>
 						</div>
 					</div>
-				</div>
-				<div class="container ul1">
-					<ul class="list-inline">
-						<li class="list-inline-item"><a href="#" class="active">최신순</a></li>
-						<li class="list-inline-item"><a href="#">조회순</a></li>
-						<li class="list-inline-item"><a href="#">추천순</a></li>
-						<li class="list-inline-item"><a href="#">댓글순</a></li>
-					</ul>
+					<div class="d-flex justify-content-around bnt11">
+						<button id="list" class="gradient-btn1 gradient-btn2 p-2"
+							type="button">목록</button>
+						<button id="save" class="gradient-btn1 gradient-btn2 p-2"
+							type="button">저장</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<div class="row" id="bootstrap-override2">
-		<div class="col-11">
-			<div class="container">
-				<table id="table">
-					<tr>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/trip.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/post-sample-image.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/trip.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/cat.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/post-sample-image.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/moja.png" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/post-sample-image.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/trip.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
+	<br>
 	<hr>
-			<!-- 페이징 -->
-	<div class="container" id="bootstrap-override2">
-		<div class="row">
-			<div class="col">
-				<ul class="pagination justify-content-center">
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">처음</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">1</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">2</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">끝</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+
 	<!-- Start Footer Section -->
-  <section id="footer-section" class="footer-section">
+	<section id="footer-section" class="footer-section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 footer-office">
@@ -426,10 +312,10 @@
         
         
   <!-- Bootstrap core JavaScript -->
-  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="resources/vendor/jquery/jquery.min.js"></script>
+  <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
-  <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
+  <script src="resources/js/clean-blog.min.js"></script>
 
 	<!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -438,7 +324,7 @@
   <!-- Custom scripts for this template -->
   <script src="js/clean-blog.min.js"></script>
   
-  <!-- 수정js -->
+  <!-- 수정 js -->
   <script>
 	$(function(){
 		var clic=$("ul > li");
@@ -447,19 +333,18 @@
 			$(this).addClass("active").css("text-decoration","underline");
 		});
 	});
-</script>
+  </script>
 
- <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
-			
-</body>
-</html>
-	
-	
-  
-</body>
+<!-- writeEditor js -->
+	<script>
+		$('#editor_iframe').contents().find('#summernote').html();
+		
+		var save = function() {
+			var markup = $('#editor_iframe').contents().find('#summernote').html();
+			$('#editor_iframe').summernote('destroy');
+		};
+	</script>
 
+
+</body>
 </html>
