@@ -40,7 +40,7 @@ public class UserController {
 	        out.println("<script>alert('아이디 혹은 비밀번호를 확인해주세요.');</script>");
 	        out.flush();
 		}
-		return "home";
+		return "forward:home.do";
 	}
 
 	//회원가입버튼
@@ -59,7 +59,7 @@ public class UserController {
 		//가입 후 로그인
 		UserVO user = userService.selectOneUser(vo);
 		session.setAttribute("user", user);
-		return "home";
+		return "forward:home.do";
 	}
 	//아이디 중복체크
 	@ResponseBody
@@ -91,7 +91,7 @@ public class UserController {
         PrintWriter out = response.getWriter();
         out.println("<script>alert('로그아웃되었습니다!');</script>");
         out.flush();
-		return "home";
+		return "forward:home.do";
 	}
 
 	//마이페이지
@@ -102,7 +102,7 @@ public class UserController {
 	        PrintWriter out = response.getWriter();
 	        out.println("<script>alert('로그인 후 이용해주세요');</script>");
 	        out.flush();
-	        return "home";
+	        return "forward:home.do";
 		}
 		else
 			return "mypage";
@@ -124,7 +124,7 @@ public class UserController {
         PrintWriter out = response.getWriter();
         out.println("<script>alert('탈퇴되었습니다.');</script>");
         out.flush();
-		return "home";
+		return "forward:home.do";
 	}
 	
 	//회원목록보기(관리자)
@@ -135,7 +135,5 @@ public class UserController {
 		return "showUsers";  //회원전체보기
 	}
 
-
-
-
 }
+

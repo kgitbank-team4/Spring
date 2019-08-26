@@ -61,6 +61,11 @@ public class BoardDAOImpl implements BoardDAO{
     }
 
     @Override
+    public List<ArticleVO> searchListFromUser(BoardVO vo) {
+        return null;
+    }
+
+    @Override
     public void insert(CommentsVO vo) {
 
     }

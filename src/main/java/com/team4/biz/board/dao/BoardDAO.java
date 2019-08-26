@@ -10,6 +10,7 @@ public interface BoardDAO {
     public List<ArticleVO> selectAllList(BoardVO vo);//글전체목록
     public List<ArticleVO> selectList(BoardVO vo);//게시판별 목록
     public List<ArticleVO> searchList(BoardVO vo);
+    public List<ArticleVO> searchListFromUser(BoardVO vo);
     /*public List<BoardVO> selectList(BoardVO vo);*/
 
     //글 읽기 입력 수정 삭제

@@ -21,6 +21,9 @@
         select * from ARTICLE where BOARD_ID=#{id}
         and (case when #{search_style}='title' then TITLE ELSE WRITER end) like '%'||#{keyword}||'%'
     </select>
+    <select id="searchArtFromUser" resultType="ArticleVO">
+        select * from ARTICLE where WRITER=#{}
+    </select>
     <!--select * from ARTICLE where BOARD_ID=#{id}
     and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%'||#{keyword}||'%'-->
     <!--where BOARD_ID=#{id} and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%게시판%'-->
