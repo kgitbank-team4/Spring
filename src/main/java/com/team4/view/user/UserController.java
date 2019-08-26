@@ -66,7 +66,6 @@ public class UserController {
 	@RequestMapping(value="/idcheck.do")
 	public String CheckID(@RequestParam("username") String username, HttpSession session) throws ClassNotFoundException, SQLException {
 		boolean result1 = userService.idcheck(username);
-		//System.out.println(result1);
 		if(result1) 
 			return "fail";
 		else
@@ -110,8 +109,10 @@ public class UserController {
 	}	
 	//회원정보 수정
 	@RequestMapping(value="/userUPDATE.do")
-	public String UpdateUser(UserVO vo) throws ClassNotFoundException, SQLException {
+	public String UpdateUser(UserVO vo, HttpSession session) throws ClassNotFoundException, SQLException {
 		userService.updateUser(vo);
+		UserVO user = userService.selectOneUser(vo);
+		session.setAttribute("user", user);
 		return "mypage";
 	}
 		

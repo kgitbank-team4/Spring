@@ -460,7 +460,9 @@ $(document).ready(function() {
         				    <div class="mypage-table">
         				      <form name="form1" action="userUPDATE.do">
         				      <input type="hidden" name="id" value="${user.id}">
+        				      <input type="hidden" name="username" value="${user.username}">
         				      <input type="hidden" value="${user.password}" id="originpw">
+        				      <input type="hidden" value="${user.nickname}" id="originnick">
 	        					<table class="table table-bordered modal-table">
 	        					  <tr>
 	        					    <td class="table-header">아이디</td>
@@ -469,13 +471,13 @@ $(document).ready(function() {
 	        					  <tr>
 	        					    <td class="table-header">현재비밀번호</td>
 	        					    <td class="table-child">
-	        					    	<input type="password" id="pw">
+	        					    	<input type="password" id="pw" name="">
 	        					    </td>
 	        					  </tr>
 	        					  <tr>
 	        					    <td class="table-header">신규비밀번호</td>
 	        					    <td class="table-child">
-	        					    	<input type="password" name="password" id="newpw">
+	        					    	<input type="password" id="newpw" name="">
 	        					    </td>
 	        					  </tr>
 	        					  <tr>
@@ -487,7 +489,7 @@ $(document).ready(function() {
 	        					  <tr>
 	        					    <td class="table-header">닉네임</td>
 	        					    <td class="table-child">
-	        					    <input type="text" name="nickname" id="userNICK" placeholder="${user.nickname}">
+	        					    <input type="text" name="nickname" id="userNICK" value="${user.nickname}">
 	        					    <input type="button" onclick="nicknameCheck()" value="중복체크" id="checkbtn">
 									<br><span id="nameresult"></span>
 									</td>	        					 
@@ -495,7 +497,7 @@ $(document).ready(function() {
 	        					  <tr>
 	        					    <td class="table-header">휴대폰번호</td>
 	        					    <td class="table-child">
-	        					    <input type="text" name="tel" placeholder="${user.tel}" id="userTEL">
+	        					    <input type="text" name="tel" value="${user.tel}" id="userTEL">
 	        					    </td>
 	        					  </tr>
 	        					  <tr class="tablebt-tr">
@@ -562,24 +564,85 @@ $(document).ready(function() {
 
 </body>
 <script>
-//회원정보수정 체크
+//회원정보수정	
+var result1 = 0;
+	
 function upcheck(){
 
-	var originpw = document.getElementById("originpw").value;
-	var pw = document.getElementById("pw").value;
-	var newpw = document.getElementById("newpw").value;
-	var pwck = document.getElementById("pwck").value;
-	var nickname = document.getElementById("userNICK").value;
-	var tel = document.getElementById("userTEL").value;
+ 	var originpw = document.getElementById("originpw").value; //원래 비밀번호
+	var pw = document.getElementById("pw").value; //현재 비밀번호에 입력한 값
+	var newpw = document.getElementById("newpw").value; //새 비밀번호에 입력한 값
+	var pwck = document.getElementById("pwck").value; //새 비밀번호 확인
+	var originnick = document.getElementById("originnick").value; //원래 닉네임
+	var nickname = document.getElementById("userNICK").value; //새로운 닉네임
+	var tel = document.getElementById("userTEL").value;//전화번호
+	if(pw == ''){
+		alert('현재 비밀번호를 입력해주세요.');
+		document.getElementById("pw").focus();
+		return false;
+	}else if(pw != originpw){
+		alert('현재 비밀번호를 확인해주세요.');
+		document.getElementById("pw").focus();
+		return false;
+	}
+	
+	if(newpw != pwck){
+		alert('신규 비밀번호를 확인해주세요.');
+		document.getElementById("pwck").focus();
+		return false;
+	}
+	
+	if(nickname == ''){
+		alert('닉네임을 입력해주세요.');
+		document.getElementById("userNICK").focus();
+		return false;
+	}
+	
+	if(tel == ''){
+		alert('전화번호를 입력해주세요.');
+		document.getElementById("userTEL").focus();
+		return false;
+	}
+	
+	if(originnick != nickname && result1 == 0){
+		alert("닉네임 중복체크를 해주세요.");
+		return false;
+	}
+	
+	return true;
 	
 }
 function updatecheck(){
-	if(upcheck())
+	if(upcheck()){		
+		if(document.getElementById("newpw").value == ''){
+			$("#pw").attr("name", "password");
+		}else{
+			$("#newpw").attr("name", "password");
+		}		
 		document.form1.submit();
+	}
+}
+
+//닉네임 중복체크
+function nicknameCheck(){
+	var nickStr = $("#userNICK").val();
+	$.ajax({
+		url : "nicknamecheck.do?nickname=" + nickStr,
+		success : function(data){
+			if(data == "success"){
+				$("#nameresult").text("사용가능한 닉네임입니다.");
+				result1 = 1;
+			}else if(data == "fail"){
+				$("#nameresult").text("중복된 닉네임입니다.");
+				$("#userNICK").val("");
+				result1 = 0;
+			}
+		}
+	})
 }
 
 
-//회원탈퇴 체크
+//회원탈퇴 
 function check(){
 	var pw = document.getElementById("pw_id").value;
 	var pwck = document.getElementById("pw_ck").value;
@@ -589,7 +652,6 @@ function check(){
 		return false;
 	}else if(pw != pwck){
 		alert('비밀번호를 확인하세요');
-		//document.getElementById("pw_id").focus();
 		return false;
 	}
 	return true;

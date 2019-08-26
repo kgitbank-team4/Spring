@@ -10,6 +10,7 @@
 <meta name="author" content="">
 
 <title>Spring - Travel Community Site</title>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- Bootstrap core CSS -->
 <link
 	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
@@ -362,6 +363,66 @@ function onlyNumberFunc(t){
 
 
 	<!-- Start Modal -->
+<!-- 아이디 저장 -->
+<script>
+$(document).ready(function() {
+	var userInputId = getCookie("userInputId");
+	$("#inputId1").val(userInputId);
+	
+	if($("#inputId1").val() != ""){
+		$("#Saveid").attr("checkd",true); //아이디 저장을 체크상태로 두기
+	}
+	
+	$("#Saveid").change(function() {//체크박스에 변화 발생시
+		if($("#Saveid").is(":checked")){//아이디 저장 체크한 상태
+			var userInputId = $("#inputId1").val();
+			setCookie("userInputId",userInputId, 7); //7일동안 쿠키 저장
+		}else{
+			deleteCookie("userInputId");
+		}
+	});
+	
+	///아이디 저장 체크한 상태에서 id 입력
+	$("#inputId1").keyup(function() { //아이디 입력 칸에 아이디 입력할 때
+		if($("#Saveid").is(":checked")){//아이디 저장 체크한 상태
+			var userInputId = $("#inputId1").val();
+			setCookie("userInputId",userInputId, 7);
+		}
+	});
+});
+
+//쿠키 저장
+function setCookie(cookieName, value, exdays){
+	var exdate = new Date();
+	exdate.setDate(exdate.getDate()+exdays);
+	var cookieValue = escape(value) + ((exdays==null)? "" : "; expires="+exdate.toGMTString());
+	document.cookie = cookieName + "=" + cookieValue;
+	
+}
+
+//쿠키삭제
+function deleteCookie(cookieName){
+	var expireDate = new Date();
+	expireDate.setDate(expireDate.getDate() - 1);
+	document.cookie = cookieName + "= " + "; expires="+exdate.toGMTString();
+}
+
+//쿠키정보 가져오기
+function getCookie(cookieName){
+	cookieName = cookieName + '=';
+	var cookieData = document.cookie;
+	var start = cookieData.indexOf(cookieName);
+	var cookieValue = '';
+	if(start != -1){
+		start += cookieName.length;
+		var end = cookieData.indexOf(';', start);
+		if(end == -1)
+			end = cookieData.length;
+		cookieValue = cookieData.substring(start, end);
+	}
+	return unescape(cookieValue);
+}
+</script>
 	<div class="row">
 		<div class="modal" id="modal1" tabindex="-1">
 			<div class="modal-dialog">
@@ -375,7 +436,7 @@ function onlyNumberFunc(t){
 							<div class="form-group">
 								<label for="loginID" class="col-sm-2 control-label">ID</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="loginID"
+									<input type="text" class="form-control" id="inputId1"
 										placeholder="ID" name="username">
 								</div>
 							</div>
@@ -389,7 +450,7 @@ function onlyNumberFunc(t){
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
 									<div class="checkbox">
-										<label> <input type="checkbox" id="saveID"><span
+										<label> <input type="checkbox" id="Saveid"><span
 											class="rememberID"> 아이디 저장하기</span>
 										</label>
 									</div>
