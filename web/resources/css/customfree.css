@@ -11,7 +11,7 @@
 #bootstrap-override h3{
 	font-family: 'S-CoreDream-3Light'; 
 }
-#bootstrap-override th td{
+#bootstrap-override table{
 	text-align:center;
 }
 #bootstrap-override #well{

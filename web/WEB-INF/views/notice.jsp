@@ -147,11 +147,11 @@
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th scope="col">번호</th>
-							<th scope="col">제목</th>
-							<th scope="col">글쓴이</th>
-							<th scope="col">날짜</th>
-							<th scope="col">조회수</th>
+							<th class="w-10" scope="col">번호</th>
+							<th class="w-50" scope="col">제목</th>
+							<th class="w-20" scope="col">글쓴이</th>
+							<th class="w-10" scope="col">날짜</th>
+							<th class="w-10" scope="col">조회수</th>
 						</tr>
 					</thead>
 					<tbody>
