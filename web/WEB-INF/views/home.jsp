@@ -92,8 +92,7 @@
     </div>
 </nav>
 <script>
-$(document).ready(function(){
-	
+$(document).ready(function(){	
 	if( ${user.id} != null ) {
 		$("#mainNav .container #navbarResponsive .login").removeClass("login-active");
 		$("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");
