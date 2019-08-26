@@ -4,6 +4,9 @@
     <select id="selectBoardList" resultType="BoardVO">
         select * from BOARD
     </select>
+    <select id="selectBoardName" parameterType="BoardVO" resultType="BoardVO">
+        select boardname from BOARD where id=#{id}
+    </select>
     <!--<insert id="insertBoard" parameterType="BoardVO">
         insert into BOARD(seq,title,writer,content) values ((select nvl(max(seq),0)+1 from board),#{title},#{writer},#{content})
     </insert>

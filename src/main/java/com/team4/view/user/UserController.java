@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.team4.biz.user.service.UserService;
@@ -18,10 +19,10 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value="/test.do")
-	public String test1(UserVO vo, HttpSession session) throws ClassNotFoundException, SQLException {
-		List<UserVO> user = userService.selectAllUser(vo);
-		session.setAttribute("user", user);
-		return "test";
-	}
+	/*@RequestMapping(value="/register.do")
+	public String test1(UserVO vo, Model model) throws ClassNotFoundException, SQLException {
+		userService.insertUser(vo);
+		return "redirect:";
+
+	}*/
 }

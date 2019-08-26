@@ -1,0 +1,84 @@
+/* font */
+@font-face { 
+	font-family: 'S-CoreDream-3Light'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); 
+	font-weight: normal; 
+	font-style: normal; 
+}
+#bootstrap-override{
+	font-family: 'S-CoreDream-3Light'; 
+}
+
+#bootstrap-override .well .well-sm{
+	border:0px;
+	box-shadow:none;
+}
+#bootstrap-override #well ul{
+	min-height:14px;
+	padding:13px;
+	background-color:white;
+	border-radius:4px;
+	margin-bottom:7px;
+	
+	text-align: center;
+}
+
+#bootstrap-override .weather-container #well ul li{
+	list-style: none;
+	display: inline-block;
+}
+#bootstrap-override .weather-container #well ul i{
+	display: none;
+}
+
+#bootstrap-override .weather-container #well ul .weather-searchbt:hover{
+	border-color:#91c8ff;
+	background:#91c8ff;
+	
+}
+
+/* 알약형 네브 */
+#bootstrap-override #well .pills-container ul{
+	background-color:#f5f5f5;
+	justify-content: center;
+}
+#bootstrap-override #well .tab-content{
+	width:60%;
+	margin:0 0 0 20%;
+}
+#bootstrap-override #well .tab-content .weather-table{
+	text-align: center;	
+}
+#bootstrap-override #well .tab-content .weather-table table tr .weather-icon1{
+	padding-top: 5%;
+}
+
+#bootstrap-override #well .tab-content .weather-table .weatherbt2 .table-bottom1{
+	font-weight: 600;
+}
+
+
+/* 날씨 그림 */
+/* #bootstrap-override #well .tab-content .weather-table .weathertb1 #맑음2{
+	background-image: url(img/sun.png);
+	background-size: 
+}
+#bootstrap-override #well .tab-content .weather-table #비2{
+	background-image: url(img/rain.png);
+} */
+
+
+
+@media only screen and (max-width: 992px) {
+	
+	
+	#bootstrap-override .weather-container #well ul .weather-searchbt{
+		display:none;
+	}
+	#bootstrap-override .weather-container #well ul i{
+		display: inline-block;
+	}
+	#bootstrap-override #well .tab-content{
+		width:70%;
+	}
+}

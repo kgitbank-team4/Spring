@@ -16,21 +16,21 @@ public class UserServiceImpl implements UserService{
 	UserDAO userDAO;
 
 	@Override
-	public void insertUser(UserVO vo) throws ClassNotFoundException, SQLException {
+	public boolean insertUser(UserVO vo) throws ClassNotFoundException, SQLException {
 		userDAO.insertUser(vo);
-		
+		return true;
 	}
 
 	@Override
-	public void updateUser(UserVO vo) throws ClassNotFoundException, SQLException {
+	public boolean updateUser(UserVO vo) throws ClassNotFoundException, SQLException {
 		userDAO.updateUser(vo);
-		
+		return true;
 	}
 
 	@Override
-	public void deleteUser(UserVO vo) throws ClassNotFoundException, SQLException {
+	public boolean deleteUser(UserVO vo) throws ClassNotFoundException, SQLException {
 		userDAO.deleteUser(vo);
-		
+		return true;
 	}
 
 	@Override
