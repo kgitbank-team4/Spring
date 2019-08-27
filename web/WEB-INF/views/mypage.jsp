@@ -186,7 +186,7 @@ $(document).ready(function() {
                                     <c:forEach items="${myArtList}" var="myArtList">
                                         <fmt:formatDate value="${myArtList.date_created}" var="date" pattern="yyyy-MM-dd"/>
                                         <tr class="table-child">
-                                            <td>${myArtList.board_id}</td>
+                                            <td>${myArtList.boardname}</td>
                                             <td>${myArtList.title}</td>
                                             <td>${date}</td>
                                             <td>${myArtList.view_cnt}</td>
@@ -236,18 +236,15 @@ $(document).ready(function() {
                                         <td>게시글제목</td>
                                         <td>추천수</td>
                                     </tr>
-                                    <tr class="table-child">
-                                        <td>1</td>
-                                        <td><a href="#">############</a></td>
-                                        <td>####-##-##</td>
-                                        <td>#</td>
-                                    </tr>
-                                    <tr class="table-child">
-                                        <td>1</td>
-                                        <td><a href="#">############</a></td>
-                                        <td>####-##-##</td>
-                                        <td>#</td>
-                                    </tr>
+                                    <c:forEach items="${myCommentList}" var="myCommentList">
+                                        <fmt:formatDate value="${myCommentList.date_created}" var="c_date" pattern="yyyy-MM-dd"/>
+                                        <tr class="table-child">
+                                            <td>${myCommentList.boardname}</td>
+                                            <td>${myCommentList.content}</td>
+                                            <td>${myCommentList.title}</td>
+                                            <td>${c_date}</td>
+                                        </tr>
+                                    </c:forEach>
                                 </table>
                                 <div class="container page1">
                                     <div class="row">

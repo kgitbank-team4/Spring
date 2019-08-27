@@ -11,13 +11,13 @@ public interface BoardDAO {
     public List<ArticleVO> selectAllList(BoardVO vo);//글전체목록
     public List<ArticleVO> selectList(BoardVO vo);//게시판별 목록
     public List<ArticleVO> searchList(BoardVO vo);//검색
-    public List<ArticleVO> searchListFromUser(BoardVO vo);//닉네임으로 검색
+    public List<MypageVO> searchListFromUser(MypageVO vo);//닉네임으로 검색
+    public List<MypageVO> searchMyComment(MypageVO vo);//닉네임으로 댓글 검색
     /*public List<BoardVO> selectList(BoardVO vo);*/
 
     //글 읽기 입력 수정 삭제
     public void insert(ArticleVO vo);//글쓰기
     public void update(ArticleVO vo);//글수정
-    public void updateToNick(ArticleVO vo);
     public void hide(ArticleVO vo);
     public void delete(ArticleVO vo);//글삭제
     public ArticleVO select(ArticleVO vo);//글읽기

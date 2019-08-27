@@ -5,9 +5,12 @@ import java.util.Date;
 public class CommentsVO {
     private int id;
     private int article_id;
-    private String writer;
+    private String title;
+    private int writer_id;
     private Date date_created;
     private String content;
+    private String boardname;
+    private int board_id;
 
     public int getId() {
         return id;
@@ -25,12 +28,20 @@ public class CommentsVO {
         this.article_id = article_id;
     }
 
-    public String getWriter() {
-        return writer;
+    public String getTitle() {
+        return title;
     }
 
-    public void setWriter(String writer) {
-        this.writer = writer;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getWriter_id() {
+        return writer_id;
+    }
+
+    public void setWriter_id(int writer_id) {
+        this.writer_id = writer_id;
     }
 
     public Date getDate_created() {
@@ -47,5 +58,21 @@ public class CommentsVO {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getBoardname() {
+        return boardname;
+    }
+
+    public void setBoardname(String boardname) {
+        this.boardname = boardname;
+    }
+
+    public int getBoard_id() {
+        return board_id;
+    }
+
+    public void setBoard_id(int board_id) {
+        this.board_id = board_id;
     }
 }

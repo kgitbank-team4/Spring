@@ -21,8 +21,12 @@
         select * from ARTICLE where BOARD_ID=#{id}
         and (case when #{search_style}='title' then TITLE ELSE WRITER end) like '%'||#{keyword}||'%'
     </select>
-    <select id="searchArtFromUser" parameterType="BoardVO" resultType="ArticleVO">
-        select * from ARTICLE where WRITER_id=#{writer_id}
+    <select id="searchArtFromUser" parameterType="MypageVO" resultType="MypageVO">
+        select b.BOARDNAME,a.* from BOARD b,ARTICLE a where b.id=a.BOARD_ID and a.WRITER_id=#{writer_id}
+    </select>
+    <select id="getMyComments" parameterType="MypageVO" resultType="MypageVO">
+        select b.BOARDNAME,a.BOARD_ID,c.id,a.TITLE,c.CONTENT,c.DATE_CREATED from BOARD b,COMMENTS c,ARTICLE a
+        where b.id=a.BOARD_ID and a.ID=c.ARTICLE_ID and c.WRITER_ID=#{writer_id}
     </select>
     <!--select * from ARTICLE where BOARD_ID=#{id}
     and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%'||#{keyword}||'%'-->

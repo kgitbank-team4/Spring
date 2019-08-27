@@ -4,6 +4,7 @@ import com.team4.biz.board.api.vo.AirVO;
 import com.team4.biz.board.service.BoardService;
 import com.team4.biz.board.vo.ArticleVO;
 import com.team4.biz.board.vo.BoardVO;
+import com.team4.biz.board.vo.MypageVO;
 import com.team4.biz.user.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -72,11 +73,11 @@ public class BoardController {
         return "airport";
     }
     @RequestMapping(value = "/mypageboard.do")
-    public String getMyArt(BoardVO vo, Model model,HttpSession session) throws SQLException, ClassNotFoundException{
+    public String getMyArt(MypageVO vo, Model model, HttpSession session) throws SQLException, ClassNotFoundException{
         UserVO uvo = (UserVO)session.getAttribute("user");
         vo.setWriter_id(uvo.getId());
-        System.out.println(uvo.getNickname());
         model.addAttribute("myArtList",boardService.searchArtListFromUser(vo));
+        model.addAttribute("myCommentList",boardService.searchMyComment(vo));
         return "mypage";
     }
     /*@RequestMapping(value ="/UpdateUserBoard.do")
