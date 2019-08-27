@@ -27,7 +27,7 @@
   <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
   <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
@@ -128,8 +128,8 @@
 							<span class="icondrop">
 							    <ion-icon name="more" data-toggle="tooltip" data-placement="top" title="더보기"></ion-icon>
 							  	<ul class="icondrop-menu">
-								    <li><a href="#">추천</a></li>
-								    <li><a href="#">글 삭제</a></li>
+								    <li><a href="#" class="board-up1">추천</a></li>
+								    <li><a href="#" data-target="#modal-boarddlt" data-toggle="modal">글 삭제</a></li>
 								    <li><a href="#">글 수정</a></li>
 								    <li><a href="#">목록으로</a></li>
 							    </ul>
@@ -185,8 +185,8 @@
 								</div>
 								<div class="show1-bottom">
 									<span style="color: #808080;">6분 전</span>
-									<span><a href="">수정</a></span>
-									<span><a href="">삭제</a></span>
+									<span><a href="#">수정</a></span>
+									<span><a href="#">삭제</a></span>
 								</div>
 							</div>
 						</div>
@@ -217,7 +217,11 @@
 		$(".freeboard-comment-up .comment-up a").click(function(){
 			alert("추천하셨습니다.");
 		});
+		$(".icondrop .icondrop-menu .board-up1").click(function(){
+			alert("추천하셨습니다.");
+		});
 	</script>
+	
 <!-- Start Footer Section -->
   <section id="footer-section" class="footer-section">
             <div class="container">
@@ -334,7 +338,7 @@
 							  <div class="form-group">
 							    <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
 							    <div class="col-sm-10">
-							      <input type="email" class="form-control" id="inputEmail3" placeholder="ID">
+							      <input type="text" class="form-control" id="inputEmail3" placeholder="ID">
 							    </div>
 							  </div>
 							  <div class="form-group">
@@ -364,6 +368,24 @@
         		</div>
         	</div>
         </div>
+        <div class="row">
+        	<div class="modal" id="modal-boarddlt" tabindex="-1">
+        		<div class="modal-dialog">
+        			<div class="modal-content">
+        				<div class="modal-header">
+        					<span style="font-weight: 600;">정말 삭제하시겠습니까?</span>
+        					<button class="close" data-dismiss="modal">&times;</button>
+        				</div>
+        				<div class="modal-body">
+        					<span class="delete_ok">
+        						<span class="okok1"><input type="submit" value="OK"></span>
+        						<span class="okcancel1"><button data-dismiss="modal">Cancel</button></span>
+        					</span>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
         
         
         
@@ -388,6 +410,8 @@
 	});
 </script>
 
+ <!-- Bootstrap core JavaScript -->
+  <!-- Custom scripts for this template -->
 </body>
 </html>
   

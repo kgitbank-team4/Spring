@@ -136,8 +136,31 @@
 
 
 
-
-
+/* 모달 */
+.modal-dialog .modal-body .delete_ok{
+	width: 100%;
+	word-spacing: 15px;
+}
+.modal-dialog .modal-body .delete_ok .okok1 input{
+	width:45%;
+	background: #808080;
+	color: white;
+	
+}
+.modal-dialog .modal-body .delete_ok .okcancel1 button{
+	width:45%;
+	background: #808080;
+	color: white;
+}
+.modal-dialog .modal-body .delete_ok .okok1 input:hover{
+	background: #51a8ff;
+	color: white;
+	
+}
+.modal-dialog .modal-body .delete_ok .okcancel1 button:hover{
+	background: #51a8ff;
+	color: white;
+}
 @media only screen and (max-width: 992px){
 	#bootstrap-override .freeboard-header .freeboard-header-items .icondrop{
 		margin: 0 -20px 0 0;
