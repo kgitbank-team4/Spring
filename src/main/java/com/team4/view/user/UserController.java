@@ -113,7 +113,7 @@ public class UserController {
 		userService.updateUser(vo);
 		UserVO user = userService.selectOneUser(vo);
 		session.setAttribute("user", user);
-		return "mypage";
+		return "redirect:mypage.do";
 	}
 		
 	//회원탈퇴

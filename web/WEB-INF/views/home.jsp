@@ -61,7 +61,7 @@
                        aria-haspopup="true" aria-expanded="false">정보</a>
                     <ul class="dropdown-menu">
                         <li><a class="nav-link" href="#" onclick="x()">운항 정보</a></li>
-                        <li><a class="nav-link" href="#">날씨 정보</a></li>
+                        <li><a class="nav-link" href="weatherinfo.do?cityname=seoul">날씨 정보</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -527,8 +527,6 @@ function getCookie(cookieName){
         }
         else
             var dtime = stime+1
-
-
         location.href="airinfo.do?schStTime="+stime+"00&schEdTime="+dtime+"00&schLineType=D&schIOType=O&schAirCode=GMP"
     }
 </script>
