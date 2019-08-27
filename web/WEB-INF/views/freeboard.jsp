@@ -165,7 +165,7 @@
 					<tbody>
 						<tr>
 							<th scope="row">1</th>
-							<td>첫번째글</td>
+							<td>첫번째글ㅇㅇㅇㅇㅇ</td>
 							<td>닉네임</td>
 							<td>2019-08-22</td>
 							<td>15</td>
