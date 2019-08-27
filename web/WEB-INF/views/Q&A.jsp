@@ -131,9 +131,8 @@
 							</div>
 						</div>
 						<div class="p-2 ml-auto">
-							<button class="btn">
-								<i class="fas fa-pencil-alt"></i>질문하기
-							</button>
+							<button class="gradient-btn1 gradient-btn2 p-2 a22"
+							type="button">질문하기</button>
 						</div>
 					</div>
 				</div>
@@ -360,12 +359,6 @@
   <!-- Custom scripts for this template -->
   <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
 
-	<!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
   
   <!-- 수정js -->
   <script>
@@ -378,10 +371,5 @@
 	});
 </script>
 
- <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
 </body>
 </html>
