@@ -1,11 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.team4.biz.user.dao.UserDAO" %>
-<%@ page import="com.team4.biz.user.dao.UserDAOImpl" %>
-<%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
-<%@ page import="com.team4.biz.board.service.BoardService" %>
-<%@ page import="com.team4.biz.board.service.BoardServiceImpl" %>
-<%@ page import="com.team4.biz.board.vo.ArticleVO" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,28 +9,34 @@
   <meta name="description" content="">
   <meta name="author" content="">
   
-  <title>포토갤러리</title>
+<title>Spring - Travel Community Site</title>
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
   <!-- Bootstrap core CSS -->
-  <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-  <!-- Custom styles for this template -->
-  <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/customgallery.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
   
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  
+ <!-- Bootstrap core CSS -->
+  <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/customfree.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/showfreeboard.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 </head>
+
 <body>
 
 <!-- Navigation -->
@@ -74,15 +74,9 @@
           		  <li><a class="nav-link" href="#">공지사항</a></li>
           	  </ul>
             </li>
-            <li class="dropdown">
-          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-          	  	  aria-haspopup="true" aria-expanded="false">마이페이지</a>
-          	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">회원정보보기</a></li>
-          		  <li><a class="nav-link" href="#">내가 작성한 글</a></li>
-          		  <li><a class="nav-link" href="#">내 댓글</a></li>          		  
-          	  </ul>
-            </li>
+            <li class="nav-item">
+	          <a class="nav-link-login" href="mypage.html">마이페이지</a>
+	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
 	        </li>
@@ -92,7 +86,7 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.png')">
+  <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -105,178 +99,130 @@
       </div>
     </div>
   </header>
-
-
-	<div class="container" id="bootstrap-override2">
+  
+  <!-- 태이블 -->
+	<div class="container" id="bootstrap-override">
 		<div class="row">
-			<div class="col">
+			<div class="col-md-10 mx-auto">
 				<div class="container">
-					<h3>포토갤러리</h3>
-					<hr>
-					<div id="well" class="d-flex">
-						<div class="p-2 align-self-center">
-							<select>
-								<option value="제목" selected>제목<span class="caret"></span></option>
-								<option value="닉네임">닉네임</option>
-								<option value="닉네임+제목">닉네임+제목</option>
-							</select>
+				
+					<!-- 프리보드 헤더 -->
+					<div class="freeboard-header">
+						<h6 style="color: purple; margin-bottom: 15px; font-size: 17px;">잡담</h6>
+						<h3 style="margin-bottom: 15px;">첫번째글</h3>
+						<span class="freeboard-header-items">
+							<span class="freeboard-header-id">
+								<span class="freeboard-header-2">닉네임</span>
+							</span>				
+							<span class="freeboard-header-date">
+								<span class="freeboard-header-1" style="margin: 0 20px;">6일 전</span>
+							</span>				
+							<span class="freeboard-header-showup">
+								<span class="freeboard-header-1">조회 수</span>
+								<span class="freeboard-header-2">23</span>
+							</span>				
+							<span class="freeboard-header-up">
+								<span class="freeboard-header-1" style="margin: 0 0 0 20px;">추천 수</span>
+								<span class="freeboard-header-2">3</span>
+							</span>				
+							<span class="icondrop">
+							    <ion-icon name="more" data-toggle="tooltip" data-placement="top" title="더보기"></ion-icon>
+							  	<ul class="icondrop-menu">
+								    <li><a href="#" class="board-up1">추천</a></li>
+								    <li><a href="#" data-target="#modal-boarddlt" data-toggle="modal">글 삭제</a></li>
+								    <li><a href="#">글 수정</a></li>
+								    <li><a href="#">목록으로</a></li>
+							    </ul>
+							</span>
+						</span>
+					</div>
+					
+					<!-- 프리보드 내용 -->
+					<div class="freeboard-content">
+						<div class="content-img">
+							<img src="${pageContext.request.contextPath}/resources/img/post-sample-image.jpg">
+							<img src="${pageContext.request.contextPath}/resources/img/post-sample-image.jpg">
 						</div>
-						<div class="p-2 align-self-center">
-							<div class="input-group">
-								<input type="text" class="form-control form2" placeholder="검색">
-								<button class="btn11" type="submit">
-									<i class="fas fa-search fa-lg"></i>
-								</button>
-							</div>
-						</div>
-						<div class="p-2 ml-auto">
-							<button type="button" class="btn">
-								<i class="fas fa-pencil-alt"></i>사진올리기
-							</button>
+						<div class="content-con">
+							여기가 내용<br>
+							여기가 내용<br>
+							여기가 내용<br>
+							여기가 내용<br>
+							여기가 내용<br>
 						</div>
 					</div>
-				</div>
-				<div class="container ul1">
-					<ul class="list-inline">
-						<li class="list-inline-item"><a href="#" class="active">최신순</a></li>
-						<li class="list-inline-item"><a href="#">조회순</a></li>
-						<li class="list-inline-item"><a href="#">추천순</a></li>
-						<li class="list-inline-item"><a href="#">댓글순</a></li>
-					</ul>
-				</div>
+					
+					<!-- 프리보드 댓글 -->
+					<div class="freeboard-comment-up">
+						<div class="comment-up">
+							<a href="#">
+								<ion-icon class="heart" name="heart" data-toggle="tooltip" data-placement="bottom" title="추천"></ion-icon>
+							</a>
+							<span class="clip-file">
+								<ion-icon class="clip" name="attach"></ion-icon>
+								<span class="clip-comment">첨부파일 1개</span>
+								<span class="clip-back"><a href="#">목록으로</a></span>
+							</span>
+						</div>
+						<br>
+						<div class="comment1">
+							<span class="comment-insert">
+								<table class="table table-borderless">
+									<tr>
+										<td class="insert-input1"><textarea class="insertta" name="" placeholder="내용을 입력해주세요." style="width: 100%; height: 100%; resize: none; "></textarea></td>
+										<td class="insert-input2"><input type="button" value="등록" name="" onclick="" style="width: 100%; height: 100%; font-weight: bold;"></td>
+									</tr>
+								</table>
+							</span>
+							<span class="comment-show">
+							<h5>1개의 댓글</h5>
+							<div class="show1">
+								<div class="show1-nickname">닉네임</div>
+								<div class="show1-comment">
+								댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
+								댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
+								댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
+								</div>
+								<div class="show1-bottom">
+									<span style="color: #808080;">6분 전</span>
+									<span><a href="#">수정</a></span>
+									<span><a href="#">삭제</a></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+					
+				</div>				
 			</div>
 		</div>
 	</div>
-
-	<div class="row" id="bootstrap-override2">
-		<div class="col-11">
-			<div class="container">
-				<table id="table">
-					<tr>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/trip.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/post-sample-image.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/trip.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/cat.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/post-sample-image.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/moja.png" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/post-sample-image.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/trip.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
+	
 	<hr>
-			<!-- 페이징 -->
-	<div class="container" id="bootstrap-override2">
-		<div class="row">
-			<div class="col">
-				<ul class="pagination justify-content-center">
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">처음</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">1</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">2</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">끝</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<!-- Start Footer Section -->
+	<script>
+	$( ".icondrop" ).click(function() {
+		  $( ".icondrop-menu" ).slideToggle( "fast", function() {
+		    // Animation complete.
+		  });
+		});
+	
+	$(function () {
+		  $('[data-toggle="tooltip"]').tooltip()
+		});
+	</script>
+	
+	<script>
+		$(".freeboard-comment-up .comment-up a").click(function(){
+			alert("추천하셨습니다.");
+		});
+		$(".icondrop .icondrop-menu .board-up1").click(function(){
+			alert("추천하셨습니다.");
+		});
+	</script>
+	
+<!-- Start Footer Section -->
   <section id="footer-section" class="footer-section">
             <div class="container">
                 <div class="row">
@@ -392,7 +338,7 @@
 							  <div class="form-group">
 							    <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
 							    <div class="col-sm-10">
-							      <input type="email" class="form-control" id="inputEmail3" placeholder="ID">
+							      <input type="text" class="form-control" id="inputEmail3" placeholder="ID">
 							    </div>
 							  </div>
 							  <div class="form-group">
@@ -422,6 +368,24 @@
         		</div>
         	</div>
         </div>
+        <div class="row">
+        	<div class="modal" id="modal-boarddlt" tabindex="-1">
+        		<div class="modal-dialog">
+        			<div class="modal-content">
+        				<div class="modal-header">
+        					<span style="font-weight: 600;">정말 삭제하시겠습니까?</span>
+        					<button class="close" data-dismiss="modal">&times;</button>
+        				</div>
+        				<div class="modal-body">
+        					<span class="delete_ok">
+        						<span class="okok1"><input type="submit" value="OK"></span>
+        						<span class="okcancel1"><button data-dismiss="modal">Cancel</button></span>
+        					</span>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
         
         
         
@@ -429,14 +393,11 @@
   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
-  <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
 
-	<!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
   <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
   
   <!-- 수정js -->
   <script>
@@ -450,15 +411,9 @@
 </script>
 
  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
-			
 </body>
 </html>
-	
-	
   
 </body>
 

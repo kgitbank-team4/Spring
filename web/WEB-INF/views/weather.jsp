@@ -1,45 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.team4.biz.user.dao.UserDAO" %>
-<%@ page import="com.team4.biz.user.dao.UserDAOImpl" %>
-<%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
-<%@ page import="com.team4.biz.board.service.BoardService" %>
-<%@ page import="com.team4.biz.board.service.BoardServiceImpl" %>
-<%@ page import="com.team4.biz.board.vo.ArticleVO" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  
-  <title>포토갤러리</title>
-  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+  <title>Spring - Travel Community Site</title>
   <!-- Bootstrap core CSS -->
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
   <!-- Custom styles for this template -->
   <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/customgallery.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/weather.css" rel="stylesheet">
   
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
 </head>
+
 <body>
 
-<!-- Navigation -->
+  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand" href="index.html">SPRING</a>
@@ -58,10 +49,10 @@
           	  </ul>
             </li>
 	        <li class="dropdown">
-          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+          	  <a href="airport.html" class="dropdown-toggle" data-toggle="dropdown" role="button"
           	  	  aria-haspopup="true" aria-expanded="false">정보</a>
           	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">운항 정보</a></li>
+          		  <li><a class="nav-link" href="airport.html">운항 정보</a></li>
           		  <li><a class="nav-link" href="#">날씨 정보</a></li>
           	  </ul>
             </li>
@@ -74,15 +65,9 @@
           		  <li><a class="nav-link" href="#">공지사항</a></li>
           	  </ul>
             </li>
-            <li class="dropdown">
-          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-          	  	  aria-haspopup="true" aria-expanded="false">마이페이지</a>
-          	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">회원정보보기</a></li>
-          		  <li><a class="nav-link" href="#">내가 작성한 글</a></li>
-          		  <li><a class="nav-link" href="#">내 댓글</a></li>          		  
-          	  </ul>
-            </li>
+            <li class="nav-item">
+	          <a class="nav-link-login" href="mypage.html">마이페이지</a>
+	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
 	        </li>
@@ -92,7 +77,7 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.png')">
+  <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -106,177 +91,216 @@
     </div>
   </header>
 
-
-	<div class="container" id="bootstrap-override2">
-		<div class="row">
-			<div class="col">
-				<div class="container">
-					<h3>포토갤러리</h3>
-					<hr>
-					<div id="well" class="d-flex">
-						<div class="p-2 align-self-center">
-							<select>
-								<option value="제목" selected>제목<span class="caret"></span></option>
-								<option value="닉네임">닉네임</option>
-								<option value="닉네임+제목">닉네임+제목</option>
-							</select>
-						</div>
-						<div class="p-2 align-self-center">
-							<div class="input-group">
-								<input type="text" class="form-control form2" placeholder="검색">
-								<button class="btn11" type="submit">
-									<i class="fas fa-search fa-lg"></i>
-								</button>
-							</div>
-						</div>
-						<div class="p-2 ml-auto">
-							<button type="button" class="btn">
-								<i class="fas fa-pencil-alt"></i>사진올리기
-							</button>
-						</div>
-					</div>
-				</div>
-				<div class="container ul1">
-					<ul class="list-inline">
-						<li class="list-inline-item"><a href="#" class="active">최신순</a></li>
-						<li class="list-inline-item"><a href="#">조회순</a></li>
-						<li class="list-inline-item"><a href="#">추천순</a></li>
-						<li class="list-inline-item"><a href="#">댓글순</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row" id="bootstrap-override2">
-		<div class="col-11">
-			<div class="container">
-				<table id="table">
-					<tr>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/trip.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/post-sample-image.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/trip.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/cat.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/post-sample-image.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/moja.png" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/post-sample-image.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div id="card" class="card">
-								<a href="#"><img class="card-img-top" src="img/trip.jpg" alt="Card image"
-									style="width: 100%"></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">닉네임</div>
-										<div class="card-text">2019-08-21</div>
-									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
-	<hr>
-			<!-- 페이징 -->
-	<div class="container" id="bootstrap-override2">
-		<div class="row">
-			<div class="col">
-				<ul class="pagination justify-content-center">
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">처음</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">1</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">2</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">끝</a></li>
+<!-- Main Content -->
+ <div id="bootstrap-override">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 mx-auto">
+        <div class="weather-container">
+			<h3>날씨정보</h3>
+			<div id="well" class="well-sm">
+			  <form action="#">
+				<ul>
+					<li style="font-size: 16px;">도시명&nbsp;</li>
+					<li><input type="text" name="" placeholder="도시명을 입력해주세요." style="font-size: 15px; height:35px;"></li>
+					<li><input type="submit" value="검색" style="font-size: 16px;" class="weather-searchbt"></li>
+					<li><a href=""><i class="fas fa-search"></i></a></li>
 				</ul>
-			</div>
+			  </form>
+			  <!-- tabparent -->
+			  <div class="pills-container">
+				  <ul class="nav nav-pills navpills" id="pills-tab" role="tablist">
+					  <li class="nav-item">
+					    <a class="nav-link active" id="pills-today-tab" data-toggle="pill" href="#pills-today" role="tab" aria-controls="pills-today" aria-selected="true">오늘</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" id="pills-tommorow-tab" data-toggle="pill" href="#pills-tommorow1" role="tab" aria-controls="pills-tommorow1" aria-selected="false">내일</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" id="pills-tommorow2-tab" data-toggle="pill" href="#pills-tommorow2" role="tab" aria-controls="pills-tommorow2" aria-selected="false">내일모레</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" id="pills-tommorow3-tab" data-toggle="pill" href="#pills-tommorow3" role="tab" aria-controls="pills-tommorow3" aria-selected="false">글피</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" id="pills-tommorow4-tab" data-toggle="pill" href="#pills-tommorow4" role="tab" aria-controls="pills-tommorow4" aria-selected="false">그글피</a>
+					  </li>
+				  </ul>
+				  
+				  <!-- tabchild -->
+				  <div class="tab-content" id="pills-tabContent">	
+				  			  				  				  
+				  	  <!-- 오늘날씨 -->
+					  <div class="tab-pane fade show active" id="pills-today" role="tabpanel" aria-labelledby="pills-today-tab">
+					  	<div class="weather-table">
+					  		<table class="table table-borderless  weathertb1">
+					  			<tr>
+					  				<td rowspan="3" class="weather-icon1 " id="맑음"></td>
+					  				<td >5도</td>
+					  			</tr>
+					  			<tr>
+					  				<td>맑음</td>
+					  			</tr>
+					  			<tr>
+					  				<td>Seoul,KO</td>
+					  			</tr>
+					  		</table>
+					  		<table class="table table-borderless weatherbt2">
+					  			<tr>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/wind.png"></td>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/water.png"></td>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/wet.png"></td>
+					  			</tr>
+					  			<tr class="table-bottom1">
+					  				<td>1.5m/s</td>
+					  				<td>80%</td>
+					  				<td>40%</td>
+					  			</tr>
+					  		</table>
+					  	</div>
+					  </div>
+				  	  <!-- 내일날씨 -->
+					  <div class="tab-pane fade show" id="pills-tommorow1" role="tabpanel" aria-labelledby="pills-tommorow1-tab">
+					  	<div class="weather-table">
+					  		<table class="table table-borderless  weathertb1">
+					  			<tr>
+					  				<td rowspan="3" class="weather-icon1" id="구름"></td>
+					  				<td >5도</td>
+					  			</tr>
+					  			<tr>
+					  				<td>구름</td>
+					  			</tr>
+					  			<tr>
+					  				<td>Seoul,KO</td>
+					  			</tr>
+					  		</table>
+					  		<table class="table table-borderless weatherbt2">
+					  			<tr>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/wind.png"></td>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/water.png"></td>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/wet.png"></td>
+					  			</tr>
+					  			<tr class="table-bottom1">
+					  				<td>1.5m/s</td>
+					  				<td>80%</td>
+					  				<td>40%</td>
+					  			</tr>
+					  		</table>
+					  	</div>
+					  </div>
+				  	  <!-- 내일모레날씨 -->
+					  <div class="tab-pane fade show" id="pills-tommorow2" role="tabpanel" aria-labelledby="pills-tommorow2-tab">
+					  	<div class="weather-table">
+					  		<table class="table table-borderless  weathertb1">
+					  			<tr>
+					  				<td rowspan="3" class="weather-icon1" id="비"></td>
+					  				<td >5도</td>
+					  			</tr>
+					  			<tr>
+					  				<td>비</td>
+					  			</tr>
+					  			<tr>
+					  				<td>Seoul,KO</td>
+					  			</tr>
+					  		</table>
+					  		<table class="table table-borderless weatherbt2">
+					  			<tr>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/wind.png"></td>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/water.png"></td>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/wet.png"></td>
+					  			</tr>
+					  			<tr class="table-bottom1">
+					  				<td>1.5m/s</td>
+					  				<td>80%</td>
+					  				<td>40%</td>
+					  			</tr>
+					  		</table>
+					  	</div>
+					  </div>
+				  	  <!-- 글피날씨 -->
+					  <div class="tab-pane fade show" id="pills-tommorow3" role="tabpanel" aria-labelledby="pills-tommorow3-tab">
+					  	<div class="weather-table">
+					  		<table class="table table-borderless  weathertb1">
+					  			<tr>
+					  				<td rowspan="3" class="weather-icon1" id="비"></td>
+					  				<td >5도</td>
+					  			</tr>
+					  			<tr>
+					  				<td>비</td>
+					  			</tr>
+					  			<tr>
+					  				<td>Seoul,KO</td>
+					  			</tr>
+					  		</table>
+					  		<table class="table table-borderless weatherbt2">
+					  			<tr>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/wind.png"></td>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/water.png"></td>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/wet.png"></td>
+					  			</tr>
+					  			<tr class="table-bottom1">
+					  				<td>1.5m/s</td>
+					  				<td>80%</td>
+					  				<td>40%</td>
+					  			</tr>
+					  		</table>
+					  	</div>
+					  </div>
+				  	  <!-- 그글피날씨 -->
+					  <div class="tab-pane fade show" id="pills-tommorow4" role="tabpanel" aria-labelledby="pills-tommorow4-tab">
+					  	<div class="weather-table">
+					  		<table class="table table-borderless  weathertb1">
+					  			<tr>
+					  				<td rowspan="3" class="weather-icon1" id="맑음"></td>
+					  				<td >5도</td>
+					  			</tr>
+					  			<tr>
+					  				<td>비</td>
+					  			</tr>
+					  			<tr>
+					  				<td>Seoul,KO</td>
+					  			</tr>
+					  		</table>
+					  		<table class="table table-borderless weatherbt2">
+					  			<tr>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/wind.png"></td>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/water.png"></td>
+					  				<td><img src="${pageContext.request.contextPath}/resources/img/wet.png"></td>
+					  			</tr>
+					  			<tr class="table-bottom1">
+					  				<td>1.5m/s</td>
+					  				<td>80%</td>
+					  				<td>40%</td>
+					  			</tr>
+					  		</table>
+					  	</div>
+					  </div>
+				  </div>
+			  </div>
+			  
+			</div>				
 		</div>
-	</div>
-	<!-- Start Footer Section -->
+	  </div>
+    </div>
+  </div>
+</div>
+  <!-- MAIN END-->
+  
+  <!-- START MAIN JS -->
+  <script>
+  	window.onload = function(){
+  		document.getElementById("맑음").innerHTML ="<img src='${pageContext.request.contextPath}/resources/img/sun.png'>";
+  		document.getElementById("구름").innerHTML = "<img src='${pageContext.request.contextPath}/resources/img/cloud.png'>";
+  		document.getElementById("비").innerHTML = "<img src='${pageContext.request.contextPath}/resources/img/rain.png'>";
+  	}
+  </script>
+  <script>
+  	var width = $(window).width();
+  </script>
+  <!-- END MAIN JS -->
+  <hr>
+ 
+  <!-- Start Footer Section -->
   <section id="footer-section" class="footer-section">
             <div class="container">
                 <div class="row">
@@ -375,7 +399,7 @@
                 </div><!--/.row -->
             </div><!-- /.container -->
         </div>
-        <!-- End Copyright Section -->
+        <!-- End CCopyright Section -->
         
         
         <!-- Start Modal -->
@@ -388,24 +412,24 @@
         					<button class="close" data-dismiss="modal">&times;</button>
         				</div>
         				<div class="modal-body">
-        					<form class="form-horizontal" action="login.do">
+        					<form class="form-horizontal" action="regmember.html">
 							  <div class="form-group">
-							    <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
+							    <label for="loginID" class="col-sm-2 control-label">ID</label>
 							    <div class="col-sm-10">
-							      <input type="email" class="form-control" id="inputEmail3" placeholder="ID">
+							      <input type="text" class="form-control" id="loginID" placeholder="ID">
 							    </div>
 							  </div>
 							  <div class="form-group">
-							    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+							    <label for="loginPW" class="col-sm-2 control-label">Password</label>
 							    <div class="col-sm-10">
-							      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+							      <input type="password" class="form-control" id="loginPW" placeholder="Password">
 							    </div>
 							  </div>
 							  <div class="form-group">
 							    <div class="col-sm-offset-2 col-sm-10">
 							      <div class="checkbox">
 							        <label>
-							          <input type="checkbox"><span class="rememberID"> 아이디 저장하기</span>
+							          <input type="checkbox" id="saveID"><span class="rememberID"> 아이디 저장하기</span>
 							        </label>
 							      </div>
 							    </div>
@@ -413,7 +437,7 @@
 							  <div class="form-group">
 							    <div class="col-sm-offset-2 col-sm-10" style="text-align: right">
 							      <button type="submit" class="btn btn-default">로그인</button>
-							      <a href="regmember.do">회원가입</a>
+							      <a href="regmember.html">회원가입</a>
 							    </div>							    
 							  </div>
 							</form>
@@ -423,43 +447,13 @@
         	</div>
         </div>
         
-        
-        
   <!-- Bootstrap core JavaScript -->
   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
   <!-- Custom scripts for this template -->
   <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
 
-	<!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
-  
-  <!-- 수정js -->
-  <script>
-	$(function(){
-		var clic=$("ul > li");
-		clic.find("a").click(function(){
-			click.removeClass("active");
-			$(this).addClass("active").css("text-decoration","underline");
-		});
-	});
-</script>
-
- <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
-			
-</body>
-</html>
-	
-	
-  
 </body>
 
 </html>

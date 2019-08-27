@@ -1,8 +1,6 @@
-body {
-  font-size: 14px;
-}
 
-select {
+
+#bootstrap-override select {
   padding: .5em;
   font-family: inherit;
   font-size: 14px;
