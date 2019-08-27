@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Clean Blog - Start Bootstrap Theme</title>
+<title>Q&A</title>
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
   <!-- Bootstrap core CSS -->
   <!-- Custom fonts for this template -->
@@ -131,9 +131,8 @@
 							</div>
 						</div>
 						<div class="p-2 ml-auto">
-							<button class="btn">
-								<i class="fas fa-pencil-alt"></i>질문하기
-							</button>
+							<button class="gradient-btn1 gradient-btn2 p-2 a22"
+							type="button">질문하기</button>
 						</div>
 					</div>
 				</div>
@@ -150,11 +149,11 @@
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th scope="col">번호</th>
-							<th scope="col">제목</th>
-							<th scope="col">글쓴이</th>
-							<th scope="col">날짜</th>
-							<th scope="col">조회수</th>
+							<th class="w-10" scope="col">번호</th>
+							<th class="w-50" scope="col">제목</th>
+							<th class="w-20" scope="col">글쓴이</th>
+							<th class="w-10" scope="col">날짜</th>
+							<th class="w-10" scope="col">조회수</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -360,12 +359,6 @@
   <!-- Custom scripts for this template -->
   <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
 
-	<!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
   
   <!-- 수정js -->
   <script>
@@ -378,10 +371,5 @@
 	});
 </script>
 
- <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean insertUser(UserVO vo) throws ClassNotFoundException, SQLException {
 		userDAO.insertUser(vo);
-		return true;
+		return true;		
 	}
 
 	@Override
