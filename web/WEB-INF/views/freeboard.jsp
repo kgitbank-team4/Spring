@@ -136,9 +136,8 @@
 							</div>
 						</div>
 						<div class="p-2 ml-auto">
-							<button class="btn">
-								<i class="fas fa-pencil-alt"></i>글쓰기
-							</button>
+							<button class="gradient-btn1 gradient-btn2 p-2 a22"
+							type="button">글쓰기</button>
 						</div>
 					</div>
 				</div>
