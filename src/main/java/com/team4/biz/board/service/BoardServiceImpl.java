@@ -51,6 +51,7 @@ public class BoardServiceImpl implements BoardService{
         return true;
     }
 
+
     @Override
     public ArticleVO selectArt(ArticleVO vo) throws ClassNotFoundException, SQLException {
         return boardDAO.select(vo);
@@ -69,6 +70,11 @@ public class BoardServiceImpl implements BoardService{
     @Override
     public List<ArticleVO> searchArtList(BoardVO vo) throws ClassNotFoundException, SQLException {
         return boardDAO.searchList(vo);
+    }
+
+    @Override
+    public List<MypageVO> searchArtListFromUser(MypageVO vo) throws ClassNotFoundException, SQLException {
+        return boardDAO.searchListFromUser(vo);
     }
 
     @Override
@@ -92,6 +98,11 @@ public class BoardServiceImpl implements BoardService{
     @Override
     public List<CommentsVO> selectComment(CommentsVO vo) throws ClassNotFoundException, SQLException {
         return boardDAO.selectList(vo);
+    }
+
+    @Override
+    public List<MypageVO> searchMyComment(MypageVO vo) throws ClassNotFoundException, SQLException {
+        return boardDAO.searchMyComment(vo);
     }
 
     @Override

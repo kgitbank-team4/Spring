@@ -6,6 +6,7 @@ public class BoardVO {
     private String sort;
     private String keyword;
     private String search_style;
+    private int writer_id;
 
     public int getId() {
         return id;
@@ -45,5 +46,13 @@ public class BoardVO {
 
     public void setSearch_style(String search_style) {
         this.search_style = search_style;
+    }
+
+    public int getWriter_id() {
+        return writer_id;
+    }
+
+    public void setWriter_id(int writer_id) {
+        this.writer_id = writer_id;
     }
 }

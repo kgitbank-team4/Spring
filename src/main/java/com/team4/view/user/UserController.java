@@ -23,7 +23,7 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
-		
+
 	//로그인
 	@RequestMapping(value="/login.do")
 	public String Login(UserVO vo, HttpSession session, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException {
@@ -38,11 +38,11 @@ public class UserController {
 			response.setContentType("text/html; charset=UTF-8");
 	        PrintWriter out = response.getWriter();
 	        out.println("<script>alert('아이디 혹은 비밀번호를 확인해주세요.');</script>");
-	        out.flush();			
+	        out.flush();
 		}
 		return "forward:home.do";
 	}
-		
+
 	//회원가입버튼
 	@RequestMapping(value="/regmember.do")
 	public String Join() {
@@ -59,14 +59,14 @@ public class UserController {
 		//가입 후 로그인
 		UserVO user = userService.selectOneUser(vo);
 		session.setAttribute("user", user);
-		return "forward:home.do"; 
+		return "forward:home.do";
 	}
 	//아이디 중복체크
 	@ResponseBody
 	@RequestMapping(value="/idcheck.do")
 	public String CheckID(@RequestParam("username") String username, HttpSession session) throws ClassNotFoundException, SQLException {
 		boolean result1 = userService.idcheck(username);
-		if(result1) 
+		if(result1)
 			return "fail";
 		else
 			return "success";
@@ -82,7 +82,7 @@ public class UserController {
 			return "success";
 	}
 	
-	
+
 	//로그아웃
 	@RequestMapping(value="/logout.do")
 	public String Logout(HttpSession session, HttpServletResponse response) throws IOException {
@@ -93,20 +93,21 @@ public class UserController {
         out.flush();
 		return "forward:home.do";
 	}
-		
+
 	//마이페이지
 	@RequestMapping(value="/mypage.do")
 	public String Mypage(HttpSession session, HttpServletResponse response) throws IOException {
 		if(session.getAttribute("user") == null) {
 			response.setContentType("text/html; charset=UTF-8");
 	        PrintWriter out = response.getWriter();
-	        out.println("<script>alert('로그인 후 이용해주세요');</script>");
-	        out.flush();
-	        return "forward:home.do";
+			out.println("<script>alert('로그인 후 이용해주세요');</script>");
+			out.flush();
+			return "forward:home.do";
 		}
-		else 			
-			return "mypage";		
-	}	
+		else {
+			return "forward:mypageboard.do";
+		}
+	}
 	//회원정보 수정
 	@RequestMapping(value="/userUPDATE.do")
 	public String UpdateUser(UserVO vo, HttpSession session) throws ClassNotFoundException, SQLException {
@@ -135,6 +136,6 @@ public class UserController {
 		return "showUsers";  //회원전체보기
 	}
 
-
-
 }
+
+

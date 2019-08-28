@@ -5,8 +5,10 @@ import java.util.Date;
 public class ArticleVO {
     private int id;
     private int board_id;
+    private String boardname;
     private String title;
     private String writer;
+    private int writer_id;
     private int up_cnt;
     private int view_cnt;
     private String content_id;
@@ -31,6 +33,14 @@ public class ArticleVO {
         this.board_id = board_id;
     }
 
+    public String getBoardname() {
+        return boardname;
+    }
+
+    public void setBoardname(String boardname) {
+        this.boardname = boardname;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -45,6 +55,14 @@ public class ArticleVO {
 
     public void setWriter(String writer) {
         this.writer = writer;
+    }
+
+    public int getWriter_id() {
+        return writer_id;
+    }
+
+    public void setWriter_id(int writer_id) {
+        this.writer_id = writer_id;
     }
 
     public int getUp_cnt() {

@@ -2,6 +2,7 @@ package com.team4.biz.board.dao;
 
 import com.team4.biz.board.vo.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface BoardDAO {
@@ -9,8 +10,10 @@ public interface BoardDAO {
     public BoardVO select(BoardVO vo);
     public List<ArticleVO> selectAllList(BoardVO vo);//글전체목록
     public List<ArticleVO> selectList(BoardVO vo);//게시판별 목록
-    public List<ArticleVO> searchList(BoardVO vo);
-    /*public List<BoardVO> selectList(BoardVO vo);*/
+    public List<ArticleVO> searchList(BoardVO vo);//검색
+    public List<MypageVO> searchListFromUser(MypageVO vo);//닉네임으로 검색
+    public List<MypageVO> searchMyComment(MypageVO vo);//닉네임으로 댓글 검색
+
 
     //글 읽기 입력 수정 삭제
     public void insert(ArticleVO vo);//글쓰기

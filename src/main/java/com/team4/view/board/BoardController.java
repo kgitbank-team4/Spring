@@ -1,19 +1,19 @@
 package com.team4.view.board;
 
-import java.sql.SQLException;
 
-import javax.servlet.http.HttpSession;
-
+import com.team4.biz.board.api.vo.AirVO;
+import com.team4.biz.board.service.BoardService;
+import com.team4.biz.board.vo.BoardVO;
+import com.team4.biz.board.vo.MypageVO;
+import com.team4.biz.user.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 
-import com.team4.biz.board.api.vo.AirVO;
-import com.team4.biz.board.service.BoardService;
-import com.team4.biz.board.vo.BoardVO;
 
 @Controller
 public class BoardController {
@@ -87,6 +87,25 @@ public class BoardController {
     	System.out.println(cityname);
     	return cityname;
     }*/
+
+
+    @RequestMapping(value = "/mypageboard.do")
+    public String getMyArt(MypageVO vo, Model model, HttpSession session) throws SQLException, ClassNotFoundException{
+        UserVO uvo = (UserVO)session.getAttribute("user");
+        vo.setWriter_id(uvo.getId());
+        model.addAttribute("myArtList",boardService.searchArtListFromUser(vo));
+        model.addAttribute("myCommentList",boardService.searchMyComment(vo));
+        return "mypage";
+    }
+    /*@RequestMapping(value ="/UpdateUserBoard.do")
+    public String updateToNick(ArticleVO vo,HttpSession session) throws SQLException, ClassNotFoundException{
+        UserVO user = (UserVO)session.getAttribute("user");
+        vo.setWriter_id(user.getId());
+        vo.setWriter(user.getNickname());
+        boardService.updateArtNick(vo);
+        return "redirect:mypage.do";
+    }
+*/
 
 
 }
