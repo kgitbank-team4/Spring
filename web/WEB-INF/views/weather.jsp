@@ -106,7 +106,7 @@ $.ajax({
            var wind = city.list[key].wind.speed + "m/s";
            //구름
            var cloud = city.list[key].clouds.all + "%";          
-           
+           //날씨 한글변환
            var weathst;
            if(weath == "clear sky"){
         	   weathst = "맑음";
@@ -182,7 +182,7 @@ $.ajax({
 			}
 			}
 
-       });
+       }); ////반복문
        $('#맑음').append("<img src='${pageContext.request.contextPath}/resources/img/sun.png'>");
        $('#구름').append("<img src='${pageContext.request.contextPath}/resources/img/cloud.png'>");
        $('#비').append("<img src='${pageContext.request.contextPath}/resources/img/rain.png'>");
