@@ -1,5 +1,6 @@
 package com.team4.view.board;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.team4.biz.board.api.vo.AirVO;
 import com.team4.biz.board.service.BoardService;
 import com.team4.biz.board.vo.ArticleVO;
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
@@ -79,6 +79,13 @@ public class BoardController {
         model.addAttribute("myArtList",boardService.searchArtListFromUser(vo));
         model.addAttribute("myCommentList",boardService.searchMyComment(vo));
         return "mypage";
+    }
+    @RequestMapping(value = "/showfreeboard.do")
+    public String getArticle(ArticleVO vo, Model model) throws SQLException, ClassNotFoundException{
+        model.addAttribute("Article",boardService.selectArt(vo));
+        model.addAttribute("Content",boardService.selectContent(vo));
+        model.addAttribute("Comment",boardService.selectComment(vo));
+        return "showfreeboard";
     }
     /*@RequestMapping(value ="/UpdateUserBoard.do")
     public String updateToNick(ArticleVO vo,HttpSession session) throws SQLException, ClassNotFoundException{

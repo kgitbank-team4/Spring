@@ -96,8 +96,8 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public List<CommentsVO> selectComment(CommentsVO vo) throws ClassNotFoundException, SQLException {
-        return boardDAO.selectList(vo);
+    public List<CommentsVO> selectComment(ArticleVO vo) throws ClassNotFoundException, SQLException {
+        return boardDAO.selectCom(vo);
     }
 
     @Override
@@ -124,8 +124,8 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public List<ContentVO> selectContent(ContentVO vo) throws ClassNotFoundException, SQLException {
-        return boardDAO.selectList(vo);
+    public ContentVO selectContent(ArticleVO vo) throws ClassNotFoundException, SQLException {
+        return boardDAO.selectCon(vo);
     }
 
     @Override

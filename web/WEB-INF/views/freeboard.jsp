@@ -174,7 +174,7 @@
                         <fmt:formatDate value="${Artlist.date_created}" var="date" pattern="yyyy-MM-dd"/>
                         <tr>
                             <td id="td">${Artlist.id}</td>
-                            <td id="td">${Artlist.title}</td>
+                            <td id="td"><a href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}</a></td>
                             <td id="td">${Artlist.writer}</td>
                             <td id="td">${date}</td>
                             <td id="td">${Artlist.view_cnt}</td>
