@@ -1,13 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.team4.biz.user.dao.UserDAO" %>
-<%@ page import="com.team4.biz.user.dao.UserDAOImpl" %>
-<%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
-<%@ page import="com.team4.biz.board.service.BoardService" %>
-<%@ page import="com.team4.biz.board.service.BoardServiceImpl" %>
-<%@ page import="com.team4.biz.board.vo.ArticleVO" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   
-<title>자유게시판</title>
+<title>Spring - Travel Community Site</title>
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
   <!-- Bootstrap core CSS -->
   <!-- Custom fonts for this template -->
@@ -29,23 +22,26 @@
  <!-- Bootstrap core CSS -->
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/customfree.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/showfreeboard.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
+  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 </head>
 
 <body>
+<%--<c:forEach items="${Content}" var="Content">
+	${Content}
+</c:forEach>--%>
 
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -82,15 +78,9 @@
           		  <li><a class="nav-link" href="#">공지사항</a></li>
           	  </ul>
             </li>
-            <li class="dropdown">
-          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-          	  	  aria-haspopup="true" aria-expanded="false">마이페이지</a>
-          	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">회원정보보기</a></li>
-          		  <li><a class="nav-link" href="#">내가 작성한 글</a></li>
-          		  <li><a class="nav-link" href="#">내 댓글</a></li>          		  
-          	  </ul>
-            </li>
+            <li class="nav-item">
+	          <a class="nav-link-login" href="mypage.html">마이페이지</a>
+	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
 	        </li>
@@ -117,95 +107,124 @@
   <!-- 태이블 -->
 	<div class="container" id="bootstrap-override">
 		<div class="row">
-			<div class="col mx-auto">
+			<div class="col-md-10 mx-auto">
 				<div class="container">
-					<h3>자유게시판</h3>
-					<hr>
-					<div id="well" class="d-flex">
-						<div class="p-2 align-self-center a1">
-							<select id="selectbox">
-								<option value="title" selected>제목<span class="caret"></span></option>
-								<option value="nick">닉네임</option>
-								<option value="닉네임+제목">닉네임+제목</option>
-							</select>
+				
+					<!-- 프리보드 헤더 -->
+					<div class="freeboard-header">
+						<h6 style="color: purple; margin-bottom: 15px; font-size: 17px;">${Article.category}</h6>
+						<h3 style="margin-bottom: 15px;">${Article.title}</h3>
+						<span class="freeboard-header-items">
+							<span class="freeboard-header-id">
+								<span class="freeboard-header-2">${Article.writer}</span>
+							</span>				
+							<span class="freeboard-header-date">
+								<span class="freeboard-header-1" style="margin: 0 20px;">6일 전</span>
+							</span>				
+							<span class="freeboard-header-showup">
+								<span class="freeboard-header-1">조회 수</span>
+								<span class="freeboard-header-2">23</span>
+							</span>				
+							<span class="freeboard-header-up">
+								<span class="freeboard-header-1" style="margin: 0 0 0 20px;">추천 수</span>
+								<span class="freeboard-header-2">3</span>
+							</span>				
+							<span class="icondrop">
+							    <ion-icon name="more" data-toggle="tooltip" data-placement="top" title="더보기"></ion-icon>
+							  	<ul class="icondrop-menu">
+								    <li><a href="#" class="board-up1">추천</a></li>
+								    <li><a href="#" data-target="#modal-boarddlt" data-toggle="modal">글 삭제</a></li>
+								    <li><a href="#">글 수정</a></li>
+								    <li><a href="#">목록으로</a></li>
+							    </ul>
+							</span>
+						</span>
+					</div>
+					
+					<!-- 프리보드 내용 -->
+					<div class="freeboard-content">
+						<div class="content-img">
+							<img src="${pageContext.request.contextPath}/resources/img/post-sample-image.jpg">
+							<img src="${pageContext.request.contextPath}/resources/img/post-sample-image.jpg">
 						</div>
-						<div class="p-2 align-self-center a1">
-							<div class="input-group">
-								<input type="text" id=searchinput class="form-control form2" placeholder="검색">
-								<button class="btn11" onclick="x()">
-									<i class="fas fa-search fa-lg"></i>
-								</button>
-                                <%--<div class="p-2">
-                                    <div class="input-group">
-                                        <input class="form-control" id="searchinput" placeholder="검색"/> <span
-                                            class="input-group-addon"><a href="#" onclick=x()><i class="fas fa-search"></i></a></span>
-                                    </div>
-                                </div>--%>
+						<div class="content-con">
+							여기가 내용<br>
+							여기가 내용<br>
+							여기가 내용<br>
+							여기가 내용<br>
+							여기가 내용<br>
+						</div>
+					</div>
+					
+					<!-- 프리보드 댓글 -->
+					<div class="freeboard-comment-up">
+						<div class="comment-up">
+							<a href="#">
+								<ion-icon class="heart" name="heart" data-toggle="tooltip" data-placement="bottom" title="추천"></ion-icon>
+							</a>
+							<span class="clip-file">
+								<ion-icon class="clip" name="attach"></ion-icon>
+								<span class="clip-comment">첨부파일 1개</span>
+								<span class="clip-back"><a href="#">목록으로</a></span>
+							</span>
+						</div>
+						<br>
+						<div class="comment1">
+							<span class="comment-insert">
+								<table class="table table-borderless">
+									<tr>
+										<td class="insert-input1"><textarea class="insertta" name="" placeholder="내용을 입력해주세요." style="width: 100%; height: 100%; resize: none; "></textarea></td>
+										<td class="insert-input2"><input type="button" value="등록" name="" onclick="" style="width: 100%; height: 100%; font-weight: bold;"></td>
+									</tr>
+								</table>
+							</span>
+							<span class="comment-show">
+							<h5>1개의 댓글</h5>
+							<div class="show1">
+								<div class="show1-nickname">닉네임</div>
+								<div class="show1-comment">
+								댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
+								댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
+								댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
+								</div>
+								<div class="show1-bottom">
+									<span style="color: #808080;">6분 전</span>
+									<span><a href="#">수정</a></span>
+									<span><a href="#">삭제</a></span>
+								</div>
 							</div>
 						</div>
-						<div class="p-2 ml-auto writebtn a2">
-							<button class="gradient-btn1 gradient-btn2 p-2 a22" type="button">글쓰기</button>
-							<a href="#"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
-						</div>				
 					</div>
-				</div>
-
-				<div class="container ul1">
-					<ul class="list-inline">
-						<li class="list-inline-item"><a href="freeboard.do?id=103&sort=lately" class="active">최신순</a></li>
-						<li class="list-inline-item"><a href="freeboard.do?id=103&sort=view">조회순</a></li>
-						<li class="list-inline-item"><a href="freeboard.do?id=103&sort=up">추천순</a></li>
-						<li class="list-inline-item"><a href="freeboard.do?id=103&sort=comment">댓글순</a></li>
-					</ul>
-				</div>
-				<br>
-				
-				<table class="table table-borderless free-table">
-					<thead>
-						<tr class="trnone1">
-							<th table-head1">번호</th>
-							<th>제목</th>
-							<th>글쓴이</th>
-							<th>날짜</th>
-							<th>조회수</th>
-						</tr>
-					</thead>
-					<tbody class="free-table2">
-						<c:forEach var="Artlist" items="${ArtList}" begin="0" end="10">
-                        <fmt:formatDate value="${Artlist.date_created}" var="date" pattern="yyyy-MM-dd"/>
-						<tr>
-							<th id="td" class="table-head1">${Artlist.id}</th>
-							<td id="td" class="title11 table-title1"><a href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}&nbsp;&nbsp;&nbsp;<span class="badge badge-warning">3</span></a></td>
-							<td id="td" class="xstd table-content1">${Artlist.writer}</td>
-							<td id="td" class="xstd table-content1">${date}</td>
-							<td id="td" class="xstd table-content1">${Artlist.view_cnt}</td>
-						</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-
-				<hr>
-				<!-- 페이징 -->
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<ul class="pagination justify-content-center">
-								<li class="page-item"><a class="page-link"
-									href="javascript:void(0);">처음</a></li>
-								<li class="page-item"><a class="page-link"
-									href="javascript:void(0);">1</a></li>
-								<li class="page-item"><a class="page-link"
-									href="javascript:void(0);">2</a></li>
-								<li class="page-item"><a class="page-link"
-									href="javascript:void(0);">끝</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
+					
+					
+					
+					
+				</div>				
 			</div>
 		</div>
 	</div>
 	
+	<hr>
+	<script>
+	$( ".icondrop" ).click(function() {
+		  $( ".icondrop-menu" ).slideToggle( "fast", function() {
+		    // Animation complete.
+		  });
+		});
+	
+	$(function () {
+		  $('[data-toggle="tooltip"]').tooltip()
+		});
+	</script>
+	
+	<script>
+		$(".freeboard-comment-up .comment-up a").click(function(){
+			alert("추천하셨습니다.");
+		});
+		$(".icondrop .icondrop-menu .board-up1").click(function(){
+			alert("추천하셨습니다.");
+		});
+	</script>
 	
 <!-- Start Footer Section -->
   <section id="footer-section" class="footer-section">
@@ -323,7 +342,7 @@
 							  <div class="form-group">
 							    <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
 							    <div class="col-sm-10">
-							      <input type="email" class="form-control" id="inputEmail3" placeholder="ID">
+							      <input type="text" class="form-control" id="inputEmail3" placeholder="ID">
 							    </div>
 							  </div>
 							  <div class="form-group">
@@ -353,6 +372,24 @@
         		</div>
         	</div>
         </div>
+        <div class="row">
+        	<div class="modal" id="modal-boarddlt" tabindex="-1">
+        		<div class="modal-dialog">
+        			<div class="modal-content">
+        				<div class="modal-header">
+        					<span style="font-weight: 600;">정말 삭제하시겠습니까?</span>
+        					<button class="close" data-dismiss="modal">&times;</button>
+        				</div>
+        				<div class="modal-body">
+        					<span class="delete_ok">
+        						<span class="okok1"><input type="submit" value="OK"></span>
+        						<span class="okcancel1"><button data-dismiss="modal">Cancel</button></span>
+        					</span>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
         
         
         
@@ -360,29 +397,28 @@
   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
+
+
+
+  <!-- Custom scripts for this template -->
   <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
+  
+  <!-- 수정js -->
+  <script>
+	$(function(){
+		var clic=$("ul > li");
+		clic.find("a").click(function(){
+			click.removeClass("active");
+			$(this).addClass("active").css("text-decoration","underline");
+		});
+	});
+</script>
 
-
-<%--<!-- Bootstrap core JavaScript -->
-<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Custom scripts for this template -->
-<script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>--%>
-
-<!-- Custom freeboard js -->
-<script>
-    $(function () {
-        var clic = $("ul > li");
-        clic.find("a").click(function () {
-            click.removeClass("active");
-            $(this).addClass("active");
-        });
-    });
-    function x() {
-        var target = $("#selectbox option:selected").val();
-        var keyword = $("#searchinput").val();
-        location.href='search.do?id=103&search_style='+target+'&keyword='+keyword
-    }
-	</script>
+ <!-- Bootstrap core JavaScript -->
+  <!-- Custom scripts for this template -->
 </body>
+</html>
+  
+</body>
+
 </html>

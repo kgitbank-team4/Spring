@@ -17,7 +17,7 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public void insertUser(UserVO vo) {
-		sqlSession.insert(namespace+".inserUser", vo);
+		sqlSession.insert(namespace+".insertUser", vo);
 	}
 
 	@Override
@@ -40,6 +40,26 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<UserVO> selectAllUser(UserVO vo) {
 		return sqlSession.selectList(namespace+".selectAllUser");
+	}
+
+	@Override
+	public String idSearch(String username) {
+		String result = null;
+		try {
+			result =  sqlSession.selectOne(namespace+".selectUsername", username);
+		}catch(Exception e){
+		}
+		return result;
+	}
+
+	@Override
+	public String nicknameSearch(String nickname) {
+		String result = null;
+		try {
+			result = sqlSession.selectOne(namespace+".selectNickname", nickname);
+		}catch(Exception e) {
+		}
+		return result;
 	}
 
 }
