@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.team4.biz.user.dao.UserDAO" %>
-<%@ page import="com.team4.biz.user.dao.UserDAOImpl" %>
-<%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
-<%@ page import="com.team4.biz.board.service.BoardService" %>
-<%@ page import="com.team4.biz.board.service.BoardServiceImpl" %>
-<%@ page import="com.team4.biz.board.vo.ArticleVO" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,8 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   
-<title>자유게시판</title>
-  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<title>Spring - Travel Community Site</title>
   <!-- Bootstrap core CSS -->
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -28,10 +22,10 @@
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/customfree.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/customfree.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -115,19 +109,19 @@
   <!-- 태이블 -->
 	<div class="container" id="bootstrap-override">
 		<div class="row">
-			<div class="col">
+			<div class="col mx-auto">
 				<div class="container">
 					<h3>자유게시판</h3>
 					<hr>
 					<div id="well" class="d-flex">
-						<div class="p-2 align-self-center">
+						<div class="p-2 align-self-center a1">
 							<select>
 								<option value="제목" selected>제목<span class="caret"></span></option>
 								<option value="닉네임">닉네임</option>
 								<option value="닉네임+제목">닉네임+제목</option>
 							</select>
 						</div>
-						<div class="p-2 align-self-center">
+						<div class="p-2 align-self-center a1">
 							<div class="input-group">
 								<input type="text" class="form-control form2" placeholder="검색">
 								<button class="btn11" type="submit">
@@ -135,10 +129,10 @@
 								</button>
 							</div>
 						</div>
-						<div class="p-2 ml-auto">
-							<button class="gradient-btn1 gradient-btn2 p-2 a22"
-							type="button">글쓰기</button>
-						</div>
+						<div class="p-2 ml-auto writebtn a2">
+							<button class="gradient-btn1 gradient-btn2 p-2 a22" type="button">글쓰기</button>
+							<a href="#"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
+						</div>				
 					</div>
 				</div>
 
@@ -151,37 +145,38 @@
 					</ul>
 				</div>
 				<br>
-				<table class="table table-hover">
+				
+				<table class="table table-borderless free-table">
 					<thead>
-						<tr>
-							<th class="w-10" scope="col">번호</th>
-							<th class="w-50" scope="col">제목</th>
-							<th class="w-20" scope="col">글쓴이</th>
-							<th class="w-10" scope="col">날짜</th>
-							<th class="w-10" scope="col">조회수</th>
+						<tr class="trnone1">
+							<th table-head1">번호</th>
+							<th>제목</th>
+							<th>글쓴이</th>
+							<th>날짜</th>
+							<th>조회수</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="free-table2">
 						<tr>
-							<th scope="row">1</th>
-							<td>첫번째글</td>
-							<td>닉네임</td>
-							<td>2019-08-22</td>
-							<td>15</td>
+							<th class="table-head1">1</th>
+							<td class="title11 table-title1"><a href="">첫번째글aaaaaaaaaaaaaaaaaaaa&nbsp;&nbsp;&nbsp;<span class="badge badge-warning">3</span></a></td>
+							<td class="xstd table-content1">닉네임</td>
+							<td class="xstd table-content1">2019-08-22</td>
+							<td class="xstd table-content1">15</td>
 						</tr>
 						<tr>
-							<th scope="row">2</th>
-							<td>두번째글</td>
-							<td>닉네임</td>
-							<td>2019-08-22</td>
-							<td>33</td>
+							<th class="table-head1">1</th>
+							<td class="title11 table-title1"><a href="">첫번째글aaaaaaaaaaaaaaaaaaaa&nbsp;&nbsp;&nbsp;<span class="badge badge-warning">3</span></a></td>
+							<td class="xstd table-content1">닉네임</td>
+							<td class="xstd table-content1">2019-08-22</td>
+							<td class="xstd table-content1">15</td>
 						</tr>
 						<tr>
-							<th scope="row">3</th>
-							<td>세번째글</td>
-							<td>닉네임</td>
-							<td>2019-08-22</td>
-							<td>11</td>
+							<th class="table-head1">1</th>
+							<td class="title11 table-title1"><a href="">첫번째글aaaaaaaaaaaaaaaaaaaa&nbsp;&nbsp;&nbsp;<span class="badge badge-warning">3</span></a></td>
+							<td class="xstd table-content1">닉네임</td>
+							<td class="xstd table-content1">2019-08-22</td>
+							<td class="xstd table-content1">15</td>
 						</tr>
 					</tbody>
 				</table>
@@ -363,16 +358,9 @@
   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
   <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
-
-	<!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
   
   <!-- 수정js -->
-  <script>
+	<script>
 	$(function(){
 		var clic=$("ul > li");
 		clic.find("a").click(function(){
@@ -380,13 +368,10 @@
 			$(this).addClass("active").css("text-decoration","underline");
 		});
 	});
-</script>
+	</script>
+	
 
- <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
+
 </body>
 </html>
   

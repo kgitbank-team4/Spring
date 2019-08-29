@@ -1,42 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-<html lang="en">
 
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  
-<title>Spring - Travel Community Site</title>
-  <!-- Bootstrap core CSS -->
+<meta charset="UTF-8">
+<title>여행후기</title>
+
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-  
+
   
  <!-- Bootstrap core CSS -->
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/customwriteReview.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/customfree.css" rel="stylesheet">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/gradientBtn.css">
 
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
+  <!-- Custom styles for this template -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+  
+  <!-- summernote editor -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   
+  <link href="${pageContext.request.contextPath}/resources/summernoteEditor/summernote-bs4.css" rel="stylesheet">
+  <script src="${pageContext.request.contextPath}/resources/summernoteEditor/summernote-bs4.js"></script>
+  <!-- summer note korean language pack -->
+  <script src="${pageContext.request.contextPath}/resources/summernoteEditor/lang/summernote-ko-KR.js"></script>
 </head>
-
 <body>
 
 <!-- Navigation -->
@@ -105,103 +112,56 @@
       </div>
     </div>
   </header>
-  
-  <!-- 태이블 -->
-	<div class="container" id="bootstrap-override">
+
+	<!-- 글쓰기 -->
+	<div class="container" id="bootstrap-override3">
 		<div class="row">
-			<div class="col mx-auto">
+			<div class="col">
 				<div class="container">
-					<h3>공지사항</h3>
+				<h3>공지사항쓰기</h3>
 					<hr>
-					<div id="well" class="d-flex">
-						<div class="p-2 align-self-center a1">
-							<select>
-								<option value="제목" selected>제목<span class="caret"></span></option>
-								<option value="닉네임">닉네임</option>
-								<option value="닉네임+제목">닉네임+제목</option>
-							</select>
-						</div>
-						<div class="p-2 align-self-center a1">
-							<div class="input-group">
-								<input type="text" class="form-control form2" placeholder="검색">
-								<button class="btn11" type="submit">
-									<i class="fas fa-search fa-lg"></i>
-								</button>
+					<div id="well">
+						<div class="content-box1">
+							<div class="content1">
+								<select name="" id="">
+									<option value="공지" selected>분류<span class="caret"></span></option>
+								</select>
+							</div>
+							<div class="content1">
+								<input type="text" class="form-control" name="title" id="title"
+									placeholder="제목을 입력하세요.">
+								<div style="text-align: left;">
+									<input type="checkbox" id="" name="" value="commentOk">&nbsp;&nbsp;댓글허용
+									&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="" name=""
+										value="htmlOk">&nbsp;&nbsp;HTML
+								</div>
+							</div>
+							<div class="content2">
+								<input type="text" class="form-control" name="writer"
+									id="writer" placeholder="닉네임">
 							</div>
 						</div>
-					</div>
-				</div>
-
-				<div class="container ul1">
-					<ul class="list-inline">
-						<li class="list-inline-item"><a href="#" class="active">최신순</a></li>
-						<li class="list-inline-item"><a href="#">조회순</a></li>
-						<li class="list-inline-item"><a href="#">추천순</a></li>
-						<li class="list-inline-item"><a href="#">댓글순</a></li>
-					</ul>
-				</div>
-				<br>
-				
-				<table class="table table-borderless free-table">
-					<thead>
-						<tr class="trnone1">
-							<th table-head1">번호</th>
-							<th>제목</th>
-							<th>글쓴이</th>
-							<th>날짜</th>
-							<th>조회수</th>
-						</tr>
-					</thead>
-					<tbody class="free-table2">
-						<tr>
-							<th class="table-head1">1</th>
-							<td class="title11 table-title1"><a href="">첫번째글aaaaaaaaaaaaaaaaaaaa&nbsp;&nbsp;&nbsp;<span class="badge badge-warning">3</span></a></td>
-							<td class="xstd table-content1">닉네임</td>
-							<td class="xstd table-content1">2019-08-22</td>
-							<td class="xstd table-content1">15</td>
-						</tr>
-						<tr>
-							<th class="table-head1">1</th>
-							<td class="title11 table-title1"><a href="">첫번째글aaaaaaaaaaaaaaaaaaaa&nbsp;&nbsp;&nbsp;<span class="badge badge-warning">3</span></a></td>
-							<td class="xstd table-content1">닉네임</td>
-							<td class="xstd table-content1">2019-08-22</td>
-							<td class="xstd table-content1">15</td>
-						</tr>
-						<tr>
-							<th class="table-head1">1</th>
-							<td class="title11 table-title1"><a href="">첫번째글aaaaaaaaaaaaaaaaaaaa&nbsp;&nbsp;&nbsp;<span class="badge badge-warning">3</span></a></td>
-							<td class="xstd table-content1">닉네임</td>
-							<td class="xstd table-content1">2019-08-22</td>
-							<td class="xstd table-content1">15</td>
-						</tr>
-					</tbody>
-				</table>
-
-				<hr>
-				<!-- 페이징 -->
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<ul class="pagination justify-content-center">
-								<li class="page-item"><a class="page-link"
-									href="javascript:void(0);">처음</a></li>
-								<li class="page-item"><a class="page-link"
-									href="javascript:void(0);">1</a></li>
-								<li class="page-item"><a class="page-link"
-									href="javascript:void(0);">2</a></li>
-								<li class="page-item"><a class="page-link"
-									href="javascript:void(0);">끝</a></li>
-							</ul>
+						<div class="container">
+							<iframe src="writeEditor.html" id="editor_iframe"
+								name="editor_iframe" width="100%" height="655" title="자유게시판글쓰기"
+								frameborder="0" overflow="hidden"> </iframe>
 						</div>
+					</div>
+					<div class="d-flex justify-content-around bnt11">
+						<button id="list" class="gradient-btn1 gradient-btn2 p-2"
+							type="button">목록</button>
+						<button id="save" class="gradient-btn1 gradient-btn2 p-2"
+							type="button">저장</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	
-<!-- Start Footer Section -->
-  <section id="footer-section" class="footer-section">
+	<br>
+	<hr>
+
+	<!-- Start Footer Section -->
+	<section id="footer-section" class="footer-section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 footer-office">
@@ -356,36 +316,27 @@
   <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
   
   <!-- 수정js -->
-	<script>
+  <script>
 	$(function(){
 		var clic=$("ul > li");
 		clic.find("a").click(function(){
 			click.removeClass("active");
-			$(this).addClass("active").css("text-decoration","underline");
 		});
 	});
-	</script>
-	
-	<!-- responsive jquery -->
+  </script>
+
+
 	<script>
- 		$(window).resize(function() {
-		//창크기 변화 감지
-			function open_window() {
-				var windowWidth = $(window).width();
-				if (windowWidth < 992) {
-					$('.a22').text("<i class='fas fa-pencil-alt'></i>");
-					$('.a2').removeClass('ml-auto');
-				} else(windowWidth < 400) {
-					$('.trnone1').css('display', 'none');
-				} 
-			}
+		$('#editor_iframe').contents().find('#summernote').html();
+		
+		$(function() {
+			$('#summernote').summernote({
+				height: 600,
+				lang : 'ko-KR'
+			});
 		});
 	</script>
-	
+
 
 </body>
-</html>
-  
-</body>
-
 </html>
