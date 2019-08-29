@@ -1,0 +1,182 @@
+@font-face { 
+	font-family: 'S-CoreDream-3Light'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); 
+	font-weight: normal; 
+	font-style: normal; 
+}
+
+#bootstrap-override3{
+	font-family: 'S-CoreDream-3Light'; 
+	font-size:14px;
+}
+#bootstrap-override3 h3
+#bootstrap-override3 table{
+	font-family: 'S-CoreDream-3Light'; 
+	border-bottom:1px lightgray;
+}
+#bootstrap-override3 #well{
+	min-height:10px;
+	padding:5px;
+	background-color:#f5f5f5;
+	border-radius:4px;
+	margin-bottom:7px;
+}
+#bootstrap-override3 td{
+	width:7rem;
+}
+.form2{
+	display:inline;
+}
+.btn11{
+	width:40px;
+	margin:0;
+	padding:7px;
+	border:0;
+	border-radius:4px;
+	background-color:transparent;
+}
+.ul1 ul li {
+  list-style: none;
+  margin-left: 0;
+ }
+.ul1 ul > li > a {
+  color: #797D7F;
+  text-decoration: none;
+  display: block;
+ }
+.ul1 ul > li:hover > a,
+.ul1 ul > li:focus > a,
+.ul1 ul > li:active > a,
+.ul1 ul > li.active >a {
+  color: black;
+  font-weight: bold;
+ }
+ #a2-icon1{
+	display: none;
+	cursor: pointer;
+}
+ 
+ 
+/*                              */
+.li-box{
+	display:inline-block;
+	width:100%;
+	height:200px;
+	margin:1em;
+}
+.ul-group{
+	overflow:hidden;
+	padding:0 10px 10px;
+	border:1px;
+}
+.ul-group li{
+	overflow:hidden;
+	margin-bottom:10px;
+	padding:0;
+	clear:both;
+	list-style:none;
+}
+.ul-group b{
+	font-size:20px;
+}
+.ul-group li img{
+	display:inline-block;
+	float:left;
+	margin:0 10px 0 0;
+	border:none;
+}
+.ul-group li a{
+	color:#2d2c2d;
+	text-decoration:none;
+}
+.ul-group li a:hover{
+	text-decoration:none;
+}
+.ul-group li .li-title{
+	display:inline-block;
+	float:left;
+	margin:0 10px 0 0;
+	overflow:hidden;
+}
+.ul-group li .li-content{
+	float:right;
+}
+
+#img{
+	width:20%;
+	height:115px;
+	overflow:hidden;
+}
+#td{
+	padding-left:20px;
+	width:15rem;
+	line-height:10px;
+}
+.list1{
+	margin-top:10px;
+}
+
+/*                         */
+#bootstrap-override3 table{
+	margin-top:10px;
+}
+#bootstrap-override3 table tr{
+	margin-bottom:10px;
+}
+#bootstrap-override3 a{
+	text-decoration:none;
+}
+#bootstrap-override3 ul li{
+	border:1;
+}
+.gradient-btn1 {
+    margin: 10px;
+    font-family: 'S-CoreDream-3Light, sans-serif;
+    font-size: 20px;
+    padding: 7px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #FFF;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    width: 100px;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    display: inline-block;
+}
+.gradient-btn1:hover{
+    margin: 8px 10px 12px;
+}
+.gradient-btn2 {
+	background-image: linear-gradient(to right, #c2e59c 0%, #64b3f4 51%, #c2e59c 100%)
+}
+#a2-icon1{
+	display: none;
+	cursor: pointer;
+}
+
+@media only screen and (max-width:992px) {
+  .a2 button{
+  	display: none;
+  }
+  #a2-icon1{
+  	display: inline-block;
+  	font-size: 18px;
+  }
+  #a2-icon1:hover{
+  	color: #999;
+  }
+	#img{
+		height:95px;
+		overflow:hidden;
+	}
+	.ul-group b,
+	.ul-group p{
+		font-size:14px;
+	}
+	.ul-group li .li-content{
+		font-size:10px;
+		vertical-align:center;
+	}
+	
+}

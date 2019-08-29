@@ -35,3 +35,36 @@ em{
 	
 	color: #30a4b8
 }
+
+
+table{
+	width: 100%;
+}
+
+table td{
+	padding : 0px;
+	margin: 0px;
+}
+
+table span{
+	font-size:12px;
+	font-style: italic;
+	color : red;
+}
+
+table #checkbox1{
+	width : 15%;
+	padding-left:10px;
+}
+
+table #checkbtn{
+	background-color: #ffffff;
+	font-size: medium;
+	font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+ 	outline : 0;
+	}
+
+.xm .border1 .form-group{
+	margin-bottom: 0px;
+	padding : 0;
+}

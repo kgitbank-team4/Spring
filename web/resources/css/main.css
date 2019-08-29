@@ -40,7 +40,12 @@
 .nav-tabs li a:hover{
 	color: #6a6a6a;
 }
-
+#mainNav .container #navbarResponsive .login-active{
+	display:inline-block;
+}
+#mainNav .container #navbarResponsive .login-inactive{
+	display:none;
+}
 .tab-content .tab-table1{
 	font-weight:540;
 	font-size:15px;
@@ -52,6 +57,7 @@
 .post-tab11 .post-tabs{
 	margin: 10px 0px;
 }
+
 
 @media only screen and (max-width: 1620px) {
 	.post-tab11{
