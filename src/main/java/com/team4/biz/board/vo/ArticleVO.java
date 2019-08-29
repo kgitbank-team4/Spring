@@ -11,11 +11,11 @@ public class ArticleVO {
     private int writer_id;
     private int up_cnt;
     private int view_cnt;
-    private int content_id;
     private Date date_created;
     private String category;
     private String visible;
     private int comment_cnt;
+    private String text;
 
     public int getId() {
         return id;
@@ -81,14 +81,6 @@ public class ArticleVO {
         this.view_cnt = view_cnt;
     }
 
-    public int getContent_id() {
-        return content_id;
-    }
-
-    public void setContent_id(int content_id) {
-        this.content_id = content_id;
-    }
-
     public Date getDate_created() {
         return date_created;
     }
@@ -119,6 +111,14 @@ public class ArticleVO {
 
     public void setComment_cnt(int comment_cnt) {
         this.comment_cnt = comment_cnt;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }
 

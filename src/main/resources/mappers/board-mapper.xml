@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team4.biz.board.dao.BoardDAO">
-    <resultMap type="ArticleVO" id="ArticleMap">
-        <result column="nickname" property="writer"/>
-    </resultMap>
     <select id="selectBoardList" resultType="BoardVO">
         select * from BOARD
     </select>
@@ -13,7 +10,10 @@
     <select id="selectAllArtList" resultType="ArticleVO">
         select * from ARTICLE order by DATE_CREATED desc
     </select>
-    <select id="selectArtList" parameterType="BoardVO" resultType="ArticleMap">
+    <resultMap type="ArticleVO" id="ArticleMap">
+        <result column="nickname" property="writer"/>
+    </resultMap>
+    <select id="selectArtList" parameterType="BoardVO" resultMap="ArticleMap">
         select a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and a.BOARD_ID=#{id} order by
         case when #{sort}='lately' then a.DATE_CREATED end desc,
         case when #{sort}='view' then a.VIEW_CNT end desc,
@@ -31,15 +31,30 @@
         select b.BOARDNAME,a.BOARD_ID,c.id,a.TITLE,c.CONTENT,c.DATE_CREATED from BOARD b,COMMENTS c,ARTICLE a
         where b.id=a.BOARD_ID and a.ID=c.ARTICLE_ID and c.WRITER_ID=#{writer_id}
     </select>
-    <select id="getComments" parameterType="ArticleVO" resultType="CommentsVO">
-        select * from COMMENTS where ARTICLE_ID=#{id}
+    <resultMap id="CommentsMap" type="CommentsVO">
+        <result column="nickname" property="writer"/>
+    </resultMap>
+    <select id="getComments" parameterType="ArticleVO" resultMap="CommentsMap">
+        select c.*,u.NICKNAME from COMMENTS c,USERS u where c.WRITER_ID=u.id and ARTICLE_ID=#{id}
     </select>
     <select id="getArticle" parameterType="ArticleVO" resultMap="ArticleMap">
         select a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and a.id=#{id}
     </select>
-    <select id="getContent" parameterType="ArticleVO" resultType="ContentVO">
-        select c.* from CONTENT c,ARTICLE a where a.CONTENT_ID=c.id AND a.id=#{id}
-    </select>
+    <update id="plusCommentCnt" parameterType="CommentsVO">
+        update ARTICLE set COMMENT_CNT=COMMENT_CNT+1 where ID=#{article_id}
+    </update>
+    <update id="minusCommentCnt" parameterType="CommentsVO">
+        update ARTICLE set COMMENT_CNT=COMMENT_CNT-1 where ID=#{article_id}
+    </update>
+    <update id="updateComment" parameterType="CommentsVO">
+        update COMMENTS set CONTENT=#{content} where id=#{id}
+    </update>
+    <insert id="insertComment" parameterType="CommentsVO">
+        insert into COMMENTS values (null,#{article_id},SYSDATE,#{content},#{writer_id})
+    </insert>
+    <delete id="deleteComment" parameterType="CommentsVO">
+        delete from COMMENTS where ID=#{id}
+    </delete>
     <!--select * from ARTICLE where BOARD_ID=#{id}
     and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%'||#{keyword}||'%'-->
     <!--where BOARD_ID=#{id} and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%게시판%'-->

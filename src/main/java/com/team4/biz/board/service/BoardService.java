@@ -26,6 +26,8 @@ public interface BoardService {
     public boolean insertComment(CommentsVO vo) throws ClassNotFoundException, SQLException;
     public boolean deleteComment(CommentsVO vo) throws ClassNotFoundException, SQLException;
     public boolean updateComment(CommentsVO vo) throws ClassNotFoundException, SQLException;
+    public boolean plusCommentCnt(CommentsVO vo) throws ClassNotFoundException, SQLException;
+    public boolean minusCommentCnt(CommentsVO vo) throws ClassNotFoundException, SQLException;
     public List<CommentsVO> selectComment(ArticleVO vo) throws ClassNotFoundException, SQLException;
 
     //내용관련 서비스

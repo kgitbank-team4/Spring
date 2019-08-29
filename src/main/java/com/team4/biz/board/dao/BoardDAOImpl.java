@@ -68,17 +68,27 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public void insert(CommentsVO vo) {
-
+        sqlSession.insert(namespace+".insertComment",vo);
     }
 
     @Override
     public void update(CommentsVO vo) {
+        sqlSession.update(namespace+".updateComment",vo);
+    }
 
+    @Override
+    public void plusCnt(CommentsVO vo) {
+        sqlSession.update(namespace+".plusCommentCnt",vo);
+    }
+
+    @Override
+    public void minusCnt(CommentsVO vo) {
+        sqlSession.update(namespace+".minusCommentCnt",vo);
     }
 
     @Override
     public void delete(CommentsVO vo) {
-
+        sqlSession.delete(namespace+".deleteComment",vo);
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.team4.biz.board.api.vo.AirVO;
 import com.team4.biz.board.service.BoardService;
 import com.team4.biz.board.vo.ArticleVO;
 import com.team4.biz.board.vo.BoardVO;
+import com.team4.biz.board.vo.CommentsVO;
 import com.team4.biz.board.vo.MypageVO;
 import com.team4.biz.user.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,9 +84,25 @@ public class BoardController {
     @RequestMapping(value = "/showfreeboard.do")
     public String getArticle(ArticleVO vo, Model model) throws SQLException, ClassNotFoundException{
         model.addAttribute("Article",boardService.selectArt(vo));
-        model.addAttribute("Content",boardService.selectContent(vo));
         model.addAttribute("Comment",boardService.selectComment(vo));
         return "showfreeboard";
+    }
+    @RequestMapping(value = "/updateComment.do")
+    public String updateComment(CommentsVO vo,Model model) throws SQLException, ClassNotFoundException{
+        boardService.updateComment(vo);
+        return "redirect:showfreeboard.do?id="+vo.getArticle_id();
+    }
+    @RequestMapping(value = "/insertComment.do")
+    public String insertComment(CommentsVO vo,Model model) throws SQLException, ClassNotFoundException{
+        boardService.insertComment(vo);
+        boardService.plusCommentCnt(vo);
+        return "redirect:showfreeboard.do?id="+vo.getArticle_id();
+    }
+    @RequestMapping(value = "/deleteComment.do")
+    public String deleteComment(CommentsVO vo,Model model) throws SQLException, ClassNotFoundException{
+        boardService.deleteComment(vo);
+        boardService.minusCommentCnt(vo);
+        return "redirect:showfreeboard.do?id="+vo.getArticle_id();
     }
     /*@RequestMapping(value ="/UpdateUserBoard.do")
     public String updateToNick(ArticleVO vo,HttpSession session) throws SQLException, ClassNotFoundException{
