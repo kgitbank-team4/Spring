@@ -50,7 +50,7 @@
         update COMMENTS set CONTENT=#{content} where id=#{id}
     </update>
     <insert id="insertComment" parameterType="CommentsVO">
-        insert into COMMENTS values (null,#{article_id},SYSDATE,#{content},#{writer_id})
+        insert into COMMENTS values (null,#{article_id},sysdate,#{content},#{writer_id})
     </insert>
     <delete id="deleteComment" parameterType="CommentsVO">
         delete from COMMENTS where ID=#{id}

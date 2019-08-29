@@ -122,13 +122,13 @@
                 <div class="freeboard-header">
                     <h6 style="color: purple; margin-bottom: 15px; font-size: 17px;">${Article.category}</h6>
                     <h3 style="margin-bottom: 15px;">${Article.title}</h3>
+                    <fmt:formatDate value="${Article.date_created}" var="date" pattern="yyyy-MM-dd"/>
                     <span class="freeboard-header-items">
 							<span class="freeboard-header-id">
 								<span class="freeboard-header-2">${Article.writer}</span>
 							</span>				
 							<span class="freeboard-header-date">
-								<span class="freeboard-header-1" style="margin: 0 20px;"><fmt:formatDate
-                                        value="${Article.date_created}" var="date" pattern="yyyy-MM-dd"/></span>
+								<span class="freeboard-header-1" style="margin: 0 20px;">${date}</span>
 							</span>				
 							<span class="freeboard-header-showup">
 								<span class="freeboard-header-1">조회 수</span>
@@ -142,8 +142,8 @@
 							    <ion-icon name="more" data-toggle="tooltip" data-placement="top" title="더보기"></ion-icon>
 							  	<ul class="icondrop-menu">
 								    <li><a href="#" class="board-up1">추천</a></li>
-								    <li><a href="#" data-target="#modal-boarddlt" data-toggle="modal">글 삭제</a></li>
-								    <li><a href="#">글 수정</a></li>
+								    <li><a href="#" data-target="#modal-boarddlt" data-toggle="modal" class="upanddel2" style="display: none">글 삭제</a></li>
+								    <li><a href="#" class="upanddel2" style="display: none">글 수정</a></li>
 								    <li><a href="#">목록으로</a></li>
 							    </ul>
 							</span>
@@ -193,18 +193,25 @@
                         <span class="comment-show">
 							<h5>${Article.comment_cnt}개의 댓글</h5>
                             <c:forEach var="Comment" items="${Comment}">
+                            <fmt:formatDate value="${Comment.date_created}" var="Cdate" pattern="yyyy-MM-dd HH:mm:ss"/>
                                     <div class="show1">
 								<div class="show1-nickname">${Comment.writer}</div>
 								<div class="show1-comment" id="id${Comment.id}">
                                     <div>${Comment.content}</div>
                                 </div>
 								<div class="show1-bottom">
-									<span style="color: #808080;">6분 전</span>
+									<span style="color: #808080;">${Cdate}</span>
 									<span><a href="javascript:void(0);" id="update"
-                                             onclick="updateOn(${Comment.id})">수정</a></span>
-									<span><a href="deleteComment.do?id=${Comment.id}&article_id=${Article.id}">삭제</a></span>
+                                             onclick="updateOn(${Comment.id})" style="display: none;" class="upanddel">수정</a></span>
+									<span><a href="javascript:void(0);" onclick="aa('${Comment.id}','${Article.id}')" style="display: none;" class="upanddel">삭제</a></span>
 								</div>
 							</div>
+                            <script>
+                                     if(${user.id}==${Comment.writer_id}) {
+                                         $(".upanddel").attr("style", "display: inline-block;");
+                                     }
+
+                            </script>
                             </c:forEach>
                     </div>
                 </div>
@@ -215,6 +222,16 @@
 
 <hr>
 <script>
+    function aa(cid,aid){
+        if(confirm('삭제하시겠습니까?')) {
+            location.href = "deleteComment.do?id=" + cid + "&article_id=" + aid
+        }
+    }
+    $(function () {
+        if(${user.id}==${Article.writer_id}) {
+            $(".upanddel2").attr("style", "display: inline-block;");
+        }
+    });
     function updateOn(id) {
         var text = document.getElementById("id" + id).innerText
         var updatetext = 'updatetext' + id
@@ -231,6 +248,7 @@
         location.href = "updateComment.do?content=" + content + "&id=" + id.substring(10, 12) + "&article_id=" +
         ${Article.id}
     }
+
 
 </script>
 <script>
