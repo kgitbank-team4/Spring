@@ -29,6 +29,11 @@
         where b.id=a.BOARD_ID and a.ID=c.ARTICLE_ID and c.WRITER_ID=#{writer_id}
     </select>
 
+    <insert id="insertArticle" parameterType="ArticleVO">
+        insert into article(id, board_id, title, writer, writer_id, up_cnt, view_cnt, text, date_created, category, visible, comment_cnt) 
+        values (null, #{board_id}, #{title},#{writer},#{writer_id},0,0,#{text},sysdate,#{category},'1',0)
+    </insert> 
+    
     <!--select * from ARTICLE where BOARD_ID=#{id}
     and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%'||#{keyword}||'%'-->
     <!--where BOARD_ID=#{id} and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%게시판%'-->

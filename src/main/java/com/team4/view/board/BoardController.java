@@ -1,18 +1,23 @@
 package com.team4.view.board;
 
 
-import com.team4.biz.board.api.vo.AirVO;
-import com.team4.biz.board.service.BoardService;
-import com.team4.biz.board.vo.BoardVO;
-import com.team4.biz.board.vo.MypageVO;
-import com.team4.biz.user.vo.UserVO;
+import java.sql.SQLException;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import javax.servlet.http.HttpSession;
-import java.sql.SQLException;
+
+import com.team4.biz.board.api.vo.AirVO;
+import com.team4.biz.board.service.BoardService;
+import com.team4.biz.board.vo.ArticleVO;
+import com.team4.biz.board.vo.BoardVO;
+import com.team4.biz.board.vo.ContentVO;
+import com.team4.biz.board.vo.MypageVO;
+import com.team4.biz.user.vo.UserVO;
 
 
 @Controller
@@ -80,15 +85,6 @@ public class BoardController {
     	return "weather";
     }
     
-/*    @ResponseBody
-    @RequestMapping(value="/citysearch.do")
-    public String citySearch(@RequestParam("cityname") String cityname, Model model) {
-    	model.addAttribute("cityname", cityname);
-    	System.out.println(cityname);
-    	return cityname;
-    }*/
-
-
     @RequestMapping(value = "/mypageboard.do")
     public String getMyArt(MypageVO vo, Model model, HttpSession session) throws SQLException, ClassNotFoundException{
         UserVO uvo = (UserVO)session.getAttribute("user");
@@ -97,6 +93,33 @@ public class BoardController {
         model.addAttribute("myCommentList",boardService.searchMyComment(vo));
         return "mypage";
     }
+    
+    
+    @RequestMapping(value = "/freewrite.do")
+    public String write() throws SQLException, ClassNotFoundException{
+        return "writeFree";
+    }
+    @RequestMapping(value = "/iframe.do")
+    public String getIframe() throws SQLException, ClassNotFoundException{
+        return "writeEditor";
+    }
+    
+/*    @RequestMapping(value="/writeboard2.do")
+    public String insertBoard2(ContentVO vo1, Model model) throws ClassNotFoundException, SQLException {
+    	System.out.println(vo1.getText());
+    	boardService.insertContent(vo1);
+		return "redirect:freeboard.do";    	
+    }
+    */
+  @RequestMapping(value="/writeboard.do")
+    public String insertBoard(ArticleVO vo1, Model model) throws ClassNotFoundException, SQLException {
+	    System.out.println(vo1.getBoard_id());
+    	boardService.insertArt(vo1);
+    	model.addAttribute("sort", "lately");
+    	model.addAttribute("id",vo1.getBoard_id());
+		return "redirect:freeboard.do";    	
+    }
+    
     /*@RequestMapping(value ="/UpdateUserBoard.do")
     public String updateToNick(ArticleVO vo,HttpSession session) throws SQLException, ClassNotFoundException{
         UserVO user = (UserVO)session.getAttribute("user");
