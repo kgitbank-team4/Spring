@@ -72,7 +72,27 @@
 	font-weight: 600;
 }
 
-
+.airport-container .airport-table .secondtb #출발{
+	background-color: skyblue;
+}
+.airport-container .airport-table .secondtb #탑승중{
+	background-color: orange;
+}
+.airport-container .airport-table .secondtb #도착{
+	background-color: violet;
+}
+.airport-container .airport-table .secondtb #탑승장{
+	background-color: turquoise;
+}
+.airport-container .airport-table .secondtb #수속중{
+	background-color: #396cff;
+}
+.airport-container .airport-table .secondtb #지연{
+	background-color: #c82333;
+}
+.airport-container .airport-table .secondtb #탑승구{
+	background-color: #82ff74;
+}
 
 
 @media only screen and (max-width: 992px){

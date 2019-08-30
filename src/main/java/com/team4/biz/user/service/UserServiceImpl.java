@@ -42,7 +42,35 @@ public class UserServiceImpl implements UserService{
 	public List<UserVO> selectAllUser(UserVO vo) throws ClassNotFoundException, SQLException {
 		return userDAO.selectAllUser(vo);
 	}
-	
+
+	@Override
+	public boolean idcheck(String username) {
+		String result = null;
+		try {
+			result = userDAO.idSearch(username);
+		}catch(Exception e) {
+		}
+		if(result == null)
+			return false;
+		else
+			return true;
+
+	}
+
+	@Override
+	public boolean nicknamecheck(String nickname) {
+		String result = null;
+		try {
+			result = userDAO.nicknameSearch(nickname);
+		}catch(Exception e) {
+		}
+		if(result == null)
+			return false;
+		else
+			return true;
+
+	}
+
 
 
 }

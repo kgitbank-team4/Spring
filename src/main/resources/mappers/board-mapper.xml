@@ -1,15 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team4.biz.board.dao.BoardDAO">
+    <resultMap type="ArticleVO" id="ArticleMap">
+        <result column="nickname" property="writer"/>
+    </resultMap>
     <select id="selectBoardList" resultType="BoardVO">
         select * from BOARD
     </select>
     <select id="selectBoardName" parameterType="BoardVO" resultType="BoardVO">
         select boardname from BOARD where id=#{id}
     </select>
-    <select id="selectArtList" resultType="ArticleVO">
+    <select id="selectAllArtList" resultType="ArticleVO">
         select * from ARTICLE order by DATE_CREATED desc
     </select>
+    <select id="selectArtList" parameterType="BoardVO" resultMap="ArticleMap">
+        select a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and a.BOARD_ID=#{id} order by
+        case when #{sort}='lately' then a.DATE_CREATED end desc,
+        case when #{sort}='view' then a.VIEW_CNT end desc,
+        case when #{sort}='up' then a.UP_CNT end desc,
+        case when #{sort}='comment' then a.COMMENT_CNT end desc
+    </select>
+    <select id="searchArt" parameterType="BoardVO" resultType="ArticleVO">
+        select * from ARTICLE where BOARD_ID=#{id}
+        and (case when #{search_style}='title' then TITLE ELSE WRITER end) like '%'||#{keyword}||'%'
+    </select>
+    <select id="searchArtFromUser" parameterType="MypageVO" resultType="MypageVO">
+        select b.BOARDNAME,a.* from BOARD b,ARTICLE a where b.id=a.BOARD_ID and a.WRITER_id=#{writer_id}
+    </select>
+    <select id="getMyComments" parameterType="MypageVO" resultType="MypageVO">
+        select b.BOARDNAME,a.BOARD_ID,c.id,a.TITLE,c.CONTENT,c.DATE_CREATED from BOARD b,COMMENTS c,ARTICLE a
+        where b.id=a.BOARD_ID and a.ID=c.ARTICLE_ID and c.WRITER_ID=#{writer_id}
+    </select>
+    <select id="getComments" parameterType="ArticleVO" resultType="CommentsVO">
+        select * from COMMENTS where ARTICLE_ID=#{id}
+    </select>
+    <select id="getArticle" parameterType="ArticleVO" resultMap="ArticleMap">
+        select a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and a.id=#{id}
+    </select>
+    <select id="getContent" parameterType="ArticleVO" resultType="ContentVO">
+        select c.* from CONTENT c,ARTICLE a where a.CONTENT_ID=c.id AND a.id=#{id}
+    </select>
+    <!--select * from ARTICLE where BOARD_ID=#{id}
+    and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%'||#{keyword}||'%'-->
+    <!--where BOARD_ID=#{id} and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%게시판%'-->
     <!--<insert id="insertBoard" parameterType="BoardVO">
         insert into BOARD(seq,title,writer,content) values ((select nvl(max(seq),0)+1 from board),#{title},#{writer},#{content})
     </insert>

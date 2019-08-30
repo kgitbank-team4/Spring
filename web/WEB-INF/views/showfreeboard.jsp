@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,6 +39,9 @@
 </head>
 
 <body>
+<%--<c:forEach items="${Content}" var="Content">
+	${Content}
+</c:forEach>--%>
 
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -108,11 +112,11 @@
 				
 					<!-- 프리보드 헤더 -->
 					<div class="freeboard-header">
-						<h6 style="color: purple; margin-bottom: 15px; font-size: 17px;">잡담</h6>
-						<h3 style="margin-bottom: 15px;">첫번째글</h3>
+						<h6 style="color: purple; margin-bottom: 15px; font-size: 17px;">${Article.category}</h6>
+						<h3 style="margin-bottom: 15px;">${Article.title}</h3>
 						<span class="freeboard-header-items">
 							<span class="freeboard-header-id">
-								<span class="freeboard-header-2">닉네임</span>
+								<span class="freeboard-header-2">${Article.writer}</span>
 							</span>				
 							<span class="freeboard-header-date">
 								<span class="freeboard-header-1" style="margin: 0 20px;">6일 전</span>

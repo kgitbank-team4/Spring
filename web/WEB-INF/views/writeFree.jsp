@@ -5,26 +5,31 @@
 <head>
 <meta charset="UTF-8">
 <title>자유게시판</title>
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
   <!-- Bootstrap core CSS -->
   <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
   
  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/clean-blog.min.css" rel="stylesheet">
-  <link href="css/header.css" rel="stylesheet">
-  <link href="css/customwriteReview.css" rel="stylesheet">
-  <link href="css/selectbox.css" rel="stylesheet">
-  <link href="css/footer.css" rel="stylesheet">
-  <link href="css/main.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/customwriteReview.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
   <link rel="stylesheet" href="css/gradientBtn.css">
 
   <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -98,7 +103,7 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.png')">
+  <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -141,18 +146,30 @@
 								<input type="text" class="form-control" name="writer"
 									id="writer" placeholder="닉네임">
 							</div>	
-						</div>
+						</div>			
+									
 						<div class="container">
-							<iframe src="writeEditor.html" id="editor_iframe"
-								name="editor_iframe" width="100%" height="655" title="자유게시판글쓰기"
-								frameborder="0" overflow="hidden"> </iframe>
+							<div id="summernote">ddasdfsADSFASDFSDFadfd</div>
 						</div>
+						<script>
+						$(document).ready(function() {
+							  $('#summernote').summernote({
+							    lang: 'ko-KR',
+							    tabsize: 2,
+							    height: 300,
+							    minHeight: null,
+							    maxHeight: null,
+							    focus: true
+							  });
+							});
+					    </script>
+					    
 					</div>
 					<div class="d-flex justify-content-around bnt11">
 						<button id="list" class="gradient-btn1 gradient-btn2 p-2"
 							type="button">목록</button>
 						<button id="save" class="gradient-btn1 gradient-btn2 p-2"
-							type="button">저장</button>
+							type="button" onclick="save()">저장</button>
 					</div>
 				</div>
 			</div>
@@ -160,7 +177,6 @@
 	</div>
 	<br>
 	<hr>
-	<div id="summernote"></div>
 
 	<!-- Start Footer Section -->
 	<section id="footer-section" class="footer-section">
@@ -312,17 +328,17 @@
         
         
   <!-- Bootstrap core JavaScript -->
-  <script src="resources/vendor/jquery/jquery.min.js"></script>
-  <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
-  <script src="resources/js/clean-blog.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources//js/clean-blog.min.js"></script>
 
 	<!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
   
   <!-- 수정js -->
   <script>
@@ -337,13 +353,8 @@
 
 
 	<script>
-		var edit = function() {
-			$('.click2edit').summernote({
-				focus : true
-			});
-		};
-
-		var save = function() {
+		function save() {
+			alert("sda")
 			var markup = $('.click2edit').summernote('code');
 			$('.click2edit').summernote('destroy');
 		};

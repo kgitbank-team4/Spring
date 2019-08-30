@@ -40,6 +40,12 @@
 	font-size: 16px;
 }
 
+table td #nameresult{
+	font-size:12px;
+	font-style: italic;
+	color : red;	
+}
+
 @media only screen and (max-width: 768px) {
 	.mypage-border .mypage-table .table-header{
 		width: 150px;

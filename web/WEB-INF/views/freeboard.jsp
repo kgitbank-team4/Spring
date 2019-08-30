@@ -1,5 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%@ page import="com.team4.biz.user.dao.UserDAO" %>
 <%@ page import="com.team4.biz.user.dao.UserDAOImpl" %>
 <%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
@@ -98,7 +100,7 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.png')">
+  <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -121,35 +123,39 @@
 					<hr>
 					<div id="well" class="d-flex">
 						<div class="p-2 align-self-center">
-							<select>
-								<option value="제목" selected>제목<span class="caret"></span></option>
-								<option value="닉네임">닉네임</option>
-								<option value="닉네임+제목">닉네임+제목</option>
-							</select>
+                            <select id="selectbox">
+                                <option value="title" selected>제목<span class="caret"></span></option>
+                                <option value="nick">닉네임</option>
+                                <option value="닉네임+제목">닉네임+제목</option>
+                            </select>
 						</div>
 						<div class="p-2 align-self-center">
 							<div class="input-group">
-								<input type="text" class="form-control form2" placeholder="검색">
-								<button class="btn11" type="submit">
+								<input type="text" id=searchinput class="form-control form2" placeholder="검색">
+								<button class="btn11" onclick="x()">
 									<i class="fas fa-search fa-lg"></i>
 								</button>
+                                <%--<div class="p-2">
+                                    <div class="input-group">
+                                        <input class="form-control" id="searchinput" placeholder="검색"/> <span
+                                            class="input-group-addon"><a href="#" onclick=x()><i class="fas fa-search"></i></a></span>
+                                    </div>
+                                </div>--%>
 							</div>
 						</div>
 						<div class="p-2 ml-auto">
-							<button class="btn">
-								<i class="fas fa-pencil-alt"></i>글쓰기
-							</button>
+							<button class="gradient-btn1 gradient-btn2 p-2 a22" onclick="writeFree()">글쓰기</button>
 						</div>
 					</div>
 				</div>
 
 				<div class="container ul1">
-					<ul class="list-inline">
-						<li class="list-inline-item"><a href="#" class="active">최신순</a></li>
-						<li class="list-inline-item"><a href="#">조회순</a></li>
-						<li class="list-inline-item"><a href="#">추천순</a></li>
-						<li class="list-inline-item"><a href="#">댓글순</a></li>
-					</ul>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="freeboard.do?id=103&sort=lately" class="active">최신순</a></li>
+                        <li class="list-inline-item"><a href="freeboard.do?id=103&sort=view">조회순</a></li>
+                        <li class="list-inline-item"><a href="freeboard.do?id=103&sort=up">추천순</a></li>
+                        <li class="list-inline-item"><a href="freeboard.do?id=103&sort=comment">댓글순</a></li>
+                    </ul>
 				</div>
 				<br>
 				<table class="table table-hover">
@@ -184,6 +190,18 @@
 							<td>2019-08-22</td>
 							<td>11</td>
 						</tr>
+
+                    <c:forEach var="Artlist" items="${ArtList}" begin="0" end="10">
+                        <fmt:formatDate value="${Artlist.date_created}" var="date" pattern="yyyy-MM-dd"/>
+                        <tr>
+                            <td id="td">${Artlist.id}</td>
+                            <td id="td"><a href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}</a></td>
+                            <td id="td">${Artlist.writer}</td>
+                            <td id="td">${date}</td>
+                            <td id="td">${Artlist.view_cnt}</td>
+                        </tr>
+                    </c:forEach>
+
 					</tbody>
 				</table>
 
@@ -365,32 +383,30 @@
   <!-- Custom scripts for this template -->
   <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
 
-	<!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
-  
-  <!-- 수정js -->
-  <script>
-	$(function(){
-		var clic=$("ul > li");
-		clic.find("a").click(function(){
-			click.removeClass("active");
-			$(this).addClass("active").css("text-decoration","underline");
-		});
-	});
+<%--<!-- Bootstrap core JavaScript -->
+<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Custom scripts for this template -->
+<script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>--%>
+
+<!-- Custom freeboard js -->
+<script>
+    $(function () {
+        var clic = $("ul > li");
+        clic.find("a").click(function () {
+            click.removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+    function x() {
+        var target = $("#selectbox option:selected").val();
+        var keyword = $("#searchinput").val();
+        location.href='search.do?id=103&search_style='+target+'&keyword='+keyword
+    }
+    function writeFree(){
+    	location.href='writefree.do';
+    }
 </script>
-
- <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
 </body>
-</html>
-  
-</body>
-
 </html>
