@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+    pageEncoding="UTF-8"%>
 <%@ page import="com.team4.biz.user.dao.UserDAO" %>
 <%@ page import="com.team4.biz.user.dao.UserDAOImpl" %>
 <%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
@@ -30,10 +30,10 @@
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/customfree.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/customfree.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -117,19 +117,19 @@
   <!-- 태이블 -->
 	<div class="container" id="bootstrap-override">
 		<div class="row">
-			<div class="col">
+			<div class="col mx-auto">
 				<div class="container">
 					<h3>자유게시판</h3>
 					<hr>
 					<div id="well" class="d-flex">
-						<div class="p-2 align-self-center">
-                            <select id="selectbox">
-                                <option value="title" selected>제목<span class="caret"></span></option>
-                                <option value="nick">닉네임</option>
-                                <option value="닉네임+제목">닉네임+제목</option>
-                            </select>
+						<div class="p-2 align-self-center a1">
+							<select id="selectbox">
+								<option value="title" selected>제목<span class="caret"></span></option>
+								<option value="nick">닉네임</option>
+								<option value="닉네임+제목">닉네임+제목</option>
+							</select>
 						</div>
-						<div class="p-2 align-self-center">
+						<div class="p-2 align-self-center a1">
 							<div class="input-group">
 								<input type="text" id=searchinput class="form-control form2" placeholder="검색">
 								<button class="btn11" onclick="x()">
@@ -143,31 +143,40 @@
                                 </div>--%>
 							</div>
 						</div>
+<<<<<<< HEAD
 						<div class="p-2 ml-auto">
 							<button class="gradient-btn1 gradient-btn2 p-2 a22" onclick="writeFree()">글쓰기</button>
 						</div>
+=======
+						<div class="p-2 ml-auto writebtn a2">
+							<button class="gradient-btn1 gradient-btn2 p-2 a22" type="button">글쓰기</button>
+							<a href="#"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
+						</div>				
+>>>>>>> branch 'eunjeong2' of https://github.com/kgitbank-team4/Spring.git
 					</div>
 				</div>
 
 				<div class="container ul1">
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><a href="freeboard.do?id=103&sort=lately" class="active">최신순</a></li>
-                        <li class="list-inline-item"><a href="freeboard.do?id=103&sort=view">조회순</a></li>
-                        <li class="list-inline-item"><a href="freeboard.do?id=103&sort=up">추천순</a></li>
-                        <li class="list-inline-item"><a href="freeboard.do?id=103&sort=comment">댓글순</a></li>
-                    </ul>
+					<ul class="list-inline">
+						<li class="list-inline-item"><a href="freeboard.do?id=103&sort=lately" class="active">최신순</a></li>
+						<li class="list-inline-item"><a href="freeboard.do?id=103&sort=view">조회순</a></li>
+						<li class="list-inline-item"><a href="freeboard.do?id=103&sort=up">추천순</a></li>
+						<li class="list-inline-item"><a href="freeboard.do?id=103&sort=comment">댓글순</a></li>
+					</ul>
 				</div>
 				<br>
-				<table class="table table-hover">
+				
+				<table class="table table-borderless free-table">
 					<thead>
-						<tr>
-							<th class="w-10" scope="col">번호</th>
-							<th class="w-50" scope="col">제목</th>
-							<th class="w-20" scope="col">글쓴이</th>
-							<th class="w-10" scope="col">날짜</th>
-							<th class="w-10" scope="col">조회수</th>
+						<tr class="trnone1">
+							<th table-head1">번호</th>
+							<th>제목</th>
+							<th>글쓴이</th>
+							<th>날짜</th>
+							<th>조회수</th>
 						</tr>
 					</thead>
+<<<<<<< HEAD
 					<tbody>
 						<tr>
 							<th scope="row">1</th>
@@ -192,7 +201,12 @@
 						</tr>
 
                     <c:forEach var="Artlist" items="${ArtList}" begin="0" end="10">
+=======
+					<tbody class="free-table2">
+						<c:forEach var="Artlist" items="${ArtList}" begin="0" end="10">
+>>>>>>> branch 'eunjeong2' of https://github.com/kgitbank-team4/Spring.git
                         <fmt:formatDate value="${Artlist.date_created}" var="date" pattern="yyyy-MM-dd"/>
+<<<<<<< HEAD
                         <tr>
                             <td id="td">${Artlist.id}</td>
                             <td id="td"><a href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}</a></td>
@@ -202,6 +216,16 @@
                         </tr>
                     </c:forEach>
 
+=======
+						<tr>
+							<th id="td" class="table-head1">${Artlist.id}</th>
+							<td id="td" class="title11 table-title1"><a href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}&nbsp;&nbsp;&nbsp;<span class="badge badge-warning">3</span></a></td>
+							<td id="td" class="xstd table-content1">${Artlist.writer}</td>
+							<td id="td" class="xstd table-content1">${date}</td>
+							<td id="td" class="xstd table-content1">${Artlist.view_cnt}</td>
+						</tr>
+						</c:forEach>
+>>>>>>> branch 'eunjeong2' of https://github.com/kgitbank-team4/Spring.git
 					</tbody>
 				</table>
 
@@ -404,9 +428,13 @@
         var keyword = $("#searchinput").val();
         location.href='search.do?id=103&search_style='+target+'&keyword='+keyword
     }
+<<<<<<< HEAD
     function writeFree(){
     	location.href='writefree.do';
     }
 </script>
+=======
+	</script>
+>>>>>>> branch 'eunjeong2' of https://github.com/kgitbank-team4/Spring.git
 </body>
 </html>

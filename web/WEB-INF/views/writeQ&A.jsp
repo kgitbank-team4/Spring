@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Q&A</title>
+<title>여행후기</title>
 
-  <!-- Bootstrap core CSS -->
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -38,10 +41,10 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
    
-  <link href="${pageContext.request.contextPath}/resources/summernoteeditor/plugins/summernote-bs4.css" rel="stylesheet">
-  <script src="${pageContext.request.contextPath}/resources/summernoteeditor/plugins/summernote-bs4.js"></script>
+  <link href="${pageContext.request.contextPath}/resources/summernoteEditor/summernote-bs4.css" rel="stylesheet">
+  <script src="${pageContext.request.contextPath}/resources/summernoteEditor/summernote-bs4.js"></script>
   <!-- summer note korean language pack -->
-  <script src="${pageContext.request.contextPath}/resources/summernoteeditor/lang/summernote-ko-KR.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/summernoteEditor/lang/summernote-ko-KR.js"></script>
 </head>
 <body>
 
@@ -117,29 +120,27 @@
 		<div class="row">
 			<div class="col">
 				<div class="container">
-					<h3>Q & A</h3>
+				<h3>Q&A - 글쓰기</h3>
 					<hr>
 					<div id="well">
-						<div class="d-flex flex-row">
-							<div class="p-2">
+						<div class="content-box1">
+							<div class="content1">
 								<select name="" id="">
 									<option value="분류" selected>분류<span class="caret"></span></option>
-									<option value="항공">항공</option>
-									<option value="교통">교통</option>
-									<option value="숙박">숙박</option>
-									<option value="기타">기타</option>
+									<option value="가입인사">가입인사</option>
+									<option value="잡담">잡담</option>
 								</select>
 							</div>
-							<div class="p-2">
+							<div class="content1">
 								<input type="text" class="form-control" name="title" id="title"
 									placeholder="제목을 입력하세요.">
-								<div class="p-2">
+								<div style="text-align: left;">
 									<input type="checkbox" id="" name="" value="commentOk">&nbsp;&nbsp;댓글허용
 									&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="" name=""
 										value="htmlOk">&nbsp;&nbsp;HTML
 								</div>
 							</div>
-							<div class="p-2 ml-auto">
+							<div class="content2">
 								<input type="text" class="form-control" name="writer"
 									id="writer" placeholder="닉네임">
 							</div>
@@ -165,7 +166,6 @@
 	</div>
 	<br>
 	<hr>
-	<div id="summernote"></div>
 
 	<!-- Start Footer Section -->
 	<section id="footer-section" class="footer-section">
@@ -321,13 +321,6 @@
   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
   <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
-
-	<!-- Bootstrap core JavaScript -->
-  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
   
   <!-- 수정js -->
   <script>
@@ -342,11 +335,6 @@
 
 
 	<script>
-		var save = function() {
-			var markup = $('.click2edit').summernote('code');
-			$('.click2edit').summernote('destroy');
-		};
-		
 		$('#editor_iframe').contents().find('#summernote').html();
 		
 		$(function() {
