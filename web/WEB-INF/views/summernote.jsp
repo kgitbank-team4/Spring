@@ -17,7 +17,7 @@
   <!-- summer note korean language pack -->
   <script src="${pageContext.request.contextPath}/resources/summernoteEditor/lang/summernote-ko-KR.js"></script> </head>
 <body>
-	<form action="" method="">
+	<form action="freeContent.do" method="get">
 		<div id="summernote"></div>
 	</form>
 	

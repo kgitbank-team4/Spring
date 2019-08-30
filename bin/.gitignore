@@ -1,8 +1,0 @@
-.idea/
-/target/
-.classpath
-.project
-.springBeans
-.settings/
-/lib/
-*.iml
