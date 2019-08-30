@@ -145,7 +145,7 @@
 						</div>
 						<div class="p-2 ml-auto">
 							<button class="gradient-btn1 gradient-btn2 p-2 a22"
-							type="button">글쓰기</button>
+							type="button" onclick="location.href='freewrite.do'">글쓰기</button>
 						</div>
 					</div>
 				</div>

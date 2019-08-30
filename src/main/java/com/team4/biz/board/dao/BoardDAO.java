@@ -13,7 +13,7 @@ public interface BoardDAO {
     public List<ArticleVO> searchList(BoardVO vo);//검색
     public List<MypageVO> searchListFromUser(MypageVO vo);//닉네임으로 검색
     public List<MypageVO> searchMyComment(MypageVO vo);//닉네임으로 댓글 검색
-    /*public List<BoardVO> selectList(BoardVO vo);*/
+
 
     //글 읽기 입력 수정 삭제
     public void insert(ArticleVO vo);//글쓰기

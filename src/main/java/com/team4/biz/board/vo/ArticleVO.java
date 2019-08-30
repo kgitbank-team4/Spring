@@ -120,5 +120,24 @@ public class ArticleVO {
     public void setText(String text) {
         this.text = text;
     }
+
+    @Override
+    public String toString() {
+        return "ArticleVO{" +
+                "id=" + id +
+                ", board_id=" + board_id +
+                ", boardname='" + boardname + '\'' +
+                ", title='" + title + '\'' +
+                ", writer='" + writer + '\'' +
+                ", writer_id=" + writer_id +
+                ", up_cnt=" + up_cnt +
+                ", view_cnt=" + view_cnt +
+                ", date_created=" + date_created +
+                ", category='" + category + '\'' +
+                ", visible='" + visible + '\'' +
+                ", comment_cnt=" + comment_cnt +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }
 

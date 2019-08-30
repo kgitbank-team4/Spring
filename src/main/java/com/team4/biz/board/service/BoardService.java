@@ -13,7 +13,7 @@ public interface BoardService {
     public List<ArticleVO> searchArtList(BoardVO vo) throws ClassNotFoundException, SQLException;
     public List<MypageVO> searchArtListFromUser(MypageVO vo) throws ClassNotFoundException, SQLException;
     public List<MypageVO> searchMyComment(MypageVO vo) throws ClassNotFoundException, SQLException;
-    /*public List<BoardVO> selectBoardList(BoardVO vo) throws ClassNotFoundException, SQLException;*/
+
 
     //글관련 서비스
     public boolean insertArt(ArticleVO vo) throws ClassNotFoundException, SQLException;

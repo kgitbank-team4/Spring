@@ -10,7 +10,9 @@ public interface UserDAO {
 	public void deleteUser(UserVO vo);
 	public UserVO selectOneUser(UserVO vo);
 	public List<UserVO> selectAllUser(UserVO vo);
-
+	
 	public String idSearch(String username);
 	public String nicknameSearch(String nickname);
 }
+
+

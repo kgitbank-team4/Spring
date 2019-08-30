@@ -119,11 +119,12 @@
 				<div class="container">
 					<h3>자유게시판 - 글쓰기</h3>
 					<hr>
+					<form name="freeform" action="writeboard.do">
 					<div id="well">
 						<div class="d-flex flex-row">
 							<div class="p-2">
-								<select name="" id="">
-									<option value="분류" selected>분류<span class="caret"></span></option>
+								<select name="category" id="category">
+									<option selected>분류<span class="caret"></span></option>
 									<option value="가입인사">가입인사</option>
 									<option value="잡담">잡담</option>
 								</select>
@@ -132,35 +133,39 @@
 								<input type="text" class="form-control" name="title" id="title"
 									placeholder="제목을 입력하세요.">
 									<div class="p-2">
-									<input type="checkbox" id="" name="" value="commentOk">&nbsp;&nbsp;댓글허용
+									<!-- <input type="checkbox" id="" name="" value="commentOk">&nbsp;&nbsp;댓글허용 -->
 									&nbsp;&nbsp;&nbsp;&nbsp;
 									<input type="checkbox" id="" name="" value="htmlOk">&nbsp;&nbsp;HTML
 									</div>
 							</div>
 							<div class="p-2 ml-auto">
-								<input type="text" class="form-control" name="writer"
-									id="writer" placeholder="닉네임">
+							<input type="text" class="form-control" name="writer"
+									id="writer" value="${user.nickname}">
 							</div>	
 						</div>
 						<div class="container">
-							<iframe src="writeEditor.html" id="editor_iframe"
+							<iframe src="iframe.do" id="editor_iframe"
 								name="editor_iframe" width="100%" height="655" title="자유게시판글쓰기"
-								frameborder="0" overflow="hidden"> </iframe>
+								frameborder="0" overflow="hidden"></iframe>
 						</div>
 					</div>
 					<div class="d-flex justify-content-around bnt11">
-						<button id="list" class="gradient-btn1 gradient-btn2 p-2"
-							type="button">목록</button>
-						<button id="save" class="gradient-btn1 gradient-btn2 p-2"
-							type="button">저장</button>
+						<button id="edit" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
+							type="button" onclick="editor_iframe.edit()">목록</button>
+						<button id="save" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
+							type="button" onclick="editor_iframe.save()">저장</button>
+<!-- 						 <input type="submit" id="save" class="gradient-btn1 gradient-btn2 p-2"
+							 value="저장">  -->
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 	<br>
 	<hr>
-	<div id="summernote"></div>
+<form id="form1" name="form1">
+</form>
 
 	<!-- Start Footer Section -->
 	<section id="footer-section" class="footer-section">
@@ -326,6 +331,7 @@
   
   <!-- 수정js -->
   <script>
+
 	$(function(){
 		var clic=$("ul > li");
 		clic.find("a").click(function(){
@@ -336,27 +342,45 @@
   </script>
 
 
-	<script>
-		var edit = function() {
-			$('.click2edit').summernote({
+<script>
+
+
+/* sessionStorage.setItem("category", document.getElementById("category").value);
+sessionStorage.setItem("title",document.getElementById("title").value); */
+
+/* 		var edit = function() {
+			alert('asdfadfs');
+		var markup = $('#editor_iframe').summernote('code');
+			alert(markup); 
+			 $('.click2edit').summernote({
 				focus : true
-			});
+			});  
 		};
 
-		var save = function() {
-			var markup = $('.click2edit').summernote('code');
-			$('.click2edit').summernote('destroy');
-		};
+		function save() {
+			alert('dads');
+			var markup = $('#summernote').summernote('code');
+			sessionStorage.setItem("text", markup);
+			$('#summernote').summernote('destroy');
+			location.href = "writeboard.do"; 
+		};*/
 		
-		$('#editor_iframe').contents().find('#summernote').html();
+		 
+		 
+/*		$('#editor_iframe').contents().find('#summernote').html();*/
 		
 		$(function() {
 			$('#summernote').summernote({
 				height: 600,
 				lang : 'ko-KR'
 			});
+			
+
 		});
-	</script>
+		
+
+		//location.href = "writeboard.do";	
+</script>
 
 
 </body>

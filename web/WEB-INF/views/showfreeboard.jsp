@@ -152,10 +152,6 @@
 
                 <!-- 프리보드 내용 -->
                 <div class="freeboard-content">
-                    <div class="content-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/post-sample-image.jpg">
-                        <img src="${pageContext.request.contextPath}/resources/img/post-sample-image.jpg">
-                    </div>
                     <div class="content-con">
                         ${Article.text}
                     </div>

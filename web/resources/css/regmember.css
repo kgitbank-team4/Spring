@@ -1,3 +1,4 @@
+
 .xm .border1{
 	margin:30px auto;
 	margin-bottom: 60px;
@@ -13,7 +14,7 @@ em{
 }
 .xm .border1 .form-group h6{
 	display:inline;
-	font-size:14px;
+	font-size:14px;	
 }
 
 .xm .border1 a{
@@ -38,7 +39,7 @@ em{
 
 
 table{
-	width: 100%;
+	width: 100%;	
 }
 
 table td{
@@ -54,17 +55,18 @@ table span{
 
 table #checkbox1{
 	width : 15%;
-	padding-left:10px;
+	padding-left:10px; 
 }
 
 table #checkbtn{
 	background-color: #ffffff;
 	font-size: medium;
 	font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
- 	outline : 0;
+ 	outline : 0;	
 	}
 
 .xm .border1 .form-group{
 	margin-bottom: 0px;
 	padding : 0;
-}
+}	
+

@@ -23,7 +23,7 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public void insert(ArticleVO vo) {
-
+    	sqlSession.insert(namespace+".insertArticle", vo);
     }
 
     @Override
@@ -108,7 +108,7 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public void insert(ContentVO vo) {
-
+    	sqlSession.insert(namespace+".insertContent", vo);
     }
 
     @Override

@@ -42,10 +42,6 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="home.do">SPRING</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-        <a class="navbar-brand" href="home.do">SPRING</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -65,7 +61,7 @@
                        aria-haspopup="true" aria-expanded="false">정보</a>
                     <ul class="dropdown-menu">
                         <li><a class="nav-link" href="#" onclick="x()">운항 정보</a></li>
-                        <li><a class="nav-link" href="#">날씨 정보</a></li>
+                        <li><a class="nav-link" href="weatherinfo.do?cityname=seoul">날씨 정보</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -91,16 +87,15 @@
                     <a class="nav-link-login" data-target="#modal1" data-toggle="modal" >로그인</a>
                 </li>
                 <li class="nav-item logout login-inactive">
-                     <a class="nav-link-login" href="logout.do">로그아웃</a>
+                     <a class="nav-link-login" href="logout.do">로그아웃</a>                   
                 </li>
-
+				
             </ul>
         </div>
     </div>
 </nav>
 <script>
-$(document).ready(function(){
-
+$(document).ready(function(){	
 	if( ${user.id} != null ) {
 		$("#mainNav .container #navbarResponsive .login").removeClass("login-active");
 		$("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");
@@ -415,11 +410,11 @@ $(document).ready(function(){
 $(document).ready(function() {
 	var userInputId = getCookie("userInputId");
 	$("#inputId1").val(userInputId);
-
+	
 	if($("#inputId1").val() != ""){
 		$("#Saveid").attr("checkd",true); //아이디 저장을 체크상태로 두기
 	}
-
+	
 	$("#Saveid").change(function() {//체크박스에 변화 발생시
 		if($("#Saveid").is(":checked")){//아이디 저장 체크한 상태
 			var userInputId = $("#inputId1").val();
@@ -428,7 +423,7 @@ $(document).ready(function() {
 			deleteCookie("userInputId");
 		}
 	});
-
+	
 	///아이디 저장 체크한 상태에서 id 입력
 	$("#inputId1").keyup(function() { //아이디 입력 칸에 아이디 입력할 때
 		if($("#Saveid").is(":checked")){//아이디 저장 체크한 상태
@@ -444,7 +439,7 @@ function setCookie(cookieName, value, exdays){
 	exdate.setDate(exdate.getDate()+exdays);
 	var cookieValue = escape(value) + ((exdays==null)? "" : "; expires="+exdate.toGMTString());
 	document.cookie = cookieName + "=" + cookieValue;
-
+	
 }
 
 //쿠키삭제
@@ -482,9 +477,10 @@ function getCookie(cookieName){
                 <div class="modal-body">
                     <form name="loginform" class="form-horizontal" action="login.do">
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
+                            <label for="inputEmail2" class="col-sm-2 control-label">ID</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="username" id="inputId1" placeholder="ID">
+
                             </div>
                         </div>
                         <div class="form-group">
@@ -531,7 +527,6 @@ function getCookie(cookieName){
         }
         else
             var dtime = stime+1
-
         location.href="airinfo.do?schStTime="+stime+"00&schEdTime="+dtime+"00&schLineType=D&schIOType=O&schAirCode=GMP"
     }
 </script>
