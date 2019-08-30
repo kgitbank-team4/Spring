@@ -104,13 +104,7 @@ public class BoardController {
         return "writeEditor";
     }
     
-/*    @RequestMapping(value="/writeboard2.do")
-    public String insertBoard2(ContentVO vo1, Model model) throws ClassNotFoundException, SQLException {
-    	System.out.println(vo1.getText());
-    	boardService.insertContent(vo1);
-		return "redirect:freeboard.do";    	
-    }
-    */
+
   @RequestMapping(value="/writeboard.do")
     public String insertBoard(ArticleVO vo1, Model model) throws ClassNotFoundException, SQLException {
 	    System.out.println(vo1.getBoard_id());
@@ -120,15 +114,6 @@ public class BoardController {
 		return "redirect:freeboard.do";    	
     }
     
-    /*@RequestMapping(value ="/UpdateUserBoard.do")
-    public String updateToNick(ArticleVO vo,HttpSession session) throws SQLException, ClassNotFoundException{
-        UserVO user = (UserVO)session.getAttribute("user");
-        vo.setWriter_id(user.getId());
-        vo.setWriter(user.getNickname());
-        boardService.updateArtNick(vo);
-        return "redirect:mypage.do";
-    }
-*/
 
 
 }

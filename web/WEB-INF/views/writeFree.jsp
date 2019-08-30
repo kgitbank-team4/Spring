@@ -8,20 +8,20 @@
 
   <!-- Bootstrap core CSS -->
   <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
   
  <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/clean-blog.min.css" rel="stylesheet">
-  <link href="css/header.css" rel="stylesheet">
-  <link href="css/customwriteReview.css" rel="stylesheet">
-  <link href="css/selectbox.css" rel="stylesheet">
-  <link href="css/footer.css" rel="stylesheet">
-  <link href="css/main.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/gradientBtn.css">
+  <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/customwriteReview.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/gradientBtn.css">
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -98,7 +98,7 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.png')">
+  <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -124,7 +124,7 @@
 						<div class="d-flex flex-row">
 							<div class="p-2">
 								<select name="category" id="category">
-									<option selected>분류<span class="caret"></span></option>
+									<option selected value="잡담">분류<span class="caret"></span></option>
 									<option value="가입인사">가입인사</option>
 									<option value="잡담">잡담</option>
 								</select>
@@ -134,13 +134,13 @@
 									placeholder="제목을 입력하세요.">
 									<div class="p-2">
 									<!-- <input type="checkbox" id="" name="" value="commentOk">&nbsp;&nbsp;댓글허용 -->
-									&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="checkbox" id="" name="" value="htmlOk">&nbsp;&nbsp;HTML
+									<!-- &nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="checkbox" id="" name="" value="htmlOk">&nbsp;&nbsp;HTML -->
 									</div>
 							</div>
 							<div class="p-2 ml-auto">
 							<input type="text" class="form-control" name="writer"
-									id="writer" value="${user.nickname}">
+									id="writer" value="닉네임 : ${user.nickname}" readonly="readonly"> 							
 							</div>	
 						</div>
 						<div class="container">
@@ -315,17 +315,17 @@
         
         
   <!-- Bootstrap core JavaScript -->
-  <script src="resources/vendor/jquery/jquery.min.js"></script>
-  <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
-  <script src="resources/js/clean-blog.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
 
 	<!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
   
   <!-- 수정js -->
   <script>
@@ -361,9 +361,9 @@ sessionStorage.setItem("title",document.getElementById("title").value); */
 			location.href = "writeboard.do"; 
 		};*/
 		
-		 
-		 
-		$('#editor_iframe').contents().find('#summernote').html();
+		  
+		
+/* 		$('#editor_iframe').contents().find('#summernote').html();
 		
 		$(function() {
 			$('#summernote').summernote({
@@ -373,7 +373,7 @@ sessionStorage.setItem("title",document.getElementById("title").value); */
 			
 
 		});
-		
+		 */
 
 		//location.href = "writeboard.do";	
 </script>

@@ -38,9 +38,8 @@
 	</form>
 
 	<script>
-	
-		function save() {
-			
+
+		function save() {			
 			var title = parent.document.getElementById("title").value;
 			var category = parent.document.getElementById("category").value;
 			var writer_id = '${user.id}';
@@ -61,14 +60,6 @@
 			});
 		});
 	</script>
-	<script>
-		function getForm() {
-			//$('textarea[name="content"]').val($('#summernote').summernote('code'));
-			///location.href = "writeboard.do?text="+$('textarea[name="content"]').val();
-			/*   var text = document.getElementsByClassName("note-editable card-block").innerHTML;
-			  location.href = "writeboard.do?text="+text; */
-		}
-		//alert(document.getElementById("summernote").innerHTML);
-	</script>
+
 </body>
 </html>
