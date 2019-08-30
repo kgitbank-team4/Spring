@@ -4,19 +4,75 @@
     <select id="selectBoardList" resultType="BoardVO">
         select * from BOARD
     </select>
-    <!--<insert id="insertBoard" parameterType="BoardVO">
-        insert into BOARD(seq,title,writer,content) values ((select nvl(max(seq),0)+1 from board),#{title},#{writer},#{content})
-    </insert>
-    <update id="updateBoard" parameterType="BoardVO">
-        update board set title = #{title},content = #{content} where seq=#{seq}
-    </update>
-    <delete id="deleteBoard" parameterType="BoardVO">
-        delete from board where seq=#{seq}
-    </delete>
-    <select id="getBoard" parameterType="BoardVO" resultType="BoardVO">
-        select * from BOARD where SEQ=#{seq}
+    <select id="selectBoardName" parameterType="BoardVO" resultType="BoardVO">
+        select boardname from BOARD where id=#{id}
     </select>
-    <select id="getBoardList" resultType="BoardVO">
-        select * from BOARD
-    </select>-->
+    <select id="selectAllArtList" resultType="ArticleVO">
+        select * from ARTICLE order by DATE_CREATED desc
+    </select>
+    <resultMap type="ArticleVO" id="ArticleMap">
+        <result column="nickname" property="writer"/>
+    </resultMap>
+    <select id="selectArtList" parameterType="hashmap" resultMap="ArticleMap">
+    	select rnum, T.* from(
+        select rownum rnum, a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and a.BOARD_ID=#{BoardVO.id} 
+        order by
+        case when #{BoardVO.sort}='lately' then a.ID end desc,
+        case when #{BoardVO.sort}='view' then a.VIEW_CNT end desc,
+        case when #{BoardVO.sort}='up' then a.UP_CNT end desc,
+        case when #{BoardVO.sort}='comment' then a.COMMENT_CNT end desc
+        ) T where rnum between ${start} and ${end}   
+    </select>
+
+    <select id="searchArt" parameterType="BoardVO" resultType="ArticleVO">
+        select * from ARTICLE where BOARD_ID=#{id}
+        and (case when #{search_style}='title' then TITLE ELSE WRITER end) like '%'||#{keyword}||'%'
+    </select>
+    
+    <resultMap id="MypageMap" type="MypageVO">
+    	<result property="article_id" column="id"></result>
+    </resultMap>    
+    <select id="searchArtFromUser" parameterType="MypageVO" resultMap="MypageMap">
+        select b.BOARDNAME,a.* from BOARD b,ARTICLE a where b.id=a.BOARD_ID and a.WRITER_id=#{writer_id} order by a.date_created desc
+    </select>
+    
+    
+    <select id="getMyComments" parameterType="MypageVO" resultType="MypageVO">
+        select b.BOARDNAME,a.BOARD_ID,c.id,a.TITLE, c.article_id, c.CONTENT,c.DATE_CREATED from BOARD b,COMMENTS c,ARTICLE a
+        where b.id=a.BOARD_ID and a.ID=c.ARTICLE_ID and c.WRITER_ID=#{writer_id} order by c.date_created desc
+    </select>
+
+    <insert id="insertArticle" parameterType="ArticleVO">
+        insert into article(id, board_id, title, writer, writer_id, up_cnt, view_cnt, text, date_created, category, visible, comment_cnt)
+        values (null, #{board_id}, #{title},#{writer},#{writer_id},0,0,#{text},sysdate,#{category},'1',0)
+    </insert>
+
+    <resultMap id="CommentsMap" type="CommentsVO">
+        <result column="nickname" property="writer"/>
+    </resultMap>
+    <select id="getComments" parameterType="ArticleVO" resultMap="CommentsMap">
+        select c.*,u.NICKNAME from COMMENTS c,USERS u where c.WRITER_ID=u.id and ARTICLE_ID=#{id}
+    </select>
+    <select id="getArticle" parameterType="ArticleVO" resultMap="ArticleMap">
+        select a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and a.id=#{id}
+    </select>
+    <update id="plusCommentCnt" parameterType="CommentsVO">
+        update ARTICLE set COMMENT_CNT=COMMENT_CNT+1 where ID=#{article_id}
+    </update>
+    <update id="minusCommentCnt" parameterType="CommentsVO">
+        update ARTICLE set COMMENT_CNT=COMMENT_CNT-1 where ID=#{article_id}
+    </update>
+    <update id="updateComment" parameterType="CommentsVO">
+        update COMMENTS set CONTENT=#{content} where id=#{id}
+    </update>
+    <insert id="insertComment" parameterType="CommentsVO">
+        insert into COMMENTS(id,article_id,date_created,content,writer_id) values (null,#{article_id},sysdate,#{content},#{writer_id})
+    </insert>
+    <delete id="deleteComment" parameterType="CommentsVO">
+        delete from COMMENTS where ID=#{id}
+    </delete>
+
+	<select id="getCountArt" parameterType="BoardVO" resultType="int">
+		select count(*) from article a, board b where a.board_id = b.id and b.id=#{id} 
+	</select>
 </mapper>

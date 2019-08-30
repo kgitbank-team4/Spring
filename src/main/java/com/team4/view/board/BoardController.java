@@ -37,13 +37,10 @@ public class BoardController {
     public String freeboard(@RequestParam(defaultValue="1") int curPage, BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
     	///페이징
     	int count = boardService.countArticle(vo);
-    	//int curPage = 1;
     	PageMaker paging = new PageMaker(count, curPage);
     	int start = paging.getPageBegin();
     	int end = paging.getPageEnd();
     	System.out.println(start +"  "+end);
-/*    	model.addAttribute("start", start);
-    	model.addAttribute("end", end);*/
     	////
     	System.out.println(vo.getSort());
         System.out.println(vo.getId());

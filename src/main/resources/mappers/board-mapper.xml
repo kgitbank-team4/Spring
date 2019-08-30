@@ -14,15 +14,21 @@
         <result column="nickname" property="writer"/>
     </resultMap>
     <select id="selectArtList" parameterType="hashmap" resultMap="ArticleMap">
-    	select rnum, T.* from(
-        select rownum rnum, a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and a.BOARD_ID=#{BoardVO.id} 
-        order by
-        case when #{BoardVO.sort}='lately' then a.ID end desc,
+    	<include refid="pagingHeader"></include> 
+        select rownum, a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and a.BOARD_ID=#{BoardVO.id}     
+        order by case when #{BoardVO.sort}='lately' then a.id end desc,
         case when #{BoardVO.sort}='view' then a.VIEW_CNT end desc,
         case when #{BoardVO.sort}='up' then a.UP_CNT end desc,
         case when #{BoardVO.sort}='comment' then a.COMMENT_CNT end desc
-        ) T where rnum between ${start} and ${end}   
+        <include refid="pagingFooter"></include>       
     </select>
+    <sql id="pagingHeader">
+    	select * from(
+    	select rownum rnum, T.* from(
+    </sql>
+    <sql id="pagingFooter">
+    	) T) where rnum between #{start} and #{end} 
+    </sql>
 
     <select id="searchArt" parameterType="BoardVO" resultType="ArticleVO">
         select * from ARTICLE where BOARD_ID=#{id}
