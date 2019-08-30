@@ -1,0 +1,188 @@
+#bootstrap-override{
+	margin-bottom: 50px;
+}
+
+/* 프리보드 헤더 */
+#bootstrap-override .freeboard-header .freeboard-header-items{
+	font-size: 17px;
+	
+}
+
+#bootstrap-override .freeboard-header .freeboard-header-items .freeboard-header-2{
+	font-weight: 1000;
+	font: black;
+}
+#bootstrap-override .freeboard-header .freeboard-header-items .freeboard-header-1{
+	font-weight: 1000;
+	color: #999;
+}
+#bootstrap-override .freeboard-header .freeboard-header-items .icondrop{
+	float:right;
+	cursor: pointer;
+	font-size: 23px;
+	font-weight:bold;
+	color: black;
+	/* margin: 0 17% 0 0; */
+}
+#bootstrap-override .freeboard-header .freeboard-header-items .icondrop:hover{
+	color:#999;
+}
+
+#bootstrap-override .freeboard-header .freeboard-header-items .icondrop .icondrop-menu {
+	font-size: 15px;
+	font-weight:bold;
+	display: none;
+	list-style: none;
+	float: left;
+	color: #999;
+}
+
+
+
+/* 프리보드 내용 */
+.freeboard-content{
+	margin-top: 95px;
+	margin-bottom: 50px;
+}
+.freeboard-content .content-con img{
+	margin:10px auto;
+}
+.freeboard-content .content-con{
+	font-size: 16px;
+	margin-top:50px;
+}
+
+
+/* 프리보드 댓글 */
+
+/* 댓글입력 */
+.comment-up .heart{
+	font-size: 25px;
+	color:#ff9191;
+	cursor: pointer;
+}
+.comment-up .heart:hover,
+.comment-up .heart:focus{
+	font-size: 25px;
+	color:#fd0000;
+}
+
+.comment-up .clip-file{
+	float:right;
+	/* margin: 0 15% 0 0; */
+}
+.comment-up .clip{
+	font-size: 22px;
+}
+.comment-up .clip-comment{
+	font-size: 15px;
+}
+
+.comment-up .clip-back{
+	font-size: 16px;
+	font-weight: bold;
+	margin-left: 20px;
+	margin-right: 15px;
+}
+.comment-up .clip-back a:hover{
+	text-decoration: none;
+	color:#999;
+	
+}
+
+
+
+.comment1 .comment-insert .insert-input1{
+	width:85%;
+	height: 100px;
+}
+.comment1 .comment-insert .insert-input1 .insertta:hover{
+	border-color: #75baff;		
+}
+
+.comment1 .comment-insert .insert-input2{
+	width:15%;
+	height: 100px;
+}
+
+/* 댓글 내용 */
+.comment1 .comment-show .show1 .show1-nickname{
+	font-weight: bold;
+	margin-bottom: 5px;
+	font-size: 16px;
+}
+.comment1 .comment-show .show1 .show1-comment{
+	display:inline-block;
+	font-size: 15px;
+	margin-bottom: 5px;
+}
+.comment1 .comment-show .show1 .show1-bottom span:nth-child(n){
+	margin-right: 15px;
+}
+.comment1 .comment-show .show1 .show1-bottom span:nth-child(2) a,
+.comment1 .comment-show .show1 .show1-bottom span:nth-child(3) a{
+	color: #8c0046;
+	font-weight: 550;
+}
+.comment1 .comment-show .show1 .show1-bottom span:nth-child(2) a:hover,
+.comment1 .comment-show .show1 .show1-bottom span:nth-child(3) a:hover{
+	color: #ff0000;
+	text-decoration: none;
+}
+
+
+
+
+
+/* 모달 */
+.modal-dialog .modal-body .delete_ok{
+	width: 100%;
+	word-spacing: 15px;
+}
+.modal-dialog .modal-body .delete_ok .okok1 input{
+	width:45%;
+	background: #808080;
+	color: white;
+	
+}
+.modal-dialog .modal-body .delete_ok .okcancel1 button{
+	width:45%;
+	background: #808080;
+	color: white;
+}
+.modal-dialog .modal-body .delete_ok .okok1 input:hover{
+	background: #51a8ff;
+	color: white;
+	
+}
+.modal-dialog .modal-body .delete_ok .okcancel1 button:hover{
+	background: #51a8ff;
+	color: white;
+}
+@media only screen and (max-width: 992px){
+	#bootstrap-override .freeboard-header .freeboard-header-items .icondrop{
+		margin: 0 -20px 0 0;
+	}
+	
+	
+	.freeboard-content .content-img img{
+		width: 100%;
+	}
+	
+	
+	.freeboard-comment-up .comment-up .clip-file{
+		float: right;
+		margin:0;
+	}
+					
+	
+	.comment1 .comment-insert .insert-input1{
+		width:75%;
+		height: 100px;
+	}
+	.comment1 .comment-insert .insert-input2{
+		width:25%;
+		height: 100px;
+}
+	
+}

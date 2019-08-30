@@ -7,6 +7,7 @@ public class CommentsVO {
     private int article_id;
     private String title;
     private int writer_id;
+    private String writer;
     private Date date_created;
     private String content;
     private String boardname;
@@ -42,6 +43,14 @@ public class CommentsVO {
 
     public void setWriter_id(int writer_id) {
         this.writer_id = writer_id;
+    }
+
+    public String getWriter() {
+        return writer;
+    }
+
+    public void setWriter(String writer) {
+        this.writer = writer;
     }
 
     public Date getDate_created() {

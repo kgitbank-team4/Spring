@@ -29,25 +29,48 @@
 </head>
 <body>
 	<form>
-<%-- 	<input type="hidden" name="writer_id" value="${user.id}">
-	<input type="hidden" name="writer" value="${user.nickname}">
-	<input type="hidden" id="title" name="title">
-	<input type="hidden" id="category" name="category">	 --%>
 	<textarea name="text" style="display: none;"></textarea>
 	<div id="summernote"></div>
 	</form>
+	<%
+		String title = null;
+		String category;
+		String writer_id;
+		String writer;
+		String text;
+	%>
 
 	<script>
+	
+		function save() {
+			var form = document.createElement("form")
+			//alert(form.getAttribute('name'))
+			var parm = new Array();
+			var input = new Array();
 
-		function save() {			
-			var title = parent.document.getElementById("title").value;
-			var category = parent.document.getElementById("category").value;
-			var writer_id = '${user.id}';
-			var writer = '${user.nickname}';
+			form.action = "writeboard.do";
+			form.method = "post";
+
 			var text = $('#summernote').summernote('code');
-			var uri = encodeURI("writeboard.do?board_id=103&title="+title+"&writer="+writer+"&writer_id="+writer_id+"&text="+text+"&category="+category);
-			parent.document.location.href = uri; 
-		};
+
+			parm.push( ['title', parent.document.getElementById("title").value] );
+			parm.push( ['category', parent.document.getElementById("category").value] );
+			parm.push( ['text', text] );
+			parm.push(['board_id',103]);
+			parm.push( ['writer_id', '${user.id}'] );
+			parm.push( ['writer', '${user.nickname}'] );
+
+			for (var i = 0; i < parm.length; i++) {
+				input[i] = document.createElement("input");
+				input[i].setAttribute("type", "hidden");
+				input[i].setAttribute('name', parm[i][0]);
+				input[i].setAttribute("value", parm[i][1]);
+				form.appendChild(input[i]);
+			}
+			document.body.appendChild(form);
+			form.target="_parent"
+			form.submit();
+		}
 		
 		function edit(){
 			parent.document.location.href = "freeboard.do?id=103&sort=lately";

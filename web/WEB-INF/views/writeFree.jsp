@@ -140,7 +140,7 @@
 							</div>
 							<div class="p-2 ml-auto">
 							<input type="text" class="form-control" name="writer"
-									id="writer" value="닉네임 : ${user.nickname}" readonly="readonly"> 							
+									id="writer" value="${user.nickname}" readonly="readonly"> 							
 							</div>	
 						</div>
 						<div class="container">
@@ -153,7 +153,7 @@
 						<button id="edit" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
 							type="button" onclick="editor_iframe.edit()">목록</button>
 						<button id="save" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
-							type="button" onclick="editor_iframe.save()">저장</button>	 
+							type="button" onclick="editor_iframe.save()">저장</button>
 <!-- 						 <input type="submit" id="save" class="gradient-btn1 gradient-btn2 p-2"
 							 value="저장">  -->
 					</div>
@@ -164,6 +164,7 @@
 	</div>
 	<br>
 	<hr>
+
 
 	<!-- Start Footer Section -->
 	<section id="footer-section" class="footer-section">
@@ -329,6 +330,7 @@
   
   <!-- 수정js -->
   <script>
+
 	$(function(){
 		var clic=$("ul > li");
 		clic.find("a").click(function(){
@@ -337,47 +339,6 @@
 		});
 	});
   </script>
-
-
-<script>
-
-/* sessionStorage.setItem("category", document.getElementById("category").value);
-sessionStorage.setItem("title",document.getElementById("title").value); */
-
-/* 		var edit = function() {
-			alert('asdfadfs');
-		var markup = $('#editor_iframe').summernote('code');
-			alert(markup); 
-			 $('.click2edit').summernote({
-				focus : true
-			});  
-		};
-
-		function save() {
-			alert('dads');
-			var markup = $('#summernote').summernote('code');
-			sessionStorage.setItem("text", markup);
-			$('#summernote').summernote('destroy');
-			location.href = "writeboard.do"; 
-		};*/
-		
-		  
-		
-/* 		$('#editor_iframe').contents().find('#summernote').html();
-		
-		$(function() {
-			$('#summernote').summernote({
-				height: 600,
-				lang : 'ko-KR'
-			});
-			
-
-		});
-		 */
-
-		//location.href = "writeboard.do";	
-</script>
-
 
 </body>
 </html>

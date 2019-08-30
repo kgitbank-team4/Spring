@@ -10,12 +10,15 @@
     <select id="selectAllArtList" resultType="ArticleVO">
         select * from ARTICLE order by DATE_CREATED desc
     </select>
-    <select id="selectArtList" parameterType="BoardVO" resultType="ArticleVO">
-        select * from ARTICLE where BOARD_ID=#{id} order by
-        case when #{sort}='lately' then DATE_CREATED end desc,
-        case when #{sort}='view' then VIEW_CNT end desc,
-        case when #{sort}='up' then UP_CNT end desc,
-        case when #{sort}='comment' then COMMENT_CNT end desc
+    <resultMap type="ArticleVO" id="ArticleMap">
+        <result column="nickname" property="writer"/>
+    </resultMap>
+    <select id="selectArtList" parameterType="BoardVO" resultMap="ArticleMap">
+        select a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and a.BOARD_ID=#{id} order by
+        case when #{sort}='lately' then a.DATE_CREATED end desc,
+        case when #{sort}='view' then a.VIEW_CNT end desc,
+        case when #{sort}='up' then a.UP_CNT end desc,
+        case when #{sort}='comment' then a.COMMENT_CNT end desc
     </select>
     <select id="searchArt" parameterType="BoardVO" resultType="ArticleVO">
         select * from ARTICLE where BOARD_ID=#{id}
@@ -30,10 +33,34 @@
     </select>
 
     <insert id="insertArticle" parameterType="ArticleVO">
-        insert into article(id, board_id, title, writer, writer_id, up_cnt, view_cnt, text, date_created, category, visible, comment_cnt) 
+        insert into article(id, board_id, title, writer, writer_id, up_cnt, view_cnt, text, date_created, category, visible, comment_cnt)
         values (null, #{board_id}, #{title},#{writer},#{writer_id},0,0,#{text},sysdate,#{category},'1',0)
-    </insert> 
-    
+    </insert>
+
+    <resultMap id="CommentsMap" type="CommentsVO">
+        <result column="nickname" property="writer"/>
+    </resultMap>
+    <select id="getComments" parameterType="ArticleVO" resultMap="CommentsMap">
+        select c.*,u.NICKNAME from COMMENTS c,USERS u where c.WRITER_ID=u.id and ARTICLE_ID=#{id}
+    </select>
+    <select id="getArticle" parameterType="ArticleVO" resultMap="ArticleMap">
+        select a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and a.id=#{id}
+    </select>
+    <update id="plusCommentCnt" parameterType="CommentsVO">
+        update ARTICLE set COMMENT_CNT=COMMENT_CNT+1 where ID=#{article_id}
+    </update>
+    <update id="minusCommentCnt" parameterType="CommentsVO">
+        update ARTICLE set COMMENT_CNT=COMMENT_CNT-1 where ID=#{article_id}
+    </update>
+    <update id="updateComment" parameterType="CommentsVO">
+        update COMMENTS set CONTENT=#{content} where id=#{id}
+    </update>
+    <insert id="insertComment" parameterType="CommentsVO">
+        insert into COMMENTS values (null,#{article_id},sysdate,#{content},#{writer_id})
+    </insert>
+    <delete id="deleteComment" parameterType="CommentsVO">
+        delete from COMMENTS where ID=#{id}
+    </delete>
     <!--select * from ARTICLE where BOARD_ID=#{id}
     and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%'||#{keyword}||'%'-->
     <!--where BOARD_ID=#{id} and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%게시판%'-->

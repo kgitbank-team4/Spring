@@ -477,7 +477,7 @@ function getCookie(cookieName){
                 <div class="modal-body">
                     <form name="loginform" class="form-horizontal" action="login.do">
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
+                            <label for="inputEmail2" class="col-sm-2 control-label">ID</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="username" id="inputId1" placeholder="ID">
 

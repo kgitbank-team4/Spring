@@ -43,7 +43,7 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public ArticleVO select(ArticleVO vo) {
-        return null;
+        return sqlSession.selectOne(namespace+".getArticle",vo);
     }
 
     @Override
@@ -68,22 +68,32 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public void insert(CommentsVO vo) {
-
+        sqlSession.insert(namespace+".insertComment",vo);
     }
 
     @Override
     public void update(CommentsVO vo) {
+        sqlSession.update(namespace+".updateComment",vo);
+    }
 
+    @Override
+    public void plusCnt(CommentsVO vo) {
+        sqlSession.update(namespace+".plusCommentCnt",vo);
+    }
+
+    @Override
+    public void minusCnt(CommentsVO vo) {
+        sqlSession.update(namespace+".minusCommentCnt",vo);
     }
 
     @Override
     public void delete(CommentsVO vo) {
-
+        sqlSession.delete(namespace+".deleteComment",vo);
     }
 
     @Override
-    public CommentsVO select(CommentsVO vo) {
-        return null;
+    public List<CommentsVO> selectCom(ArticleVO vo) {
+        return sqlSession.selectList(namespace+".getComments",vo);
     }
 
     @Override
@@ -112,8 +122,8 @@ public class BoardDAOImpl implements BoardDAO{
     }
 
     @Override
-    public ContentVO select(ContentVO vo) {
-        return null;
+    public ContentVO selectCon(ArticleVO vo) {
+        return sqlSession.selectOne(namespace+".getContent",vo);
     }
 
     @Override

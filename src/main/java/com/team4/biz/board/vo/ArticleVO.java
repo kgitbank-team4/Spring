@@ -11,7 +11,6 @@ public class ArticleVO {
     private int writer_id;
     private int up_cnt;
     private int view_cnt;
-    private int content_id;
     private Date date_created;
     private String category;
     private String visible;
@@ -82,14 +81,6 @@ public class ArticleVO {
         this.view_cnt = view_cnt;
     }
 
-    public int getContent_id() {
-        return content_id;
-    }
-
-    public void setContent_id(int content_id) {
-        this.content_id = content_id;
-    }
-
     public Date getDate_created() {
         return date_created;
     }
@@ -122,13 +113,31 @@ public class ArticleVO {
         this.comment_cnt = comment_cnt;
     }
 
-	public String getText() {
-		return text;
-	}
+    public String getText() {
+        return text;
+    }
 
-	public void setText(String text) {
-		this.text = text;
-	}
-        
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return "ArticleVO{" +
+                "id=" + id +
+                ", board_id=" + board_id +
+                ", boardname='" + boardname + '\'' +
+                ", title='" + title + '\'' +
+                ", writer='" + writer + '\'' +
+                ", writer_id=" + writer_id +
+                ", up_cnt=" + up_cnt +
+                ", view_cnt=" + view_cnt +
+                ", date_created=" + date_created +
+                ", category='" + category + '\'' +
+                ", visible='" + visible + '\'' +
+                ", comment_cnt=" + comment_cnt +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }
 
