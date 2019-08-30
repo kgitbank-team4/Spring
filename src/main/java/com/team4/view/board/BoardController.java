@@ -17,6 +17,7 @@ import com.team4.biz.board.vo.ArticleVO;
 import com.team4.biz.board.vo.BoardVO;
 import com.team4.biz.board.vo.CommentsVO;
 import com.team4.biz.board.vo.MypageVO;
+import com.team4.biz.board.vo.PageMaker;
 import com.team4.biz.user.vo.UserVO;
 
 
@@ -33,28 +34,39 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/freeboard.do")//자유
-    public String freeboard(BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
-        System.out.println(vo.getSort());
+    public String freeboard(@RequestParam(defaultValue="1") int curPage, BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
+    	///페이징
+    	int count = boardService.countArticle(vo);
+    	//int curPage = 1;
+    	PageMaker paging = new PageMaker(count, curPage);
+    	int start = paging.getPageBegin();
+    	int end = paging.getPageEnd();
+    	System.out.println(start +"  "+end);
+/*    	model.addAttribute("start", start);
+    	model.addAttribute("end", end);*/
+    	////
+    	System.out.println(vo.getSort());
         System.out.println(vo.getId());
-        model.addAttribute("ArtList", boardService.selectArtList(vo));
+        model.addAttribute("ArtList", boardService.selectArtList(vo, start, end));
+    	model.addAttribute("paging", paging);
         return "freeboard";
     }
 
     @RequestMapping(value = "/hugiboard.do")//후기
     public String hugiboard(BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
-        model.addAttribute("ArtList", boardService.selectArtList(vo));
+        model.addAttribute("ArtList", boardService.selectArtList(vo, 0, 0));
         return "hugiboard";
     }
 
     @RequestMapping(value = "/qaboard.do")//Q & A
     public String qaboard(BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
-        model.addAttribute("ArtList", boardService.selectArtList(vo));
+        model.addAttribute("ArtList", boardService.selectArtList(vo, 0, 0));
         return "qaboard";
     }
 
     @RequestMapping(value = "/info.do")//공지사항
     public String infoboard(BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
-        model.addAttribute("ArtList", boardService.selectArtList(vo));
+        model.addAttribute("ArtList", boardService.selectArtList(vo, 0, 0));
         return "info";
     }
 
@@ -89,13 +101,14 @@ public class BoardController {
     public String getMyArt(MypageVO vo, Model model, HttpSession session) throws SQLException, ClassNotFoundException {
         UserVO uvo = (UserVO) session.getAttribute("user");
         vo.setWriter_id(uvo.getId());
+        
         model.addAttribute("myArtList", boardService.searchArtListFromUser(vo));
         model.addAttribute("myCommentList", boardService.searchMyComment(vo));
         return "mypage";
     }
 
     @RequestMapping(value = "/showfreeboard.do")
-    public String getArticle(ArticleVO vo, Model model) throws SQLException, ClassNotFoundException {
+    public String getArticle(ArticleVO vo, Model model) throws SQLException, ClassNotFoundException {    	
         model.addAttribute("Article", boardService.selectArt(vo));
         model.addAttribute("Comment", boardService.selectComment(vo));
         return "showfreeboard";

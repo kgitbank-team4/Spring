@@ -187,16 +187,38 @@
 				<!-- 페이징 -->
 				<div class="container">
 					<div class="row">
-						<div class="col">
+						<div class="col"> 
 							<ul class="pagination justify-content-center">
-								<li class="page-item"><a class="page-link"
+							<c:if test="${paging.curBlock > 1}">
+								<a class="page-link" href="javascript:list('${paging.prevPage}')">이전</a>
+							</c:if>
+							
+							<c:forEach var="num" begin="${paging.blockBegin}" end="${paging.blockEnd}">
+								<c:choose>
+									<c:when test="${num == paging.curPage}">
+										<a class="page-link"><span>${num}</span></a>&nbsp;
+									</c:when>
+									<c:otherwise>
+										<a class="page-link" href="javascript:list('${num}')">${num}</a>&nbsp;
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							
+							<c:if test="${paging.curBlock <= paging.totBlock}">
+								<a class="page-link" href="javascript:list('${paging.nextPage}')">다음</a>
+							</c:if>
+							
+							<c:if test="${paging.curPage <= paging.totPage}">
+								<a class="page-link" href="javascript:list('${paging.totPage}')">끝</a>
+							</c:if>
+								<!-- <li class="page-item"><a class="page-link"
 									href="javascript:void(0);">처음</a></li>
 								<li class="page-item"><a class="page-link"
 									href="javascript:void(0);">1</a></li>
 								<li class="page-item"><a class="page-link"
 									href="javascript:void(0);">2</a></li>
 								<li class="page-item"><a class="page-link"
-									href="javascript:void(0);">끝</a></li>
+									href="javascript:void(0);">끝</a></li> -->
 							</ul>
 						</div>
 					</div>
@@ -381,6 +403,10 @@
         var target = $("#selectbox option:selected").val();
         var keyword = $("#searchinput").val();
         location.href='search.do?id=103&search_style='+target+'&keyword='+keyword
+    }
+    
+    function list(page){
+    	location.href = "freeboard.do?curPage="+page+"&id=103&sort=lately";
     }
 </script>
 </body>

@@ -176,7 +176,7 @@ $(document).ready(function(){
                                     <c:if test="${ArtList2.board_id eq 103}">
                                         <tr>
                                             <td style="color: red">${ArtList2.category}</td>
-                                            <td><a href="#">${ArtList2.title}</a></td>
+                                            <td><a href="showfreeboard.do?id=${ArtList2.id}">${ArtList2.title}</a></td>
                                             <td>${ArtList2.view_cnt}</td>
                                             <c:set var="cnt" value="${cnt+1}"/>
                                         </tr>

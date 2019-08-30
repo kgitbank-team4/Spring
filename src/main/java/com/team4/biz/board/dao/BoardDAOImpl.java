@@ -1,11 +1,19 @@
 package com.team4.biz.board.dao;
 
-import com.team4.biz.board.vo.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.team4.biz.board.vo.ArticleVO;
+import com.team4.biz.board.vo.BoardVO;
+import com.team4.biz.board.vo.CommentsVO;
+import com.team4.biz.board.vo.ContentVO;
+import com.team4.biz.board.vo.MypageVO;
+import com.team4.biz.board.vo.VoteVO;
 @Repository
 public class BoardDAOImpl implements BoardDAO{
     @Autowired
@@ -52,8 +60,12 @@ public class BoardDAOImpl implements BoardDAO{
     }
 
     @Override
-    public List<ArticleVO> selectList(BoardVO vo) {
-        return sqlSession.selectList(namespace+".selectArtList",vo);
+    public List<ArticleVO> selectList(BoardVO vo,int start, int end) {
+    	Map<String, Object> map = new HashMap<String,Object>();
+    	map.put("BoardVO", vo);
+    	map.put("start", start);
+    	map.put("end", end);
+        return sqlSession.selectList(namespace+".selectArtList",map);
     }
 
     @Override
@@ -155,4 +167,9 @@ public class BoardDAOImpl implements BoardDAO{
     public List<VoteVO> selectList(VoteVO vo) {
         return null;
     }
+
+	@Override
+	public int countArt(BoardVO vo) {
+		return sqlSession.selectOne(namespace+".getCountArt",vo);
+	}
 }

@@ -444,7 +444,7 @@
         $("#schLineType2").val("${param.schLineType}").attr("selected", "selected");
     })
     var width = $(window).width();
-    alert($("#schLineType").val("${param.schAirCode}").attr("selected"))
+    //alert($("#schLineType").val("${param.schAirCode}").attr("selected"))
 </script>
 <!-- END MAIN JS -->
 <hr>

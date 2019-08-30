@@ -187,7 +187,7 @@ $(document).ready(function() {
                                         <fmt:formatDate value="${myArtList.date_created}" var="date" pattern="yyyy-MM-dd"/>
                                         <tr class="table-child">
                                             <td>${myArtList.boardname}</td>
-                                            <td>${myArtList.title}</td>
+                                            <td><a href="showfreeboard.do?id=${myArtList.article_id}">${myArtList.title}</a></td>
                                             <td>${date}</td>
                                             <td>${myArtList.view_cnt}</td>
                                             <td>${myArtList.up_cnt}</td>
@@ -234,14 +234,14 @@ $(document).ready(function() {
                                         <td>No.</td>
                                         <td>댓글</td>
                                         <td>게시글제목</td>
-                                        <td>추천수</td>
+                                        <td>날짜</td>
                                     </tr>
                                     <c:forEach items="${myCommentList}" var="myCommentList">
                                         <fmt:formatDate value="${myCommentList.date_created}" var="c_date" pattern="yyyy-MM-dd"/>
                                         <tr class="table-child">
                                             <td>${myCommentList.boardname}</td>
                                             <td>${myCommentList.content}</td>
-                                            <td>${myCommentList.title}</td>
+                                            <td><a href="showfreeboard.do?id=${myCommentList.article_id}">${myCommentList.title}</a></td>
                                             <td>${c_date}</td>
                                         </tr>
                                     </c:forEach>
