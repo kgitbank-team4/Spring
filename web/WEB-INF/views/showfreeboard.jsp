@@ -32,7 +32,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
           type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
@@ -165,8 +165,6 @@
                                       title="추천"></ion-icon>
                         </a>
                         <span class="clip-file">
-								<ion-icon class="clip" name="attach"></ion-icon>
-								<span class="clip-comment">첨부파일 1개</span>
 								<span class="clip-back"><a href="#">목록으로</a></span>
 							</span>
                     </div>

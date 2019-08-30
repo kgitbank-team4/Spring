@@ -152,12 +152,17 @@
 
 				<div class="container ul1">
                     <ul class="list-inline">
-                        <li class="list-inline-item"><a href="freeboard.do?id=103&sort=lately" class="active">최신순</a></li>
-                        <li class="list-inline-item"><a href="freeboard.do?id=103&sort=view">조회순</a></li>
-                        <li class="list-inline-item"><a href="freeboard.do?id=103&sort=up">추천순</a></li>
-                        <li class="list-inline-item"><a href="freeboard.do?id=103&sort=comment">댓글순</a></li>
+                        <li class="list-inline-item"><a href="javascript:void(0);" onclick="sort('lately')" class="active">최신순</a></li>
+						<li class="list-inline-item"><a href="javascript:void(0);" onclick="sort('view')">조회순</a></li>
+                        <li class="list-inline-item"><a href="javascript:void(0);" onclick="sort('up')">추천순</a></li>
+                        <li class="list-inline-item"><a href="javascript:void(0);" onclick="sort('comment')">댓글순</a></li>
                     </ul>
 				</div>
+				<script>
+					function sort(sort) {
+						location.replace("freeboard.do?id=103&sort="+sort)
+					}
+				</script>
 				<br>
 				<table class="table table-hover">
 					<thead>

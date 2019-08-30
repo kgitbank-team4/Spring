@@ -32,6 +32,11 @@ public class BoardDAOImpl implements BoardDAO{
     }
 
     @Override
+    public void updateViewCnt(ArticleVO vo) {
+        sqlSession.update(namespace+".updateViewCnt",vo);
+    }
+
+    @Override
     public void hide(ArticleVO vo){
 
     }

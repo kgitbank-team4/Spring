@@ -8,36 +8,34 @@
 
   <!-- Bootstrap core CSS -->
   <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-  
+
  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/clean-blog.min.css" rel="stylesheet">
-  <link href="css/header.css" rel="stylesheet">
-  <link href="css/customwriteReview.css" rel="stylesheet">
-  <link href="css/selectbox.css" rel="stylesheet">
-  <link href="css/footer.css" rel="stylesheet">
-  <link href="css/main.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/gradientBtn.css">
+  <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/customwriteReview.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/gradientBtn.css">
 
   <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
-  
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
   <!-- summernote editor -->
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-   
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7	/umd/popper.min.js"></script>
+
   <link href="summernoteeditor/plugins/summernote-bs4.css" rel="stylesheet">
   <script src="summernoteeditor/plugins/summernote-bs4.js"></script>
   <!-- summer note korean language pack -->
@@ -98,7 +96,7 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.png')">
+  <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -140,7 +138,7 @@
 							</div>
 							<div class="p-2 ml-auto">
 							<input type="text" class="form-control" name="writer"
-									id="writer" value="${user.nickname}">
+									id="writer" value="${user.nickname}" readonly="readonly">
 							</div>	
 						</div>
 						<div class="container">
@@ -317,17 +315,10 @@
         
         
   <!-- Bootstrap core JavaScript -->
-  <script src="resources/vendor/jquery/jquery.min.js"></script>
-  <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
-  <script src="resources/js/clean-blog.min.js"></script>
-
-	<!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
   
   <!-- 수정js -->
   <script>
@@ -340,48 +331,6 @@
 		});
 	});
   </script>
-
-
-<script>
-
-
-/* sessionStorage.setItem("category", document.getElementById("category").value);
-sessionStorage.setItem("title",document.getElementById("title").value); */
-
-/* 		var edit = function() {
-			alert('asdfadfs');
-		var markup = $('#editor_iframe').summernote('code');
-			alert(markup); 
-			 $('.click2edit').summernote({
-				focus : true
-			});  
-		};
-
-		function save() {
-			alert('dads');
-			var markup = $('#summernote').summernote('code');
-			sessionStorage.setItem("text", markup);
-			$('#summernote').summernote('destroy');
-			location.href = "writeboard.do"; 
-		};*/
-		
-		 
-		 
-/*		$('#editor_iframe').contents().find('#summernote').html();*/
-		
-		$(function() {
-			$('#summernote').summernote({
-				height: 600,
-				lang : 'ko-KR'
-			});
-			
-
-		});
-		
-
-		//location.href = "writeboard.do";	
-</script>
-
 
 </body>
 </html>

@@ -24,14 +24,16 @@
         select * from ARTICLE where BOARD_ID=#{id}
         and (case when #{search_style}='title' then TITLE ELSE WRITER end) like '%'||#{keyword}||'%'
     </select>
-    <select id="searchArtFromUser" parameterType="MypageVO" resultType="MypageVO">
-        select b.BOARDNAME,a.* from BOARD b,ARTICLE a where b.id=a.BOARD_ID and a.WRITER_id=#{writer_id}
+    <resultMap id="MypageMap" type="MypageVO">
+        <result property="article_id" column="id"></result>
+    </resultMap>
+    <select id="searchArtFromUser" parameterType="MypageVO" resultMap="MypageMap">
+        select b.BOARDNAME,a.* from BOARD b,ARTICLE a where b.id=a.BOARD_ID and a.WRITER_id=#{writer_id} order by a.DATE_CREATED desc
     </select>
     <select id="getMyComments" parameterType="MypageVO" resultType="MypageVO">
-        select b.BOARDNAME,a.BOARD_ID,c.id,a.TITLE,c.CONTENT,c.DATE_CREATED from BOARD b,COMMENTS c,ARTICLE a
-        where b.id=a.BOARD_ID and a.ID=c.ARTICLE_ID and c.WRITER_ID=#{writer_id}
+        select b.BOARDNAME,a.BOARD_ID,c.id,a.TITLE,c.article_id,c.CONTENT,c.DATE_CREATED from BOARD b,COMMENTS c,ARTICLE a
+        where b.id=a.BOARD_ID and a.ID=c.ARTICLE_ID and c.WRITER_ID=#{writer_id} order by c.DATE_CREATED desc
     </select>
-
     <insert id="insertArticle" parameterType="ArticleVO">
         insert into article(id, board_id, title, writer, writer_id, up_cnt, view_cnt, text, date_created, category, visible, comment_cnt)
         values (null, #{board_id}, #{title},#{writer},#{writer_id},0,0,#{text},sysdate,#{category},'1',0)
@@ -46,6 +48,9 @@
     <select id="getArticle" parameterType="ArticleVO" resultMap="ArticleMap">
         select a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and a.id=#{id}
     </select>
+    <update id="updateViewCnt" parameterType="ArticleVO">
+        update ARTICLE set VIEW_CNT=VIEW_CNT+1 where ID=#{id}
+    </update>
     <update id="plusCommentCnt" parameterType="CommentsVO">
         update ARTICLE set COMMENT_CNT=COMMENT_CNT+1 where ID=#{article_id}
     </update>

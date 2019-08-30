@@ -51,6 +51,12 @@ public class BoardServiceImpl implements BoardService{
         return true;
     }
 
+    @Override
+    public boolean plusViewCnt(ArticleVO vo) throws ClassNotFoundException, SQLException {
+        boardDAO.updateViewCnt(vo);
+        return false;
+    }
+
 
     @Override
     public ArticleVO selectArt(ArticleVO vo) throws ClassNotFoundException, SQLException {

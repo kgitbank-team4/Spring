@@ -4,7 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.Mod;
 
 import java.sql.SQLException;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,8 +43,6 @@ public class BoardController {
 
     @RequestMapping(value = "/freeboard.do")//자유
     public String freeboard(BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
-        System.out.println(vo.getSort());
-        System.out.println(vo.getId());
         model.addAttribute("ArtList", boardService.selectArtList(vo));
         return "freeboard";
     }
@@ -104,7 +102,52 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/showfreeboard.do")
-    public String getArticle(ArticleVO vo, Model model) throws SQLException, ClassNotFoundException {
+    public String getArticle(ArticleVO vo, Model model, HttpServletRequest request,HttpServletResponse response) throws SQLException, ClassNotFoundException {
+        Cookie[] cookies = request.getCookies();
+        String[] cookieVal;
+        int sw = 0;
+        if(cookies!=null&&cookies.length>0){
+            System.out.println("1번");
+            for (Cookie co:cookies) {
+                if(co.getName().equals("page")){
+                    System.out.println("2번");
+                    cookieVal = co.getValue().split(":");
+                    for (String val:cookieVal){
+                        System.out.println("3번");
+                        if(val.equals(String.valueOf(vo.getId()))){
+                            sw = 1;
+                            break;
+                        }
+                    }
+                    if(sw == 1) {
+                        System.out.println("4번");
+                        break;
+                    }
+                    else{
+                        System.out.println("5번");
+                        sw=1;
+                        System.out.println(co.getValue());
+                        System.out.println(vo.getId());
+                        co.setValue(co.getValue()+":"+vo.getId());
+                        response.addCookie(co);
+                        boardService.plusViewCnt(vo);
+                    }
+                }
+            }
+            if(sw == 0) {
+
+                System.out.println("6번");
+                Cookie newCookie = new Cookie("page",String.valueOf(vo.getId()));
+                response.addCookie(newCookie);
+                boardService.plusViewCnt(vo);
+            }
+        }
+        else {
+            Cookie newCookie = new Cookie("page",String.valueOf(vo.getId()));
+            response.addCookie(newCookie);
+            boardService.plusViewCnt(vo);
+        }
+
         model.addAttribute("Article", boardService.selectArt(vo));
         model.addAttribute("Comment", boardService.selectComment(vo));
         return "showfreeboard";
