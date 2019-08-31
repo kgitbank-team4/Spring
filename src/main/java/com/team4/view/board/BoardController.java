@@ -1,7 +1,10 @@
 package com.team4.view.board;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,19 +37,27 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/freeboard.do")//자유
-    public String freeboard(@RequestParam(defaultValue="1") int curPage, BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
-    	///페이징
-    	int count = boardService.countArticle(vo);
-    	PageMaker paging = new PageMaker(count, curPage);
-    	int start = paging.getPageBegin();
-    	int end = paging.getPageEnd();
-    	System.out.println(start +"  "+end);
-    	////
-    	System.out.println(vo.getSort());
-        System.out.println(vo.getId());
-        model.addAttribute("ArtList", boardService.selectArtList(vo, start, end));
-    	model.addAttribute("paging", paging);
-        return "freeboard";
+    public String freeboard(@RequestParam(defaultValue="1") int curPage, BoardVO vo, Model model, HttpSession session, HttpServletResponse response) throws SQLException, ClassNotFoundException, IOException {
+    	if(session.getAttribute("user") == null) {
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인 후 이용해주세요');</script>");
+			out.flush();
+			return "forward:home.do";
+    	}else {    	
+    		///페이징
+    		int count = boardService.countArticle(vo);
+    		PageMaker paging = new PageMaker(count, curPage);
+    		int start = paging.getPageBegin();
+    		int end = paging.getPageEnd();
+    		System.out.println(start +"  "+end);
+    		////
+    		System.out.println(vo.getSort());
+    		System.out.println(vo.getId());
+    		model.addAttribute("ArtList", boardService.selectArtList(vo, start, end));
+    		model.addAttribute("paging", paging);
+    		return "freeboard";
+    	}
     }
 
     @RequestMapping(value = "/hugiboard.do")//후기

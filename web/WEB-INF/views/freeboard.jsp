@@ -50,7 +50,7 @@
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="index.html">SPRING</a>
+      <a class="navbar-brand" href="home.do">SPRING</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -69,36 +69,42 @@
           	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
           	  	  aria-haspopup="true" aria-expanded="false">정보</a>
           	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">운항 정보</a></li>
-          		  <li><a class="nav-link" href="#">날씨 정보</a></li>
+          		  <li><a class="nav-link" href="#" onclick="x1()">운항 정보</a></li>
+          		  <li><a class="nav-link" href="weatherinfo.do?cityname=seoul">날씨 정보</a></li>
           	  </ul>
             </li>
             <li class="dropdown">
           	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
           	  	  aria-haspopup="true" aria-expanded="false">커뮤니티</a>
           	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">자유게시판</a></li>
+          		  <li><a class="nav-link" href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
           		  <li><a class="nav-link" href="#">Q & A</a></li>
           		  <li><a class="nav-link" href="#">공지사항</a></li>
           	  </ul>
             </li>
-            <li class="dropdown">
-          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-          	  	  aria-haspopup="true" aria-expanded="false">마이페이지</a>
-          	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">회원정보보기</a></li>
-          		  <li><a class="nav-link" href="#">내가 작성한 글</a></li>
-          		  <li><a class="nav-link" href="#">내 댓글</a></li>          		  
-          	  </ul>
-            </li>
-	        <li class="nav-item">
-	          <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
-	        </li>
+                <li class="dropdown">
+                       <a href="mypage.do">마이페이지</a>
+                </li>
+                <li class="nav-item login login-active">
+                    <a class="nav-link-login" data-target="#modal1" data-toggle="modal" >로그인</a>
+                </li>
+                <li class="nav-item logout login-inactive">
+                     <a class="nav-link-login" href="logout.do">로그아웃</a>                   
+                </li>
         </ul>
       </div>
     </div>
   </nav>
-
+  <script>
+$(document).ready(function(){	
+	if( ${user.id} != null ) {
+		$("#mainNav .container #navbarResponsive .login").removeClass("login-active");
+		$("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");
+		$("#mainNav .container #navbarResponsive .login").addClass("login-inactive");
+		$("#mainNav .container #navbarResponsive .logout").addClass("login-active");
+	}
+});
+</script>
   <!-- Page Header -->
   <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
@@ -294,7 +300,7 @@
                         <div class="footer-address">
                             <ul>
                                 <li class="footer-contact"><a href="#">공지사항</a></li>
-                                <li class="footer-contact"><a href="#">자유게시판</a></li>
+                                <li class="footer-contact"><a href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
                                 <li class="footer-contact"><a href="#">Q & A</a></li>
                             </ul>
                         </div>
@@ -318,7 +324,7 @@
                     <div class="col-md-5">
                         <div class="copyright-menu pull-right">
                             <ul>
-                                <li><a href="#" class="active">Home</a></li>
+                                <li><a href="home.do" class="active">Home</a></li>
                                 <li><a href="#">Airport.co.kr</a></li>
                                 <li><a href="#">OpenWheaterMap.org</a></li>
                             </ul>
@@ -407,6 +413,17 @@
     
     function list(page){
     	location.href = "freeboard.do?curPage="+page+"&id=103&sort=lately";
+    }
+    
+    function x1() {
+        var d = new Date();
+        var stime = d.getHours();
+        if(stime>23){
+            var dtime = stime+1-24;
+        }
+        else
+            var dtime = stime+1
+        location.href="airinfo.do?schStTime="+stime+"00&schEdTime="+dtime+"00&schLineType=D&schIOType=O&schAirCode=GMP"
     }
 </script>
 </body>

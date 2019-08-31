@@ -74,14 +74,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <!-- <a href="mypage.do" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                       aria-haspopup="true" aria-expanded="false"> -->
                        <a href="mypage.do">마이페이지</a>
-<!--                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">회원정보보기</a></li>
-                        <li><a class="nav-link" href="#">내가 작성한 글</a></li>
-                        <li><a class="nav-link" href="#">내 댓글</a></li>
-                    </ul> -->
                 </li>
                 <li class="nav-item login login-active">
                     <a class="nav-link-login" data-target="#modal1" data-toggle="modal" >로그인</a>
@@ -160,7 +153,7 @@ $(document).ready(function(){
         <div class="col-md-6 post-tabs" role="navigation">
             <div role="tabpanel">
                 <ul class="nav nav-tabs tab2" role="tablist">
-                    <li role="presentation" class="active tablist1"><a href="#free" aria-controls="free" role="tab"
+                    <li role="presentation" class="active tablist1"><a href="freeboard.do?id=103&sort=lately" aria-controls="free" role="tab"
                                                                        data-toggle="tab">자유게시판</a></li>
                     <li role="presentation" class="tablist2"><a href="#qa" aria-controls="qa" role="tab"
                                                                 data-toggle="tab">Q & A</a></li>
@@ -368,7 +361,7 @@ $(document).ready(function(){
                 <div class="footer-address">
                     <ul>
                         <li class="footer-contact"><a href="#">공지사항</a></li>
-                        <li class="footer-contact"><a href="#">자유게시판</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
                         <li class="footer-contact"><a href="#">Q & A</a></li>
                     </ul>
                 </div>

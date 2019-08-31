@@ -67,7 +67,12 @@
 	background-image: url(img/rain.png);
 } */
 
-
+#mainNav .container #navbarResponsive .login-active{
+	display:inline-block;
+}
+#mainNav .container #navbarResponsive .login-inactive{
+	display:none;
+}
 
 @media only screen and (max-width: 992px) {
 	
