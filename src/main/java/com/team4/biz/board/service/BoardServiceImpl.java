@@ -161,6 +161,12 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
+    public boolean plusUpCnt(VoteVO vo) throws ClassNotFoundException, SQLException {
+        boardDAO.update(vo);
+        return true;
+    }
+
+    @Override
     public List<AirVO> getAirInfo(AirVO vo) throws ClassNotFoundException, SQLException {
         return apiService.getAirInfo(vo);
     }

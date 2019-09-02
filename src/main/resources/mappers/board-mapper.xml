@@ -74,6 +74,9 @@
     <insert id="insertVote" parameterType="VoteVO">
         insert into VOTE values (null,#{article_id},#{voter_id})
     </insert>
+    <update id="updateVote" parameterType="VoteVO">
+        update ARTICLE set UP_CNT=(select count(ID) from VOTE where ARTICLE_ID=#{article_id}) where id=#{article_id}
+    </update>
     <!--select * from ARTICLE where BOARD_ID=#{id}
     and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%'||#{keyword}||'%'-->
     <!--where BOARD_ID=#{id} and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%게시판%'-->

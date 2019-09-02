@@ -136,7 +136,7 @@
 							</span>				
 							<span class="freeboard-header-up">
 								<span class="freeboard-header-1" style="margin: 0 0 0 20px;">추천 수</span>
-								<span class="freeboard-header-2">${Article.up_cnt}</span>
+								<span id="voteNum" class="freeboard-header-2">${Article.up_cnt}</span>
 							</span>				
 							<span class="icondrop">
 							    <ion-icon name="more" data-toggle="tooltip" data-placement="top" title="더보기"></ion-icon>
@@ -181,6 +181,7 @@
                                     if (data == "success"){
                                         alert("추천 되었습니다")
                                         $("#heart").css('color','red')
+                                        $("#voteNum").html(${Article.up_cnt}+1)
                                     } else if(data == "fail"){
                                         alert("이미 추천한 글 입니다")
                                     }

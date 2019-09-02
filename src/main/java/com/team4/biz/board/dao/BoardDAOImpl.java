@@ -143,7 +143,7 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public void update(VoteVO vo) {
-
+        sqlSession.update(namespace+".updateVote",vo);
     }
 
     @Override

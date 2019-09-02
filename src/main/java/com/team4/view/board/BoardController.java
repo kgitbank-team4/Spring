@@ -209,6 +209,7 @@ public class BoardController {
         boolean result1 = boardService.selectVote(vo);
         if(!result1){
             boardService.insertVote(vo);
+            boardService.plusUpCnt(vo);
             return "success";
         }
         else

@@ -40,7 +40,7 @@ public interface BoardService {
     //추천관련 서비스
     public boolean insertVote(VoteVO vo) throws ClassNotFoundException, SQLException;
     public boolean selectVote(VoteVO vo) throws ClassNotFoundException, SQLException;
-
+    public boolean plusUpCnt(VoteVO vo ) throws ClassNotFoundException, SQLException;
     //Api서비스
     public List<AirVO> getAirInfo(AirVO vo) throws ClassNotFoundException, SQLException;
 
