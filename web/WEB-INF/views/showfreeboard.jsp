@@ -143,7 +143,7 @@
 							  	<ul class="icondrop-menu">
 								    <li><a href="javascript:void(0);" onclick="vote()" class="board-up1">추천</a></li>
 								    <li><a href="#" data-target="#modal-boarddlt" data-toggle="modal" class="upanddel2" style="display: none">글 삭제</a></li>
-								    <li><a href="#" class="upanddel2" style="display: none">글 수정</a></li>
+								    <li><a href="updateView.do?id=${Article.id}" class="upanddel2" style="display: none">글 수정</a></li>
 								    <li><a href="#">목록으로</a></li>
 							    </ul>
 							</span>
