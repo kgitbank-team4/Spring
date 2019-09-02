@@ -198,7 +198,12 @@ public class BoardController {
         boardService.insertArt(vo);
         return ("redirect:freeboard.do?id="+vo.getBoard_id()+"&sort=lately");
     }
-    @RequestMapping(value = "/deleteArt.do")
+    @RequestMapping(value = "/hideArt.do")
+    public String hideArticle(ArticleVO vo,Model model) throws ClassNotFoundException, SQLException{
+        boardService.hideArt(vo);
+        return ("redirect:freeboard.do?id="+vo.getBoard_id()+"&sort=lately");
+    }
+    @RequestMapping(value = "/deleteArt.do")//미완성임
     public String deleteArticle(ArticleVO vo,Model model) throws ClassNotFoundException, SQLException{
         boardService.deleteArt(vo);
         return ("redirect:freeboard.do?id="+vo.getBoard_id()+"&sort=lately");

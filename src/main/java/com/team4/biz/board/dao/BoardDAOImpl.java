@@ -38,7 +38,7 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public void hide(ArticleVO vo){
-
+        sqlSession.update(namespace+".hideArt",vo);
     }
 
     @Override

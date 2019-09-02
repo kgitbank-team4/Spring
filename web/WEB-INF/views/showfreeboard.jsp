@@ -141,7 +141,7 @@
 							<span class="icondrop">
 							    <ion-icon name="more" data-toggle="tooltip" data-placement="top" title="더보기"></ion-icon>
 							  	<ul class="icondrop-menu">
-								    <li><a href="#" class="board-up1">추천</a></li>
+								    <li><a href="javascript:void(0);" onclick="vote()" class="board-up1">추천</a></li>
 								    <li><a href="#" data-target="#modal-boarddlt" data-toggle="modal" class="upanddel2" style="display: none">글 삭제</a></li>
 								    <li><a href="#" class="upanddel2" style="display: none">글 수정</a></li>
 								    <li><a href="#">목록으로</a></li>
@@ -456,7 +456,7 @@
 </div>
 <script>
     function boarddel() {
-        location.replace("deleteArt.do?id=${Article.id}&board_id=${Article.board_id}");
+        location.replace("hideArt.do?id=${Article.id}&board_id=${Article.board_id}");
     }
 </script>
 
