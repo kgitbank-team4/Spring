@@ -138,7 +138,7 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public void insert(VoteVO vo) {
-
+        sqlSession.insert(namespace+".insertVote",vo);
     }
 
     @Override

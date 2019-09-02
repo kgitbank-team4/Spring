@@ -96,29 +96,34 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/showfreeboard.do")
-    public String getArticle(ArticleVO vo, Model model, HttpServletRequest request,HttpServletResponse response) throws SQLException, ClassNotFoundException {
+    public String getArticle(ArticleVO vo, Model model, HttpServletRequest request,HttpServletResponse response,HttpSession session) throws SQLException, ClassNotFoundException {
+        UserVO uvo = (UserVO)session.getAttribute("user");
+        VoteVO vvo = new VoteVO();
+        vvo.setVoter_id(uvo.getId());
+        vvo.setArticle_id(vo.getId());
+        boolean result1 = boardService.selectVote(vvo);
         Cookie[] cookies = request.getCookies();
         String[] cookieVal;
         int sw = 0;
         if(cookies!=null&&cookies.length>0){
-            System.out.println("1번");
+            //System.out.println("1번");
             for (Cookie co:cookies) {
                 if(co.getName().equals("page")){
-                    System.out.println("2번");
+                    //System.out.println("2번");
                     cookieVal = co.getValue().split(":");
                     for (String val:cookieVal){
-                        System.out.println("3번");
+                        //System.out.println("3번");
                         if(val.equals(String.valueOf(vo.getId()))){
                             sw = 1;
                             break;
                         }
                     }
                     if(sw == 1) {
-                        System.out.println("4번");
+                        //System.out.println("4번");
                         break;
                     }
                     else{
-                        System.out.println("5번");
+                        //System.out.println("5번");
                         sw=1;
                         System.out.println(co.getValue());
                         System.out.println(vo.getId());
@@ -130,7 +135,7 @@ public class BoardController {
             }
             if(sw == 0) {
 
-                System.out.println("6번");
+                //System.out.println("6번");
                 Cookie newCookie = new Cookie("page",String.valueOf(vo.getId()));
                 response.addCookie(newCookie);
                 boardService.plusViewCnt(vo);
@@ -144,6 +149,8 @@ public class BoardController {
 
         model.addAttribute("Article", boardService.selectArt(vo));
         model.addAttribute("Comment", boardService.selectComment(vo));
+        if(result1)
+            model.addAttribute("Vote","1");
         return "showfreeboard";
     }
 
@@ -200,7 +207,7 @@ public class BoardController {
     @RequestMapping(value = "/insertVote.do")
     public String selectVote(VoteVO vo,Model model) throws ClassNotFoundException, SQLException{
         boolean result1 = boardService.selectVote(vo);
-        if(result1){
+        if(!result1){
             boardService.insertVote(vo);
             return "success";
         }

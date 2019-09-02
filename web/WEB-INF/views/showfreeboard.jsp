@@ -160,7 +160,7 @@
                 <!-- 프리보드 댓글 -->
                 <div class="freeboard-comment-up">
                     <div class="comment-up">
-                        <a href="#">
+                        <a href="javascript:void(0)" onclick="vote()">
                             <ion-icon id="heart" class="heart" name="heart" data-toggle="tooltip" data-placement="bottom"
                                       title="추천"></ion-icon>
                         </a>
@@ -169,7 +169,24 @@
 							</span>
                     </div>
                     <script>
-
+                        $(function () {
+                            if("${Vote}"=="1"){
+                                $("#heart").css('color','red')
+                            }
+                        });
+                        function vote() {
+                            $.ajax({
+                                url : "insertVote.do?article_id=${Article.id}&voter_id=${user.id}",
+                                success : function(data){
+                                    if (data == "success"){
+                                        alert("추천 되었습니다")
+                                        $("#heart").css('color','red')
+                                    } else if(data == "fail"){
+                                        alert("이미 추천한 글 입니다")
+                                    }
+                                }
+                            });
+                        }
                     </script>
                     <br>
                     <div class="comment1">

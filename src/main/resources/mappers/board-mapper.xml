@@ -72,7 +72,7 @@
         select * from VOTE where ARTICLE_ID=#{article_id} and VOTER_ID=#{voter_id}
     </select>
     <insert id="insertVote" parameterType="VoteVO">
-        insert into values (null,#{article_id},#{voter_id})
+        insert into VOTE values (null,#{article_id},#{voter_id})
     </insert>
     <!--select * from ARTICLE where BOARD_ID=#{id}
     and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%'||#{keyword}||'%'-->
