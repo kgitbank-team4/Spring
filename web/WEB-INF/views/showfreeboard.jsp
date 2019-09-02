@@ -161,13 +161,16 @@
                 <div class="freeboard-comment-up">
                     <div class="comment-up">
                         <a href="#">
-                            <ion-icon class="heart" name="heart" data-toggle="tooltip" data-placement="bottom"
+                            <ion-icon id="heart" class="heart" name="heart" data-toggle="tooltip" data-placement="bottom"
                                       title="추천"></ion-icon>
                         </a>
                         <span class="clip-file">
 								<span class="clip-back"><a href="#">목록으로</a></span>
 							</span>
                     </div>
+                    <script>
+
+                    </script>
                     <br>
                     <div class="comment1">
                         <form action="insertComment.do">
@@ -257,14 +260,14 @@
     });
 </script>
 
-<script>
+<%--<script>
     $(".freeboard-comment-up .comment-up a").click(function () {
         alert("추천하셨습니다.");
     });
     $(".icondrop .icondrop-menu .board-up1").click(function () {
         alert("추천하셨습니다.");
     });
-</script>
+</script>--%>
 
 <!-- Start Footer Section -->
 <section id="footer-section" class="footer-section">

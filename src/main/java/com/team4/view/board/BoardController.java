@@ -6,20 +6,14 @@ import java.sql.SQLException;
 
 import javax.servlet.http.*;
 
+import com.team4.biz.board.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.team4.biz.board.api.vo.AirVO;
 import com.team4.biz.board.service.BoardService;
-import com.team4.biz.board.vo.ArticleVO;
-import com.team4.biz.board.vo.BoardVO;
-import com.team4.biz.board.vo.CommentsVO;
-import com.team4.biz.board.vo.ContentVO;
-import com.team4.biz.board.vo.MypageVO;
 import com.team4.biz.user.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -201,6 +195,17 @@ public class BoardController {
     public String deleteArticle(ArticleVO vo,Model model) throws ClassNotFoundException, SQLException{
         boardService.deleteArt(vo);
         return ("redirect:freeboard.do?id="+vo.getBoard_id()+"&sort=lately");
+    }
+    @ResponseBody
+    @RequestMapping(value = "/insertVote.do")
+    public String selectVote(VoteVO vo,Model model) throws ClassNotFoundException, SQLException{
+        boolean result1 = boardService.selectVote(vo);
+        if(result1){
+            boardService.insertVote(vo);
+            return "success";
+        }
+        else
+            return "fail";
     }
 
     /*@RequestMapping(value ="/UpdateUserBoard.do")

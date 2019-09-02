@@ -68,6 +68,12 @@
     <delete id="deleteComment" parameterType="CommentsVO">
         delete from COMMENTS where ID=#{id}
     </delete>
+    <select id="selectVote" parameterType="VoteVO" resultType="VoteVO">
+        select * from VOTE where ARTICLE_ID=#{article_id} and VOTER_ID=#{voter_id}
+    </select>
+    <insert id="insertVote" parameterType="VoteVO">
+        insert into values (null,#{article_id},#{voter_id})
+    </insert>
     <!--select * from ARTICLE where BOARD_ID=#{id}
     and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%'||#{keyword}||'%'-->
     <!--where BOARD_ID=#{id} and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%게시판%'-->

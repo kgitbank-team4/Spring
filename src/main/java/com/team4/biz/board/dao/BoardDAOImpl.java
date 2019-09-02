@@ -153,7 +153,7 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public VoteVO select(VoteVO vo) {
-        return null;
+        return sqlSession.selectOne(namespace+".selectVote",vo);
     }
 
     @Override

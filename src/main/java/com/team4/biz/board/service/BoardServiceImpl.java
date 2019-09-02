@@ -153,8 +153,11 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public VoteVO selectVote(VoteVO vo) throws ClassNotFoundException, SQLException {
-        return boardDAO.select(vo);
+    public boolean selectVote(VoteVO vo) throws ClassNotFoundException, SQLException {
+        if(boardDAO.select(vo)!=null)
+            return false;
+        else
+            return true;
     }
 
     @Override
