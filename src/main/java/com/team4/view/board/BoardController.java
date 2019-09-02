@@ -193,11 +193,14 @@ public class BoardController {
         */
     @RequestMapping(value = "/writeboard.do", method = RequestMethod.POST)
     public String insertBoard(ArticleVO vo, Model model, HttpSession session) throws ClassNotFoundException, SQLException {
-        System.out.println(vo.toString());
+        //System.out.println(vo.toString());
         boardService.insertArt(vo);
-        model.addAttribute("sort", "lately");
-        model.addAttribute("id", vo.getBoard_id());
-        return "redirect:freeboard.do";
+        return ("redirect:freeboard.do?id="+vo.getBoard_id()+"&sort=lately");
+    }
+    @RequestMapping(value = "/deleteArt.do")
+    public String deleteArticle(ArticleVO vo,Model model) throws ClassNotFoundException, SQLException{
+        boardService.deleteArt(vo);
+        return ("redirect:freeboard.do?id="+vo.getBoard_id()+"&sort=lately");
     }
 
     /*@RequestMapping(value ="/UpdateUserBoard.do")

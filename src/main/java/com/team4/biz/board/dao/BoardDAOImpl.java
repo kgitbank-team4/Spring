@@ -43,7 +43,7 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public void delete(ArticleVO vo) {
-
+        sqlSession.delete(namespace+".deleteArt",vo);
     }
 
     @Override

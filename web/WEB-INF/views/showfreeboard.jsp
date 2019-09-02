@@ -425,7 +425,7 @@
                 </div>
                 <div class="modal-body">
         					<span class="delete_ok">
-        						<span class="okok1"><input type="submit" value="OK"></span>
+        						<span class="okok1"><input type="button" onclick="boarddel()" value="OK"></span>
         						<span class="okcancel1"><button data-dismiss="modal">Cancel</button></span>
         					</span>
                 </div>
@@ -433,6 +433,11 @@
         </div>
     </div>
 </div>
+<script>
+    function boarddel() {
+        location.replace("deleteArt.do?id=${Article.id}&board_id=${Article.board_id}");
+    }
+</script>
 
 
 <!-- Bootstrap core JavaScript -->

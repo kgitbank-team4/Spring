@@ -164,7 +164,7 @@
 					}
 				</script>
 				<br>
-				<table class="table table-hover">
+				<table class="table table-hover" id="example1">
 					<thead>
 						<tr>
 							<th class="w-10" scope="col">번호</th>
@@ -175,7 +175,7 @@
 						</tr>
 					</thead>
 					<tbody>
-                    <c:forEach var="Artlist" items="${ArtList}" begin="0" end="10">
+                    <c:forEach var="Artlist" items="${ArtList}">
                         <fmt:formatDate value="${Artlist.date_created}" var="date" pattern="yyyy-MM-dd"/>
                         <tr>
                             <td id="td">${Artlist.id}</td>
@@ -190,22 +190,27 @@
 
 				<hr>
 				<!-- 페이징 -->
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<ul class="pagination justify-content-center">
-								<li class="page-item"><a class="page-link"
-									href="javascript:void(0);">처음</a></li>
-								<li class="page-item"><a class="page-link"
-									href="javascript:void(0);">1</a></li>
-								<li class="page-item"><a class="page-link"
-									href="javascript:void(0);">2</a></li>
-								<li class="page-item"><a class="page-link"
-									href="javascript:void(0);">끝</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
+                <script>
+                    $(document).ready(function() {
+                        // DataTable initialisation
+                        $('#example1').DataTable({
+                            "paging": true,
+                            "autoWidth": true,
+                            "columnDefs": [
+                                {
+                                    "targets": 3,
+                                    render: function(data, type, full, meta) {
+                                        if (type === 'display' && data == 'Done') {
+                                            var rowIndex = meta.row+1;
+                                            return data;
+                                        } else {
+                                            return data;
+                                        }
+                                    }
+                                }]
+                        });
+                    });
+                </script>
 			</div>
 		</div>
 	</div>
@@ -388,5 +393,7 @@
         location.href='search.do?id=103&search_style='+target+'&keyword='+keyword
     }
 </script>
+<link href="css/paging.css" rel="stylesheet" type="text/css">
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 </body>
 </html>

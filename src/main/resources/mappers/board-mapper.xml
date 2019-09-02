@@ -38,7 +38,9 @@
         insert into article(id, board_id, title, writer, writer_id, up_cnt, view_cnt, text, date_created, category, visible, comment_cnt)
         values (null, #{board_id}, #{title},#{writer},#{writer_id},0,0,#{text},sysdate,#{category},'1',0)
     </insert>
-
+    <delete id="deleteArt" parameterType="ArticleVO">
+        delete from ARTICLE where id=#{id}
+    </delete>
     <resultMap id="CommentsMap" type="CommentsVO">
         <result column="nickname" property="writer"/>
     </resultMap>
