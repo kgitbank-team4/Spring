@@ -47,9 +47,7 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public boolean updateArt(ArticleVO vo) throws ClassNotFoundException, SQLException {
-        System.out.println("도착");
         boardDAO.update(vo);
-        System.out.println("성공");
         return true;
     }
 
