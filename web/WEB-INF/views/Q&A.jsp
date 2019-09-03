@@ -3,43 +3,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<title>Q&A</title>
-<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+<title>Spring - Travel Community Site</title>
   <!-- Bootstrap core CSS -->
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-  <!-- Custom styles for this template -->
   
-  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
   
  <!-- Bootstrap core CSS -->
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/customfree.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/customfree.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-  <!-- Custom styles for this template -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 </head>
+
 <body>
 
 <!-- Navigation -->
@@ -119,19 +118,19 @@ $(document).ready(function(){
   <!-- 태이블 -->
 	<div class="container" id="bootstrap-override">
 		<div class="row">
-			<div class="col">
+			<div class="col mx-auto">
 				<div class="container">
 					<h3>Q & A</h3>
 					<hr>
 					<div id="well" class="d-flex">
-						<div class="p-2 align-self-center">
+						<div class="p-2 align-self-center a1">
 							<select>
 								<option value="제목" selected>제목<span class="caret"></span></option>
 								<option value="닉네임">닉네임</option>
 								<option value="닉네임+제목">닉네임+제목</option>
 							</select>
 						</div>
-						<div class="p-2 align-self-center">
+						<div class="p-2 align-self-center a1">
 							<div class="input-group">
 								<input type="text" class="form-control form2" placeholder="검색">
 								<button class="btn11" onclick="x()">
@@ -139,10 +138,12 @@ $(document).ready(function(){
 								</button>
 							</div>
 						</div>
-						<div class="p-2 ml-auto">
+
+						<div class="p-2 ml-auto writebtn a2">
 							<button class="gradient-btn1 gradient-btn2 p-2 a22"
 							type="button"  onclick="location.href='freewrite.do?id=104'">질문하기</button>
 						</div>
+
 					</div>
 				</div>
 
@@ -155,25 +156,30 @@ $(document).ready(function(){
 					</ul>
 				</div>
 				<br>
-				<table class="table table-hover">
+			<!-- 	<iframe src="mobileBoardList.html" id="mobile-iframe" name="mobile-iframe"
+					width="100%" height="auto" title="모바일버전게시판리스트" frameborder="0" overflow="visible"></iframe>
+				 -->	
+				<table class="table table-borderless free-table">
 					<thead>
-						<tr>
-							<th class="w-10" scope="col">번호</th>
-							<th class="w-50" scope="col">제목</th>
-							<th class="w-20" scope="col">글쓴이</th>
-							<th class="w-10" scope="col">날짜</th>
-							<th class="w-10" scope="col">조회수</th>
+						<tr class="trnone1">
+							<th class="table-head1">번호</th>
+							<th>제목</th>
+							<th>글쓴이</th>
+							<th>날짜</th>
+							<th>조회수</th>
 						</tr>
 					</thead>
-					<tbody>
+
+					<tbody  class="free-table2">
 					<c:forEach var="Artlist" items="${ArtList}" begin="0" end="10">
                         <fmt:formatDate value="${Artlist.date_created}" var="date" pattern="yyyy-MM-dd"/>
 						<tr>
-							<th scope="row">${Artlist.id}</th>
-							<td><a href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}</a></td>
-							<td>${Artlist.writer}</td>
-							<td>${date}</td>
-							<td>${Artlist.view_cnt}</td>
+							<th scope="row" class="table-head1">${Artlist.id}</th>
+							<td class="title11 table-title1"><a href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}</a></td>
+							<td  class="xstd table-content1">${Artlist.writer}</td>
+							<td  class="xstd table-content1">${date}</td>
+							<td class="xstd table-content1">${Artlist.view_cnt}</td>
+
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -370,10 +376,9 @@ $(document).ready(function(){
   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
   <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
-
   
   <!-- 수정js -->
-  <script>
+	<script>
 	$(function(){
 		var clic=$("ul > li");
 		clic.find("a").click(function(){
@@ -403,6 +408,25 @@ $(document).ready(function(){
         location.href="airinfo.do?schStTime="+stime+"00&schEdTime="+dtime+"00&schLineType=D&schIOType=O&schAirCode=GMP"
     }
 </script>
+
+	
+	<!-- responsive jquery -->
+	<script>
+ 		$(window).resize(function() {
+		//창크기 변화 감지
+			function open_window() {
+				var windowWidth = $(window).width();
+				if (windowWidth < 992) {
+					$('.a22').text("<i class='fas fa-pencil-alt'></i>");
+					$('.a2').removeClass('ml-auto');
+				} else(windowWidth < 400) {
+					$('.trnone1').css('display', 'none');
+				} 
+			}
+		});
+	</script>
+	
+
 
 </body>
 </html>

@@ -1,0 +1,133 @@
+@font-face { 
+	font-family: 'S-CoreDream-3Light'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); 
+	font-weight: normal; 
+	font-style: normal; 
+}
+.mypage1{
+	margin: 80px auto;
+}
+.mypage-border .navpills li {
+	font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+	font-size: 17px;
+	font-weight: 600;
+}
+.mypage-border .mypage-table{
+	margin-top: 15px;
+	text-align: center;
+	font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+	
+}
+.mypage-border .mypage-table .table-header{
+	background: #dedede;
+	font-weight:550;
+	width:200px;
+	font-size:17.5px;
+}
+
+.mypage-border .mypage-table .table-child{
+	font-size:16px;
+	font-weight: 500;
+}
+
+.mypage-border .mypage-table .tablebt-tr:hover{
+	background:white;
+}
+.mypage-border .mypage-table .tablebt{
+	font-size: 17px;
+	font-weight: 550;
+}
+
+.mypage-border .mypage-table .modal-table .table-header{
+	width:100px;
+	
+}
+.page1 ul li a{
+	color: black;
+	font-size: 16px;
+}
+table td #nameresult{
+	font-size:12px;
+	font-style: italic;
+	color : red;	
+}
+.mypage-table caption{
+	caption-side: top;
+	font-size:14px;
+}
+.form2{
+	width:100px;
+}
+.btn11{
+	width:40px;
+	margin:0;
+	padding:4px;
+	border:0;
+	border-radius:4px;
+	background-color:transparent;
+}
+.chk,
+.chk2,
+.chk3{
+	display:none;
+}
+.paging-text-align{
+	text-align:center;
+}
+.gradient-btn1 {
+    font-family: 'S-CoreDream-3Light, sans-serif;
+    text-align: center;
+    transition: 0.5s;
+    border-radius: 10px;
+    width: 50px;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    display: inline-block;
+}
+.gradient-btn2 {
+	background-image: gray;
+	font-size: 14px;
+	color:black;
+}
+.btn-td:hover{
+	background:white;
+}
+.btn-td{
+	text-align:right;
+}
+.btnbox1 {
+    background-color:#BFD7E9;
+    border: none;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.ul1 ul li {
+  list-style: none;
+  margin-left: 0;
+  font-size:14px;
+ }
+.ul1 ul > li > a {
+  color: #797D7F;
+  text-decoration: none;
+  display: block;
+ }
+.ul1 ul > li:hover > a,
+.ul1 ul > li:focus > a,
+.ul1 ul > li:active > a,
+.ul1 ul > li.active >a {
+  color: black;
+  font-weight: bold;
+ }
+@media only screen and (max-width: 768px) {
+	.mypage-border .mypage-table .table-header{
+		width: 150px;
+		font-size: 15px;
+	}
+	.mypage-border .mypage-table .table-child{
+		font-size:15px;
+	}
+}

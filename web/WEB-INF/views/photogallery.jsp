@@ -138,7 +138,7 @@ $(document).ready(function(){
 								</button>
 							</div>
 						</div>
-						<div class="p-2 ml-auto">
+						<div class="p-2 ml-auto a2">
 							<button type="button" class="btn" onclick="location.href='freewrite.do?id=102'">
 								<i class="fas fa-pencil-alt"></i>사진올리기
 							</button>
@@ -185,7 +185,7 @@ $(document).ready(function(){
 								var imagesrc = this.src
 								$("."+${Artlist.id}).attr("src",imagesrc)							
 							})
-						</script>
+ 					</script>
 			</c:forEach>
 		</tr>
 				</table>

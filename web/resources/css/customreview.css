@@ -51,30 +51,71 @@
   color: black;
   font-weight: bold;
  }
-#div{
-	max-width:150px;
-	height:115px;
+ #a2-icon1{
+	display: none;
+	cursor: pointer;
+}
+ 
+ 
+/*                              */
+.li-box{
+	display:inline-block;
+	width:100%;
+	height:200px;
+	margin:1em;
+}
+.ul-group{
+	overflow:hidden;
+	padding:0 10px 10px;
+	border:1px;
+}
+.ul-group li{
+	overflow:hidden;
+	margin-bottom:10px;
+	padding:0;
+	clear:both;
+	list-style:none;
+}
+.ul-group b{
+	font-size:20px;
+}
+.ul-group li img{
+	display:inline-block;
+	float:left;
+	margin:0 10px 0 0;
+	border:none;
+}
+.ul-group li a{
+	color:#2d2c2d;
+	text-decoration:none;
+}
+.ul-group li a:hover{
+	text-decoration:none;
+}
+.ul-group li .li-title{
+	display:inline-block;
+	float:left;
+	margin:0 10px 0 0;
 	overflow:hidden;
 }
-#divtext{
-	margin-left:20px;
-	line-height:0.5;
+.ul-group li .li-content{
+	float:right;
+}
+
+#img{
+	width:20%;
+	height:115px;
+	overflow:hidden;
 }
 #td{
 	padding-left:20px;
 	width:15rem;
 	line-height:10px;
 }
-.fix1:after{
-	content: " ";
-	visibility: hidden;
-	display: block;
-	height: 0;
-	clear: both;
-}
 .list1{
 	margin-top:10px;
 }
+<<<<<<< HEAD
 .content11{
 	max-width: 200px;
 	white-space: nowrap;
@@ -88,6 +129,9 @@
 	text-overflow: ellipsis;
    
 }
+
+
+
 #bootstrap-override3 table{
 	margin-top:10px;
 }
@@ -98,6 +142,56 @@
 	text-decoration:none;
 }
 #bootstrap-override3 ul li{
-	border:0;
+	border:1;
+}
+.gradient-btn1 {
+    margin: 10px;
+    font-family: 'S-CoreDream-3Light, sans-serif;
+    font-size: 20px;
+    padding: 7px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #FFF;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    width: 100px;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    display: inline-block;
+}
+.gradient-btn1:hover{
+    margin: 8px 10px 12px;
+}
+.gradient-btn2 {
+	background-image: linear-gradient(to right, #c2e59c 0%, #64b3f4 51%, #c2e59c 100%)
+}
+#a2-icon1{
+	display: none;
+	cursor: pointer;
 }
 
+@media only screen and (max-width:992px) {
+  .a2 button{
+  	display: none;
+  }
+  #a2-icon1{
+  	display: inline-block;
+  	font-size: 18px;
+  }
+  #a2-icon1:hover{
+  	color: #999;
+  }
+	#img{
+		height:95px;
+		overflow:hidden;
+	}
+	.ul-group b,
+	.ul-group p{
+		font-size:14px;
+	}
+	.ul-group li .li-content{
+		font-size:10px;
+		vertical-align:center;
+	}
+	
+}

@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>포토갤러리</title>
+<title>여행후기</title>
 
-  <!-- Bootstrap core CSS -->
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -17,7 +19,7 @@
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/customwriteQ&A.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/customwriteReview.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
@@ -36,10 +38,10 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
    
-  <link href="${pageContext.request.contextPath}/resources/summernoteeditor/plugins/summernote-bs4.css" rel="stylesheet">
-  <script src="${pageContext.request.contextPath}/resources/summernoteeditor/plugins/summernote-bs4.js"></script>
+  <link href="${pageContext.request.contextPath}/resources/summernoteEditor/summernote-bs4.css" rel="stylesheet">
+  <script src="${pageContext.request.contextPath}/resources/summernoteEditor/summernote-bs4.js"></script>
   <!-- summer note korean language pack -->
-  <script src="${pageContext.request.contextPath}/resources/summernoteeditor/lang/summernote-ko-KR.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/summernoteEditor/lang/summernote-ko-KR.js"></script>
 </head>
 <body>
 
@@ -121,24 +123,26 @@ $(document).ready(function(){
 		<div class="row">
 			<div class="col">
 				<div class="container">
-					<h3>포토갤러리</h3>
+				<h3>포토갤러리 - 글쓰기</h3>
 					<hr>
 					<div id="well">
-						<div class="d-flex flex-row">
+
+						<div class="d-flex flex-row content-box1">
 							<div class="p-2">
 								<select name="category" id="category">
-									<option value="분류" selected>분류<span class="caret"></span></option>									
+<!-- 									<option value="아시아" selected>분류<span class="caret"></span></option> -->									
 									<option value="아시아">아시아</option>
 									<option value="미국">미국</option>
 									<option value="유럽">유럽</option>
 									<option value="호주">호주</option>
+
 								</select>
 							</div>
-							<div class="p-2">
+							<div class="content1">
 								<input type="text" class="form-control" name="title" id="title"
 									placeholder="제목을 입력하세요.">
 							</div>
-							<div class="p-2 ml-auto">
+							<div class="content2">
 								<input type="text" class="form-control" name="writer"
 									id="writer" value="${user.nickname}" readonly="readonly">
 							</div>
@@ -312,15 +316,8 @@ $(document).ready(function(){
         
         
   <!-- Bootstrap core JavaScript -->
-  <script src="${pageContext.request.contextPath}/resources/resources/vendor/jquery/jquery.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom scripts for this template -->
-  <script src="${pageContext.request.contextPath}/resources/resources/js/clean-blog.min.js"></script>
-
-	<!-- Bootstrap core JavaScript -->
   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
   <!-- Custom scripts for this template -->
   <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
   
@@ -334,8 +331,6 @@ $(document).ready(function(){
 		});
 	});
   </script>
-
-
 
 
 </body>
