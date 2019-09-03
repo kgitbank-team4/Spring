@@ -162,8 +162,6 @@ $(document).ready(function(){
                 <ul class="nav nav-tabs tab2" role="tablist">
                     <li role="presentation" class="active tablist1"><a href="#free" aria-controls="free" role="tab"
                                                                        data-toggle="tab">자유게시판</a></li>
-                    <li role="presentation" class="tablist2"><a href="#qa" aria-controls="qa" role="tab"
-                                                                data-toggle="tab">Q & A</a></li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
@@ -215,10 +213,8 @@ $(document).ready(function(){
         <div class="col-md-6 post-tabs" role="navigation">
             <div role="tabpanel">
                 <ul class="nav nav-tabs tab3" role="tablist">
-                    <li role="presentation" class="active tablist1"><a href="#airport" aria-controls="airport"
-                                                                       role="tab" data-toggle="tab">운항 정보</a></li>
-                    <li role="presentation" class="tablist2"><a href="#weather" aria-controls="weather" role="tab"
-                                                                data-toggle="tab">날씨 정보</a></li>
+                    <li role="presentation" class="active tablist3"><a href="#info" aria-controls="info" role="tab"
+                                                                       data-toggle="tab">Q & A</a></li>
 
                 </ul>
                 <!-- Tab panes -->
