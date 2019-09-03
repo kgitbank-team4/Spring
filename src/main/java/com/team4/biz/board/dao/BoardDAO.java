@@ -13,7 +13,7 @@ public interface BoardDAO {
     public List<ArticleVO> searchList(BoardVO vo);//검색
     public List<MypageVO> searchListFromUser(MypageVO vo);//닉네임으로 검색
     public List<MypageVO> searchMyComment(MypageVO vo);//닉네임으로 댓글 검색
-    /*public List<BoardVO> selectList(BoardVO vo);*/
+
 
     //글 읽기 입력 수정 삭제
     public void insert(ArticleVO vo);//글쓰기
@@ -25,6 +25,8 @@ public interface BoardDAO {
     //댓글 읽기 입력 수정 삭제
     public void insert(CommentsVO vo); //댓글쓰기
     public void update(CommentsVO vo); //댓글수정
+    public void plusCnt(CommentsVO vo);
+    public void minusCnt(CommentsVO vo);
     public void delete(CommentsVO vo); //댓글삭제
     public List<CommentsVO> selectCom(ArticleVO vo); //댓글 읽기
     public List<CommentsVO> selectList(CommentsVO vo);//댓글 목록

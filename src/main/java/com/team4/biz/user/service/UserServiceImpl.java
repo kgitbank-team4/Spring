@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService{
 	public boolean deleteUser(UserVO vo) throws ClassNotFoundException, SQLException {
 		userDAO.deleteUser(vo);
 		return true;
+
 	}
 
 	@Override
@@ -48,13 +49,13 @@ public class UserServiceImpl implements UserService{
 		String result = null;
 		try {
 			result = userDAO.idSearch(username);
-		}catch(Exception e) {
-		}
+		}catch(Exception e) {			
+		}		
 		if(result == null)
 			return false;
 		else
 			return true;
-
+		
 	}
 
 	@Override
@@ -68,9 +69,9 @@ public class UserServiceImpl implements UserService{
 			return false;
 		else
 			return true;
-
+		
 	}
-
+	
 
 
 }

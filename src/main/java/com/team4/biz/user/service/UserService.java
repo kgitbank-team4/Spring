@@ -10,8 +10,9 @@ public interface UserService {
 	public boolean updateUser(UserVO vo) throws ClassNotFoundException, SQLException; //회원정보수정
 	public boolean deleteUser(UserVO vo) throws ClassNotFoundException, SQLException; //탈퇴
 	public UserVO selectOneUser(UserVO vo) throws ClassNotFoundException, SQLException; //로그인, 회원정보보기
-	public List<UserVO> selectAllUser(UserVO vo) throws ClassNotFoundException, SQLException; //회원전체보기 -> 관리자
 
+	public List<UserVO> selectAllUser(UserVO vo) throws ClassNotFoundException, SQLException; //회원전체보기 -> 관리자
+	
 	public boolean idcheck(String username) throws ClassNotFoundException, SQLException;
 	public boolean nicknamecheck(String nickname) throws ClassNotFoundException, SQLException;
 }

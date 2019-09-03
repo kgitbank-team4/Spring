@@ -144,8 +144,9 @@
 							</div>
 						</div>
 						<div class="p-2 ml-auto writebtn a2">
-							<button class="gradient-btn1 gradient-btn2 p-2 a22" type="button">글쓰기</button>
-							<a href="#"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
+							<button class="gradient-btn1 gradient-btn2 p-2 a22" type="button"
+							 onclick="location.href='freewrite.do'">글쓰기</button>
+							<a href="freewrite.do"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
 						</div>				
 					</div>
 				</div>
@@ -361,13 +362,6 @@
   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
   <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
-
-
-<%--<!-- Bootstrap core JavaScript -->
-<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Custom scripts for this template -->
-<script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>--%>
 
 <!-- Custom freeboard js -->
 <script>

@@ -1,3 +1,4 @@
+
 package com.team4.biz.user.dao;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public class UserDAOImpl implements UserDAO {
 		String result = null;
 		try {
 			result =  sqlSession.selectOne(namespace+".selectUsername", username);
-		}catch(Exception e){
+		}catch(Exception e){	
 		}
 		return result;
 	}
@@ -63,3 +64,4 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 }
+

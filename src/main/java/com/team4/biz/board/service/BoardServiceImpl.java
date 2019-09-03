@@ -96,6 +96,18 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
+    public boolean plusCommentCnt(CommentsVO vo) throws ClassNotFoundException, SQLException {
+        boardDAO.plusCnt(vo);
+        return true;
+    }
+
+    @Override
+    public boolean minusCommentCnt(CommentsVO vo) throws ClassNotFoundException, SQLException {
+        boardDAO.minusCnt(vo);
+        return true;
+    }
+
+    @Override
     public List<CommentsVO> selectComment(ArticleVO vo) throws ClassNotFoundException, SQLException {
         return boardDAO.selectCom(vo);
     }

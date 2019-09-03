@@ -41,7 +41,7 @@
 
 <script>
 window.onload = function(){
-	engAndNumberFunc(document.getElementById("userID")); //영어&숫자
+	engAndNumberFunc(document.getElementById("userID")); //영어&숫자 
 	onlyNumberFunc(document.getElementById("userTEL")); //숫자만 입력
 }
 
@@ -52,7 +52,7 @@ function engAndNumberFunc(t){
 		this.value = v.replace(regexp,'');
 	}
 }
-
+	
 function onlyNumberFunc(t){
 		var regexp = /[^0-9]/gi;
   		t.onkeyup = function(e){
@@ -65,51 +65,49 @@ function onlyNumberFunc(t){
 
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">SPRING</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-            <li class="dropdown">
-          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-          	  	  aria-haspopup="true" aria-expanded="false">이야기</a>
-          	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">후기</a></li>
-          		  <li><a class="nav-link" href="#">사진</a></li>
-          	  </ul>
-            </li>
-	        <li class="dropdown">
-          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-          	  	  aria-haspopup="true" aria-expanded="false">정보</a>
-          	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">운항 정보</a></li>
-          		  <li><a class="nav-link" href="#">날씨 정보</a></li>
-          	  </ul>
-            </li>
-            <li class="dropdown">
-          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-          	  	  aria-haspopup="true" aria-expanded="false">커뮤니티</a>
-          	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">자유게시판</a></li>
-          		  <li><a class="nav-link" href="#">Q & A</a></li>
-          		  <li><a class="nav-link" href="#">공지사항</a></li>
-          	  </ul>
-            </li>
-            <li class="nav-item">
-	          <a class="nav-link-login" href="mypage.html">마이페이지</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
-	        </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top"
+		id="mainNav">
+		<div class="container">
+			<a class="navbar-brand" href="home.do">SPRING</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button"
+				data-toggle="collapse" data-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				Menu <i class="fas fa-bars"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">이야기</a>
+						<ul class="dropdown-menu">
+							<li><a class="nav-link" href="#">후기</a></li>
+							<li><a class="nav-link" href="#">사진</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">정보</a>
+						<ul class="dropdown-menu">
+							<li><a class="nav-link" href="#">운항 정보</a></li>
+							<li><a class="nav-link" href="#">날씨 정보</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">커뮤니티</a>
+						<ul class="dropdown-menu">
+							<li><a class="nav-link" href="#">자유게시판</a></li>
+							<li><a class="nav-link" href="#">Q & A</a></li>
+							<li><a class="nav-link" href="#">공지사항</a></li>
+						</ul></li>
+					<li class="nav-item"><a class="nav-link-login"
+						href="mypage.do">마이페이지</a></li>
+					<li class="nav-item"><a class="nav-link-login"
+						data-target="#modal1" data-toggle="modal">로그인</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
 	<!-- Page Header -->
 	<header class="masthead"
@@ -137,7 +135,7 @@ function onlyNumberFunc(t){
 						<br>
 						<form name="form1" action="signup.do">
 							<!-- <div class="form-group"> -->
-							<table>
+							<table>							
 								 <tr>
 									<td>
 										<div class="form-group">
@@ -145,7 +143,7 @@ function onlyNumberFunc(t){
 											<h6>아이디</h6>
 										</div>
 									</td>
-								</tr>
+								</tr> 
 								<tr>
 									<td>
 									<input type="text" class="form-control" id="userID" name="username" placeholder="영문,숫자 12글자이하로 입력하세요"></td>
@@ -201,7 +199,7 @@ function onlyNumberFunc(t){
 								<tr>
 									<td colspan="2" align="center">
 										<div class="form-group">
-											<input type="checkbox" name="agree" id="agree_id" value='agree'>
+											<input type="checkbox" name="agree" id="agree_id" value='agree'> 
 											<em style="color: red">*</em>
 											<h6>개인정보수집 동의(필수)</h6>
 										</div>
@@ -370,11 +368,11 @@ function onlyNumberFunc(t){
 $(document).ready(function() {
 	var userInputId = getCookie("userInputId");
 	$("#inputId1").val(userInputId);
-
+	
 	if($("#inputId1").val() != ""){
 		$("#Saveid").attr("checkd",true); //아이디 저장을 체크상태로 두기
 	}
-
+	
 	$("#Saveid").change(function() {//체크박스에 변화 발생시
 		if($("#Saveid").is(":checked")){//아이디 저장 체크한 상태
 			var userInputId = $("#inputId1").val();
@@ -383,7 +381,7 @@ $(document).ready(function() {
 			deleteCookie("userInputId");
 		}
 	});
-
+	
 	///아이디 저장 체크한 상태에서 id 입력
 	$("#inputId1").keyup(function() { //아이디 입력 칸에 아이디 입력할 때
 		if($("#Saveid").is(":checked")){//아이디 저장 체크한 상태
@@ -399,7 +397,7 @@ function setCookie(cookieName, value, exdays){
 	exdate.setDate(exdate.getDate()+exdays);
 	var cookieValue = escape(value) + ((exdays==null)? "" : "; expires="+exdate.toGMTString());
 	document.cookie = cookieName + "=" + cookieValue;
-
+	
 }
 
 //쿠키삭제
@@ -496,13 +494,13 @@ function check(){
 	var agree = document.getElementById("agree_id").checked;
 	var innertext1 = document.getElementById("idresult").innerHTML;
 	var innertext2 = document.getElementById("nameresult").innerHTML;
-
+	
 	if(id == ''){
 		alert('아이디를 입력하세요.');
 		document.getElementById("userID").focus();
 		return false;
 	}
-
+	
 	if(pw == ''){
 		alert('비밀번호를 입력하세요.');
 		document.getElementById("userPW").focus();
@@ -512,24 +510,24 @@ function check(){
 		document.getElementById("userPWCK").focus();
 		return false;
 	}
-
+	
 	if(nick == ''){
 		alert('닉네임을 입력하세요.');
 		document.getElementById("userNICK").focus();
 		return false;
 	}
-
+	
 	if(tel == ''){
 		alert('전화번호를 입력하세요.');
 		document.getElementById("userTEL").focus();
 		return false;
 	}
-
+	
 	if(!agree){
 		alert('개인정보수집에 동의해주세요.');
 		return false;
 	}
-
+	
 	if(innertext1 == "" || result1 == 0){
 		alert("id 중복체크를 해주세요!");
 		return false;
@@ -538,7 +536,7 @@ function check(){
 		alert("닉네임 중복체크를 해주세요!");
 		return false;
 	}
-
+	
 	return true;
 }
 
@@ -559,11 +557,11 @@ function idCheck(){
 				} else if(data == "fail"){
 					$("#idresult").text("중복된 아이디입니다.");
 					$("#userID").val("");
-					result1 = 0;
-				}
-		}
+					result1 = 0;	
+				}				
+		}		
 		});
-
+		
 	}
 
 //닉네임 중복체크
@@ -578,11 +576,12 @@ function nicknameCheck(){
 				} else if(data == "fail"){
 					$("#nameresult").text("중복된 닉네임입니다.");
 					$("#userNICK").val("");
-					result2 = 0;
-				}
-		}
+					result2 = 0;	
+				}				
+		}		
 		});
 }
 
 </script>
 </html>
+
