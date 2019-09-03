@@ -30,10 +30,10 @@
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/customfree.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/customfree.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -117,19 +117,19 @@
   <!-- 태이블 -->
 	<div class="container" id="bootstrap-override">
 		<div class="row">
-			<div class="col">
+			<div class="col mx-auto">
 				<div class="container">
 					<h3>자유게시판</h3>
 					<hr>
 					<div id="well" class="d-flex">
-						<div class="p-2 align-self-center">
-                            <select id="selectbox">
-                                <option value="title" selected>제목<span class="caret"></span></option>
-                                <option value="nick">닉네임</option>
-                                <option value="닉네임+제목">닉네임+제목</option>
-                            </select>
+						<div class="p-2 align-self-center a1">
+							<select id="selectbox">
+								<option value="title" selected>제목<span class="caret"></span></option>
+								<option value="nick">닉네임</option>
+								<option value="닉네임+제목">닉네임+제목</option>
+							</select>
 						</div>
-						<div class="p-2 align-self-center">
+						<div class="p-2 align-self-center a1">
 							<div class="input-group">
 								<input type="text" id=searchinput class="form-control form2" placeholder="검색">
 								<button class="btn11" onclick="x()">
@@ -143,9 +143,10 @@
                                 </div>--%>
 							</div>
 						</div>
-						<div class="p-2 ml-auto">
-							<button class="gradient-btn1 gradient-btn2 p-2 a22"
-							type="button" onclick="location.href='freewrite.do'">글쓰기</button>
+						<div class="p-2 ml-auto writebtn a2">
+							<button class="gradient-btn1 gradient-btn2 p-2 a22" type="button"
+							 onclick="location.href='freewrite.do'">글쓰기</button>
+							<a href="freewrite.do"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
 						</div>
 					</div>
 				</div>
@@ -164,53 +165,49 @@
 					}
 				</script>
 				<br>
-				<table class="table table-hover" id="example1">
+
+				<table class="table table-borderless free-table">
 					<thead>
-						<tr>
-							<th class="w-10" scope="col">번호</th>
-							<th class="w-50" scope="col">제목</th>
-							<th class="w-20" scope="col">글쓴이</th>
-							<th class="w-10" scope="col">날짜</th>
-							<th class="w-10" scope="col">조회수</th>
+						<tr class="trnone1">
+							<th table-head1">번호</th>
+							<th>제목</th>
+							<th>글쓴이</th>
+							<th>날짜</th>
+							<th>조회수</th>
 						</tr>
 					</thead>
 					<tbody>
                     <c:forEach var="Artlist" items="${ArtList}">
                         <fmt:formatDate value="${Artlist.date_created}" var="date" pattern="yyyy-MM-dd"/>
-                        <tr>
-                            <td id="td">${Artlist.id}</td>
-                            <td id="td"><a href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}</a></td>
-                            <td id="td">${Artlist.writer}</td>
-                            <td id="td">${date}</td>
-                            <td id="td">${Artlist.view_cnt}</td>
-                        </tr>
-                    </c:forEach>
+						<tr>
+							<th id="td" class="table-head1">${Artlist.id}</th>
+							<td id="td" class="title11 table-title1"><a href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}&nbsp;&nbsp;&nbsp;<span class="badge badge-warning">3</span></a></td>
+							<td id="td" class="xstd table-content1">${Artlist.writer}</td>
+							<td id="td" class="xstd table-content1">${date}</td>
+							<td id="td" class="xstd table-content1">${Artlist.view_cnt}</td>
+						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 
 				<hr>
 				<!-- 페이징 -->
-                <script>
-                    $(document).ready(function() {
-                        // DataTable initialisation
-                        $('#example1').DataTable({
-                            "paging": true,
-                            "autoWidth": true,
-                            "columnDefs": [
-                                {
-                                    "targets": 3,
-                                    render: function(data, type, full, meta) {
-                                        if (type === 'display' && data == 'Done') {
-                                            var rowIndex = meta.row+1;
-                                            return data;
-                                        } else {
-                                            return data;
-                                        }
-                                    }
-                                }]
-                        });
-                    });
-                </script>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<ul class="pagination justify-content-center">
+								<li class="page-item"><a class="page-link"
+									href="javascript:void(0);">처음</a></li>
+								<li class="page-item"><a class="page-link"
+									href="javascript:void(0);">1</a></li>
+								<li class="page-item"><a class="page-link"
+									href="javascript:void(0);">2</a></li>
+								<li class="page-item"><a class="page-link"
+									href="javascript:void(0);">끝</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -392,8 +389,6 @@
         var keyword = $("#searchinput").val();
         location.href='search.do?id=103&search_style='+target+'&keyword='+keyword
     }
-</script>
-<link href="css/paging.css" rel="stylesheet" type="text/css">
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	</script>
 </body>
 </html>

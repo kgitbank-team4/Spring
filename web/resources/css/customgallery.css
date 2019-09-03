@@ -19,7 +19,7 @@
 	margin-bottom:7px;
 }
 #bootstrap-override2 #table{
-	border-spacing: 60px 60px;
+	border-spacing: 10px;
 	border-collapse: separate;
 	border:none;
 }
@@ -57,8 +57,76 @@
   color: black;
   font-weight: bold;
  }
- #card{
- 	width:15rem;
- }
+ .gradient-btn1 {
+    margin: 10px;
+    font-family: 'S-CoreDream-3Light, sans-serif;
+    font-size: 20px;
+    padding: 7px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #FFF;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    width: 100px;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    display: inline-block;
+}
+.gradient-btn1:hover{
+    margin: 8px 10px 12px;
+}
+.gradient-btn2 {
+	background-image: linear-gradient(to right, #c2e59c 0%, #64b3f4 51%, #c2e59c 100%)
+}
+ #a2-icon1{
+	display: none;
+	cursor: pointer;
+}
+.row-box{
+	margin-top:10px;
+}
+img{
+	display: inline-block;
+	width:250px;
+	height:200px;
+	background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+	overflow:hidden;
+	margin-bottom:5px;
+	padding:0;
+}
+.colcol{
+	margin-bottom:10px;
+}
+.center1{
+	text-align:center;
+}
+.content-font1{
+	font-family:'S-CoreDream-3Light';
+	font-size:14px;
+}
+.content-box1{
+	width:250px;
+}
+@media only screen and (max-width:992px) {
+ .a2 button{
+  	display: none;
+  }
+  #a2-icon1{
+  	display: inline-block;
+  	font-size: 18px;
+  }
+  #a2-icon1:hover{
+  	color: #999;
+  }
+  #table tr td{
+	display:inline-block;
+  }
+  img{
+  	width:300px;
+  	height:250px;
+  }
 
-
+}

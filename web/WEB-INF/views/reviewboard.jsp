@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +35,9 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
+  
+  <!-- 수정css -->
+   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
@@ -110,17 +115,17 @@
 		<div class="row">
 			<div class="col">
 				<div class="container">
-					<h3>여행후기</h3>
+					<h3>후기게시판</h3>
 					<hr>
 					<div id="well" class="d-flex">
-						<div class="p-2 align-self-center">
+						<div class="p-2 align-self-center a1">
 							<select>
 								<option value="제목" selected>제목<span class="caret"></span></option>
 								<option value="닉네임">닉네임</option>
 								<option value="닉네임+제목">닉네임+제목</option>
 							</select>
 						</div>
-						<div class="p-2 align-self-center">
+						<div class="p-2 align-self-center a1">
 							<div class="input-group">
 								<input type="text" class="form-control form2" placeholder="검색">
 								<button class="btn11" type="submit">
@@ -128,13 +133,13 @@
 								</button>
 							</div>
 						</div>
-						<div class="p-2 ml-auto">
-							<button class="btn">
-								<i class="fas fa-pencil-alt"></i>글쓰기
-							</button>
-						</div>
+						<div class="p-2 ml-auto writebtn a2">
+							<button class="gradient-btn1 gradient-btn2 p-2 a22" type="button">글쓰기</button>
+							<a href="#"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
+						</div>				
 					</div>
 				</div>
+
 				<div class="container ul1">
 					<ul class="list-inline">
 						<li class="list-inline-item"><a href="#" class="active">최신순</a></li>
@@ -149,61 +154,34 @@
 
 		<!-- review -->
 		<div class="container list1">
-			<ul class="list-group">
-				<li class="list-group-item d-flex flex-row fix1">
-						<div id="div" class="p-2">
-							<a href=""><img id="img" src="img/moja.png" alt=""></a>
-						</div>
-						<div id="divtext" class="p-2">
-							<h5>
-								<a href="">[아시아]여행후기1
-									!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
-							</h5>
-							<p class="content11">내용내용내용내용내용내용흘러넘쳐..ㅠ</p>
-						</div>
-						<div class="p-2 ml-auto">
-							닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11
-						</div>
+			<ul class="ul-group">
+				<li><a href=""><img id="img" src="img/moja.png" alt=""></a>
+					<div class="li-title">
+							<b><a href="">[아시아]여행후기1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a></b>
+						<p>내용내용</p>
+					</div>
+					<div class="li-content">닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11</div>
 				</li>
-				<li class="list-group-item d-flex flex-row fix1">
-					<div id="div" class="p-2">
-						<a href=""><img id="img" src="img/trip.jpg" alt=""></a>
+				<li><a href=""><img id="img" src="img/moja.png" alt=""></a>
+					<div class="li-title">
+							<b><a href="">[아시아]여행후기1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a></b>
+						<p>내용내용</p>
 					</div>
-					<div id="divtext" class="p-2">
-						<h5>
-							<a href="">[아시아]여행후기1
-								!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
-						</h5>
-					</div>
-					<div class="p-2 ml-auto">
-						닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11</div>
+					<div class="li-content">닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11</div>
 				</li>
-				<li class="list-group-item d-flex flex-row fix1">
-					<div id="div" class="p-2">
-						<a href=""><img id="img" src="img/cat.jpg" alt=""></a>
+				<li><a href=""><img id="img" src="img/moja.png" alt=""></a>
+					<div class="li-title">
+							<b><a href="">[아시아]여행후기1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a></b>
+						<p>내용내용</p>
 					</div>
-					<div id="divtext" class="p-2">
-						<h5>
-							<a href="">[아시아]여행후기1
-								!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
-						</h5>
-					</div>
-					<div class="p-2 ml-auto">
-						닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11</div>
+					<div class="li-content">닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11</div>
 				</li>
-				<li class="list-group-item d-flex flex-row fix1">
-					<div id="div" class="p-2">
-						<a href=""><img id="img" src="img/post-sample-image.jpg"
-							alt=""></a>
+				<li><a href=""><img id="img" src="img/moja.png" alt=""></a>
+					<div class="li-title">
+							<b><a href="">[아시아]여행후기1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a></b>
+						<p>내용내용</p>
 					</div>
-					<div id="divtext" class="p-2">
-						<h5>
-							<a href="">[아시아]여행후기1
-								!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
-						</h5>
-					</div>
-					<div class="p-2 ml-auto">
-						닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11</div>
+					<div class="li-content">닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11</div>
 				</li>
 			</ul>
 		</div>
@@ -426,9 +404,9 @@
 </script>
 
  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
 </body>
 </html>

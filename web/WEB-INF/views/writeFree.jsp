@@ -1,21 +1,15 @@
-<%@ page import="com.team4.biz.board.vo.ArticleVO" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>자유게시판</title>
+<meta charset="UTF-8">
+<title>자유게시판</title>
 
-    <!-- Bootstrap core CSS -->
-    <!-- Custom fonts for this template -->
-    <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-          type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
-          type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-          rel='stylesheet' type='text/css'>
+  <!-- Custom fonts for this template -->
+  <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
 
     <!-- Bootstrap core CSS -->
@@ -36,19 +30,20 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
           rel='stylesheet' type='text/css'>
 
-    <!-- Custom styles for this template -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!-- summernote editor -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7	/umd/popper.min.js"></script>
-
-    <link href="${pageContext.request.contextPath}/resources/summernoteeditor/plugins/summernote-bs4.css"
-          rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/resources/summernoteeditor/plugins/summernote-bs4.js"></script>
-    <!-- summer note korean language pack -->
-    <script src="${pageContext.request.contextPath}/resources/summernoteeditor/lang/summernote-ko-KR.js"></script>
+  <!-- Custom styles for this template -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+  
+  <!-- summernote editor -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   
+  <link href="${pageContext.request.contextPath}/resources/summernoteEditor/summernote-bs4.css" rel="stylesheet">
+  <script src="${pageContext.request.contextPath}/resources/summernoteEditor/summernote-bs4.js"></script>
+  <!-- summer note korean language pack -->
+  <script src="${pageContext.request.contextPath}/resources/summernoteEditor/lang/summernote-ko-KR.js"></script>
 </head>
 <body>
 
@@ -181,39 +176,37 @@
 <form id="form1" name="form1">
 </form>
 
-<!-- Start Footer Section -->
-<section id="footer-section" class="footer-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 footer-office">
-                <div class="section-heading-2">
-                    <h3 class="section-title">
-                        <span>Office Address</span>
-                    </h3>
-                </div>
-                <div class="footer-address">
-                    <ul>
-                        <li class="footer-contact"><i class="fa fa-home"></i>서울시 종로구 KGITBANK</li>
-                        <li class="footer-contact"><i class="fa fa-envelope"></i><a href="#"> KGITBANK@naver.com</a>
-                        </li>
-                        <li class="footer-contact"><i class="fa fa-phone"></i> 010-456-7890</li>
-                        <li class="footer-contact"><i class="fa fa-globe"></i><a href="#" target="_blank">
-                            www.google.com</a></li>
-                    </ul>
-                </div>
-            </div>
-
-
-            <div class="col-md-4">
-                <div class="section-heading-2">
-                    <h3 class="section-title">
-                        <span>SNS</span>
-                    </h3>
-                </div>
-                <div class="latest-tweet">
-                    <ul class="list-inline text-left">
-                        <li class="list-inline-item">
-                            <a href="#">
+	<!-- Start Footer Section -->
+	<section id="footer-section" class="footer-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 footer-office">
+                        <div class="section-heading-2">
+                            <h3 class="section-title">
+                                <span>Office Address</span>
+                            </h3>
+                        </div>                       
+                        <div class="footer-address">
+                            <ul>
+                                <li class="footer-contact"><i class="fa fa-home"></i>서울시 종로구 KGITBANK</li>
+                                <li class="footer-contact"><i class="fa fa-envelope"></i><a href="#"> KGITBANK@naver.com</a></li>
+                                <li class="footer-contact"><i class="fa fa-phone"></i> 010-456-7890</li>
+                                <li class="footer-contact"><i class="fa fa-globe"></i><a href="#" target="_blank"> www.google.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+           
+                    <div class="col-md-4">
+                        <div class="section-heading-2">
+                            <h3 class="section-title">
+                                <span>SNS</span>
+                            </h3>
+                        </div>                    
+                        <div class="latest-tweet">
+                            <ul class="list-inline text-left">
+					            <li class="list-inline-item">
+					              <a href="#">
 					                <span class="fa-stack fa-lg">
 					                  <i class="fas fa-circle fa-stack-2x"></i>
 					                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>				                 
