@@ -47,6 +47,9 @@
     <update id="hideArt" parameterType="ArticleVO">
         update ARTICLE set VISIBLE=0 where id=#{id}
     </update>
+    <update id="updateArt" parameterType="ArticleVO">
+        update ARTICLE set CATEGORY=#{category}, TITLE=#{title}, TEXT=#{text} where ID=#{id}
+    </update>
     <resultMap id="CommentsMap" type="CommentsVO">
         <result column="nickname" property="writer"/>
     </resultMap>

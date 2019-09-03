@@ -225,6 +225,11 @@ public class BoardController {
         model.addAttribute("Article", boardService.selectArt(vo));
         return "writeFree";
     }
+    @RequestMapping(value = "/updateboard.do",method = RequestMethod.POST)
+    public String updateboard(ArticleVO vo,Model model) throws ClassNotFoundException, SQLException{
+        boardService.updateArt(vo);
+        return "redirect:showfreeboard.do?id=" + vo.getId();
+    }
 
     /*@RequestMapping(value ="/UpdateUserBoard.do")
     public String updateToNick(ArticleVO vo,HttpSession session) throws SQLException, ClassNotFoundException{

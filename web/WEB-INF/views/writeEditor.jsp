@@ -46,13 +46,13 @@
 
 	<script>
 	
-		function save() {
+		function save(url,what) {
 			var form = document.createElement("form")
 			//alert(form.getAttribute('name'))
 			var parm = new Array();
 			var input = new Array();
 
-			form.action = "writeboard.do";
+			form.action = url;
 			form.method = "post";
 			var text = $('#summernote').summernote('code');
 
@@ -62,6 +62,9 @@
 			parm.push(['board_id',103]);
 			parm.push( ['writer_id', '${user.id}'] );
 			parm.push( ['writer', '${user.nickname}'] );
+			if(url=='updateboard.do') {
+                parm.push(['id', what])
+            }
 
 			for (var i = 0; i < parm.length; i++) {
 				input[i] = document.createElement("input");
@@ -79,7 +82,7 @@
 			parent.document.location.href = "freeboard.do?id=103&sort=lately";
 		}
 		
-		$(function() {
+		$(function x() {
 			$('#summernote').summernote({
 				height : 600,
 				lang : 'ko-KR'
@@ -87,6 +90,13 @@
 		});
 	</script>
 	<script>
+        function imp(text) {
+            $('#summernote').summernote({
+                height : 600,
+                lang : 'ko-KR'
+            });
+            $('#summernote').summernote('code',text);
+        }
 		function getForm() {
 			//$('textarea[name="content"]').val($('#summernote').summernote('code'));
 			///location.href = "writeboard.do?text="+$('textarea[name="content"]').val();

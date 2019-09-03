@@ -28,7 +28,7 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public void update(ArticleVO vo) {
-
+        sqlSession.update(namespace+".updateArt",vo);
     }
 
     @Override
@@ -118,7 +118,6 @@ public class BoardDAOImpl implements BoardDAO{
 
     @Override
     public void update(ContentVO vo) {
-
     }
 
     @Override

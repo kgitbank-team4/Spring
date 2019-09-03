@@ -1,3 +1,5 @@
+<%@ page import="com.team4.biz.board.vo.ArticleVO" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -42,10 +44,11 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7	/umd/popper.min.js"></script>
 
-    <link href="summernoteeditor/plugins/summernote-bs4.css" rel="stylesheet">
-    <script src="summernoteeditor/plugins/summernote-bs4.js"></script>
+    <link href="${pageContext.request.contextPath}/resources/summernoteeditor/plugins/summernote-bs4.css"
+          rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/resources/summernoteeditor/plugins/summernote-bs4.js"></script>
     <!-- summer note korean language pack -->
-    <script src="summernoteeditor/lang/summernote-ko-KR.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/summernoteeditor/lang/summernote-ko-KR.js"></script>
 </head>
 <body>
 
@@ -123,7 +126,7 @@
     <div class="row">
         <div class="col">
             <div class="container">
-                <h3>자유게시판 - 글쓰기</h3>
+                <h3 id="subject">자유게시판 - 글쓰기</h3>
                 <hr>
                 <form name="freeform" action="writeboard.do">
                     <div id="well">
@@ -160,7 +163,10 @@
                                 type="button" onclick="editor_iframe.edit()">목록
                         </button>
                         <button id="save" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
-                                type="button" onclick="editor_iframe.save()">저장
+                                type="button" onclick="editor_iframe.save('writeboard.do','${Article.id}')">저장
+                        </button>
+                        <button id="update" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
+                                type="button" onclick="editor_iframe.save('updateboard.do','${Article.id}')" style="display: none">수정
                         </button>
                         <!-- 						 <input type="submit" id="save" class="gradient-btn1 gradient-btn2 p-2"
                                                      value="저장">  -->
@@ -334,14 +340,32 @@
 <!-- 수정js -->
 <script>
     $(function () {
-        if ("${Article.id}" != "") {
-            $("#title").val("${Article.title}")
-            $("#category").val("${Article.category}").selected()
-            alert("${Article.text}")
-            //$("#editor_iframe").content().find("#summernote").summernote('code','asdasd')
-
+        var clic = $("ul > li");
+        clic.find("a").click(function () {
+            click.removeClass("active");
+            $(this).addClass("active").css("text-decoration", "underline");
+        });
+    });
+</script>
+<script>
+    window.onload = function () {
+        if ('${Article.id}' != '') {
+            //sessionStorage.setItem(['tt'],'<%--${Article.text}--%>')
+            //var text = sessionStorage.getItem('tt')
+            $("#title").val('${Article.title}')
+            $("#subject").text("글 수정하기")
+            var text = '${Article.text}'
+            document.getElementById('editor_iframe').contentWindow.imp(text)
+            $("#save").css('display','none')
+            $("#update").css('display','inline-block')
+            $("#category").val('${Article.category}').selected()
+            //var text = <%--${Article.text}--%>
+            /*var frame = $("#editor_iframe").contents()
+            var text = "sadsds"
+            var iframe = frame.find("#summernote").summernote('code',text)*/
+            //document.getElementById('editor_iframe').contentWindow.document.getElementById('summernote').innerHTML='맞아?'
         }
-    })
+    }
 
 </script>
 <%--<script>
