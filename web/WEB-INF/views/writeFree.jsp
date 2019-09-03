@@ -36,10 +36,10 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
    
-  <link href="summernoteeditor/plugins/summernote-bs4.css" rel="stylesheet">
-  <script src="summernoteeditor/plugins/summernote-bs4.js"></script>
+  <link href="${pageContext.request.contextPath}/resources/summernoteeditor/plugins/summernote-bs4.css" rel="stylesheet">
+  <script src="${pageContext.request.contextPath}/resources/summernoteeditor/plugins/summernote-bs4.js"></script>
   <!-- summer note korean language pack -->
-  <script src="summernoteeditor/lang/summernote-ko-KR.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/summernoteeditor/lang/summernote-ko-KR.js"></script>
 </head>
 <body>
 
@@ -81,15 +81,7 @@
             <li class="dropdown">
           	  <a href="mypage.do" class="dropdown-toggle" data-toggle="dropdown" role="button"
           	  	  aria-haspopup="true" aria-expanded="false">마이페이지</a>
-      <!--     	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">회원정보보기</a></li>
-          		  <li><a class="nav-link" href="#">내가 작성한 글</a></li>
-          		  <li><a class="nav-link" href="#">내 댓글</a></li>          		  
-          	  </ul> -->
             </li>
-	      <!--   <li class="nav-item">
-	          <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
-	        </li> -->
 	        <li class="nav-item logout login-inactive">
               <a class="nav-link-login" href="logout.do">로그아웃</a>                   
             </li>

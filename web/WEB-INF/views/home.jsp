@@ -52,8 +52,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">이야기</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">후기</a></li>
-                        <li><a class="nav-link" href="#">사진</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=101&sort=lately">후기</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=102&sort=lately">사진</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -69,8 +69,8 @@
                        aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                     <ul class="dropdown-menu">
                         <li><a class="nav-link" href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
-                        <li><a class="nav-link" href="#">Q & A</a></li>
-                        <li><a class="nav-link" href="#">공지사항</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=104&sort=lately">Q & A</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=105&sort=lately">공지사항</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

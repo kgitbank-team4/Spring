@@ -36,7 +36,7 @@ public class BoardController {
         return "home";
     }
 
-    @RequestMapping(value = "/freeboard.do")//자유
+    @RequestMapping(value = "/freeboard.do")//게시판
     public String freeboard(@RequestParam(defaultValue="1") int curPage, BoardVO vo, Model model, HttpSession session, HttpServletResponse response) throws SQLException, ClassNotFoundException, IOException {
     	if(session.getAttribute("user") == null) {
 			response.setContentType("text/html; charset=UTF-8");
@@ -50,17 +50,26 @@ public class BoardController {
     		PageMaker paging = new PageMaker(count, curPage);
     		int start = paging.getPageBegin();
     		int end = paging.getPageEnd();
-    		System.out.println(start +"  "+end);
     		////
     		System.out.println(vo.getSort());
     		System.out.println(vo.getId());
     		model.addAttribute("ArtList", boardService.selectArtList(vo, start, end));
     		model.addAttribute("paging", paging);
-    		return "freeboard";
+            if(vo.getId() == 101)
+    			return "reviewboard";
+            if(vo.getId() == 102)
+    			return "photogallery";
+    		if(vo.getId() == 103)
+    			return "freeboard";
+    		if(vo.getId() == 104)
+    			return "Q&A";
+    		if(vo.getId() == 105)
+    			return "notice";    		
     	}
+		return null;
     }
 
-    @RequestMapping(value = "/hugiboard.do")//후기
+/*    @RequestMapping(value = "/hugiboard.do")//후기
     public String hugiboard(BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
         model.addAttribute("ArtList", boardService.selectArtList(vo, 0, 0));
         return "hugiboard";
@@ -76,12 +85,22 @@ public class BoardController {
     public String infoboard(BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
         model.addAttribute("ArtList", boardService.selectArtList(vo, 0, 0));
         return "info";
-    }
+    }*/
 
     @RequestMapping(value = "/search.do")
     public String searchArt(BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
         model.addAttribute("ArtList", boardService.searchArtList(vo));
-        return "freeboard";
+        if(vo.getId() == 101)
+			return "reviewboard";
+        if(vo.getId() == 102)
+			return "photogallery";
+        if(vo.getId() == 103)
+			return "freeboard";
+		if(vo.getId() == 104)
+			return "Q&A";
+		if(vo.getId() == 105)
+			return "notice";
+		return null; 
     }
 
     @RequestMapping(value = "/airinfo.do")
@@ -144,10 +163,23 @@ public class BoardController {
 
 
     @RequestMapping(value = "/freewrite.do")
-    public String write() throws SQLException, ClassNotFoundException {
-        return "writeFree";
+    public String write(@RequestParam("id")String id, HttpSession session) throws SQLException, ClassNotFoundException {
+        session.setAttribute("boardid", id);
+        if(id.equals("101"))
+        	return "writeReview";
+        if(id.equals("102"))
+        	return "writegallery";
+        if(id.equals("103"))
+        	return "writeFree";
+        if(id.equals("104"))
+        	return "writeQ&A";
+        if(id.equals("105"))
+        	return "";
+		return null;
+        
     }
-
+    
+    
     @RequestMapping(value = "/iframe.do")
     public String getIframe() throws SQLException, ClassNotFoundException {
         return "writeEditor";

@@ -151,7 +151,7 @@ $(document).ready(function(){
 						</div>
 						<div class="p-2 ml-auto">
 							<button class="gradient-btn1 gradient-btn2 p-2 a22"
-							type="button" onclick="location.href='freewrite.do'">글쓰기</button>
+							type="button" onclick="location.href='freewrite.do?id=103'">글쓰기</button>
 						</div>
 					</div>
 				</div>
@@ -390,11 +390,6 @@ $(document).ready(function(){
   <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
 
 
-<%--<!-- Bootstrap core JavaScript -->
-<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Custom scripts for this template -->
-<script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>--%>
 
 <!-- Custom freeboard js -->
 <script>

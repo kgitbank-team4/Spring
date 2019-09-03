@@ -56,7 +56,7 @@
 			parm.push( ['title', parent.document.getElementById("title").value] );
 			parm.push( ['category', parent.document.getElementById("category").value] );
 			parm.push( ['text', text] );
-			parm.push(['board_id',103]);
+			parm.push(['board_id','${boardid}']);
 			parm.push( ['writer_id', '${user.id}'] );
 			parm.push( ['writer', '${user.nickname}'] );
 
@@ -73,7 +73,8 @@
 		}
 		
 		function edit(){
-			parent.document.location.href = "freeboard.do?id=103&sort=lately";
+			var id = ${boardid}
+			parent.document.location.href = "freeboard.do?id="+id+"&sort=lately";
 		}
 		
 		$(function() {

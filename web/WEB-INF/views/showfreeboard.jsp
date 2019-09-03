@@ -147,7 +147,7 @@
 								    <li><a href="#" class="board-up1">추천</a></li>
 								    <li><a href="#" data-target="#modal-boarddlt" data-toggle="modal" class="upanddel2" style="display: none">글 삭제</a></li>
 								    <li><a href="#" class="upanddel2" style="display: none">글 수정</a></li>
-								    <li><a href="freeboard.do?id=103&sort=lately">목록으로</a></li>
+								    <li><a href="freeboard.do?id=${Article.board_id}&sort=lately">목록으로</a></li>
 							    </ul>
 							</span>
 						</span>
@@ -170,7 +170,7 @@
                         <span class="clip-file">
 								<ion-icon class="clip" name="attach"></ion-icon>
 								<span class="clip-comment">첨부파일 1개</span>
-								<span class="clip-back"><a href="freeboard.do?id=103&sort=lately">목록으로</a></span>
+								<span class="clip-back"><a href="freeboard.do?id=${Article.board_id}&sort=lately">목록으로</a></span>
 							</span>
                     </div>
                     <br>

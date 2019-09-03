@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,8 +26,8 @@
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/css/customreview.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/selectbox.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/customreview.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -41,7 +43,7 @@
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="index.html">SPRING</a>
+      <a class="navbar-brand" href="home.do">SPRING</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -73,25 +75,32 @@
           		  <li><a class="nav-link" href="#">공지사항</a></li>
           	  </ul>
             </li>
-            <li class="dropdown">
-          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-          	  	  aria-haspopup="true" aria-expanded="false">마이페이지</a>
-          	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">회원정보보기</a></li>
-          		  <li><a class="nav-link" href="#">내가 작성한 글</a></li>
-          		  <li><a class="nav-link" href="#">내 댓글</a></li>          		  
-          	  </ul>
-            </li>
-	        <li class="nav-item">
-	          <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
-	        </li>
+                <li class="dropdown">
+                       <a href="mypage.do">마이페이지</a>
+                </li>
+                <li class="nav-item login login-active">
+                    <a class="nav-link-login" data-target="#modal1" data-toggle="modal" >로그인</a>
+                </li>
+                <li class="nav-item logout login-inactive">
+                     <a class="nav-link-login" href="logout.do">로그아웃</a>                   
+                </li>
         </ul>
       </div>
     </div>
   </nav>
+  <script>
+$(document).ready(function(){	
+	if( ${user.id} != null ) {
+		$("#mainNav .container #navbarResponsive .login").removeClass("login-active");
+		$("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");
+		$("#mainNav .container #navbarResponsive .login").addClass("login-inactive");
+		$("#mainNav .container #navbarResponsive .logout").addClass("login-active");
+	}
+});
+</script>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.png')">
+  <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -123,13 +132,13 @@
 						<div class="p-2 align-self-center">
 							<div class="input-group">
 								<input type="text" class="form-control form2" placeholder="검색">
-								<button class="btn11" type="submit">
+								<button class="btn11"  onclick="x()">
 									<i class="fas fa-search fa-lg"></i>
 								</button>
 							</div>
 						</div>
 						<div class="p-2 ml-auto">
-							<button class="btn">
+							<button class="btn" onclick="location.href='freewrite.do?id=101'">
 								<i class="fas fa-pencil-alt"></i>글쓰기
 							</button>
 						</div>
@@ -137,10 +146,10 @@
 				</div>
 				<div class="container ul1">
 					<ul class="list-inline">
-						<li class="list-inline-item"><a href="#" class="active">최신순</a></li>
-						<li class="list-inline-item"><a href="#">조회순</a></li>
-						<li class="list-inline-item"><a href="#">추천순</a></li>
-						<li class="list-inline-item"><a href="#">댓글순</a></li>
+						<li class="list-inline-item"><a href="freeboard.do?id=101&sort=lately" class="active">최신순</a></li>
+						<li class="list-inline-item"><a href="freeboard.do?id=101&sort=view">조회순</a></li>
+						<li class="list-inline-item"><a href="freeboard.do?id=101&sort=up">추천순</a></li>
+						<li class="list-inline-item"><a href="freeboard.do?id=101&sort=comment">댓글순</a></li>
 					</ul>
 				</div>
 			</div>
@@ -150,78 +159,64 @@
 		<!-- review -->
 		<div class="container list1">
 			<ul class="list-group">
-				<li class="list-group-item d-flex flex-row fix1">
-						<div id="div" class="p-2">
-							<a href=""><img id="img" src="img/moja.png" alt=""></a>
-						</div>
-						<div id="divtext" class="p-2">
-							<h5>
-								<a href="">[아시아]여행후기1
-									!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
-							</h5>
-							<p class="content11">내용내용내용내용내용내용흘러넘쳐..ㅠ</p>
-						</div>
-						<div class="p-2 ml-auto">
-							닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11
-						</div>
-				</li>
-				<li class="list-group-item d-flex flex-row fix1">
-					<div id="div" class="p-2">
-						<a href=""><img id="img" src="img/trip.jpg" alt=""></a>
-					</div>
-					<div id="divtext" class="p-2">
-						<h5>
-							<a href="">[아시아]여행후기1
-								!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
-						</h5>
-					</div>
-					<div class="p-2 ml-auto">
-						닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11</div>
-				</li>
-				<li class="list-group-item d-flex flex-row fix1">
-					<div id="div" class="p-2">
-						<a href=""><img id="img" src="img/cat.jpg" alt=""></a>
-					</div>
-					<div id="divtext" class="p-2">
-						<h5>
-							<a href="">[아시아]여행후기1
-								!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
-						</h5>
-					</div>
-					<div class="p-2 ml-auto">
-						닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11</div>
-				</li>
-				<li class="list-group-item d-flex flex-row fix1">
-					<div id="div" class="p-2">
-						<a href=""><img id="img" src="img/post-sample-image.jpg"
-							alt=""></a>
-					</div>
-					<div id="divtext" class="p-2">
-						<h5>
-							<a href="">[아시아]여행후기1
-								!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
-						</h5>
-					</div>
-					<div class="p-2 ml-auto">
-						닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11</div>
-				</li>
+			 <c:forEach var="Artlist" items="${ArtList}">
+              <fmt:formatDate value="${Artlist.date_created}" var="date" pattern="yyyy-MM-dd"/>
+			
+	          <table class="table table-borderless">
+               <tr style="border-bottom: solid; border-top: solid;">
+	               <td class="content11">
+	                  <h5><a href="showfreeboard.do?id=${Artlist.id}">[${Artlist.category}]${Artlist.title}</a></h5>
+	               </td>
+	               <td style="text-align: right;" >
+	                  ${Artlist.writer}&nbsp;&nbsp;&nbsp;${date}&nbsp;&nbsp;&nbsp;${Artlist.view_cnt}
+	               </td>
+	           </tr>
+				<tr style="width: 100%;">
+	               <td class="${Artlist.id}" colspan="2"></td>
+	            </tr>
+	           <tr>
+	               <td style="display:none;" id="${Artlist.id}">${Artlist.text}</td>
+				</tr> 
+			</table>
+			<script>
+				var text11 = "";
+				$("#"+${Artlist.id}).find('p').each(function(){					
+						text11 = text11 + $(this).text()+"<br>"
+						$("."+${Artlist.id}).html(text11)
+					
+				})
+			</script> 
+			</c:forEach>			
 			</ul>
 		</div>
 	</div>
 	<br>
-
 	<div class="container" id="bootstrap-override3">
 		<div class="row">
 			<div class="col">
 				<ul class="pagination justify-content-center">
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">처음</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">1</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">2</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);">끝</a></li>
+					<c:if test="${paging.curBlock > 1}">
+								<a class="page-link" href="javascript:list('${paging.prevPage}')">이전</a>
+							</c:if>
+							
+							<c:forEach var="num" begin="${paging.blockBegin}" end="${paging.blockEnd}">
+								<c:choose>
+									<c:when test="${num == paging.curPage}">
+										<a class="page-link"><span>${num}</span></a>&nbsp;
+									</c:when>
+									<c:otherwise>
+										<a class="page-link" href="javascript:list('${num}')">${num}</a>&nbsp;
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							
+							<c:if test="${paging.curBlock <= paging.totBlock}">
+								<a class="page-link" href="javascript:list('${paging.nextPage}')">다음</a>
+							</c:if>
+							
+							<c:if test="${paging.curPage <= paging.totPage}">
+								<a class="page-link" href="javascript:list('${paging.totPage}')">끝</a>
+							</c:if>
 				</ul>
 			</div>
 		</div>
@@ -382,12 +377,7 @@
   <!-- Custom scripts for this template -->
   <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
 
-	<!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
+	
   
   <!-- 수정js -->
   <script>
@@ -423,12 +413,16 @@
 	    }
 	  }
 	};
-</script>
 
- <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom scripts for this template -->
-  <script src="js/clean-blog.min.js"></script>
+    function x() {
+        var target = $("#selectbox option:selected").val();
+        var keyword = $("#searchinput").val();
+        location.href='search.do?id=103&search_style='+target+'&keyword='+keyword
+    }
+    
+    function list(page){
+    	location.href = "freeboard.do?curPage="+page+"&id=101&sort=lately";
+    }
+</script>
 </body>
 </html>

@@ -76,11 +76,17 @@
 	margin-top:10px;
 }
 .content11{
-	overflow:hidden;
-	width:90%;
-	height:auto;
-	margin-right:0;
-	padding-right:0;
+	max-width: 200px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+   
+}
+.content11 h5{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+   
 }
 #bootstrap-override3 table{
 	margin-top:10px;

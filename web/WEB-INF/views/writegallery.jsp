@@ -33,8 +33,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
   
   <!-- summernote editor -->
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
    
@@ -48,7 +46,7 @@
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="index.html">SPRING</a>
+      <a class="navbar-brand" href="home.do">SPRING</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -80,25 +78,31 @@
           		  <li><a class="nav-link" href="#">공지사항</a></li>
           	  </ul>
             </li>
-            <li class="dropdown">
-          	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-          	  	  aria-haspopup="true" aria-expanded="false">마이페이지</a>
-          	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">회원정보보기</a></li>
-          		  <li><a class="nav-link" href="#">내가 작성한 글</a></li>
-          		  <li><a class="nav-link" href="#">내 댓글</a></li>          		  
-          	  </ul>
-            </li>
-	        <li class="nav-item">
-	          <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
-	        </li>
+                <li class="dropdown">
+                       <a href="mypage.do">마이페이지</a>
+                </li>
+                <li class="nav-item login login-active">
+                    <a class="nav-link-login" data-target="#modal1" data-toggle="modal" >로그인</a>
+                </li>
+                <li class="nav-item logout login-inactive">
+                     <a class="nav-link-login" href="logout.do">로그아웃</a>                   
+                </li>
         </ul>
       </div>
     </div>
   </nav>
-
+  <script>
+$(document).ready(function(){	
+	if( ${user.id} != null ) {
+		$("#mainNav .container #navbarResponsive .login").removeClass("login-active");
+		$("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");
+		$("#mainNav .container #navbarResponsive .login").addClass("login-inactive");
+		$("#mainNav .container #navbarResponsive .logout").addClass("login-active");
+	}
+});
+</script>
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.png')">
+  <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -122,39 +126,34 @@
 					<div id="well">
 						<div class="d-flex flex-row">
 							<div class="p-2">
-								<select name="" id="">
-									<option value="분류" selected>분류<span class="caret"></span></option>
-									<option value="항공">항공</option>
-									<option value="교통">교통</option>
-									<option value="숙박">숙박</option>
-									<option value="기타">기타</option>
+								<select name="category" id="category">
+									<option value="분류" selected>분류<span class="caret"></span></option>									
+									<option value="아시아">아시아</option>
+									<option value="미국">미국</option>
+									<option value="유럽">유럽</option>
+									<option value="호주">호주</option>
 								</select>
 							</div>
 							<div class="p-2">
 								<input type="text" class="form-control" name="title" id="title"
 									placeholder="제목을 입력하세요.">
-								<div class="p-2">
-									<input type="checkbox" id="" name="" value="commentOk">&nbsp;&nbsp;댓글허용
-									&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="" name=""
-										value="htmlOk">&nbsp;&nbsp;HTML
-								</div>
 							</div>
 							<div class="p-2 ml-auto">
 								<input type="text" class="form-control" name="writer"
-									id="writer" placeholder="닉네임">
+									id="writer" value="${user.nickname}" readonly="readonly">
 							</div>
 						</div>
 						<div class="container">
-							<iframe src="writeEditor.html" id="editor_iframe"
+							<iframe src="iframe.do" id="editor_iframe"
 								name="editor_iframe" width="100%" height="655" title="자유게시판글쓰기"
 								frameborder="0" overflow="hidden"> </iframe>
 						</div>
 					</div>
 					<div class="d-flex justify-content-around bnt11">
 						<button id="list" class="gradient-btn1 gradient-btn2 p-2"
-							type="button">목록</button>
+							type="button" onclick="editor_iframe.edit()">목록</button>
 						<button id="save" class="gradient-btn1 gradient-btn2 p-2"
-							type="button">저장</button>
+							type="button" onclick="editor_iframe.save()">저장</button>
 					</div>
 				</div>
 			</div>
@@ -162,7 +161,6 @@
 	</div>
 	<br>
 	<hr>
-	<div id="summernote"></div>
 
 	<!-- Start Footer Section -->
 	<section id="footer-section" class="footer-section">
@@ -338,14 +336,6 @@
   </script>
 
 
-	<script>
-		$('#editor_iframe').contents().find('#summernote').html();
-		
-		var save = function() {
-			var markup = $('#editor_iframe').contents().find('#summernote').html();
-			$('#editor_iframe').summernote('destroy');
-		};
-	</script>
 
 
 </body>
