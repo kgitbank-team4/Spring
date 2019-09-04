@@ -142,11 +142,11 @@ $(document).ready(function(){
 								</button>
 							</div>
 						</div>
-						<div class="p-2 ml-auto writebtn a2">
-							<button class="btn" onclick="location.href='freewrite.do?id=101'">
-								<i class="fas fa-pencil-alt"></i>글쓰기
-							</button>
-						</div>
+						<div class="p-2 ml-auto">
+							<button class="gradient-btn1 gradient-btn2 p-2 a22"
+							type="button" onclick="location.href='freewrite.do?id=101'">글쓰기</button>
+							<a href="freewrite.do?id=101"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>	
+						</div>						
 					</div>
 				</div>
 
@@ -186,9 +186,9 @@ $(document).ready(function(){
 			</table>
 			<script>
 				var text11 = "";
-				$("#"+${Artlist.id}).find('p').each(function(){					
-						text11 = text11 + $(this).text()+"<br>"
-						$("."+${Artlist.id}).html(text11)
+				$("#"+"${Artlist.id}").find('p').each(function(){					
+						text11 = text11 + $(this).text()+"<br>";
+						$("."+"${Artlist.id}").html(text11)
 					
 				})
 			</script> 

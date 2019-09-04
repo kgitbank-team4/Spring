@@ -138,15 +138,13 @@ $(document).ready(function(){
 								</button>
 							</div>
 						</div>
-
-						<div class="p-2 ml-auto writebtn a2">
+					<div class="p-2 ml-auto">
 							<button class="gradient-btn1 gradient-btn2 p-2 a22"
-							type="button"  onclick="location.href='freewrite.do?id=104'">질문하기</button>
+							type="button" onclick="location.href='freewrite.do?id=104'">글쓰기</button>
+							<a href="freewrite.do?id=104"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>	
 						</div>
-
 					</div>
 				</div>
-
 				<div class="container ul1">
 					<ul class="list-inline">
 						<li class="list-inline-item"><a href="freeboard.do?id=104&sort=lately" class="active">최신순</a></li>

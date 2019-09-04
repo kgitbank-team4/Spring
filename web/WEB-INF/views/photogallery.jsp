@@ -91,7 +91,7 @@
   </nav>
   <script>
 $(document).ready(function(){	
-	if( ${user.id} != null ) {
+	if( "${user.id}" != "" ) {
 		$("#mainNav .container #navbarResponsive .login").removeClass("login-active");
 		$("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");
 		$("#mainNav .container #navbarResponsive .login").addClass("login-inactive");
@@ -138,10 +138,10 @@ $(document).ready(function(){
 								</button>
 							</div>
 						</div>
-						<div class="p-2 ml-auto a2">
-							<button type="button" class="btn" onclick="location.href='freewrite.do?id=102'">
-								<i class="fas fa-pencil-alt"></i>사진올리기
-							</button>
+						<div class="p-2 ml-auto">
+							<button class="gradient-btn1 gradient-btn2 p-2 a22"
+							type="button" onclick="location.href='freewrite.do?id=102'">글쓰기</button>
+							<a href="freewrite.do?id=102"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>	
 						</div>
 					</div>
 				</div>
@@ -158,42 +158,32 @@ $(document).ready(function(){
 	</div>
 								
 
-	<div class="row" id="bootstrap-override2">
-		<div class="col-11">
+	<div id="bootstrap-override2">
 			<div class="container">
-				<table id="table">
-					<tr>
-					 <c:forEach var="Artlist" items="${ArtList}" begin="0" end="10">
+					 <div class="container center1">
+					<div class="row row-box no-gutters">
+		<c:forEach var="Artlist" items="${ArtList}" begin="0" end="10">
                         <fmt:formatDate value="${Artlist.date_created}" var="date" pattern="yyyy-MM-dd"/>
-                        <td style="display: none;" id="${Artlist.id}">${Artlist.text}</td>  
-						<td>
-							<div id="card" class="card">												
-								<a href="showfreeboard.do?id=${Artlist.id}">
-								<img id="img1" name="img1" class="card-img-top ${Artlist.id}" alt="${Artlist.title}" style="width: 100%" src=""> 
-								<%-- ${Artlist.text} --%>
-								</a>															
-								<div class="card-body">
-									<div class="d-flex justify-content-between">
-										<div class="card-text">${Artlist.writer}</div>
-										<div class="card-text">${date}</div>
-									</div>
-								</div>
-							</div>
-						</td>
-					 	<script>		
-							$("#"+${Artlist.id}).find('img').first().each(function(){
-								var imagesrc = this.src
-								$("."+${Artlist.id}).attr("src",imagesrc)							
-							})
- 					</script>
+                        <div style="display: none;" id="${Artlist.id}">${Artlist.text}</div>
+                      		
+			<div class="col-sm colcol col-6">
+			<a href="showfreeboard.do?id=${Artlist.id}">
+				<img id="img1" name="img1" src="" alt="사진없음" class="card-img-top ${Artlist.id}"></a><br>				
+				<div class="content-font1">${Artlist.writer}&nbsp;&nbsp;&nbsp;${date}</div>
+			</div>
+			<script>		
+				$("#"+"${Artlist.id}").find('img').first().each(function(){
+						var imagesrc = this.src
+						$("."+"${Artlist.id}").attr("src",imagesrc)							
+				})
+ 			</script>
+ 										
 			</c:forEach>
-		</tr>
-				</table>
-
-		
+				</div>
+						</div>	
 			</div>
 		</div>
-	</div>
+
 	<hr>
 								
 			<!-- 페이징 -->

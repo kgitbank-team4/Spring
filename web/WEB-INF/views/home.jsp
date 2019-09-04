@@ -89,7 +89,7 @@
 </nav>
 <script>
 $(document).ready(function(){	
-	if( ${user.id} != null ) {
+	if(  "${user.id}" != "" ) {
 		$("#mainNav .container #navbarResponsive .login").removeClass("login-active");
 		$("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");
 		$("#mainNav .container #navbarResponsive .login").addClass("login-inactive");
@@ -134,7 +134,7 @@ $(document).ready(function(){
                                     <c:if test="${ArtList.board_id eq 101}">
                                         <tr>
                                             <td style="color: red">${ArtList.category}</td>
-                                            <td><a href="#">${ArtList.title}</a></td>
+                                            <td><a href="showfreeboard.do?id=${ArtList.id}">${ArtList.title}</a></td>
                                             <td>${ArtList.view_cnt}</td>
                                             <c:set var="cnt" value="${cnt+1}"/>
                                         </tr>
@@ -146,7 +146,27 @@ $(document).ready(function(){
                             </c:forEach>
                         </table>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="picture">사진</div>
+                    <div role="tabpanel" class="tab-pane" id="picture">
+                    <table class="table table-hover tab-table1">
+                    <c:set var="cnt" value="1"/>
+                            <c:set var="doneLoop" value="false"/>
+                            <c:forEach var="ArtList" items="${AllArtList}">
+                                <c:if test="${not doneLoop}">
+                                    <c:if test="${ArtList.board_id eq 102}">
+                                        <tr>
+                                            <td style="color: red">${ArtList.category}</td>
+                                            <td><a href="showfreeboard.do?id=${ArtList.id}">${ArtList.title}</a></td>
+                                            <td>${ArtList.view_cnt}</td>
+                                            <c:set var="cnt" value="${cnt+1}"/>
+                                        </tr>
+                                        <c:if test="${cnt>5}">
+                                            <c:set var="doneLoop" value="true"/>
+                                        </c:if>
+                                    </c:if>
+                                </c:if>
+                            </c:forEach>
+                            </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -190,7 +210,7 @@ $(document).ready(function(){
                                     <c:if test="${ArtList.board_id eq 104}">
                                         <tr>
                                             <td style="color: red">${ArtList.category}</td>
-                                            <td><a href="#">${ArtList.title}</a></td>
+                                            <td><a href="showfreeboard.do?id=${ArtList.id}">${ArtList.title}</a></td>
                                             <td>${ArtList.view_cnt}</td>
                                             <c:set var="cnt" value="${cnt+1}"/>
                                         </tr>

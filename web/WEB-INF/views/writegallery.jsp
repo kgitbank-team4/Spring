@@ -126,16 +126,13 @@ $(document).ready(function(){
 				<h3>포토갤러리 - 글쓰기</h3>
 					<hr>
 					<div id="well">
-
 						<div class="d-flex flex-row content-box1">
 							<div class="p-2">
-								<select name="category" id="category">
-<!-- 									<option value="아시아" selected>분류<span class="caret"></span></option> -->									
+								<select name="category" id="category">									
 									<option value="아시아">아시아</option>
 									<option value="미국">미국</option>
 									<option value="유럽">유럽</option>
 									<option value="호주">호주</option>
-
 								</select>
 							</div>
 							<div class="content1">
