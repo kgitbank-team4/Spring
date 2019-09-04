@@ -11,7 +11,7 @@
 }
 #bootstrap-override3 h3
 #bootstrap-override3 table{
-	font-family: 'S-CoreDream-3Light'; 
+	font-family: 'S-CoreDream-3Light';
 	border-bottom:1px lightgray;
 }
 #bootstrap-override3 #well{
@@ -131,7 +131,7 @@
 }
 .gradient-btn1 {
     margin: 10px;
-    font-family: 'S-CoreDream-3Light, sans-serif;
+    font-family: 'S-CoreDream-3Light, sans-serif';
     font-size: 20px;
     padding: 7px;
     text-align: center;
