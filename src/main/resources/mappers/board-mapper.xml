@@ -15,7 +15,7 @@
     </resultMap>
     <select id="selectArtList" parameterType="hashmap" resultMap="ArticleMap">
     	<include refid="pagingHeader"></include>
-        select rownum, a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and a.BOARD_ID=#{BoardVO.id}
+        select rownum, a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and a.VISIBLE=1 and a.BOARD_ID=#{BoardVO.id}
         order by case when #{BoardVO.sort}='lately' then a.id end desc,
         case when #{BoardVO.sort}='view' then a.VIEW_CNT end desc,
         case when #{BoardVO.sort}='up' then a.UP_CNT end desc,

@@ -47,6 +47,7 @@
 	<script>
 	
 		function save(url,what,board_id) {
+			alert(board_id)
 			var form = document.createElement("form")
 			//alert(form.getAttribute('name'))
 			var parm = new Array();

@@ -212,17 +212,17 @@ public class BoardController {
 
 
     @RequestMapping(value = "/freewrite.do")
-    public String write(@RequestParam("id")String id, HttpSession session) throws SQLException, ClassNotFoundException {
-        session.setAttribute("boardid", id);
-        if(id.equals("101"))
+    public String write(ArticleVO vo,Model model, HttpSession session) throws SQLException, ClassNotFoundException {
+        model.addAttribute("board_id",vo.getBoard_id());
+        if(vo.getBoard_id()==101)
         	return "writeReview";
-        if(id.equals("102"))
+        if(vo.getBoard_id()==102)
         	return "writegallery";
-        if(id.equals("103"))
+        if(vo.getBoard_id()==103)
         	return "writeFree";
-        if(id.equals("104"))
+        if(vo.getBoard_id()==104)
         	return "writeQ&A";
-        if(id.equals("105"))
+        if(vo.getBoard_id()==105)
         	return "";
 		return null;
 

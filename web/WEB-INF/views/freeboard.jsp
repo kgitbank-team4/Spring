@@ -162,7 +162,7 @@
                     </div>
                     <div class="p-2 ml-auto writebtn a2">
                         <button class="gradient-btn1 gradient-btn2 p-2 a22" type="button"
-                                onclick="location.href='freewrite.do'">글쓰기
+                                onclick="location.href='freewrite.do?board_id=${ArtList.get(0).board_id}'">글쓰기
                         </button>
                         <a href="freewrite.do"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
                     </div>
@@ -201,8 +201,10 @@
                     <tr>
                         <th id="td" class="table-head1">${Artlist.id}</th>
                         <td id="td" class="title11 table-title1"><a
-                                href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}&nbsp;&nbsp;&nbsp;<span
-                                class="badge badge-warning">3</span></a></td>
+                                href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}&nbsp;
+                            <c:if test="${Artlist.comment_cnt!=0}"><span class="badge badge-warning">${Artlist.comment_cnt}</span></c:if>
+                            <c:if test="${Artlist.up_cnt!=0}"><span class="badge badge-warning" style="color: white; background-color: red;">${Artlist.up_cnt}</span></c:if></a>
+                        </td>
                         <td id="td" class="xstd table-content1">${Artlist.writer}</td>
                         <td id="td" class="xstd table-content1">${date}</td>
                         <td id="td" class="xstd table-content1">${Artlist.view_cnt}</td>
