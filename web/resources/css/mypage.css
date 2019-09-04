@@ -1,3 +1,4 @@
+
 .mypage1{
 	margin: 80px auto;
 }
@@ -40,11 +41,10 @@
 	font-size: 16px;
 }
 
-table td #nameresult{
-	font-size:12px;
-	font-style: italic;
-	color : red;	
-}
+
+
+
+
 
 @media only screen and (max-width: 768px) {
 	.mypage-border .mypage-table .table-header{
@@ -54,4 +54,63 @@ table td #nameresult{
 	.mypage-border .mypage-table .table-child{
 		font-size:15px;
 	}
+	
+	
+	
+	
+	
+	
+	.numtd{
+		display:none;
+	}	
+	.showtd{
+		width:50px;
+		max-width: 50px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.uptd{
+		width:70px;
+		max-width: 70px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.datetd{
+		width:50px;
+		max-width: 50px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.titletd{
+		width:130px;
+		max-width: 130px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.commenttd{
+		width:160px;
+		max-width: 160px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

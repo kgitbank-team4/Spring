@@ -147,7 +147,7 @@
 								type="button" onclick="editor_iframe.edit('${Article.board_id}')">목록
 						</button>
 						<button id="save" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
-								type="button" onclick="editor_iframe.save('writeboard.do','${Article.id}','${Article.board_id}')">저장
+								type="button" onclick="editor_iframe.save('writeboard.do','${Article.id}','${board_id}')">저장
 						</button>
 						<button id="update" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
 								type="button" onclick="editor_iframe.save('updateboard.do','${Article.id}','${Article.board_id}')" style="display: none">수정

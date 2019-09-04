@@ -147,9 +147,9 @@
                     </div>
                     <div class="p-2 ml-auto writebtn a2">
                         <button class="gradient-btn1 gradient-btn2 p-2 a22"
-                                onclick="location.href='freewrite.do?id=101'" type="button">글쓰기
+                                onclick="location.href='freewrite.do?board_id=101'" type="button">글쓰기
                         </button>
-                        <a href="freewrite.do?id=101"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
+                        <a href="freewrite.do?board_id=101"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
                     </div>
                 </div>
             </div>
@@ -201,41 +201,6 @@
     </div>
 </div>
 <br>
-
-<div class="container list1">
-    <ul class="ul-group">
-        <li><a href=""><img id="img" src="img/moja.png" alt=""></a>
-            <div class="li-title">
-                <b><a href="">[아시아]여행후기1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a></b>
-                <p>내용내용</p>
-            </div>
-            <div class="li-content">닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11</div>
-        </li>
-        <li><a href=""><img id="img" src="img/moja.png" alt=""></a>
-            <div class="li-title">
-                <b><a href="">[아시아]여행후기1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a></b>
-                <p>내용내용</p>
-            </div>
-            <div class="li-content">닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11</div>
-        </li>
-        <li><a href=""><img id="img" src="img/moja.png" alt=""></a>
-            <div class="li-title">
-                <b><a href="">[아시아]여행후기1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a></b>
-                <p>내용내용</p>
-            </div>
-            <div class="li-content">닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11</div>
-        </li>
-        <li><a href=""><img id="img" src="img/moja.png" alt=""></a>
-            <div class="li-title">
-                <b><a href="">[아시아]여행후기1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a></b>
-                <p>내용내용</p>
-            </div>
-            <div class="li-content">닉네임&nbsp;&nbsp;&nbsp;2019-8-23&nbsp;&nbsp;&nbsp;11</div>
-        </li>
-    </ul>
-</div>
-
-
 <div class="container" id="bootstrap-override3">
     <div class="row">
         <div class="col">

@@ -133,249 +133,241 @@
                         <div class="content1">
                             <input type="text" class="form-control" name="title" id="title"
                                    placeholder="제목을 입력하세요.">
-                            <div style="text-align: left;">
-                                <!-- 						<div class="p-2">
-                                                            <input type="checkbox" id="" name="" value="commentOk">&nbsp;&nbsp;댓글허용
-                                                            &nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="" name=""
-                                                                value="htmlOk">&nbsp;&nbsp;HTML
-                                                        </div> -->
-                            </div>
-                            <div class="content2">
-                                <input type="text" class="form-control" name="writer"
-                                       id="writer" value="${user.nickname}" readonly="readonly">
-                            </div>
                         </div>
-                        <div class="container">
+                        <div class="content2">
+                            <input type="text" class="form-control" name="writer"
+                                       id="writer" value="${user.nickname}" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="container">
                             <iframe src="iframe.do" id="editor_iframe"
                                     name="editor_iframe" width="100%" height="655" title="자유게시판글쓰기"
                                     frameborder="0" overflow="hidden"></iframe>
                         </div>
-                        <!-- 				<div class="container">
-                                            비밀번호 &nbsp;<input type="password" class="form11" name="" id="">
-                                        </div> -->
                     </div>
                     <div class="d-flex justify-content-around bnt11">
                         <button id="edit" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
                                 type="button" onclick="editor_iframe.edit('${Article.board_id}')">목록
                         </button>
                         <button id="save" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
-                                type="button" onclick="editor_iframe.save('writeboard.do','${Article.id}','${Article.board_id}')">저장
+                                type="button"
+                                onclick="editor_iframe.save('writeboard.do','${Article.id}','${board_id}')">저장
                         </button>
                         <button id="update" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
-                                type="button" onclick="editor_iframe.save('updateboard.do','${Article.id}','${Article.board_id}')" style="display: none">수정
+                                type="button"
+                                onclick="editor_iframe.save('updateboard.do','${Article.id}','${Article.board_id}')"
+                                style="display: none">수정
                         </button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+<hr>
+
+<!-- Start Footer Section -->
+<section id="footer-section" class="footer-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 footer-office">
+                <div class="section-heading-2">
+                    <h3 class="section-title">
+                        <span>Office Address</span>
+                    </h3>
+                </div>
+                <div class="footer-address">
+                    <ul>
+                        <li class="footer-contact"><i class="fa fa-home"></i>서울시 종로구 KGITBANK</li>
+                        <li class="footer-contact"><i class="fa fa-envelope"></i><a href="#"> KGITBANK@naver.com</a>
+                        </li>
+                        <li class="footer-contact"><i class="fa fa-phone"></i> 010-456-7890</li>
+                        <li class="footer-contact"><i class="fa fa-globe"></i><a href="#" target="_blank">
+                            www.google.com</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="section-heading-2">
+                    <h3 class="section-title">
+                        <span>SNS</span>
+                    </h3>
+                </div>
+                <div class="latest-tweet">
+                    <ul class="list-inline text-left">
+                        <li class="list-inline-item">
+                            <a href="#">
+					                <span class="fa-stack fa-lg">
+					                  <i class="fas fa-circle fa-stack-2x"></i>
+					                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>				                 
+					                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+					                <span class="fa-stack fa-lg">
+					                  <i class="fas fa-circle fa-stack-2x"></i>
+					                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+					                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+					                <span class="fa-stack fa-lg">
+					                  <i class="fas fa-circle fa-stack-2x"></i>
+					                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+					                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="section-heading-2">
+                    <h3 class="section-title">
+                        <span>Community</span>
+                    </h3>
+                </div>
+                <div class="footer-address">
+                    <ul>
+                        <li class="footer-contact"><a href="#">공지사항</a></li>
+                        <li class="footer-contact"><a href="#">자유게시판</a></li>
+                        <li class="footer-contact"><a href="#">Q & A</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Footer Section -->
+
+
+<!-- Start Copyright Section -->
+<div id="copyright-section" class="copyright-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="copyright">
+                    Copyright © 2014. All Rights Reserved.Design and Developed by <a href="#">kgitbank508</a>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="copyright-menu pull-right">
+                    <ul>
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#">Airport.co.kr</a></li>
+                        <li><a href="#">OpenWheaterMap.org</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div><!--/.row -->
+    </div><!-- /.container -->
+</div>
+<!-- End Copyright Section -->
+
+
+<!-- Start Modal -->
+<div class="row">
+    <div class="modal" id="modal1" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span>로그인</span>
+                    <button class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="login.do">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" placeholder="ID">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="inputPassword3"
+                                       placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"><span class="rememberID"> 아이디 저장하기</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10" style="text-align: right">
+                                <button type="submit" class="btn btn-default">로그인</button>
+                                <a href="regmember.do">회원가입</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-    <br>
-    <hr>
-
-    <!-- Start Footer Section -->
-    <section id="footer-section" class="footer-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 footer-office">
-                    <div class="section-heading-2">
-                        <h3 class="section-title">
-                            <span>Office Address</span>
-                        </h3>
-                    </div>
-                    <div class="footer-address">
-                        <ul>
-                            <li class="footer-contact"><i class="fa fa-home"></i>서울시 종로구 KGITBANK</li>
-                            <li class="footer-contact"><i class="fa fa-envelope"></i><a href="#"> KGITBANK@naver.com</a>
-                            </li>
-                            <li class="footer-contact"><i class="fa fa-phone"></i> 010-456-7890</li>
-                            <li class="footer-contact"><i class="fa fa-globe"></i><a href="#" target="_blank">
-                                www.google.com</a></li>
-                        </ul>
-                    </div>
-                </div>
 
 
-                <div class="col-md-4">
-                    <div class="section-heading-2">
-                        <h3 class="section-title">
-                            <span>SNS</span>
-                        </h3>
-                    </div>
-                    <div class="latest-tweet">
-                        <ul class="list-inline text-left">
-                            <li class="list-inline-item">
-                                <a href="#">
-					                <span class="fa-stack fa-lg">
-					                  <i class="fas fa-circle fa-stack-2x"></i>
-					                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>				                 
-					                </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-					                <span class="fa-stack fa-lg">
-					                  <i class="fas fa-circle fa-stack-2x"></i>
-					                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-					                </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-					                <span class="fa-stack fa-lg">
-					                  <i class="fas fa-circle fa-stack-2x"></i>
-					                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-					                </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+<!-- Bootstrap core JavaScript -->
+<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Custom scripts for this template -->
+<script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
 
-                <div class="col-md-4">
-                    <div class="section-heading-2">
-                        <h3 class="section-title">
-                            <span>Community</span>
-                        </h3>
-                    </div>
-                    <div class="footer-address">
-                        <ul>
-                            <li class="footer-contact"><a href="#">공지사항</a></li>
-                            <li class="footer-contact"><a href="#">자유게시판</a></li>
-                            <li class="footer-contact"><a href="#">Q & A</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Footer Section -->
-
-
-    <!-- Start Copyright Section -->
-    <div id="copyright-section" class="copyright-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="copyright">
-                        Copyright © 2014. All Rights Reserved.Design and Developed by <a href="#">kgitbank508</a>
-                    </div>
-                </div>
-
-                <div class="col-md-5">
-                    <div class="copyright-menu pull-right">
-                        <ul>
-                            <li><a href="#" class="active">Home</a></li>
-                            <li><a href="#">Airport.co.kr</a></li>
-                            <li><a href="#">OpenWheaterMap.org</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div><!--/.row -->
-        </div><!-- /.container -->
-    </div>
-    <!-- End Copyright Section -->
-
-
-    <!-- Start Modal -->
-    <div class="row">
-        <div class="modal" id="modal1" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <span>로그인</span>
-                        <button class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" action="login.do">
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="ID">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword3"
-                                           placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"><span class="rememberID"> 아이디 저장하기</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10" style="text-align: right">
-                                    <button type="submit" class="btn btn-default">로그인</button>
-                                    <a href="regmember.do">회원가입</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom scripts for this template -->
-    <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
-
-    <!-- 수정js -->
-    <script>
-        $(function () {
-            var clic = $("ul > li");
-            clic.find("a").click(function () {
-                click.removeClass("active");
-                $(this).addClass("active").css("text-decoration", "underline");
-            });
+<!-- 수정js -->
+<script>
+    $(function () {
+        var clic = $("ul > li");
+        clic.find("a").click(function () {
+            click.removeClass("active");
+            $(this).addClass("active").css("text-decoration", "underline");
         });
-    </script>
+    });
+</script>
 
 
-    <script>
-        window.onload = function () {
-            if ('${Article.id}' != '') {
-                //sessionStorage.setItem(['tt'],'<%--${Article.text}--%>')
-                //var text = sessionStorage.getItem('tt')
-                $("#title").val('${Article.title}')
-                $("#subject").text("글 수정하기")
-                var text = '${Article.text}'
-                document.getElementById('editor_iframe').contentWindow.imp(text)
-                $("#save").css('display','none')
-                $("#update").css('display','inline-block')
-                $("#category").val('${Article.category}').selected()
-                //var text = <%--${Article.text}--%>
-                /*var frame = $("#editor_iframe").contents()
-                var text = "sadsds"
-                var iframe = frame.find("#summernote").summernote('code',text)*/
-                //document.getElementById('editor_iframe').contentWindow.document.getElementById('summernote').innerHTML='맞아?'
-            }
+<script>
+    window.onload = function () {
+        if ('${Article.id}' != '') {
+            //sessionStorage.setItem(['tt'],'<%--${Article.text}--%>')
+            //var text = sessionStorage.getItem('tt')
+            $("#title").val('${Article.title}')
+            $("#subject").text("글 수정하기")
+            var text = '${Article.text}'
+            document.getElementById('editor_iframe').contentWindow.imp(text)
+            $("#save").css('display', 'none')
+            $("#update").css('display', 'inline-block')
+            $("#category").val('${Article.category}').selected()
+            //var text = <%--${Article.text}--%>
+            /*var frame = $("#editor_iframe").contents()
+            var text = "sadsds"
+            var iframe = frame.find("#summernote").summernote('code',text)*/
+            //document.getElementById('editor_iframe').contentWindow.document.getElementById('summernote').innerHTML='맞아?'
         }
+    }
 
-    </script>
-    <!-- 수정js -->
-    <script>
-        function x1() {
-            var d = new Date();
-            var stime = d.getHours();
-            if(stime>23){
-                var dtime = stime+1-24;
-            }
-            else
-                var dtime = stime+1
-            location.href="airinfo.do?schStTime="+stime+"00&schEdTime="+dtime+"00&schLineType=D&schIOType=O&schAirCode=GMP"
-        }
-    </script>
+</script>
+<!-- 수정js -->
+<script>
+    function x1() {
+        var d = new Date();
+        var stime = d.getHours();
+        if (stime > 23) {
+            var dtime = stime + 1 - 24;
+        } else
+            var dtime = stime + 1
+        location.href = "airinfo.do?schStTime=" + stime + "00&schEdTime=" + dtime + "00&schLineType=D&schIOType=O&schAirCode=GMP"
+    }
+</script>
 
 
 </body>

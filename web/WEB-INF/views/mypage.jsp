@@ -12,21 +12,22 @@
 
     <title>Spring - Travel Community Site</title>
     <!-- Bootstrap core CSS -->
+    <link href="${pageContext.request.contextPath}/resources/css/paging.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/css/paging2.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-          type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
-          type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-          rel='stylesheet' type='text/css'>
+    <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/resources/css/clean-blog.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/mypage.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script>
         window.onload = function () {
@@ -164,146 +165,106 @@
                         </div>
                         <div class="tab-pane fade" id="pills-write" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <div class="mypage-table">
-                                <table class="table table-hover">
+                                <table class="table table-hover" id="example1">
+                                  <thead>
                                     <tr class="table-header">
-                                        <td>No.</td>
-                                        <td>제목</td>
-                                        <td>날짜</td>
-                                        <td>조회수</td>
-                                        <td>추천수</td>
+                                        <td class="numtd">분류</td>
+                                        <td class="titletd">제목</td>
+                                        <td class="datetd">날짜</td>
+                                        <td class="showtd">조회수</td>
+                                        <td class="uptd">추천수</td>
                                     </tr>
+                                  </thead>
+                                  <tbody>
                                     <c:forEach items="${myArtList}" var="myArtList">
                                         <fmt:formatDate value="${myArtList.date_created}" var="date" pattern="yyyy-MM-dd"/>
                                         <tr class="table-child">
-                                            <td>${myArtList.boardname}</td>
-                                            <td><a href="showfreeboard.do?id=${myArtList.article_id}">${myArtList.title}</a></td>
-                                            <td>${date}</td>
-                                            <td>${myArtList.view_cnt}</td>
-                                            <td>${myArtList.up_cnt}</td>
+                                            <td class="numtd">${myArtList.boardname}</td>
+                                            <td class="titletd"><a href="showfreeboard.do?id=${myArtList.article_id}">${myArtList.title}</a></td>
+                                            <td class="datetd">${date}</td>
+                                            <td class="showtd">${myArtList.view_cnt}</td>
+                                            <td class="uptd">${myArtList.up_cnt}</td>
                                         </tr>
                                     </c:forEach>
-                                    <%--<tr class="table-child">
-                                        <td></td>
-                                    </tr>
-                                    <tr class="table-child">
-                                        <td>1</td>
-                                        <td><a href="#">############</a></td>
-                                        <td>####-##-##</td>
-                                        <td>##</td>
-                                        <td>#</td>
-                                    </tr>--%>
+                                  </tbody>
                                 </table>
-                                <div class="container page1">
-                                    <div class="row">
-                                        <div class="col-lg-5 col-md-5">
-                                            <div class="container">
-                                                <div class="text-center">
-                                                    <ul class="pagination">
-                                                        <li class="page-item"><a class="page-link"
-                                                                                 href="javascript:void(0);">처음</a></li>
-                                                        <li class="page-item"><a class="page-link"
-                                                                                 href="javascript:void(0);">1</a></li>
-                                                        <li class="page-item"><a class="page-link"
-                                                                                 href="javascript:void(0);">2</a></li>
-                                                        <li class="page-item"><a class="page-link"
-                                                                                 href="javascript:void(0);">끝</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="pills-write22" role="tabpanel"
-                             aria-labelledby="pills-contact-tab">
+                        <div class="tab-pane fade" id="pills-write22" role="tabpanel" aria-labelledby="pills-contact-tab">
                             <div class="mypage-table">
-                                <table class="table table-hover">
+                                <table class="table table-hover" id="example2">
+                                  <thead>
                                     <tr class="table-header">
-                                        <td>No.</td>
-                                        <td>댓글</td>
-                                        <td>게시글제목</td>
+                                        <td class="numtd">분류</td>
+                                        <td class="commenttd">댓글</td>
+                                        <td class="titletd">게시글제목</td>
                                         <td>날짜</td>
                                     </tr>
+                                  </thead>
+                                  <tbody>
                                     <c:forEach items="${myCommentList}" var="myCommentList">
                                         <fmt:formatDate value="${myCommentList.date_created}" var="c_date" pattern="yyyy-MM-dd"/>
                                         <tr class="table-child">
-                                            <td>${myCommentList.boardname}</td>
-                                            <td>${myCommentList.content}</td>
-                                            <td><a href="showfreeboard.do?id=${myCommentList.article_id}">${myCommentList.title}</a></td>
-                                            <td>${c_date}</td>
+                                            <td class="numtd">${myCommentList.boardname}</td>
+                                            <td class="commenttd">${myCommentList.content}</td>
+                                            <td class="titletd"><a href="showfreeboard.do?id=${myCommentList.article_id}">${myCommentList.title}</a></td>
+                                            <td class="uptd">${c_date}</td>
                                         </tr>
                                     </c:forEach>
+                                  </tbody>
                                 </table>
-                                <div class="container page1">
-                                    <div class="row">
-                                        <div class="col-lg-5 col-md-5">
-                                            <div class="container">
-                                                <div class="text-center">
-                                                    <ul class="pagination">
-                                                        <li class="page-item"><a class="page-link"
-                                                                                 href="javascript:void(0);">처음</a></li>
-                                                        <li class="page-item"><a class="page-link"
-                                                                                 href="javascript:void(0);">1</a></li>
-                                                        <li class="page-item"><a class="page-link"
-                                                                                 href="javascript:void(0);">2</a></li>
-                                                        <li class="page-item"><a class="page-link"
-                                                                                 href="javascript:void(0);">끝</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </section>
         </div>
-        </section>
     </div>
 </div>
-</div>
+
+<script>
+    $(document).ready(function() {
+        // DataTable initialisation
+        $('#example1').DataTable({
+            "paging": true,
+            "autoWidth": true,
+            "columnDefs": [
+                {
+                    "targets": 3,
+                    render: function(data, type, full, meta) {
+                        if (type === 'display' && data == 'Done') {
+                            var rowIndex = meta.row+1;
+                            return data;
+                        } else {
+                            return data;
+                        }
+                    }
+                }]
+        });
+    });
+
+    $(document).ready(function() {
+        // DataTable initialisation
+        $('#example2').DataTable({
+            "paging": true,
+            "autoWidth": true,
+            "columnDefs": [
+                {
+                    "targets": 3,
+                    render: function(data, type, full, meta) {
+                        if (type === 'display' && data == 'Done') {
+                            var rowIndex = meta.row+1;
+                            return data;
+                        } else {
+                            return data;
+                        }
+                    }
+                }]
+        });
+    });
+</script>
 
 <hr>
-
-<!-- Footer -->
-<!-- <footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <ul class="list-inline text-center">
-          <li class="list-inline-item">
-            <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-        </ul>
-        <p class="copyright text-muted">Copyright &copy; Your Website 2019</p>
-      </div>
-    </div>
-  </div>
-</footer> -->
-
 
 <!-- Start Footer Section -->
 <section id="footer-section" class="footer-section">
@@ -570,7 +531,10 @@
 <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Custom scripts for this template -->
-<script src="${pageContext.request.contextPath}/js/clean-blog.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
+
+<%--paging js--%>
+<script src="${pageContext.request.contextPath}/resources/js/paging.js"></script>
 
 </body>
 <script>

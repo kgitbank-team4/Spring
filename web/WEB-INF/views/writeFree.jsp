@@ -122,24 +122,19 @@
                 <hr>
                 <form name="freeform" action="writeboard.do">
                     <div id="well">
-                        <div class="d-flex flex-row">
-                            <div class="p-2">
+                        <div class="content-box1">
+                            <div class="content1">
                                 <select name="category" id="category">
                                     <option selected>분류<span class="caret"></span></option>
                                     <option value="가입인사">가입인사</option>
                                     <option value="잡담">잡담</option>
                                 </select>
                             </div>
-                            <div class="p-2">
+                            <div class="content1">
                                 <input type="text" class="form-control" name="title" id="title"
                                        placeholder="제목을 입력하세요.">
-                                <div class="p-2">
-                                    <!-- <input type="checkbox" id="" name="" value="commentOk">&nbsp;&nbsp;댓글허용 -->
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input type="checkbox" id="" name="" value="htmlOk">&nbsp;&nbsp;HTML
-                                </div>
                             </div>
-                            <div class="p-2 ml-auto">
+                            <div class="content2">
                                 <input type="text" class="form-control" name="writer"
                                        id="writer" value="${user.nickname}" readonly="readonly">
                             </div>

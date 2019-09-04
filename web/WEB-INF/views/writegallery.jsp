@@ -123,8 +123,8 @@ $(document).ready(function(){
 				<h3>포토갤러리 - 글쓰기</h3>
 					<hr>
 					<div id="well">
-						<div class="d-flex flex-row">
-							<div class="p-2">
+						<div class="content-box1">
+							<div class="content1" >
 								<select name="category" id="category">
 									<option value="분류" selected>분류<span class="caret"></span></option>
 									<option value="아시아">아시아</option>
@@ -153,7 +153,7 @@ $(document).ready(function(){
                                 type="button" onclick="editor_iframe.edit('${Article.board_id}')">목록
                         </button>
                         <button id="save" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
-                                type="button" onclick="editor_iframe.save('writeboard.do','${Article.id}','${Article.board_id}')">저장
+                                type="button" onclick="editor_iframe.save('writeboard.do','${Article.id}','${board_id}')">저장
                         </button>
                         <button id="update" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
                                 type="button" onclick="editor_iframe.save('updateboard.do','${Article.id}','${Article.board_id}')" style="display: none">수정

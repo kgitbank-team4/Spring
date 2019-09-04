@@ -148,9 +148,9 @@
                     </div>
                     <div class="p-2 ml-auto writebtn a2">
                         <button class="gradient-btn1 gradient-btn2 p-2 a22"
-                                onclick="location.href='freewrite.do?id=104'" type="button">글쓰기
+                                onclick="location.href='freewrite.do?board_id=104'" type="button">글쓰기
                         </button>
-                        <a href="freewrite.do?id=104"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
+                        <a href="freewrite.do?board_id=104"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
                     </div>
                 </div>
             </div>
