@@ -170,7 +170,7 @@ $(document).ready(function(){
 				<table class="table table-borderless free-table">
 					<thead>
 						<tr class="trnone1">
-							<th table-head1">번호</th>
+							<th class="table-head1">번호</th>
 							<th>제목</th>
 							<th>글쓴이</th>
 							<th>날짜</th>
