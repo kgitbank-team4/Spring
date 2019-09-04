@@ -31,9 +31,10 @@
     </sql>
 
     <select id="searchArt" parameterType="BoardVO" resultType="ArticleVO">
-        select * from ARTICLE where BOARD_ID=#{id}
+        select * from ARTICLE where BOARD_ID=#{id} and VISIBLE=1
         and (case when #{search_style}='title' then TITLE ELSE WRITER end) like '%'||#{keyword}||'%'
     </select>
+
     <resultMap id="MypageMap" type="MypageVO">
         <result property="article_id" column="id"></result>
     </resultMap>

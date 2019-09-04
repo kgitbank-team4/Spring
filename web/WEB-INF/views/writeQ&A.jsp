@@ -147,7 +147,7 @@
                     </div>
                     <div class="d-flex justify-content-around bnt11">
                         <button id="edit" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
-                                type="button" onclick="editor_iframe.edit('${Article.board_id}')">목록
+                                type="button" onclick="editor_iframe.edit('${board_id}')">목록
                         </button>
                         <button id="save" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
                                 type="button"

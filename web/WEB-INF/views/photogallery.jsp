@@ -147,15 +147,14 @@
                 <hr>
                 <div id="well" class="d-flex">
                     <div class="p-2 align-self-center a1">
-                        <select>
-                            <option value="제목" selected>제목<span class="caret"></span></option>
-                            <option value="닉네임">닉네임</option>
-                            <option value="닉네임+제목">닉네임+제목</option>
+                        <select id="selectbox">
+                            <option value="title" selected>제목<span class="caret"></span></option>
+                            <option value="nickname">닉네임</option>
                         </select>
                     </div>
                     <div class="p-2 align-self-center a1">
                         <div class="input-group">
-                            <input type="text" class="form-control form2" placeholder="검색">
+                            <input id="searchinput" type="text" class="form-control form2" placeholder="검색">
                             <button class="btn11" onclick="x()">
                                 <i class="fas fa-search fa-lg"></i>
                             </button>
@@ -163,7 +162,7 @@
                     </div>
                     <div class="p-2 ml-auto writebtn a2">
                         <button class="gradient-btn1 gradient-btn2 p-2 a22"
-                                onclick="location.href='freewrite.do?board_id=102'" type="button">사진올리기
+                                onclick="location.href='freewrite.do?board_id=102'" type="button">글쓰기
                         </button>
                         <a href="freewrite.do?board_id=102"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
                     </div>
@@ -198,7 +197,9 @@
                     <div class="col-sm colcol col-6">
                         <a href="showfreeboard.do?id=${Artlist.id}">
                             <img id="img1" name="img1" src="" alt="사진없음" class="card-img-top ${Artlist.id}"></a><br>
-                        <div class="content-font1">${Artlist.writer}&nbsp;&nbsp;&nbsp;${date}</div>
+                        <div class="content-font1">${Artlist.writer}&nbsp;&nbsp;&nbsp;${date}&nbsp;&nbsp;
+                            <c:if test="${Artlist.comment_cnt!=0}"><span class="badge badge-warning">${Artlist.comment_cnt}</span></c:if>
+                            <c:if test="${Artlist.up_cnt!=0}"><span class="badge badge-warning" style="color: white; background-color: red;">${Artlist.up_cnt}</span></c:if></div>
                     </div>
                     <script>
                         $("#"+"${Artlist.id}").find('img').first().each(function(){
@@ -412,7 +413,7 @@
     function x() {
         var target = $("#selectbox option:selected").val();
         var keyword = $("#searchinput").val();
-        location.href = 'search.do?id=101&search_style=' + target + '&keyword=' + keyword
+        location.href = 'search.do?id=102&search_style=' + target + '&keyword=' + keyword
     }
 
     function list(page) {

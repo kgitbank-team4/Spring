@@ -167,8 +167,8 @@ $(document).ready(function(){
                                                     </select>
                                                 </td>
                                                 <td class="table-head" id="tablegroup2">시간</td>
-                                                <td id="tablegroup2">
-                                                    <select name="schStTime" id="schStTime" style="width:55px;">
+                                                <td class="table-child" id="tablegroup2">
+                                                    <select name="schStTime" id="schStTime" class="airport-droptime">
                                                         <option value="0000">00</option>
                                                         <option value="0100">01</option>
                                                         <option value="0200">02</option>
@@ -195,8 +195,8 @@ $(document).ready(function(){
                                                         <option value="2300">23</option>
                                                         <option value="2400">24</option>
                                                     </select>
-                                                    시&nbsp;&nbsp;
-                                                    <select name="schEdTime" id="schEdTime" style="width:55px;">
+                                                    시&nbsp;&nbsp;~
+                                                    <select name="schEdTime" id="schEdTime" class="airport-droptime">
                                                         <option value="0000">00</option>
                                                         <option value="0100">01</option>
                                                         <option value="0200">02</option>
@@ -226,12 +226,12 @@ $(document).ready(function(){
                                                     시
                                                 </td>
                                                 <td class="table-head" id="tablegroup3">편명</td>
-                                                <td id="tablegroup3"><input type="text" name=""></td>
+                                                <td class="table-child" id="tablegroup3"><input type="text" name="" class="airport-input"></td>
 
                                             </tr>
                                             <tr>
                                                 <td class="table-head" id="tablegroup4">구분</td>
-                                                <td id="tablegroup4">
+                                                <td class="table-child" id="tablegroup4">
                                                     <select name="schLineType" id="schLineType" class="airport-drop">
                                                         <option value="non"><span class="caret"></span></option>
                                                         <option value="D">국내선</option>
@@ -239,11 +239,9 @@ $(document).ready(function(){
                                                     </select>
                                                 </td>
                                                 <td class="table-head" id="tablegroup5">항공사</td>
-                                                <td id="tablegroup5">
+                                                <td class="table-child" id="tablegroup5">
                                                     <select class="airport-drop">
                                                         <option value="non"><span class="caret"></span></option>
-                                                        <option value="인천공항">국내</option>
-                                                        <option value="코리아익스프레스에어">코리아익스프레스에어</option>
                                                     </select>
                                                 </td>
                                                 <td class="tablebt" colspan="2" id="tablegroup6">
@@ -314,8 +312,8 @@ $(document).ready(function(){
                                                     </select>
                                                 </td>
                                                 <td class="table-head" id="tablegroup2">시간</td>
-                                                <td id="tablegroup2">
-                                                    <select name="schStTime" id="schStTime2" style="width:55px;">
+                                                <td class="table-child" id="tablegroup2">
+                                                    <select name="schStTime" id="schStTime2" class="airport-droptime">
                                                         <option value="0000">00</option>
                                                         <option value="0100">01</option>
                                                         <option value="0200">02</option>
@@ -343,7 +341,7 @@ $(document).ready(function(){
                                                         <option value="2400">24</option>
                                                     </select>
                                                     시&nbsp;&nbsp;
-                                                    <select name="schEdTime" id="schEdTime2" style="width:55px;">
+                                                    <select name="schEdTime" id="schEdTime2" class="airport-droptime">
                                                         <option value="0000">00</option>
                                                         <option value="0100">01</option>
                                                         <option value="0200">02</option>
@@ -373,11 +371,11 @@ $(document).ready(function(){
                                                     시
                                                 </td>
                                                 <td class="table-head" id="tablegroup3">편명</td>
-                                                <td id="tablegroup3"><input type="text" name=""></td>
+                                                <td class="table-child" id="tablegroup3"><input type="text" name="" class="airport-input"></td>
                                             </tr>
                                             <tr>
                                                 <td class="table-head" id="tablegroup4">구분</td>
-                                                <td id="tablegroup4">
+                                                <td class="table-child" id="tablegroup4">
                                                     <select name="schLineType" id="schLineType2" class="airport-drop">
                                                         <option value="non"><span class="caret"></span></option>
                                                         <option value="D">국내선</option>
@@ -385,11 +383,9 @@ $(document).ready(function(){
                                                     </select>
                                                 </td>
                                                 <td class="table-head" id="tablegroup5">항공사</td>
-                                                <td id="tablegroup5">
+                                                <td class="table-child" id="tablegroup5">
                                                     <select class="airport-drop">
                                                         <option value="non"><span class="caret"></span></option>
-                                                        <option value="인천공항">국내</option>
-                                                        <option value="코리아익스프레스에어">코리아익스프레스에어</option>
                                                     </select>
                                                 </td>
 

@@ -98,7 +98,9 @@
 </nav>
 <script>
     $(document).ready(function () {
-        if (${user.id} !=null)
+        if (${user.id} !=
+        null
+    )
         {
             $("#mainNav .container #navbarResponsive .login").removeClass("login-active");
             $("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");
@@ -132,15 +134,14 @@
                 <hr>
                 <div id="well" class="d-flex">
                     <div class="p-2 align-self-center a1">
-                        <select>
-                            <option value="제목" selected>제목<span class="caret"></span></option>
-                            <option value="닉네임">닉네임</option>
-                            <option value="닉네임+제목">닉네임+제목</option>
+                        <select id="selectbox">
+                            <option value="title" selected>제목<span class="caret"></span></option>
+                            <option value="nickname">닉네임</option>
                         </select>
                     </div>
                     <div class="p-2 align-self-center a1">
                         <div class="input-group">
-                            <input type="text" class="form-control form2" placeholder="검색">
+                            <input id="searchinput" type="text" class="form-control form2" placeholder="검색">
                             <button class="btn11" onclick="x()">
                                 <i class="fas fa-search fa-lg"></i>
                             </button>
@@ -183,7 +184,9 @@
                     <tr>
                         <th class="table-head1">${Artlist.id}</th>
                         <td class="title11 table-title1"><a
-                                href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}</a></td>
+                                href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}
+                            <c:if test="${Artlist.comment_cnt!=0}"><span class="badge badge-warning">${Artlist.comment_cnt}</span></c:if>
+                            <c:if test="${Artlist.up_cnt!=0}"><span class="badge badge-warning" style="color: white; background-color: red;">${Artlist.up_cnt}</span></c:if></a></td>
                         <td class="xstd table-content1">${Artlist.writer}</td>
                         <td class="xstd table-content1">${date}</td>
                         <td class="xstd table-content1">${Artlist.view_cnt}</td>
@@ -196,30 +199,30 @@
             <!-- 페이징 -->
             <div class="container">
                 <div class="row">
-						<div class="col">
+                    <div class="col">
                         <ul class="pagination justify-content-center">
-							<c:if test="${paging.curBlock > 1}">
-								<a class="page-link" href="javascript:list('${paging.prevPage}')">이전</a>
-							</c:if>
+                            <c:if test="${paging.curBlock > 1}">
+                                <a class="page-link" href="javascript:list('${paging.prevPage}')">이전</a>
+                            </c:if>
 
-							<c:forEach var="num" begin="${paging.blockBegin}" end="${paging.blockEnd}">
-								<c:choose>
-									<c:when test="${num == paging.curPage}">
-										<a class="page-link"><span>${num}</span></a>&nbsp;
-									</c:when>
-									<c:otherwise>
-										<a class="page-link" href="javascript:list('${num}')">${num}</a>&nbsp;
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
+                            <c:forEach var="num" begin="${paging.blockBegin}" end="${paging.blockEnd}">
+                                <c:choose>
+                                    <c:when test="${num == paging.curPage}">
+                                        <a class="page-link"><span>${num}</span></a>&nbsp;
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a class="page-link" href="javascript:list('${num}')">${num}</a>&nbsp;
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
 
-							<c:if test="${paging.curBlock <= paging.totBlock}">
-								<a class="page-link" href="javascript:list('${paging.nextPage}')">다음</a>
-							</c:if>
+                            <c:if test="${paging.curBlock <= paging.totBlock}">
+                                <a class="page-link" href="javascript:list('${paging.nextPage}')">다음</a>
+                            </c:if>
 
-							<c:if test="${paging.curPage <= paging.totPage}">
-								<a class="page-link" href="javascript:list('${paging.totPage}')">끝</a>
-							</c:if>
+                            <c:if test="${paging.curPage <= paging.totPage}">
+                                <a class="page-link" href="javascript:list('${paging.totPage}')">끝</a>
+                            </c:if>
                         </ul>
                     </div>
                 </div>
@@ -386,7 +389,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
 
 <!-- 수정js -->
-	<script>
+<script>
     $(function () {
         var clic = $("ul > li");
         clic.find("a").click(function () {
@@ -394,42 +397,44 @@
             $(this).addClass("active").css("text-decoration", "underline");
         });
     });
-	</script>
-
-	<!-- responsive jquery -->
-	<script>
- 		$(window).resize(function() {
-		//창크기 변화 감지
-			function open_window() {
-				var windowWidth = $(window).width();
-				if (windowWidth < 992) {
-					$('.a22').text("<i class='fas fa-pencil-alt'></i>");
-					$('.a2').removeClass('ml-auto');
-				} else(windowWidth < 400) {
-					$('.trnone1').css('display', 'none');
-				}
-			}
-		});
-
+</script>
+<script>
     function x() {
         var target = $("#selectbox option:selected").val();
         var keyword = $("#searchinput").val();
-        location.href='search.do?id=104&search_style='+target+'&keyword='+keyword
+        location.href = 'search.do?id=104&search_style=' + target + '&keyword=' + keyword
     }
+</script>
 
-    function list(page){
-    	location.href = "freeboard.do?curPage="+page+"&id=104&sort=lately";
+<!-- responsive jquery -->
+<script>
+    $(window).resize(function () {
+        //창크기 변화 감지
+        function open_window() {
+            var windowWidth = $(window).width();
+            if (windowWidth < 992) {
+                $('.a22').text("<i class='fas fa-pencil-alt'></i>");
+                $('.a2').removeClass('ml-auto');
+            } else (windowWidth < 400)
+            {
+                $('.trnone1').css('display', 'none');
+            }
+        }
+    });
+
+
+    function list(page) {
+        location.href = "freeboard.do?curPage=" + page + "&id=104&sort=lately";
     }
 
     function x1() {
         var d = new Date();
         var stime = d.getHours();
-        if(stime>23){
-            var dtime = stime+1-24;
-        }
-        else
-            var dtime = stime+1
-        location.href="airinfo.do?schStTime="+stime+"00&schEdTime="+dtime+"00&schLineType=D&schIOType=O&schAirCode=GMP"
+        if (stime > 23) {
+            var dtime = stime + 1 - 24;
+        } else
+            var dtime = stime + 1
+        location.href = "airinfo.do?schStTime=" + stime + "00&schEdTime=" + dtime + "00&schLineType=D&schIOType=O&schAirCode=GMP"
     }
 </script>
 

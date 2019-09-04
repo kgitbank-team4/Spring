@@ -168,7 +168,7 @@
                                 <table class="table table-hover" id="example1">
                                   <thead>
                                     <tr class="table-header">
-                                        <td class="numtd">분류</td>
+                                        <td class="numtd">게시판명</td>
                                         <td class="titletd">제목</td>
                                         <td class="datetd">날짜</td>
                                         <td class="showtd">조회수</td>
@@ -195,7 +195,7 @@
                                 <table class="table table-hover" id="example2">
                                   <thead>
                                     <tr class="table-header">
-                                        <td class="numtd">분류</td>
+                                        <td class="numtd">게시판명</td>
                                         <td class="commenttd">댓글</td>
                                         <td class="titletd">게시글제목</td>
                                         <td>날짜</td>

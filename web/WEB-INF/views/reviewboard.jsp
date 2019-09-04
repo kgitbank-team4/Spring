@@ -131,15 +131,14 @@
                 <hr>
                 <div id="well" class="d-flex">
                     <div class="p-2 align-self-center a1">
-                        <select>
-                            <option value="제목" selected>제목<span class="caret"></span></option>
-                            <option value="닉네임">닉네임</option>
-                            <option value="닉네임+제목">닉네임+제목</option>
+                        <select id="selectbox">
+                            <option value="title" selected>제목<span class="caret"></span></option>
+                            <option value="nickname">닉네임</option>
                         </select>
                     </div>
                     <div class="p-2 align-self-center a1">
                         <div class="input-group">
-                            <input type="text" class="form-control form2" placeholder="검색">
+                            <input id="searchinput" type="text" class="form-control form2" placeholder="검색">
                             <button class="btn11" onclick="x()">
                                 <i class="fas fa-search fa-lg"></i>
                             </button>
@@ -174,7 +173,9 @@
                 <table class="table table-borderless">
                     <tr style="border-bottom: solid; border-top: solid;">
                         <td class="content11">
-                            <h5><a href="showfreeboard.do?id=${Artlist.id}">[${Artlist.category}]${Artlist.title}</a>
+                            <h5><a href="showfreeboard.do?id=${Artlist.id}">[${Artlist.category}]${Artlist.title}
+                                <c:if test="${Artlist.comment_cnt!=0}"><span class="badge badge-warning">${Artlist.comment_cnt}</span></c:if>
+                                <c:if test="${Artlist.up_cnt!=0}"><span class="badge badge-warning" style="color: white; background-color: red;">${Artlist.up_cnt}</span></c:if></a>
                             </h5>
                         </td>
                         <td style="text-align: right;">
@@ -398,6 +399,12 @@
             $(this).addClass("active").css("text-decoration", "underline");
         });
     });
+
+    function x() {
+        var target = $("#selectbox option:selected").val();
+        var keyword = $("#searchinput").val();
+        location.href = 'search.do?id=101&search_style=' + target + '&keyword=' + keyword
+    }
 </script>
 
 <!-- review img js -->
@@ -423,12 +430,6 @@
             }
         }
     };
-
-    function x() {
-        var target = $("#selectbox option:selected").val();
-        var keyword = $("#searchinput").val();
-        location.href = 'search.do?id=103&search_style=' + target + '&keyword=' + keyword
-    }
 
     function list(page) {
         location.href = "freeboard.do?curPage=" + page + "&id=101&sort=lately";

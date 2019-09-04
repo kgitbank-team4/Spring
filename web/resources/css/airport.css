@@ -127,3 +127,26 @@
 		overflow:auto;
 	}
 }
+
+@media only screen and (max-width: 400px){
+	.airport-container .nav-pills li{
+		width:100%;
+	}
+	.airport-container .nav-pills li a{
+		width:100%;
+	}
+	.airport-container .nav-pills li .active{
+		width:100%;
+	}
+
+	.airport-table table tr .table-child .airport-drop{
+		width:100%;
+	}
+	.airport-table table tr .table-child .airport-droptime{
+		width:35px;
+	}
+	.airport-table table tr .table-child .airport-input{
+		width: 100%;
+	}
+
+}
