@@ -9,7 +9,7 @@ public interface BoardDAO {
     //게시판
     public BoardVO select(BoardVO vo);
     public List<ArticleVO> selectAllList(BoardVO vo);//글전체목록
-    public List<ArticleVO> selectList(BoardVO vo);//게시판별 목록
+    public List<ArticleVO> selectList (BoardVO vo, int start, int end);//게시판별 목록
     public List<ArticleVO> searchList(BoardVO vo);//검색
     public List<MypageVO> searchListFromUser(MypageVO vo);//닉네임으로 검색
     public List<MypageVO> searchMyComment(MypageVO vo);//닉네임으로 댓글 검색
@@ -45,5 +45,8 @@ public interface BoardDAO {
     public void delete(VoteVO vo); //내용삭제
     public VoteVO select(VoteVO vo); //내용 읽기
     public List<VoteVO> selectList(VoteVO vo);//내용 목록
+    
+    //페이징
+	public int countArt(BoardVO vo);
 
 }

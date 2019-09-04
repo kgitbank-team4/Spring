@@ -40,7 +40,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="index.html">SPRING</a>
+        <a class="navbar-brand" href="home.do">SPRING</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -62,29 +62,44 @@
                        aria-haspopup="true" aria-expanded="false">정보</a>
                     <ul class="dropdown-menu">
                         <li><a class="nav-link" href="#">운항 정보</a></li>
-                        <li><a class="nav-link" href="#">날씨 정보</a></li>
+                        <li><a class="nav-link" href="weatherinfo.do?cityname=seoul">날씨 정보</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">자유게시판</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
                         <li><a class="nav-link" href="#">Q & A</a></li>
                         <li><a class="nav-link" href="#">공지사항</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link-login" href="mypage.html">마이페이지</a>
+               <!--  <li class="nav-item">
+                    <a class="nav-link-login" href="mypage.do">마이페이지</a>
+                </li> -->
+                <li class="dropdown">
+                       <a href="mypage.do">마이페이지</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
+                <li class="nav-item login login-active">
+                    <a class="nav-link-login" data-target="#modal1" data-toggle="modal" >로그인</a>
+                </li>
+                <li class="nav-item logout login-inactive">
+                     <a class="nav-link-login" href="logout.do">로그아웃</a>                   
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
+<script>
+$(document).ready(function(){	
+	if( ${user.id} != null ) {
+		$("#mainNav .container #navbarResponsive .login").removeClass("login-active");
+		$("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");
+		$("#mainNav .container #navbarResponsive .login").addClass("login-inactive");
+		$("#mainNav .container #navbarResponsive .logout").addClass("login-active");
+	}
+});
+</script>
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
@@ -444,7 +459,7 @@
         $("#schLineType2").val("${param.schLineType}").attr("selected", "selected");
     })
     var width = $(window).width();
-    alert($("#schLineType").val("${param.schAirCode}").attr("selected"))
+    //alert($("#schLineType").val("${param.schAirCode}").attr("selected"))
 </script>
 <!-- END MAIN JS -->
 <hr>
@@ -555,7 +570,7 @@
                 <div class="footer-address">
                     <ul>
                         <li class="footer-contact"><a href="#">공지사항</a></li>
-                        <li class="footer-contact"><a href="#">자유게시판</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
                         <li class="footer-contact"><a href="#">Q & A</a></li>
                     </ul>
                 </div>
@@ -592,6 +607,66 @@
 
 
 <!-- Start Modal -->
+<!-- 아이디 저장 -->
+<script>
+$(document).ready(function() {
+	var userInputId = getCookie("userInputId");
+	$("#inputId1").val(userInputId);
+	
+	if($("#inputId1").val() != ""){
+		$("#Saveid").attr("checkd",true); //아이디 저장을 체크상태로 두기
+	}
+	
+	$("#Saveid").change(function() {//체크박스에 변화 발생시
+		if($("#Saveid").is(":checked")){//아이디 저장 체크한 상태
+			var userInputId = $("#inputId1").val();
+			setCookie("userInputId",userInputId, 7); //7일동안 쿠키 저장
+		}else{
+			deleteCookie("userInputId");
+		}
+	});
+	
+	///아이디 저장 체크한 상태에서 id 입력
+	$("#inputId1").keyup(function() { //아이디 입력 칸에 아이디 입력할 때
+		if($("#Saveid").is(":checked")){//아이디 저장 체크한 상태
+			var userInputId = $("#inputId1").val();
+			setCookie("userInputId",userInputId, 7);
+		}
+	});
+});
+
+//쿠키 저장
+function setCookie(cookieName, value, exdays){
+	var exdate = new Date();
+	exdate.setDate(exdate.getDate()+exdays);
+	var cookieValue = escape(value) + ((exdays==null)? "" : "; expires="+exdate.toGMTString());
+	document.cookie = cookieName + "=" + cookieValue;
+	
+}
+
+//쿠키삭제
+function deleteCookie(cookieName){
+	var expireDate = new Date();
+	expireDate.setDate(expireDate.getDate() - 1);
+	document.cookie = cookieName + "= " + "; expires="+exdate.toGMTString();
+}
+
+//쿠키정보 가져오기
+function getCookie(cookieName){
+	cookieName = cookieName + '=';
+	var cookieData = document.cookie;
+	var start = cookieData.indexOf(cookieName);
+	var cookieValue = '';
+	if(start != -1){
+		start += cookieName.length;
+		var end = cookieData.indexOf(';', start);
+		if(end == -1)
+			end = cookieData.length;
+		cookieValue = cookieData.substring(start, end);
+	}
+	return unescape(cookieValue);
+}
+</script>
 <div class="row">
     <div class="modal" id="modal1" tabindex="-1">
         <div class="modal-dialog">
@@ -601,24 +676,26 @@
                     <button class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" action="regmember.html">
+                    <form name="loginform" class="form-horizontal" action="login.do">
                         <div class="form-group">
-                            <label for="loginID" class="col-sm-2 control-label">ID</label>
+                            <label for="inputEmail2" class="col-sm-2 control-label">ID</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="loginID" placeholder="ID">
+                                <input type="text" class="form-control" name="username" id="inputId1" placeholder="ID">
+
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="loginPW" class="col-sm-2 control-label">Password</label>
+                            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" id="loginPW" placeholder="Password">
+                                <input type="password" class="form-control" name="password" id="inputPassword3"
+                                       placeholder="Password">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" id="saveID"><span class="rememberID"> 아이디 저장하기</span>
+                                        <input type="checkbox" id="Saveid"><span class="rememberID"> 아이디 저장하기</span>
                                     </label>
                                 </div>
                             </div>
@@ -626,7 +703,7 @@
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10" style="text-align: right">
                                 <button type="submit" class="btn btn-default">로그인</button>
-                                <a href="regmember.html">회원가입</a>
+                                <a href="regmember.do">회원가입</a>
                             </div>
                         </div>
                     </form>

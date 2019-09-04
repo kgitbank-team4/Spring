@@ -69,8 +69,8 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public List<ArticleVO> selectArtList(BoardVO vo) throws ClassNotFoundException, SQLException {
-        return boardDAO.selectList(vo);
+    public List<ArticleVO> selectArtList(BoardVO vo, int start, int end) throws ClassNotFoundException, SQLException {
+        return boardDAO.selectList(vo, start, end);
     }
 
     @Override
@@ -170,5 +170,10 @@ public class BoardServiceImpl implements BoardService{
     public List<AirVO> getAirInfo(AirVO vo) throws ClassNotFoundException, SQLException {
         return apiService.getAirInfo(vo);
     }
+
+	@Override
+	public int countArticle(BoardVO vo) {
+		return boardDAO.countArt(vo);
+	}
 
 }

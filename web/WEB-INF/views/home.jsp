@@ -52,8 +52,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">이야기</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">후기</a></li>
-                        <li><a class="nav-link" href="#">사진</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=101&sort=lately">후기</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=102&sort=lately">사진</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -69,19 +69,12 @@
                        aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                     <ul class="dropdown-menu">
                         <li><a class="nav-link" href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
-                        <li><a class="nav-link" href="#">Q & A</a></li>
-                        <li><a class="nav-link" href="#">공지사항</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=104&sort=lately">Q & A</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=105&sort=lately">공지사항</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <!-- <a href="mypage.do" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                       aria-haspopup="true" aria-expanded="false"> -->
                        <a href="mypage.do">마이페이지</a>
-<!--                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">회원정보보기</a></li>
-                        <li><a class="nav-link" href="#">내가 작성한 글</a></li>
-                        <li><a class="nav-link" href="#">내 댓글</a></li>
-                    </ul> -->
                 </li>
                 <li class="nav-item login login-active">
                     <a class="nav-link-login" data-target="#modal1" data-toggle="modal" >로그인</a>
@@ -160,7 +153,7 @@ $(document).ready(function(){
         <div class="col-md-6 post-tabs" role="navigation">
             <div role="tabpanel">
                 <ul class="nav nav-tabs tab2" role="tablist">
-                    <li role="presentation" class="active tablist1"><a href="#free" aria-controls="free" role="tab"
+                    <li role="presentation" class="active tablist1"><a href="freeboard.do?id=103&sort=lately" aria-controls="free" role="tab"
                                                                        data-toggle="tab">자유게시판</a></li>
                 </ul>
                 <!-- Tab panes -->
@@ -174,7 +167,7 @@ $(document).ready(function(){
                                     <c:if test="${ArtList2.board_id eq 103}">
                                         <tr>
                                             <td style="color: red">${ArtList2.category}</td>
-                                            <td><a href="#">${ArtList2.title}</a></td>
+                                            <td><a href="showfreeboard.do?id=${ArtList2.id}">${ArtList2.title}</a></td>
                                             <td>${ArtList2.view_cnt}</td>
                                             <c:set var="cnt" value="${cnt+1}"/>
                                         </tr>
@@ -364,7 +357,7 @@ $(document).ready(function(){
                 <div class="footer-address">
                     <ul>
                         <li class="footer-contact"><a href="#">공지사항</a></li>
-                        <li class="footer-contact"><a href="#">자유게시판</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
                         <li class="footer-contact"><a href="#">Q & A</a></li>
                     </ul>
                 </div>

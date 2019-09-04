@@ -99,7 +99,7 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.png')">
+  <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -130,11 +130,6 @@
 							<div class="content1">
 								<input type="text" class="form-control" name="title" id="title"
 									placeholder="제목을 입력하세요.">
-								<div style="text-align: left;">
-									<input type="checkbox" id="" name="" value="commentOk">&nbsp;&nbsp;댓글허용
-									&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="" name=""
-										value="htmlOk">&nbsp;&nbsp;HTML
-								</div>
 							</div>
 							<div class="content2">
 								<input type="text" class="form-control" name="writer"
@@ -148,10 +143,15 @@
 						</div>
 					</div>
 					<div class="d-flex justify-content-around bnt11">
-						<button id="list" class="gradient-btn1 gradient-btn2 p-2"
-							type="button">목록</button>
-						<button id="save" class="gradient-btn1 gradient-btn2 p-2"
-							type="button">저장</button>
+						<button id="edit" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
+								type="button" onclick="editor_iframe.edit('${Article.board_id}')">목록
+						</button>
+						<button id="save" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
+								type="button" onclick="editor_iframe.save('writeboard.do','${Article.id}','${Article.board_id}')">저장
+						</button>
+						<button id="update" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
+								type="button" onclick="editor_iframe.save('updateboard.do','${Article.id}','${Article.board_id}')" style="display: none">수정
+						</button>
 					</div>
 				</div>
 			</div>
@@ -326,16 +326,40 @@
   </script>
 
 
-	<script>
-		$('#editor_iframe').contents().find('#summernote').html();
-		
-		$(function() {
-			$('#summernote').summernote({
-				height: 600,
-				lang : 'ko-KR'
-			});
-		});
-	</script>
+<script>
+	window.onload = function () {
+		if ('${Article.id}' != '') {
+			//sessionStorage.setItem(['tt'],'<%--${Article.text}--%>')
+			//var text = sessionStorage.getItem('tt')
+			$("#title").val('${Article.title}')
+			$("#subject").text("글 수정하기")
+			var text = '${Article.text}'
+			document.getElementById('editor_iframe').contentWindow.imp(text)
+			$("#save").css('display','none')
+			$("#update").css('display','inline-block')
+			$("#category").val('${Article.category}').selected()
+			//var text = <%--${Article.text}--%>
+			/*var frame = $("#editor_iframe").contents()
+            var text = "sadsds"
+            var iframe = frame.find("#summernote").summernote('code',text)*/
+			//document.getElementById('editor_iframe').contentWindow.document.getElementById('summernote').innerHTML='맞아?'
+		}
+	}
+
+</script>
+<!-- 수정js -->
+<script>
+	function x1() {
+		var d = new Date();
+		var stime = d.getHours();
+		if(stime>23){
+			var dtime = stime+1-24;
+		}
+		else
+			var dtime = stime+1
+		location.href="airinfo.do?schStTime="+stime+"00&schEdTime="+dtime+"00&schLineType=D&schIOType=O&schAirCode=GMP"
+	}
+</script>
 
 
 </body>

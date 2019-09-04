@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>여행후기</title>
+<title>여행후기쓰기</title>
 
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,8 +32,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
   
   <!-- summernote editor -->
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
    
@@ -49,7 +45,7 @@
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="index.html">SPRING</a>
+      <a class="navbar-brand" href="home.do">SPRING</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -99,7 +95,7 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.png')">
+  <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -123,39 +119,39 @@
 					<div id="well">
 						<div class="content-box1">
 							<div class="content1">
-								<select name="" id="">
+								<select name="category" id="category">
 									<option value="분류" selected>분류<span class="caret"></span></option>
 									<option value="아시아">아시아</option>
-									<option value="유럽">유럽</option>
 									<option value="미국">미국</option>
+									<option value="유럽">유럽</option>
 									<option value="호주">호주</option>
 								</select>
 							</div>
 							<div class="content1">
 								<input type="text" class="form-control" name="title" id="title"
 									placeholder="제목을 입력하세요.">
-								<div style="text-align: left;">
-									<input type="checkbox" id="" name="" value="commentOk">&nbsp;&nbsp;댓글허용
-									&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" id="" name=""
-										value="htmlOk">&nbsp;&nbsp;HTML
-								</div>
 							</div>
 							<div class="content2">
-								<input type="text" class="form-control" name="writer"
-									id="writer" placeholder="닉네임">
-							</div>
+							<input type="text" class="form-control" name="writer"
+									id="writer" value="${user.nickname}" readonly="readonly">
+							</div>	
 						</div>
 						<div class="container">
-							<iframe src="writeEditor.html" id="editor_iframe"
-								name="editor_iframe" width="100%" height="655" title="자유게시판글쓰기"
-								frameborder="0" overflow="hidden"> </iframe>
+							<iframe src="iframe.do" id="editor_iframe"
+								name="editor_iframe" width="100%" height="655" title="후가게시판글쓰기"
+								frameborder="0"></iframe>
 						</div>
 					</div>
 					<div class="d-flex justify-content-around bnt11">
-						<button id="list" class="gradient-btn1 gradient-btn2 p-2"
-							type="button">목록</button>
-						<button id="save" class="gradient-btn1 gradient-btn2 p-2"
-							type="button">저장</button>
+						<button id="edit" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
+								type="button" onclick="editor_iframe.edit('${Article.board_id}')">목록
+						</button>
+						<button id="save" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
+								type="button" onclick="editor_iframe.save('writeboard.do','${Article.id}','${Article.board_id}')">저장
+						</button>
+						<button id="update" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
+								type="button" onclick="editor_iframe.save('updateboard.do','${Article.id}','${Article.board_id}')" style="display: none">수정
+						</button>
 					</div>
 				</div>
 			</div>
@@ -312,5 +308,60 @@
         </div>
         
         
-  </body>
-  </html>
+        
+  <!-- Bootstrap core JavaScript -->
+  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom scripts for this template -->
+  <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
+
+  
+  <!-- 수정 js -->
+  <script>
+	$(function(){
+		var clic=$("ul > li");
+		clic.find("a").click(function(){
+			click.removeClass("active");
+			$(this).addClass("active").css("text-decoration","underline");
+		});
+	});
+  </script>
+<script>
+	window.onload = function () {
+		if ('${Article.id}' != '') {
+			//sessionStorage.setItem(['tt'],'<%--${Article.text}--%>')
+			//var text = sessionStorage.getItem('tt')
+			$("#title").val('${Article.title}')
+			$("#subject").text("글 수정하기")
+			var text = '${Article.text}'
+			document.getElementById('editor_iframe').contentWindow.imp(text)
+			$("#save").css('display','none')
+			$("#update").css('display','inline-block')
+			$("#category").val('${Article.category}').selected()
+			//var text = <%--${Article.text}--%>
+			/*var frame = $("#editor_iframe").contents()
+            var text = "sadsds"
+            var iframe = frame.find("#summernote").summernote('code',text)*/
+			//document.getElementById('editor_iframe').contentWindow.document.getElementById('summernote').innerHTML='맞아?'
+		}
+	}
+
+</script>
+<!-- 수정js -->
+<script>
+	function x1() {
+		var d = new Date();
+		var stime = d.getHours();
+		if(stime>23){
+			var dtime = stime+1-24;
+		}
+		else
+			var dtime = stime+1
+		location.href="airinfo.do?schStTime="+stime+"00&schEdTime="+dtime+"00&schLineType=D&schIOType=O&schAirCode=GMP"
+	}
+</script>
+
+
+
+</body>
+</html>

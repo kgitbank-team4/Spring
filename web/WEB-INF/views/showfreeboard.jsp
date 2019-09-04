@@ -52,7 +52,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="index.html">SPRING</a>
+        <a class="navbar-brand" href="home.do">SPRING</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -73,25 +73,28 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">정보</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">운항 정보</a></li>
-                        <li><a class="nav-link" href="#">날씨 정보</a></li>
+                        <li><a class="nav-link" href="#" onclick="x1()">운항 정보</a></li>
+                        <li><a class="nav-link" href="weatherinfo.do?cityname=seoul">날씨 정보</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">자유게시판</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
                         <li><a class="nav-link" href="#">Q & A</a></li>
                         <li><a class="nav-link" href="#">공지사항</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link-login" href="mypage.html">마이페이지</a>
+                    <a class="nav-link-login" href="mypage.do">마이페이지</a>
                 </li>
-                <li class="nav-item">
+<!--                 <li class="nav-item">
                     <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
-                </li>
+                </li> -->
+	        	<li class="nav-item logout login-inactive">
+               		<a class="nav-link-login" href="logout.do">로그아웃</a>
+            	</li>
             </ul>
         </div>
     </div>
@@ -144,7 +147,7 @@
 								    <li><a href="javascript:void(0);" onclick="vote()" class="board-up1">추천</a></li>
 								    <li><a href="#" data-target="#modal-boarddlt" data-toggle="modal" class="upanddel2" style="display: none">글 삭제</a></li>
 								    <li><a href="updateView.do?id=${Article.id}" class="upanddel2" style="display: none">글 수정</a></li>
-								    <li><a href="#">목록으로</a></li>
+								    <li><a href="freeboard.do?id=${Article.board_id}&sort=lately">목록으로</a></li>
 							    </ul>
 							</span>
 						</span>
@@ -165,7 +168,7 @@
                                       title="추천"></ion-icon>
                         </a>
                         <span class="clip-file">
-								<span class="clip-back"><a href="#">목록으로</a></span>
+								<span class="clip-back"><a href="freeboard.do?id=${Article.board_id}&sort=lately">목록으로</a></span>
 							</span>
                     </div>
                     <script>
@@ -264,7 +267,16 @@
         ${Article.id}
     }
 
-
+    function x1() {
+        var d = new Date();
+        var stime = d.getHours();
+        if(stime>23){
+            var dtime = stime+1-24;
+        }
+        else
+            var dtime = stime+1
+        location.href="airinfo.do?schStTime="+stime+"00&schEdTime="+dtime+"00&schLineType=D&schIOType=O&schAirCode=GMP"
+    }
 </script>
 <script>
     $(".icondrop").click(function () {
@@ -355,7 +367,7 @@
                 <div class="footer-address">
                     <ul>
                         <li class="footer-contact"><a href="#">공지사항</a></li>
-                        <li class="footer-contact"><a href="#">자유게시판</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
                         <li class="footer-contact"><a href="#">Q & A</a></li>
                     </ul>
                 </div>
@@ -379,7 +391,7 @@
             <div class="col-md-5">
                 <div class="copyright-menu pull-right">
                     <ul>
-                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="home.do" class="active">Home</a></li>
                         <li><a href="#">Airport.co.kr</a></li>
                         <li><a href="#">OpenWheaterMap.org</a></li>
                     </ul>

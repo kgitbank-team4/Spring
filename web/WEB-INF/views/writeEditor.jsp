@@ -46,7 +46,7 @@
 
 	<script>
 	
-		function save(url,what) {
+		function save(url,what,board_id) {
 			var form = document.createElement("form")
 			//alert(form.getAttribute('name'))
 			var parm = new Array();
@@ -59,7 +59,7 @@
 			parm.push( ['title', parent.document.getElementById("title").value] );
 			parm.push( ['category', parent.document.getElementById("category").value] );
 			parm.push( ['text', text] );
-			parm.push(['board_id',103]);
+			parm.push(['board_id',board_id]);//수정해야함
 			parm.push( ['writer_id', '${user.id}'] );
 			parm.push( ['writer', '${user.nickname}'] );
 			if(url=='updateboard.do') {
@@ -78,8 +78,8 @@
 			form.submit();
 		}
 		
-		function edit(){
-			parent.document.location.href = "freeboard.do?id=103&sort=lately";
+		function edit(board_id){
+			parent.document.location.href = "freeboard.do?id="+board_id+"&sort=lately";
 		}
 		
 		$(function x() {

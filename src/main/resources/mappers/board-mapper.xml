@@ -13,13 +13,23 @@
     <resultMap type="ArticleVO" id="ArticleMap">
         <result column="nickname" property="writer"/>
     </resultMap>
-    <select id="selectArtList" parameterType="BoardVO" resultMap="ArticleMap">
-        select a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and VISIBLE=1 and a.BOARD_ID=#{id} order by
-        case when #{sort}='lately' then a.DATE_CREATED end desc,
-        case when #{sort}='view' then a.VIEW_CNT end desc,
-        case when #{sort}='up' then a.UP_CNT end desc,
-        case when #{sort}='comment' then a.COMMENT_CNT end desc
+    <select id="selectArtList" parameterType="hashmap" resultMap="ArticleMap">
+    	<include refid="pagingHeader"></include>
+        select rownum, a.*,u.NICKNAME from ARTICLE a,USERS u where a.WRITER_ID=u.id and a.BOARD_ID=#{BoardVO.id}
+        order by case when #{BoardVO.sort}='lately' then a.id end desc,
+        case when #{BoardVO.sort}='view' then a.VIEW_CNT end desc,
+        case when #{BoardVO.sort}='up' then a.UP_CNT end desc,
+        case when #{BoardVO.sort}='comment' then a.COMMENT_CNT end desc
+        <include refid="pagingFooter"></include>
     </select>
+    <sql id="pagingHeader">
+    	select * from(
+    	select rownum rnum, T.* from(
+    </sql>
+    <sql id="pagingFooter">
+    	) T) where rnum between #{start} and #{end}
+    </sql>
+
     <select id="searchArt" parameterType="BoardVO" resultType="ArticleVO">
         select * from ARTICLE where BOARD_ID=#{id}
         and (case when #{search_style}='title' then TITLE ELSE WRITER end) like '%'||#{keyword}||'%'
@@ -30,13 +40,13 @@
     <select id="searchArtFromUser" parameterType="MypageVO" resultMap="MypageMap">
         select b.BOARDNAME,a.* from BOARD b,ARTICLE a where b.id=a.BOARD_ID and VISIBLE=1 and a.WRITER_id=#{writer_id} order by a.DATE_CREATED desc
     </select>
+
+
     <select id="getMyComments" parameterType="MypageVO" resultType="MypageVO">
         select b.BOARDNAME,a.BOARD_ID,c.id,a.TITLE,c.article_id,c.CONTENT,c.DATE_CREATED from BOARD b,COMMENTS c,ARTICLE a
         where b.id=a.BOARD_ID and a.ID=c.ARTICLE_ID and c.WRITER_ID=#{writer_id} order by c.DATE_CREATED desc
     </select>
-    <update id="updateArticle" parameterType="ArticleVo">
 
-    </update>
     <insert id="insertArticle" parameterType="ArticleVO">
         insert into article(id, board_id, title, writer, writer_id, up_cnt, view_cnt, text, date_created, category, visible, comment_cnt)
         values (null, #{board_id}, #{title},#{writer},#{writer_id},0,0,#{text},sysdate,#{category},'1',0)
@@ -72,7 +82,7 @@
         update COMMENTS set CONTENT=#{content} where id=#{id}
     </update>
     <insert id="insertComment" parameterType="CommentsVO">
-        insert into COMMENTS values (null,#{article_id},sysdate,#{content},#{writer_id})
+        insert into COMMENTS(id,article_id,date_created,content,writer_id) values (null,#{article_id},sysdate,#{content},#{writer_id})
     </insert>
     <delete id="deleteComment" parameterType="CommentsVO">
         delete from COMMENTS where ID=#{id}
@@ -86,22 +96,9 @@
     <update id="updateVote" parameterType="VoteVO">
         update ARTICLE set UP_CNT=(select count(ID) from VOTE where ARTICLE_ID=#{article_id}) where id=#{article_id}
     </update>
-    <!--select * from ARTICLE where BOARD_ID=#{id}
-    and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%'||#{keyword}||'%'-->
-    <!--where BOARD_ID=#{id} and (case when #{search_style}='title' then TITLE ELSE WRITER) like '%게시판%'-->
-    <!--<insert id="insertBoard" parameterType="BoardVO">
-        insert into BOARD(seq,title,writer,content) values ((select nvl(max(seq),0)+1 from board),#{title},#{writer},#{content})
-    </insert>
-    <update id="updateBoard" parameterType="BoardVO">
-        update board set title = #{title},content = #{content} where seq=#{seq}
-    </update>
-    <delete id="deleteBoard" parameterType="BoardVO">
-        delete from board where seq=#{seq}
-    </delete>
-    <select id="getBoard" parameterType="BoardVO" resultType="BoardVO">
-        select * from BOARD where SEQ=#{seq}
-    </select>
-    <select id="getBoardList" resultType="BoardVO">
-        select * from BOARD
-    </select>-->
+
+
+	<select id="getCountArt" parameterType="BoardVO" resultType="int">
+		select count(*) from article a, board b where a.board_id = b.id and b.id=#{id}
+	</select>
 </mapper>

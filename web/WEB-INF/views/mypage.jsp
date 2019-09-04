@@ -69,15 +69,15 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">정보</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">운항 정보</a></li>
-                        <li><a class="nav-link" href="#">날씨 정보</a></li>
+                        <li><a class="nav-link" href="#" onclick="x1()">운항 정보</a></li>
+                        <li><a class="nav-link" href="weatherinfo.do?cityname=seoul">날씨 정보</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">자유게시판</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
                         <li><a class="nav-link" href="#">Q & A</a></li>
                         <li><a class="nav-link" href="#">공지사항</a></li>
                     </ul>
@@ -95,18 +95,7 @@
         </div>
     </div>
 </nav>
-<!-- <script>
 
-$(document).ready(function() {
-	if(${user.id}!=null){
-		$("#mainNav .container #navbarResponsive .login").removeClass("login-active");
-		$("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");
-		$("#mainNav .container #navbarResponsive .login").addClass("login-inactive");
-		$("#mainNav .container #navbarResponsive .logout").addClass("login-active");
-	}
-});
-
-</script> -->
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/img/home-bg.png')">
     <div class="overlay"></div>
@@ -187,7 +176,7 @@ $(document).ready(function() {
                                         <fmt:formatDate value="${myArtList.date_created}" var="date" pattern="yyyy-MM-dd"/>
                                         <tr class="table-child">
                                             <td>${myArtList.boardname}</td>
-                                            <td>${myArtList.title}</td>
+                                            <td><a href="showfreeboard.do?id=${myArtList.article_id}">${myArtList.title}</a></td>
                                             <td>${date}</td>
                                             <td>${myArtList.view_cnt}</td>
                                             <td>${myArtList.up_cnt}</td>
@@ -234,14 +223,14 @@ $(document).ready(function() {
                                         <td>No.</td>
                                         <td>댓글</td>
                                         <td>게시글제목</td>
-                                        <td>추천수</td>
+                                        <td>날짜</td>
                                     </tr>
                                     <c:forEach items="${myCommentList}" var="myCommentList">
                                         <fmt:formatDate value="${myCommentList.date_created}" var="c_date" pattern="yyyy-MM-dd"/>
                                         <tr class="table-child">
                                             <td>${myCommentList.boardname}</td>
                                             <td>${myCommentList.content}</td>
-                                            <td>${myCommentList.title}</td>
+                                            <td><a href="showfreeboard.do?id=${myCommentList.article_id}">${myCommentList.title}</a></td>
                                             <td>${c_date}</td>
                                         </tr>
                                     </c:forEach>
@@ -384,7 +373,7 @@ $(document).ready(function() {
                 <div class="footer-address">
                     <ul>
                         <li class="footer-contact"><a href="#">공지사항</a></li>
-                        <li class="footer-contact"><a href="#">자유게시판</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
                         <li class="footer-contact"><a href="#">Q & A</a></li>
                     </ul>
                 </div>
@@ -408,7 +397,7 @@ $(document).ready(function() {
             <div class="col-md-5">
                 <div class="copyright-menu pull-right">
                     <ul>
-                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="home.do" class="active">Home</a></li>
                         <li><a href="#">Airport.co.kr</a></li>
                         <li><a href="#">OpenWheaterMap.org</a></li>
                     </ul>
@@ -682,6 +671,18 @@ $(document).ready(function() {
     function outcheck() {
         if (check())
             document.form2.submit();
+    }
+    
+    
+    function x1() {
+        var d = new Date();
+        var stime = d.getHours();
+        if(stime>23){
+            var dtime = stime+1-24;
+        }
+        else
+            var dtime = stime+1
+        location.href="airinfo.do?schStTime="+stime+"00&schEdTime="+dtime+"00&schLineType=D&schIOType=O&schAirCode=GMP"
     }
 </script>
 </html>

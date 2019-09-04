@@ -9,7 +9,7 @@ import java.util.List;
 public interface BoardService {
     public BoardVO selectBoard(BoardVO vo) throws ClassNotFoundException, SQLException;
     public List<ArticleVO> selectAllArtList(BoardVO vo) throws ClassNotFoundException, SQLException;
-    public List<ArticleVO> selectArtList(BoardVO vo) throws ClassNotFoundException, SQLException;
+    public List<ArticleVO> selectArtList(BoardVO vo, int start, int end) throws ClassNotFoundException, SQLException;
     public List<ArticleVO> searchArtList(BoardVO vo) throws ClassNotFoundException, SQLException;
     public List<MypageVO> searchArtListFromUser(MypageVO vo) throws ClassNotFoundException, SQLException;
     public List<MypageVO> searchMyComment(MypageVO vo) throws ClassNotFoundException, SQLException;
@@ -43,5 +43,8 @@ public interface BoardService {
     public boolean plusUpCnt(VoteVO vo ) throws ClassNotFoundException, SQLException;
     //Api서비스
     public List<AirVO> getAirInfo(AirVO vo) throws ClassNotFoundException, SQLException;
+    
+    //페이징
+	public int countArticle(BoardVO vo);
 
 }
