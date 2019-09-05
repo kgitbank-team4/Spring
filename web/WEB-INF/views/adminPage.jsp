@@ -151,7 +151,7 @@
 											<tr class="table-child">
 												<td><input type="checkbox" name="_selected_"
 													class="chk" value="제목"></td>
-												<td>${myAr</td>
+												<td>${myAr}</td>
 												<td>${myArtList.title}</td>
 												<td>${date}</td>
 												<td>${myArtList.view_cnt}</td>
@@ -310,7 +310,7 @@
 											<tr class="table-child">
 												<td><input type="checkbox" name="_selected_3"
 													class="chk3" value="value"></td>
-												<td>${myAr</td>
+												<td>${myAr}</td>
 												<td>${myArtList.title}</td>
 												<td>${myArtList.up_cnt}</td>
 											</tr>
