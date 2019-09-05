@@ -56,25 +56,25 @@
           	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
           	  	  aria-haspopup="true" aria-expanded="false">이야기</a>
           	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">후기</a></li>
-          		  <li><a class="nav-link" href="#">사진</a></li>
+          		  <li><a class="nav-link" href="freeboard.do?id=101&sort=lately">후기</a></li>
+          		  <li><a class="nav-link" href="freeboard.do?id=102&sort=lately">사진</a></li>
           	  </ul>
             </li>
 	        <li class="dropdown">
           	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
           	  	  aria-haspopup="true" aria-expanded="false">정보</a>
           	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">운항 정보</a></li>
-          		  <li><a class="nav-link" href="#">날씨 정보</a></li>
+          		  <li><a class="nav-link" href="#" onclick="x1()">운항 정보</a></li>
+          		  <li><a class="nav-link" href="weatherinfo.do?cityname=seoul">날씨 정보</a></li>
           	  </ul>
             </li>
             <li class="dropdown">
           	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
           	  	  aria-haspopup="true" aria-expanded="false">커뮤니티</a>
           	  <ul class="dropdown-menu">
-          		  <li><a class="nav-link" href="#">자유게시판</a></li>
-          		  <li><a class="nav-link" href="#">Q & A</a></li>
-          		  <li><a class="nav-link" href="#">공지사항</a></li>
+          		  <li><a class="nav-link" href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
+          		  <li><a class="nav-link" href="freeboard.do?id=104&sort=lately">Q & A</a></li>
+          		  <li><a class="nav-link" href="freeboard.do?id=105&sort=lately">공지사항</a></li>
           	  </ul>
             </li>
                 <li class="dropdown">
@@ -126,7 +126,6 @@ $(document).ready(function(){
 						<div class="content-box1">
 							<div class="content1" >
 								<select name="category" id="category">
-									<option value="분류" selected>분류<span class="caret"></span></option>
 									<option value="아시아">아시아</option>
 									<option value="미국">미국</option>
 									<option value="유럽">유럽</option>
@@ -231,9 +230,9 @@ $(document).ready(function(){
                         </div>
                         <div class="footer-address">
                             <ul>
-                                <li class="footer-contact"><a href="#">공지사항</a></li>
-                                <li class="footer-contact"><a href="#">자유게시판</a></li>
-                                <li class="footer-contact"><a href="#">Q & A</a></li>
+                                <li class="footer-contact"><a href="freeboard.do?id=105&sort=lately">공지사항</a></li>
+                                <li class="footer-contact"><a href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
+                                <li class="footer-contact"><a href="freeboard.do?id=104&sort=lately">Q & A</a></li>
                             </ul>
                         </div>
                     </div>                                  
@@ -336,7 +335,7 @@ $(document).ready(function(){
 <script>
     window.onload = function () {
         if ('${Article.id}' != '') {
-            //sessionStorage.setItem(['tt'],'<%--${Article.text}--%>')
+            <%-- sessionStorage.setItem(['tt'],'${Article.text}') --%>
             //var text = sessionStorage.getItem('tt')
             $("#title").val('${Article.title}')
             $("#subject").text("글 수정하기")
@@ -345,7 +344,7 @@ $(document).ready(function(){
             $("#save").css('display','none')
             $("#update").css('display','inline-block')
             $("#category").val('${Article.category}').selected()
-            //var text = <%--${Article.text}--%>
+           <%--  //var text = ${Article.text} --%>
             /*var frame = $("#editor_iframe").contents()
             var text = "sadsds"
             var iframe = frame.find("#summernote").summernote('code',text)*/

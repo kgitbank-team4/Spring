@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 
@@ -65,25 +66,25 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">이야기</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">후기</a></li>
-                        <li><a class="nav-link" href="#">사진</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=101&sort=lately">후기</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=102&sort=lately">사진</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">정보</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">운항 정보</a></li>
-                        <li><a class="nav-link" href="#">날씨 정보</a></li>
+                        <li><a class="nav-link" href="#" onclick="x1()">운항 정보</a></li>
+                        <li><a class="nav-link" href="weatherinfo.do?cityname=seoul">날씨 정보</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">자유게시판</a></li>
-                        <li><a class="nav-link" href="#">Q & A</a></li>
-                        <li><a class="nav-link" href="#">공지사항</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=104&sort=lately">Q & A</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=105&sort=lately">공지사항</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -101,9 +102,7 @@
 </nav>
 <script>
     $(document).ready(function () {
-        if (${user.id} !=
-        null
-    )
+        if (${user.id} !=null)
         {
             $("#mainNav .container #navbarResponsive .login").removeClass("login-active");
             $("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");
@@ -140,7 +139,6 @@
                         <select>
                             <option value="제목" selected>제목<span class="caret"></span></option>
                             <option value="닉네임">닉네임</option>
-                            <option value="닉네임+제목">닉네임+제목</option>
                         </select>
                     </div>
                     <div class="p-2 align-self-center a1">
@@ -151,9 +149,17 @@
                             </button>
                         </div>
                     </div>
+                   <div class="p-2 ml-auto writebtn a2">
+                   <c:set var="username" value="${user.username}" />
+                     <c:if  test="${username eq 'root'}">
+                        <button class="gradient-btn1 gradient-btn2 p-2 a22" type="button"
+                                onclick="location.href='freewrite.do?board_id=105'">글쓰기
+                        </button>
+                        <a href="freewrite.do?board_id=105"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
+                     </c:if>
+                  </div>                
                 </div>
             </div>
-
             <div class="container ul1">
                 <ul class="list-inline">
                     <li class="list-inline-item"><a href="freeboard.do?id=105&sort=lately" class="active">최신순</a></li>
@@ -175,7 +181,7 @@
                 </tr>
                 </thead>
                 <tbody class="free-table2">
-                <c:forEach var="Artlist" items="${ArtList}" begin="0" end="10">
+                <c:forEach var="Artlist" items="${ArtList}">
                     <fmt:formatDate value="${Artlist.date_created}" var="date" pattern="yyyy-MM-dd"/>
                     <tr>
                         <td class="table-head1" id="td">${Artlist.id}</td>
@@ -293,9 +299,9 @@
                 </div>
                 <div class="footer-address">
                     <ul>
-                        <li class="footer-contact"><a href="#">공지사항</a></li>
-                        <li class="footer-contact"><a href="#">자유게시판</a></li>
-                        <li class="footer-contact"><a href="#">Q & A</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=105&sort=lately">공지사항</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=104&sort=lately">Q & A</a></li>
                     </ul>
                 </div>
             </div>
@@ -400,6 +406,17 @@
 
     function list(page) {
         location.href = "freeboard.do?curPage=" + page + "&id=105&sort=lately";
+    }
+    
+    function x1() {
+        var d = new Date();
+        var stime = d.getHours();
+        if(stime>23){
+            var dtime = stime+1-24;
+        }
+        else
+            var dtime = stime+1
+        location.href="airinfo.do?schStTime="+stime+"00&schEdTime="+dtime+"00&schLineType=D&schIOType=O&schAirCode=GMP"
     }
 </script>
 <!-- responsive jquery -->

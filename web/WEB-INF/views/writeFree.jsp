@@ -65,8 +65,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">이야기</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">후기</a></li>
-                        <li><a class="nav-link" href="#">사진</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=101&sort=lately">후기</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=102&sort=lately">사진</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -82,8 +82,8 @@
                        aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                     <ul class="dropdown-menu">
                         <li><a class="nav-link" href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
-                        <li><a class="nav-link" href="#">Q & A</a></li>
-                        <li><a class="nav-link" href="#">공지사항</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=104&sort=lately">Q & A</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=105&sort=lately">공지사항</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -125,7 +125,6 @@
                         <div class="content-box1">
                             <div class="content1">
                                 <select name="category" id="category">
-                                    <option selected>분류<span class="caret"></span></option>
                                     <option value="가입인사">가입인사</option>
                                     <option value="잡담">잡담</option>
                                 </select>
@@ -147,7 +146,7 @@
                     </div>
                     <div class="d-flex justify-content-around bnt11">
                         <button id="edit" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
-                                type="button" onclick="editor_iframe.edit('${Article.board_id}')">목록
+                                type="button" onclick="editor_iframe.edit('${board_id}')">목록
                         </button>
                         <button id="save" class="btn btn-primary gradient-btn1 gradient-btn2 p-2"
                                 type="button" onclick="editor_iframe.save('writeboard.do','${Article.id}','${board_id}')">저장
@@ -233,9 +232,9 @@
                         </div>
                         <div class="footer-address">
                             <ul>
-                                <li class="footer-contact"><a href="#">공지사항</a></li>
+                                <li class="footer-contact"><a href="freeboard.do?id=105&sort=lately">공지사항</a></li>
                                 <li class="footer-contact"><a href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
-                                <li class="footer-contact"><a href="#">Q & A</a></li>
+                                <li class="footer-contact"><a href="freeboard.do?id=104&sort=lately">Q & A</a></li>
                             </ul>
                         </div>
                     </div>
@@ -322,12 +321,6 @@
   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Custom scripts for this template -->
   <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
-
-<!-- Bootstrap core JavaScript -->
-<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Custom scripts for this template -->
-<script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
 
 <!-- 수정js -->
 <script>

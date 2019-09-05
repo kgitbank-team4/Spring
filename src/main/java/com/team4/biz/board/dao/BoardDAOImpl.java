@@ -14,6 +14,7 @@ import com.team4.biz.board.vo.CommentsVO;
 import com.team4.biz.board.vo.ContentVO;
 import com.team4.biz.board.vo.MypageVO;
 import com.team4.biz.board.vo.VoteVO;
+import com.team4.biz.user.vo.UserVO;
 @Repository
 public class BoardDAOImpl implements BoardDAO{
     @Autowired
@@ -175,5 +176,20 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public int countArt(BoardVO vo) {
 		return sqlSession.selectOne(namespace+".getCountArt",vo);
+	}
+
+	@Override
+	public int countUser() {
+		return sqlSession.selectOne(namespace+".getCountUser");
+	}
+
+	@Override
+	public List<UserVO> selectUser() {
+		return sqlSession.selectList(namespace+".getUserList");
+	}
+
+	@Override
+	public List<MypageVO> selectdeleteArt() {
+		return sqlSession.selectList(namespace+".getDeleteArt");
 	}
 }

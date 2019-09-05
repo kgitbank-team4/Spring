@@ -5,6 +5,8 @@ import com.team4.biz.board.api.service.ApiService;
 import com.team4.biz.board.api.vo.AirVO;
 import com.team4.biz.board.dao.BoardDAO;
 import com.team4.biz.board.vo.*;
+import com.team4.biz.user.vo.UserVO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -174,6 +176,21 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int countArticle(BoardVO vo) {
 		return boardDAO.countArt(vo);
+	}
+
+	@Override
+	public int countUser() {
+		return boardDAO.countUser();
+	}
+
+	@Override
+	public List<UserVO> selectAllUser() {
+		return boardDAO.selectUser();
+	}
+
+	@Override
+	public List<MypageVO> selectdeleteArt() {
+		return boardDAO.selectdeleteArt();
 	}
 
 }

@@ -105,7 +105,12 @@ public class UserController {
 			return "forward:home.do";
 		}
 		else {
-			return "forward:mypageboard.do";
+			UserVO uv = (UserVO) session.getAttribute("user");
+			String username = uv.getUsername();
+			if(username.equals("root"))
+				return "forward:admin.do";
+			else
+				return "forward:mypageboard.do";
 		}
 	}
 	//회원정보 수정
@@ -128,14 +133,6 @@ public class UserController {
 		return "forward:home.do";
 	}
 	
-	//회원목록보기(관리자)
-	@RequestMapping(value="/selectAllUser.do")
-	public String SelectAllUser(UserVO vo, Model model) throws ClassNotFoundException, SQLException {
-		List<UserVO> userlist = userService.selectAllUser(vo);
-		model.addAttribute("userlist", userlist);
-		return "showUsers";  //회원전체보기
-	}
-
 }
 
 

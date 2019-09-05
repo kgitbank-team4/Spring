@@ -1,6 +1,7 @@
 package com.team4.biz.board.dao;
 
 import com.team4.biz.board.vo.*;
+import com.team4.biz.user.vo.UserVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,5 +49,8 @@ public interface BoardDAO {
     
     //페이징
 	public int countArt(BoardVO vo);
+	public int countUser();
+	public List<UserVO> selectUser();
+	public List<MypageVO> selectdeleteArt();
 
 }
