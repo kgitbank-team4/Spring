@@ -49,8 +49,8 @@ public class BoardController {
     		int start = paging.getPageBegin();
     		int end = paging.getPageEnd();
     		////
-    		System.out.println(vo.getSort());
-    		System.out.println(vo.getId());
+    		//System.out.println(vo.getSort());
+    		//System.out.println(vo.getId());
     		model.addAttribute("ArtList", boardService.selectArtList(vo, start, end));
     		model.addAttribute("paging", paging);
             if(vo.getId() == 101)
@@ -180,8 +180,8 @@ public class BoardController {
                     else{
                         //System.out.println("5번");
                         sw=1;
-                        System.out.println(co.getValue());
-                        System.out.println(vo.getId());
+                        //System.out.println(co.getValue());
+                        //System.out.println(vo.getId());
                         co.setValue(co.getValue()+":"+vo.getId());
                         response.addCookie(co);
                         boardService.plusViewCnt(vo);

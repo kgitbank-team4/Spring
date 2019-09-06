@@ -32,14 +32,14 @@ public class AirService implements ApiService {
         try {
             while (true) {
                 // parsing할 url 지정(API 키 포함해서)
-                System.out.println(vo.toString());
+                //System.out.println(vo.toString());
                 String url = "http://openapi.airport.co.kr/service/rest/FlightStatusList/getFlightStatusList" +
                         "?ServiceKey=" + vo.getServiceKey() + "&schStTime=" + vo.getSchStTime() +
                         "&schEdTime=" + vo.getSchEdTime() + "&schLineType=" + vo.getSchLineType() +
                         "&schIOType=" + vo.getSchIOType() +
                         "&schAirCode=" + vo.getSchAirCode() + "&pageNo=" + page;
 
-                System.out.println(url);
+                //System.out.println(url);
 
                 DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
                 DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
@@ -47,7 +47,7 @@ public class AirService implements ApiService {
 
                 // root tag
                 doc.getDocumentElement().normalize();
-                System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+                //System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 
                 // 파싱할 tag
                 NodeList nList = doc.getElementsByTagName("item");
@@ -55,8 +55,8 @@ public class AirService implements ApiService {
                 Node nodeCnt = cnt.item(0);
                 Element cntElement = (Element) nodeCnt;
                 int totalCount = Integer.parseInt(getTagValue("totalCount", cntElement));
-                System.out.println("총 데이터수 : " + totalCount);
-                System.out.println("파싱할 리스트 수 : " + nList.getLength());
+                //System.out.println("총 데이터수 : " + totalCount);
+                //System.out.println("파싱할 리스트 수 : " + nList.getLength());
 
                 for (int temp = 0; temp < nList.getLength(); temp++) {
                     AirVO avo = new AirVO();
@@ -136,7 +136,7 @@ public class AirService implements ApiService {
                 }    // if end
 
                 page += 1;
-                System.out.println("page number : " + page);
+                //System.out.println("page number : " + page);
                 if (page > totalCount / 10 + 1) {
                     break;
                 }

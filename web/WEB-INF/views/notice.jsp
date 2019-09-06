@@ -102,7 +102,9 @@
 </nav>
 <script>
     $(document).ready(function () {
-        if (${user.id} !=null)
+        if (${user.id} !=
+        null
+    )
         {
             $("#mainNav .container #navbarResponsive .login").removeClass("login-active");
             $("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");
@@ -149,15 +151,16 @@
                             </button>
                         </div>
                     </div>
-                   <div class="p-2 ml-auto writebtn a2">
-                   <c:set var="username" value="${user.username}" />
-                     <c:if  test="${username eq 'root'}">
-                        <button class="gradient-btn1 gradient-btn2 p-2 a22" type="button"
-                                onclick="location.href='freewrite.do?board_id=105'">글쓰기
-                        </button>
-                        <a href="freewrite.do?board_id=105"><i class="fas fa-pencil-alt p-2 ml-auto" id="a2-icon1"></i></a>
-                     </c:if>
-                  </div>                
+                    <div class="p-2 ml-auto writebtn a2">
+                        <c:set var="username" value="${user.username}"/>
+                        <c:if test="${username eq 'root'}">
+                            <button class="gradient-btn1 gradient-btn2 p-2 a22" type="button"
+                                    onclick="location.href='freewrite.do?board_id=105'">글쓰기
+                            </button>
+                            <a href="freewrite.do?board_id=105"><i class="fas fa-pencil-alt p-2 ml-auto"
+                                                                   id="a2-icon1"></i></a>
+                        </c:if>
+                    </div>
                 </div>
             </div>
             <div class="container ul1">
@@ -186,7 +189,12 @@
                     <tr>
                         <td class="table-head1" id="td">${Artlist.id}</td>
                         <td class="title11 table-title1" id="td"><a
-                                href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}</a></td>
+                                href="showfreeboard.do?id=${Artlist.id}">${Artlist.title}
+                            <c:if test="${Artlist.comment_cnt!=0}"><span
+                                class="badge badge-warning">${Artlist.comment_cnt}</span></c:if>
+                            <c:if test="${Artlist.up_cnt!=0}"><span class="badge badge-warning"
+                                                                    style="color: white; background-color: red;">${Artlist.up_cnt}</span></c:if></a>
+                        </td>
                         <td class="xstd table-content1" id="td">${Artlist.writer}</td>
                         <td class="xstd table-content1" id="td">${date}</td>
                         <td class="xstd table-content1" id="td">${Artlist.view_cnt}</td>
@@ -407,16 +415,15 @@
     function list(page) {
         location.href = "freeboard.do?curPage=" + page + "&id=105&sort=lately";
     }
-    
+
     function x1() {
         var d = new Date();
         var stime = d.getHours();
-        if(stime>23){
-            var dtime = stime+1-24;
-        }
-        else
-            var dtime = stime+1
-        location.href="airinfo.do?schStTime="+stime+"00&schEdTime="+dtime+"00&schLineType=D&schIOType=O&schAirCode=GMP"
+        if (stime > 23) {
+            var dtime = stime + 1 - 24;
+        } else
+            var dtime = stime + 1
+        location.href = "airinfo.do?schStTime=" + stime + "00&schEdTime=" + dtime + "00&schLineType=D&schIOType=O&schAirCode=GMP"
     }
 </script>
 <!-- responsive jquery -->
