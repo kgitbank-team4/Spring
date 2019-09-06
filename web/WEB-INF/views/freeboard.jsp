@@ -143,7 +143,6 @@
                         <select id="selectbox">
                             <option value="title" selected>제목<span class="caret"></span></option>
                             <option value="nick">닉네임</option>
-                            <option value="닉네임+제목">닉네임+제목</option>
                         </select>
                     </div>
                     <div class="p-2 align-self-center a1">

@@ -76,7 +76,12 @@
 .gradient-btn2 {
 	background-image: linear-gradient(to right, #c2e59c 0%, #64b3f4 51%, #c2e59c 100%)
 }
-
+.a1 .form2:hover{
+	border-color: #55daff;
+}
+.a1 .btn11:hover{
+	color: #999;
+}
 
 @media only screen and (max-width:992px) {
   .trnone1{

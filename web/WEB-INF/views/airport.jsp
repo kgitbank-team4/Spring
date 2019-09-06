@@ -195,7 +195,7 @@ $(document).ready(function(){
                                                         <option value="2300">23</option>
                                                         <option value="2400">24</option>
                                                     </select>
-                                                    시&nbsp;&nbsp;~
+                                                     시~
                                                     <select name="schEdTime" id="schEdTime" class="airport-droptime">
                                                         <option value="0000">00</option>
                                                         <option value="0100">01</option>

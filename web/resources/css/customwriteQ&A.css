@@ -65,6 +65,12 @@ iframe{
 	display: block;
 	visibility: visible;
 }
+.a1 .form2:hover{
+	border-color: #55daff;
+}
+.a1 .btn11:hover{
+	color: #999;
+}
 @media only screen and (max-width: 992px){
 	select{
 		width:100%;

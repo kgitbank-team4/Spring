@@ -125,7 +125,7 @@
 
 <div class="container" id="bootstrap-override3">
     <div class="row">
-        <div class="col">
+        <div class="col mx-auto">
             <div class="container">
                 <h3>여행후기</h3>
                 <hr>
@@ -171,15 +171,15 @@
                 <fmt:formatDate value="${Artlist.date_created}" var="date" pattern="yyyy-MM-dd"/>
 
                 <table class="table table-borderless">
-                    <tr style="border-bottom: solid; border-top: solid;">
-                        <td class="content11">
+                    <tr style="border-bottom: 1px solid; border-top: 1px solid; border-color: #000000">
+                        <td class="content11" id="firsttd1">
                             <h5><a href="showfreeboard.do?id=${Artlist.id}">[${Artlist.category}]${Artlist.title}
                                 <c:if test="${Artlist.comment_cnt!=0}"><span class="badge badge-warning">${Artlist.comment_cnt}</span></c:if>
                                 <c:if test="${Artlist.up_cnt!=0}"><span class="badge badge-warning" style="color: white; background-color: red;">${Artlist.up_cnt}</span></c:if></a>
                             </h5>
                         </td>
-                        <td style="text-align: right;">
-                                ${Artlist.writer}&nbsp;&nbsp;&nbsp;${date}&nbsp;&nbsp;&nbsp;${Artlist.view_cnt}
+                        <td style="text-align: right;" id="secondtd1">
+                                ${Artlist.writer}<br>${date}
                         </td>
                     </tr>
                     <tr style="width: 100%;">
@@ -435,11 +435,5 @@
         location.href = "freeboard.do?curPage=" + page + "&id=101&sort=lately";
     }
 </script>
-
-<!-- Bootstrap core JavaScript -->
-<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Custom scripts for this template -->
-<script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
 </body>
 </html>

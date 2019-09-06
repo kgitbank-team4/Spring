@@ -21,9 +21,7 @@
 	border-radius:4px;
 	margin-bottom:7px;
 }
-#bootstrap-override3 td{
-	width:7rem;
-}
+
 .form2{
 	display:inline;
 }
@@ -126,13 +124,6 @@
 .list1{
 	margin-top:10px;
 }
-.content11{
-	overflow:hidden;
-	width:90%;
-	height:auto;
-	margin-right:0;
-	padding-right:0;
-}
 #bootstrap-override3 table{
 	margin-top:10px;
 }
@@ -170,7 +161,21 @@
 	display: none;
 	cursor: pointer;
 }
+#firsttd1{
+	max-width: 85%;
+	padding-top: 20px;
+}
+#secondtd1{
+	vertical-align: middle;
+	width: 15%;
+}
 
+.a1 .form2:hover{
+	border-color: #55daff;
+}
+.a1 .btn11:hover{
+	color: #999;
+}
 @media only screen and (max-width:992px) {
   .a2 button{
   	display: none;
@@ -195,4 +200,13 @@
 		vertical-align:center;
 	}
 
+
+	#firsttd1 h5{
+		width:75%;
+		font-size: 16px;
+	}
+	#secondtd1{
+		font-size: 12px;
+		width:25%;
+	}
 }

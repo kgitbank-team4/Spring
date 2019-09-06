@@ -133,9 +133,9 @@ $(document).ready(function(){
                                 <c:if test="${not doneLoop}">
                                     <c:if test="${ArtList.board_id eq 101}">
                                         <tr>
-                                            <td style="color: red">${ArtList.category}</td>
-                                            <td><a href="#">${ArtList.title}</a></td>
-                                            <td>${ArtList.view_cnt}</td>
+                                            <td style="color: red;" class="maintable-category">${ArtList.category}</td>
+                                            <td class="maintable-title"><a href="#">${ArtList.title}</a></td>
+                                            <td class="maintable-view">${ArtList.view_cnt}</td>
                                             <c:set var="cnt" value="${cnt+1}"/>
                                         </tr>
                                         <c:if test="${cnt>5}">
@@ -153,7 +153,7 @@ $(document).ready(function(){
         <div class="col-md-6 post-tabs" role="navigation">
             <div role="tabpanel">
                 <ul class="nav nav-tabs tab2" role="tablist">
-                    <li role="presentation" class="active tablist1"><a href="freeboard.do?id=103&sort=lately" aria-controls="free" role="tab"
+                    <li role="presentation" class="active tablist1"><a href="#free" aria-controls="free" role="tab"
                                                                        data-toggle="tab">자유게시판</a></li>
                 </ul>
                 <!-- Tab panes -->
@@ -166,9 +166,9 @@ $(document).ready(function(){
                                 <c:if test="${not doneLoop}">
                                     <c:if test="${ArtList2.board_id eq 103}">
                                         <tr>
-                                            <td style="color: red">${ArtList2.category}</td>
-                                            <td><a href="showfreeboard.do?id=${ArtList2.id}">${ArtList2.title}</a></td>
-                                            <td>${ArtList2.view_cnt}</td>
+                                            <td style="color: red" class="maintable-category">${ArtList2.category}</td>
+                                            <td class="maintable-title"><a href="showfreeboard.do?id=${ArtList2.id}">${ArtList2.title}</a></td>
+                                            <td class="maintable-view">${ArtList2.view_cnt}</td>
                                             <c:set var="cnt" value="${cnt+1}"/>
                                         </tr>
                                         <c:if test="${cnt>5}">
@@ -244,7 +244,7 @@ $(document).ready(function(){
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="info">
-                        <table class="table table-hover tab-table1">
+                        <table class="table table-bordered tab-table1">
                             <c:set var="cnt" value="1"/>
                             <c:set var="doneLoop" value="false"/>
                             <c:forEach var="ArtList" items="${AllArtList}">
