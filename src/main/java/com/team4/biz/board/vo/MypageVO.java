@@ -12,6 +12,7 @@ public class MypageVO {
     private int view_cnt;
     private int up_cnt;
     private String content;
+    private String writer;
 
     public int getWriter_id() {
         return writer_id;
@@ -84,4 +85,12 @@ public class MypageVO {
     public void setContent(String content) {
         this.content = content;
     }
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 }

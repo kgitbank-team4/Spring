@@ -82,8 +82,8 @@ function onlyNumberFunc(t){
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">이야기</a>
 						<ul class="dropdown-menu">
-							<li><a class="nav-link" href="#">후기</a></li>
-							<li><a class="nav-link" href="#">사진</a></li>
+							<li><a class="nav-link" href="freeboard.do?id=101&sort=lately">후기</a></li>
+							<li><a class="nav-link" href="freeboard.do?id=102&sort=lately">사진</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -97,8 +97,8 @@ function onlyNumberFunc(t){
 						aria-expanded="false">커뮤니티</a>
 						<ul class="dropdown-menu">
 							<li><a class="nav-link" href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
-							<li><a class="nav-link" href="#">Q & A</a></li>
-							<li><a class="nav-link" href="#">공지사항</a></li>
+							<li><a class="nav-link" href="freeboard.do?id=104&sort=lately">Q & A</a></li>
+							<li><a class="nav-link" href="freeboard.do?id=105&sort=lately">공지사항</a></li>
 						</ul></li>
 					<li class="nav-item"><a class="nav-link-login"
 						href="mypage.do">마이페이지</a></li>
@@ -322,9 +322,9 @@ function onlyNumberFunc(t){
 					</div>
 					<div class="footer-address">
 						<ul>
-							<li class="footer-contact"><a href="#">공지사항</a></li>
+							<li class="footer-contact"><a href="freeboard.do?id=105&sort=lately">공지사항</a></li>
 							<li class="footer-contact"><a href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
-							<li class="footer-contact"><a href="#">Q & A</a></li>
+							<li class="footer-contact"><a href="freeboard.do?id=104&sort=lately">Q & A</a></li>
 						</ul>
 					</div>
 				</div>
@@ -348,7 +348,7 @@ function onlyNumberFunc(t){
 				<div class="col-md-5">
 					<div class="copyright-menu pull-right">
 						<ul>
-							<li><a href="home.do" class="active">Home</a></li>
+							<li><a href="#" class="active">Home</a></li>
 							<li><a href="#">Airport.co.kr</a></li>
 							<li><a href="#">OpenWheaterMap.org</a></li>
 						</ul>

@@ -134,7 +134,7 @@ $(document).ready(function(){
                                     <c:if test="${ArtList.board_id eq 101}">
                                         <tr>
                                             <td style="color: red;" class="maintable-category">${ArtList.category}</td>
-                                            <td class="maintable-title"><a href="#">${ArtList.title}</a></td>
+                                            <td class="maintable-title"><a href="showfreeboard.do?id=${ArtList.id}">${ArtList.title}</a></td>
                                             <td class="maintable-view">${ArtList.view_cnt}</td>
                                             <c:set var="cnt" value="${cnt+1}"/>
                                         </tr>
@@ -146,14 +146,34 @@ $(document).ready(function(){
                             </c:forEach>
                         </table>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="picture">사진</div>
+                    <div role="tabpanel" class="tab-pane" id="picture">
+						 <table class="table table-hover tab-table1">
+                            <c:set var="cnt" value="1"/>
+                            <c:set var="doneLoop" value="false"/>
+                            <c:forEach var="ArtList" items="${AllArtList}">
+                                <c:if test="${not doneLoop}">
+                                    <c:if test="${ArtList.board_id eq 102}">
+                                        <tr>
+                                            <td style="color: red">${ArtList.category}</td>
+                                            <td><a href="showfreeboard.do?id=${ArtList.id}">${ArtList.title}</a></td>
+                                            <td>${ArtList.view_cnt}</td>
+                                            <c:set var="cnt" value="${cnt+1}"/>
+                                        </tr>
+                                        <c:if test="${cnt>5}">
+                                            <c:set var="doneLoop" value="true"/>
+                                        </c:if>
+                                    </c:if>
+                                </c:if>
+                            </c:forEach>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-6 post-tabs" role="navigation">
             <div role="tabpanel">
                 <ul class="nav nav-tabs tab2" role="tablist">
-                    <li role="presentation" class="active tablist1"><a href="#free" aria-controls="free" role="tab"
+                    <li role="presentation" class="active tablist1"><a href="freeboard.do?id=103&sort=lately" aria-controls="free" role="tab"
                                                                        data-toggle="tab">자유게시판</a></li>
                 </ul>
                 <!-- Tab panes -->
@@ -179,7 +199,18 @@ $(document).ready(function(){
                             </c:forEach>
                         </table>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="qa">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 post-tabs" role="navigation">
+            <div role="tabpanel">
+                <ul class="nav nav-tabs tab3" role="tablist">
+                    <li role="presentation" class="active tablist3"><a href="#qa" aria-controls="qa" role="tab"
+                                                                       data-toggle="tab">Q & A</a></li>
+                </ul>
+                <!-- Tab panes -->
+			 	<div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="qa">
                         <table class="table table-hover tab-table1">
                             <c:set var="cnt" value="1"/>
                             <c:set var="doneLoop" value="false"/>
@@ -188,7 +219,7 @@ $(document).ready(function(){
                                     <c:if test="${ArtList.board_id eq 104}">
                                         <tr>
                                             <td style="color: red">${ArtList.category}</td>
-                                            <td><a href="#">${ArtList.title}</a></td>
+                                            <td><a href="showfreeboard.do?id=${ArtList.id}">${ArtList.title}</a></td>
                                             <td>${ArtList.view_cnt}</td>
                                             <c:set var="cnt" value="${cnt+1}"/>
                                         </tr>
@@ -200,38 +231,6 @@ $(document).ready(function(){
                             </c:forEach>
                         </table>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 post-tabs" role="navigation">
-            <div role="tabpanel">
-                <ul class="nav nav-tabs tab3" role="tablist">
-                    <li role="presentation" class="active tablist3"><a href="#info" aria-controls="info" role="tab"
-                                                                       data-toggle="tab">Q & A</a></li>
-
-                </ul>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="airport">
-                        <table class="table table-hover tab-table1">
-                            <tr>
-                                <td style="color: red">아시</td>
-                                <td><a href="#">오키나와 다녀왔습니다</a></td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td style="color: red">유럽</td>
-                                <td><a href="#">유럽 다녀왔습니다</a></td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td style="color: red">아시아</td>
-                                <td><a href="#">인천 다녀왔습니다</a></td>
-                                <td>1</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="weather">weather</div>
                 </div>
             </div>
         </div>
@@ -252,7 +251,7 @@ $(document).ready(function(){
                                     <c:if test="${ArtList.board_id eq 105}">
                                         <tr>
                                             <td style="color: red">${ArtList.category}</td>
-                                            <td><a href="#">${ArtList.title}</a></td>
+                                            <td><a href="showfreeboard.do?id=${ArtList.id}">${ArtList.title}</a></td>
                                             <td>${ArtList.view_cnt}</td>
                                             <c:set var="cnt" value="${cnt+1}"/>
                                         </tr>
@@ -356,9 +355,9 @@ $(document).ready(function(){
                 </div>
                 <div class="footer-address">
                     <ul>
-                        <li class="footer-contact"><a href="#">공지사항</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=105&sort=lately">공지사항</a></li>
                         <li class="footer-contact"><a href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
-                        <li class="footer-contact"><a href="#">Q & A</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=104&sort=lately">Q & A</a></li>
                     </ul>
                 </div>
             </div>

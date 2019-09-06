@@ -130,10 +130,29 @@ public class BoardController {
         model.addAttribute("myCommentList", boardService.searchMyComment(vo));
         return "mypage";
     }
+    
+    @RequestMapping(value = "/admin.do")
+    public String getAdmin(MypageVO vo, Model model, HttpSession session) throws SQLException, ClassNotFoundException {
+        UserVO uvo = (UserVO) session.getAttribute("user");
+        vo.setWriter_id(uvo.getId());
+        model.addAttribute("membercount", boardService.countUser()); //전체회원수
+        model.addAttribute("AdminArtList", boardService.searchArtListFromUser(vo)); //관리자글
+        model.addAttribute("AllUser", boardService.selectAllUser()); //회원리스트
+        model.addAttribute("deleteArt", boardService.selectdeleteArt()); //삭제된 글
+        return "adminPage";
+    }
 
     @RequestMapping(value = "/showfreeboard.do")
-    public String getArticle(ArticleVO vo, Model model, HttpServletRequest request,HttpServletResponse response,HttpSession session) throws SQLException, ClassNotFoundException {
-        UserVO uvo = (UserVO)session.getAttribute("user");
+    public String getArticle(ArticleVO vo, Model model, HttpServletRequest request,HttpServletResponse response,HttpSession session) throws SQLException, ClassNotFoundException, IOException {
+    	if(session.getAttribute("user") == null) {
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인 후 이용해주세요');</script>");
+			out.flush();
+		    return "forward:home.do";
+    	}
+    	
+    	UserVO uvo = (UserVO)session.getAttribute("user");
         VoteVO vvo = new VoteVO();
         vvo.setVoter_id(uvo.getId());
         vvo.setArticle_id(vo.getId());
@@ -187,7 +206,8 @@ public class BoardController {
         model.addAttribute("Comment", boardService.selectComment(vo));
         if(result1)
             model.addAttribute("Vote","1");
-        return "showfreeboard";
+        
+    		return "showfreeboard";
     }
 
     @RequestMapping(value = "/updateComment.do")
@@ -223,7 +243,7 @@ public class BoardController {
         if(vo.getBoard_id()==104)
         	return "writeQ&A";
         if(vo.getBoard_id()==105)
-        	return "";
+        	return "writenotice";
 		return null;
 
     }
@@ -243,7 +263,7 @@ public class BoardController {
     @RequestMapping(value = "/writeboard.do", method = RequestMethod.POST)
     public String insertBoard(ArticleVO vo, Model model, HttpSession session) throws ClassNotFoundException, SQLException {
         //System.out.println(vo.toString());
-        boardService.insertArt(vo);
+    	boardService.insertArt(vo);
         return ("redirect:freeboard.do?id="+vo.getBoard_id()+"&sort=lately");
     }
     @RequestMapping(value = "/hideArt.do")
@@ -251,11 +271,11 @@ public class BoardController {
         boardService.hideArt(vo);
         return ("redirect:freeboard.do?id="+vo.getBoard_id()+"&sort=lately");
     }
-    @RequestMapping(value = "/deleteArt.do")//미완성임
+    /*@RequestMapping(value = "/deleteArt.do")//미완성임
     public String deleteArticle(ArticleVO vo,Model model) throws ClassNotFoundException, SQLException{
         boardService.deleteArt(vo);
         return ("redirect:freeboard.do?id="+vo.getBoard_id()+"&sort=lately");
-    }
+    }*/
     @ResponseBody
     @RequestMapping(value = "/insertVote.do")
     public String selectVote(VoteVO vo,Model model) throws ClassNotFoundException, SQLException{
@@ -270,13 +290,43 @@ public class BoardController {
     }
     @RequestMapping(value = "/updateView.do")
     public String updateView(ArticleVO vo,Model model) throws ClassNotFoundException, SQLException{
-        model.addAttribute("Article", boardService.selectArt(vo));
-        return "writeFree";
+    	model.addAttribute("Article", boardService.selectArt(vo));
+    	model.addAttribute("board_id",vo.getBoard_id());
+    	if(vo.getBoard_id()==101)
+    		return "writeReview";
+    	if(vo.getBoard_id()==102)
+    		return "writegallery";
+    	if(vo.getBoard_id()==103)
+    		return "writeFree";
+    	if(vo.getBoard_id()==104)
+    		return "writeQ&A";
+    	if(vo.getBoard_id()==105)
+    		return "writenotice";
+		return null;
     }
     @RequestMapping(value = "/updateboard.do",method = RequestMethod.POST)
     public String updateboard(ArticleVO vo,Model model) throws ClassNotFoundException, SQLException{
         boardService.updateArt(vo);
         return "redirect:showfreeboard.do?id=" + vo.getId();
+    }
+
+    //관리자 글 복구기능
+    @RequestMapping(value="/adminrestore.do")
+    public String AdminRestore(@RequestParam("id") String data) throws SQLException, ClassNotFoundException {
+        String[] id= data.split(",");
+        for (String a: id) {
+            boardService.restoreArt(Integer.parseInt(a));
+        }
+        return "redirect:admin.do";
+    }
+    //관리자삭제
+    @RequestMapping(value="/admindelete.do")
+    public String AdminDelete(@RequestParam("id") String data) throws SQLException, ClassNotFoundException {
+        String[] id= data.split(",");
+        for (String a: id) {
+            boardService.deleteArt(Integer.parseInt(a));
+        }
+        return "redirect:admin.do";
     }
 
     /*@RequestMapping(value ="/UpdateUserBoard.do")

@@ -69,8 +69,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">이야기</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">후기</a></li>
-                        <li><a class="nav-link" href="#">사진</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=101&sort=lately">후기</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=102&sort=lately">사진</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -86,8 +86,8 @@
                        aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                     <ul class="dropdown-menu">
                         <li><a class="nav-link" href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
-                        <li><a class="nav-link" href="#">Q & A</a></li>
-                        <li><a class="nav-link" href="#">공지사항</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=104&sort=lately">Q & A</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=105&sort=lately">공지사항</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -151,12 +151,6 @@
                             <button class="btn11" onclick="x()">
                                 <i class="fas fa-search fa-lg"></i>
                             </button>
-                            <%--<div class="p-2">
-                                <div class="input-group">
-                                    <input class="form-control" id="searchinput" placeholder="검색"/> <span
-                                        class="input-group-addon"><a href="#" onclick=x()><i class="fas fa-search"></i></a></span>
-                                </div>
-                            </div>--%>
                         </div>
                     </div>
                     <div class="p-2 ml-auto writebtn a2">
@@ -240,14 +234,6 @@
                             <c:if test="${paging.curPage <= paging.totPage}">
                                 <a class="page-link" href="javascript:list('${paging.totPage}')">끝</a>
                             </c:if>
-                            <!-- <li class="page-item"><a class="page-link"
-                                href="javascript:void(0);">처음</a></li>
-                            <li class="page-item"><a class="page-link"
-                                href="javascript:void(0);">1</a></li>
-                            <li class="page-item"><a class="page-link"
-                                href="javascript:void(0);">2</a></li>
-                            <li class="page-item"><a class="page-link"
-                                href="javascript:void(0);">끝</a></li> -->
                         </ul>
                     </div>
                 </div>
@@ -324,9 +310,9 @@
                 </div>
                 <div class="footer-address">
                     <ul>
-                        <li class="footer-contact"><a href="#">공지사항</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=105&sort=lately">공지사항</a></li>
                         <li class="footer-contact"><a href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
-                        <li class="footer-contact"><a href="#">Q & A</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=104&sort=lately">Q & A</a></li>
                     </ul>
                 </div>
             </div>

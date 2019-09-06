@@ -29,10 +29,6 @@
 </head>
 <body>
 	<form>
-<%-- 	<input type="hidden" name="writer_id" value="${user.id}">
-	<input type="hidden" name="writer" value="${user.nickname}">
-	<input type="hidden" id="title" name="title">
-	<input type="hidden" id="category" name="category">	 --%>
 	<textarea name="text" style="display: none;"></textarea>
 	<div id="summernote"></div>
 	</form>
@@ -45,9 +41,17 @@
 	%>
 
 	<script>
-	
+	function check(){
+		var t1 = parent.document.getElementById("title").value;
+		if(t1 == ''){
+			alert("제목을 입력해주세요!");
+			return false;
+		}
+		return true;
+	}
+
 		function save(url,what,board_id) {
-			alert(board_id)
+			//alert(board_id)
 			var form = document.createElement("form")
 			//alert(form.getAttribute('name'))
 			var parm = new Array();
@@ -64,7 +68,7 @@
 			parm.push( ['writer_id', '${user.id}'] );
 			parm.push( ['writer', '${user.nickname}'] );
 			if(url=='updateboard.do') {
-                parm.push(['id', what])
+                parm.push(['id', what]);
             }
 
 			for (var i = 0; i < parm.length; i++) {
@@ -76,13 +80,14 @@
 			}
 			document.body.appendChild(form);
 			form.target="_parent"
-			form.submit();
+			if(check())
+				form.submit();
 		}
 		
 		function edit(board_id){
 			parent.document.location.href = "freeboard.do?id="+board_id+"&sort=lately";
 		}
-		
+
 		$(function x() {
 			$('#summernote').summernote({
 				height : 600,
@@ -98,13 +103,7 @@
             });
             $('#summernote').summernote('code',text);
         }
-		function getForm() {
-			//$('textarea[name="content"]').val($('#summernote').summernote('code'));
-			///location.href = "writeboard.do?text="+$('textarea[name="content"]').val();
-			/*   var text = document.getElementsByClassName("note-editable card-block").innerHTML;
-			  location.href = "writeboard.do?text="+text; */
-		}
-		//alert(document.getElementById("summernote").innerHTML);
+
 	</script>
 </body>
 </html>

@@ -61,6 +61,9 @@
     <update id="updateArt" parameterType="ArticleVO">
         update ARTICLE set CATEGORY=#{category}, TITLE=#{title}, TEXT=#{text} where ID=#{id}
     </update>
+    <update id="restoreArt" parameterType="ArticleVO">
+        update ARTICLE set VISIBLE=1 where id=#{id}
+    </update>
     <resultMap id="CommentsMap" type="CommentsVO">
         <result column="nickname" property="writer"/>
     </resultMap>
@@ -88,18 +91,33 @@
     <delete id="deleteComment" parameterType="CommentsVO">
         delete from COMMENTS where ID=#{id}
     </delete>
+    <delete id="deleteCommentAll" parameterType="ArticleVO">
+        delete from COMMENTS where ARTICLE_ID=#{id}
+    </delete>
     <select id="selectVote" parameterType="VoteVO" resultType="VoteVO">
         select * from VOTE where ARTICLE_ID=#{article_id} and VOTER_ID=#{voter_id}
     </select>
     <insert id="insertVote" parameterType="VoteVO">
-        insert into VOTE values (null,#{article_id},#{voter_id})
+        insert into VOTE(id, article_id, voter_id) values (null,#{article_id},#{voter_id})
     </insert>
     <update id="updateVote" parameterType="VoteVO">
         update ARTICLE set UP_CNT=(select count(ID) from VOTE where ARTICLE_ID=#{article_id}) where id=#{article_id}
     </update>
+    <delete id="deleteVoteAll" parameterType="ArticleVO">
+        delete from VOTE where ARTICLE_ID=#{id}
+    </delete>
 
 
 	<select id="getCountArt" parameterType="BoardVO" resultType="int">
 		select count(*) from article a, board b where a.board_id = b.id and b.id=#{id}
+	</select>
+	<select id="getCountUser" resultType="int">
+		select count(*) from users
+	</select>
+	<select id="getUserList" resultType="UserVO">
+		select * from users order by date_created desc
+	</select>
+	<select id="getDeleteArt" resultMap="MypageMap">
+		select a.*, b.boardname from Article a, Board b where a.board_id = b.id and a.visible=0 order by a.id desc
 	</select>
 </mapper>

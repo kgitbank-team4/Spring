@@ -14,6 +14,7 @@ import com.team4.biz.board.vo.CommentsVO;
 import com.team4.biz.board.vo.ContentVO;
 import com.team4.biz.board.vo.MypageVO;
 import com.team4.biz.board.vo.VoteVO;
+import com.team4.biz.user.vo.UserVO;
 @Repository
 public class BoardDAOImpl implements BoardDAO{
     @Autowired
@@ -50,8 +51,13 @@ public class BoardDAOImpl implements BoardDAO{
     }
 
     @Override
-    public void delete(ArticleVO vo) {
-        sqlSession.delete(namespace+".deleteArt",vo);
+    public void restore(int id) {
+        sqlSession.update(namespace+".restoreArt",id);
+    }
+
+    @Override
+    public void delete(int id) {
+        sqlSession.delete(namespace+".deleteArt",id);
     }
 
     @Override
@@ -108,6 +114,12 @@ public class BoardDAOImpl implements BoardDAO{
         sqlSession.delete(namespace+".deleteComment",vo);
     }
 
+    //글 완전삭제 1단계
+    @Override
+    public void deleteComment(int id) {
+        sqlSession.delete(namespace+".deleteCommentAll",id);
+    }
+
     @Override
     public List<CommentsVO> selectCom(ArticleVO vo) {
         return sqlSession.selectList(namespace+".getComments",vo);
@@ -156,10 +168,10 @@ public class BoardDAOImpl implements BoardDAO{
     public void update(VoteVO vo) {
         sqlSession.update(namespace+".updateVote",vo);
     }
-
+    //글 완전삭제 2단계
     @Override
-    public void delete(VoteVO vo) {
-
+    public void deleteVote(int id) {
+        sqlSession.delete(namespace+".deleteVoteAll",id);
     }
 
     @Override
@@ -175,5 +187,20 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public int countArt(BoardVO vo) {
 		return sqlSession.selectOne(namespace+".getCountArt",vo);
+	}
+
+	@Override
+	public int countUser() {
+		return sqlSession.selectOne(namespace+".getCountUser");
+	}
+
+	@Override
+	public List<UserVO> selectUser() {
+		return sqlSession.selectList(namespace+".getUserList");
+	}
+
+	@Override
+	public List<MypageVO> selectdeleteArt() {
+		return sqlSession.selectList(namespace+".getDeleteArt");
 	}
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,25 +47,25 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">이야기</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">후기</a></li>
-                        <li><a class="nav-link" href="#">사진</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=101&sort=lately">후기</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=102&sort=lately">사진</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">정보</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">운항 정보</a></li>
-                        <li><a class="nav-link" href="#">날씨 정보</a></li>
+                        <li><a class="nav-link" href="#" onclick="x()">운항 정보</a></li>
+                        <li><a class="nav-link" href="weatherinfo.do?cityname=seoul">날씨 정보</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                     <ul class="dropdown-menu">
-                        <li><a class="nav-link" href="#">자유게시판</a></li>
-                        <li><a class="nav-link" href="#">Q & A</a></li>
-                        <li><a class="nav-link" href="#">공지사항</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=104&sort=lately">Q & A</a></li>
+                        <li><a class="nav-link" href="freeboard.do?id=105&sort=lately">공지사항</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -94,265 +96,208 @@
 </header>
 
 <!-- Main Content -->
-	<div class="container mypage1">
-		<div class="row">
-			<div class="col">
-					<div class="mypage-border">
-						<h4>관리자페이지</h4>
-						<hr>
-						<ul class="nav nav-pills navpills" id="pills-tab" role="tablist">
-							<li class="nav-item"><a class="nav-link active"
-								id="pills-inform-tab" data-toggle="pill" href="#pills-inform"
-								role="tab" aria-controls="pills-inform" aria-selected="true">회원리스트</a>
-							</li>
-							<li class="nav-item"><a class="nav-link"
-								id="pills-write-tab" data-toggle="pill" href="#pills-write"
-								role="tab" aria-controls="pills-write" aria-selected="false">삭제된
-									글</a></li>
-							<li class="nav-item"><a class="nav-link"
-								id="pills-write22-tab" data-toggle="pill" href="#pills-write22"
-								role="tab" aria-controls="pills-write22" aria-selected="false">관리자글</a>
-							</li>
-						</ul>
-						<div class="tab-content" id="pills-tabContent">
-							<div class="tab-pane fade show active" id="pills-inform"
-								role="tabpanel" aria-labelledby="pills-home-tab">
-								<div class="mypage-table">
-									<table class="table table-hover">
-										<caption>
-											<div class="d-inline-block member-total">전체 회원수 2,333명</div>
-											<div class="d-inline-block" style="float: right;">
-												<div class="input-group">
-													<input type="text" class="form-control form2"
-														placeholder="검색">
-													<button class="btn11" type="submit">
-														<i class="fas fa-search fa-lg"></i>
-													</button>
-													<button class="btn11" name="admin-check" id="admin-check"
-														onclick="$('.chk').toggle();">
-														<i class="fas fa-check-circle"></i>
-													</button>
-												</div>
-											</div>
-										</caption>
-										<tr class="table-header">
-											<td><input type="checkbox" id="product_check_all"
-												class="chk" /></td>
-											<td>No.</td>
-											<td>이름</td>
-											<td>ID</td>
-											<td>닉네임</td>
-											<td>전화번호</td>
-											<td>가입일자</td>
-										</tr>
-										<c:forEach items="${myArtList}" var="myArtList">
-											<fmt:formatDate value="${myArtList.date_created}" var="date"
-												pattern="yyyy-MM-dd" />
-											<tr class="table-child">
-												<td><input type="checkbox" name="_selected_"
-													class="chk" value="제목"></td>
-												<td>${myAr</td>
-												<td>${myArtList.title}</td>
-												<td>${date}</td>
-												<td>${myArtList.view_cnt}</td>
-												<td>${myArtList.up_cnt}</td>
-												<td>${myArtList.up_cnt}</td>
-											</tr>
-										</c:forEach>
-										<tr class="table-child">
-											<td><input type="checkbox" name="_selected_" class="chk"
-												value="제목"></td>
-											<td>1</td>
-											<td><a href="#">제목</a></td>
-											<td>닉네임</td>
-											<td>작정일자</td>
-											<td>전화번호</td>
-											<td>가입일자</td>
-										</tr>
-										<tr>
-											<td colspan=7 class="btn-td"><div
-													class="p-2 ml-auto writebtn a2">
-													<button class="gradient-btn1 gradient-btn2 p-2 a22"
-														id="check" type="button" onclick="">삭제</button>
-												</div></td>
-										</tr>
-									</table>
-									<div class="container page1">
-										<div class="container">
-											<div class="text-center">
-												<ul class="pagination justify-content-center">
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">처음</a></li>
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">1</a></li>
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">2</a></li>
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">끝</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="tab-pane fade" id="pills-write" role="tabpanel"
-								aria-labelledby="pills-profile-tab">
-								<div class="mypage-table">
-									<table class="table table-hover">
-										<caption>
-											<div class="d-inline-block" style="float: right;">
-												<div class="input-group">
-													<input type="text" class="form-control form2"
-														placeholder="검색">
-													<button class="btn11" type="submit">
-														<i class="fas fa-search fa-lg"></i>
-													</button>
-													<button class="btn11" name="admin-check" id="admin-check"
-														onclick="$('.chk2').toggle();">
-														<i class="fas fa-check-circle"></i>
-													</button>
-												</div>
-											</div>
-										</caption>
-										<tr class="table-header">
-											<td><input type="checkbox" id="product_check_all2"
-												class="chk2"></td>
-											<td>No.</td>
-											<td>제목</td>
-											<td>닉네임</td>
-											<td>작성일자</td>
-											<td>게시판</td>
-										</tr>
-										<c:forEach items="${myArtList}" var="myArtList">
-											<fmt:formatDate value="${myArtList.date_created}" var="date"
-												pattern="yyyy-MM-dd" />
-											<tr class="table-child">
-												<td><input type="checkbox" name="_selected_2"
-													class="chk2" value="제목"></td>
-												<td>${myAr}</td>
-												<td>${myArtList.title}</td>
-												<td>${date}</td>
-												<td>${myArtList.view_cnt}</td>
-												<td>${myArtList.up_cnt}</td>
-											</tr>
-										</c:forEach>
-										<tr class="table-child">
-											<td><input type="checkbox" name="_selected_2"
-												class="chk2" value="제목"></td>
-											<td>1</td>
-											<td><a href="#">제목</a></td>
-											<td>닉네임</td>
-											<td>작정일자</td>
-											<td>자유게시판</td>
-										</tr>
-										<tr>
-											<td colspan=7 class="btn-td"><div
-													class="p-2 ml-auto writebtn a2">
-													<button class="gradient-btn1 gradient-btn2 p-2 a22"
-														id="check" type="button" onclick="">삭제</button>
-												</div></td>
-										</tr>
-									</table>
-									<div class="container page1">
-										<div class="container">
-											<div class="text-center">
-												<ul class="pagination justify-content-center">
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">처음</a></li>
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">1</a></li>
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">2</a></li>
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">끝</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="tab-pane fade" id="pills-write22" role="tabpanel"
-								aria-labelledby="pills-contact-tab">
-								<div class="mypage-table">
-									<table class="table table-hover">
-										<caption>
-											<div class="d-inline-block ul1">
-												<ul class="list-inline">
-													<li class="list-inline-item"><a href="#"
-														class="active">공지사항</a></li>
-													<li class="list-inline-item"><a href="#">Q&A</a></li>
-												</ul>
-											</div>
-											<div class="d-inline-block" style="float: right;">
-												<div class="input-group">
-													<input type="text" class="form-control form2"
-														placeholder="검색">
-													<button class="btn11" type="submit">
-														<i class="fas fa-search fa-lg"></i>
-													</button>
-													<button class="btn11" name="admin-check" id="admin-check"
-														onclick="$('.chk3').toggle();">
-														<i class="fas fa-check-circle"></i>
-													</button>
-												</div>
-											</div>
-										</caption>
-										<tr class="table-header">
-											<td><input type="checkbox" id="product_check_all3"
-												class="chk3"></td>
-											<td>No.</td>
-											<td>제목</td>
-											<td>작성일자</td>
-										</tr>
-										<c:forEach items="${myArtList}" var="myArtList">
-											<fmt:formatDate value="${myArtList.date_created}" var="date"
-												pattern="yyyy-MM-dd" />
-											<tr class="table-child">
-												<td><input type="checkbox" name="_selected_3"
-													class="chk3" value="value"></td>
-												<td>${myAr</td>
-												<td>${myArtList.title}</td>
-												<td>${myArtList.up_cnt}</td>
-											</tr>
-										</c:forEach>
-										<tr class="table-child">
-											<td><input type="checkbox" name="_selected_3"
-												class="chk3" value="value2"></td>
-											<td>1</td>
-											<td><a href="#">제목</a></td>
-											<td>작정일자</td>
-										</tr>
-										<tr>
-											<td colspan=4 class="btn-td"><div
-													class="p-2 ml-auto writebtn a2">
-													<button class="gradient-btn1 gradient-btn2 p-2 a22"
-														id="check" type="button" onclick="">삭제</button>
-												</div></td>
-										</tr>
-									</table>
-									<div class="container page1">
-										<div class="container">
-											<div class="text-center">
-												<ul class="pagination justify-content-center">
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">처음</a></li>
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">1</a></li>
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">2</a></li>
-													<li class="page-item"><a class="page-link"
-														href="javascript:void(0);">끝</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-			</div>
-		</div>
-	</div>
+<div class="container mypage1">
+    <div class="row">
+        <div class="col">
+            <div class="mypage-border">
+                <h4>관리자페이지</h4>
+                <hr>
+                <ul class="nav nav-pills navpills" id="pills-tab" role="tablist">
+                    <li class="nav-item"><a class="nav-link active"
+                                            id="pills-inform-tab" data-toggle="pill" href="#pills-inform"
+                                            role="tab" aria-controls="pills-inform" aria-selected="true">회원리스트</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link"
+                                            id="pills-write-tab" data-toggle="pill" href="#pills-write"
+                                            role="tab" aria-controls="pills-write" aria-selected="false">삭제된
+                        글</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                                            id="pills-write22-tab" data-toggle="pill" href="#pills-write22"
+                                            role="tab" aria-controls="pills-write22" aria-selected="false">관리자글</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-inform"
+                         role="tabpanel" aria-labelledby="pills-home-tab">
+                        <div class="mypage-table">
+                            <table class="table table-hover">
+                                <caption>
+                                    <div class="d-inline-block member-total">전체 회원수 ${membercount}명</div>
+                                    <div class="d-inline-block" style="float: right;">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form2"
+                                                   placeholder="검색">
+                                            <button class="btn11" type="submit">
+                                                <i class="fas fa-search fa-lg"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </caption>
+                                <tr class="table-header">
+                                    <td>No.</td>
+                                    <td>ID</td>
+                                    <td>닉네임</td>
+                                    <td>전화번호</td>
+                                    <td>가입일자</td>
+                                </tr>
+                                <c:forEach items="${AllUser}" var="AllUser">
+                                    <fmt:formatDate value="${AllUser.date_created}" var="date"
+                                                    pattern="yyyy-MM-dd"/>
+                                    <tr class="table-child">
+                                        <td>${AllUser.id}</td>
+                                        <td>${AllUser.username}</td>
+                                        <td>${AllUser.nickname}</td>
+                                        <td>${AllUser.tel}</td>
+                                        <td>${date}</td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                            <!-- <div class="container page1">
+                                <div class="container">
+                                    <div class="text-center">
+                                        <ul class="pagination justify-content-center">
+                                            <li class="page-item"><a class="page-link"
+                                                href="javascript:void(0);">처음</a></li>
+                                            <li class="page-item"><a class="page-link"
+                                                href="javascript:void(0);">1</a></li>
+                                            <li class="page-item"><a class="page-link"
+                                                href="javascript:void(0);">2</a></li>
+                                            <li class="page-item"><a class="page-link"
+                                                href="javascript:void(0);">끝</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-write" role="tabpanel"
+                         aria-labelledby="pills-profile-tab">
+                        <div class="mypage-table">
+                            <table class="table table-hover">
+                                <caption>
+                                    <div class="d-inline-block" style="float: right;">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form2"
+                                                   placeholder="검색">
+                                            <button class="btn11" type="submit">
+                                                <i class="fas fa-search fa-lg"></i>
+                                            </button>
+                                            <button class="btn11" name="admin-check" id="admin-check"
+                                                    onclick="$('.chk2').toggle();">
+                                                <i class="fas fa-check-circle"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </caption>
+                                <tr class="table-header">
+                                    <td><input type="checkbox" id="product_check_all2"
+                                               class="chk2"></td>
+                                    <td>No.</td>
+                                    <td>제목</td>
+                                    <td>닉네임</td>
+                                    <td>작성일자</td>
+                                    <td>게시판</td>
+                                </tr>
+                                <c:forEach items="${deleteArt}" var="deleteArt">
+                                    <fmt:formatDate value="${deleteArt.date_created}" var="date"
+                                                    pattern="yyyy-MM-dd"/>
+                                    <tr class="table-child">
+                                        <td><input type="checkbox" name="_selected_2"
+                                                   class="chk2" value="${deleteArt.article_id}"></td>
+                                        <td>${deleteArt.article_id}</td>
+                                        <td><a href="showfreeboard.do?id=${deleteArt.article_id}">${deleteArt.title}</a>
+                                        </td>
+                                        <td>${deleteArt.writer}</td>
+                                        <td>${date}</td>
+                                        <td>${deleteArt.boardname}</td>
+                                    </tr>
+                                </c:forEach>
+                                <tr>
+                                    <td colspan=7 class="btn-td">
+                                        <div
+                                                class="p-2 ml-auto writebtn a2">
+                                            <button class="gradient-btn1 gradient-btn2 p-2 a22"
+                                                    id="restore" type="button">복구
+                                            </button>
+                                            <button class="gradient-btn1 gradient-btn2 p-2 a22"
+                                                    id="delete" type="button">삭제
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- 	<div class="container page1">
+                                    <div class="container">
+                                        <div class="text-center">
+                                            <ul class="pagination justify-content-center">
+                                                <li class="page-item"><a class="page-link"
+                                                    href="javascript:void(0);">처음</a></li>
+                                                <li class="page-item"><a class="page-link"
+                                                    href="javascript:void(0);">1</a></li>
+                                                <li class="page-item"><a class="page-link"
+                                                    href="javascript:void(0);">2</a></li>
+                                                <li class="page-item"><a class="page-link"
+                                                    href="javascript:void(0);">끝</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>  -->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-write22" role="tabpanel"
+                         aria-labelledby="pills-contact-tab">
+                        <div class="mypage-table">
+                            <table class="table table-hover">
+                                <caption>
+                                    <div class="d-inline-block" style="float: right;">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form2"
+                                                   placeholder="검색">
+                                            <button class="btn11" type="submit">
+                                                <i class="fas fa-search fa-lg"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </caption>
+                                <tr class="table-header">
+                                    <td>No.</td>
+                                    <td>제목</td>
+                                    <td>작성일자</td>
+                                </tr>
+                                <c:forEach items="${AdminArtList}" var="myArtList">
+                                    <fmt:formatDate value="${myArtList.date_created}" var="date"
+                                                    pattern="yyyy-MM-dd"/>
+                                    <tr class="table-child">
+                                        <td>${myArtList.article_id}</td>
+                                        <td><a href="showfreeboard.do?id=${myArtList.article_id}">${myArtList.title}</a>
+                                        </td>
+                                        <td>${date}</td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                            <!-- 									<div class="container page1">
+                                                                    <div class="container">
+                                                                        <div class="text-center">
+                                                                            <ul class="pagination justify-content-center">
+                                                                                <li class="page-item"><a class="page-link"
+                                                                                    href="javascript:void(0);">처음</a></li>
+                                                                                <li class="page-item"><a class="page-link"
+                                                                                    href="javascript:void(0);">1</a></li>
+                                                                                <li class="page-item"><a class="page-link"
+                                                                                    href="javascript:void(0);">2</a></li>
+                                                                                <li class="page-item"><a class="page-link"
+                                                                                    href="javascript:void(0);">끝</a></li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <hr>
 
@@ -424,9 +369,9 @@
                 </div>
                 <div class="footer-address">
                     <ul>
-                        <li class="footer-contact"><a href="#">공지사항</a></li>
-                        <li class="footer-contact"><a href="#">자유게시판</a></li>
-                        <li class="footer-contact"><a href="#">Q & A</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=105&sort=lately">공지사항</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=103&sort=lately">자유게시판</a></li>
+                        <li class="footer-contact"><a href="freeboard.do?id=104&sort=lately">Q & A</a></li>
                     </ul>
                 </div>
             </div>
@@ -468,45 +413,47 @@
 <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
 </body>
 <script>
-$(document).ready(function() {
-	//전체 선택/해제
-    $("#product_check_all").click(function(){
-    	var chk = $(this).is(":checked");
-                     
-    	if(chk){
-    		$('input[name*="_selected_"]').prop('checked', true);
-    	}else{
-    		$('input[name*="_selected_"]').prop('checked', false);
-    	}
-   	});
-    $("#product_check_all2").click(function(){
-    	var chk = $(this).is(":checked");
-                     
-    	if(chk){
-    		$('input[name*="_selected_2"]').prop('checked', true);
-    	}else{
-    		$('input[name*="_selected_2"]').prop('checked', false);
-    	}
-   	});
-    $("#product_check_all3").click(function(){
-    	var chk = $(this).is(":checked");
-                     
-    	if(chk){
-    		$('input[name*="_selected_3"]').prop('checked', true);
-    	}else{
-    		$('input[name*="_selected_3"]').prop('checked', false);
-    	}
-   	});
-                 
-   //체크 항목 확인
-   $("#check").click(function(){
-	   $('input[name*="_selected_"]').each(function(i){
-                 
-	   	   if($(this).is(":checked")){
-	            }
-	       });
-       });
-   });
+    $("#product_check_all2").click(function () {
+        var chk = $(this).is(":checked");
+
+        if (chk) {
+            $('input[name*="_selected_2"]').prop('checked', true);
+        } else {
+            $('input[name*="_selected_2"]').prop('checked', false);
+        }
+    });
+    $("#delete").click(function () {
+        var data = "";
+        $('input[name*="_selected_"]').each(function (i) {
+
+            if ($(this).is(":checked")) {
+                data = data+$(this).val()+","
+                //alert($(this).val())
+                //$(location).attr("href", "admindelete.do?id="+$(this).val());
+            }
+        });
+        $(location).attr("href", "admindelete.do?id="+data);
+    });
+    $("#restore").click(function () {
+        var data = "";
+        $('input[name*="_selected_"]').each(function (i) {
+
+            if ($(this).is(":checked")) {
+                data = data+$(this).val()+","
+                //alert($(this).val())
+            }
+        });
+        $(location).attr("href", "adminrestore.do?id="+data);
+    });
+    function x() {
+        var d = new Date();
+        var stime = d.getHours();
+        if (stime > 23) {
+            var dtime = stime + 1 - 24;
+        } else
+            var dtime = stime + 1
+        location.href = "airinfo.do?schStTime=" + stime + "00&schEdTime=" + dtime + "00&schLineType=D&schIOType=O&schAirCode=GMP"
+    }
 </script>
 </html>
 

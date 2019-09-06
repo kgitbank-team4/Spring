@@ -1,10 +1,16 @@
 package com.team4.biz.board.service;
 
-import com.team4.biz.board.api.vo.AirVO;
-import com.team4.biz.board.vo.*;
-
 import java.sql.SQLException;
 import java.util.List;
+
+import com.team4.biz.board.api.vo.AirVO;
+import com.team4.biz.board.vo.ArticleVO;
+import com.team4.biz.board.vo.BoardVO;
+import com.team4.biz.board.vo.CommentsVO;
+import com.team4.biz.board.vo.ContentVO;
+import com.team4.biz.board.vo.MypageVO;
+import com.team4.biz.board.vo.VoteVO;
+import com.team4.biz.user.vo.UserVO;
 
 public interface BoardService {
     public BoardVO selectBoard(BoardVO vo) throws ClassNotFoundException, SQLException;
@@ -17,9 +23,10 @@ public interface BoardService {
 
     //글관련 서비스
     public boolean insertArt(ArticleVO vo) throws ClassNotFoundException, SQLException;
-    public boolean deleteArt(ArticleVO vo) throws ClassNotFoundException, SQLException;
+    public boolean deleteArt(int id) throws ClassNotFoundException, SQLException;
     public boolean hideArt(ArticleVO vo) throws ClassNotFoundException, SQLException;
     public boolean updateArt(ArticleVO vo) throws ClassNotFoundException, SQLException;
+    public boolean restoreArt(int id) throws ClassNotFoundException, SQLException;
     public boolean plusViewCnt(ArticleVO vo) throws ClassNotFoundException, SQLException;
     public ArticleVO selectArt(ArticleVO vo) throws ClassNotFoundException, SQLException;
 
@@ -46,5 +53,8 @@ public interface BoardService {
     
     //페이징
 	public int countArticle(BoardVO vo);
+	public int countUser();
+	public List<UserVO> selectAllUser();
+	public List<MypageVO> selectdeleteArt();
 
 }
