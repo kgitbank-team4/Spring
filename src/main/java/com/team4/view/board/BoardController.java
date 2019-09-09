@@ -86,8 +86,16 @@ public class BoardController {
     }*/
 
     @RequestMapping(value = "/search.do")
-    public String searchArt(BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
-        model.addAttribute("ArtList", boardService.searchArtList(vo));
+    public String searchArt(@RequestParam(defaultValue="1") int curPage, BoardVO vo, Model model) throws SQLException, ClassNotFoundException {
+      ///페이징
+		int count = boardService.countArticle(vo);
+		PageMaker paging = new PageMaker(count, curPage);
+		int start = paging.getPageBegin();
+		int end = paging.getPageEnd();
+		////
+		System.out.println(vo.getKeyword());
+		model.addAttribute("ArtList", boardService.searchArtList(vo, start, end));
+		model.addAttribute("paging", paging);
         if(vo.getId() == 101)
 			return "reviewboard";
         if(vo.getId() == 102)

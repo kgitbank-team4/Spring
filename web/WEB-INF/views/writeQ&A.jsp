@@ -90,7 +90,7 @@
                        aria-haspopup="true" aria-expanded="false">마이페이지</a>
                 </li>
                 <li class="nav-item logout login-inactive">
-                    <a class="nav-link-login" href="logout.do">로그아웃</a>
+                    <a class="nav-link-login" href="javascript:void(0);" onclick="location.replace('logout.do')">로그아웃</a>
                 </li>
             </ul>
         </div>

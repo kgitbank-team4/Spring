@@ -82,7 +82,7 @@
                     <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
                 </li>
                 <li class="nav-item logout login-inactive">
-                    <a class="nav-link-login" href="logout.do">로그아웃</a>
+                    <a class="nav-link-login" href="javascript:void(0);" onclick="location.replace('logout.do')">로그아웃</a>
                 </li>
 
             </ul>
@@ -91,9 +91,7 @@
 </nav>
 <script>
     $(document).ready(function () {
-        if (${user.id} !=
-        null
-    )
+        if (${user.id} !=null)
         {
             $("#mainNav .container #navbarResponsive .login").removeClass("login-active");
             $("#mainNav .container #navbarResponsive .logout").removeClass("login-inactive");

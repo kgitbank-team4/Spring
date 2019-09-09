@@ -11,7 +11,7 @@ public interface BoardDAO {
     public BoardVO select(BoardVO vo);
     public List<ArticleVO> selectAllList(BoardVO vo);//글전체목록
     public List<ArticleVO> selectList (BoardVO vo, int start, int end);//게시판별 목록
-    public List<ArticleVO> searchList(BoardVO vo);//검색
+    public List<ArticleVO> searchList(BoardVO vo, int start, int end);//검색
     public List<MypageVO> searchListFromUser(MypageVO vo);//닉네임으로 검색
     public List<MypageVO> searchMyComment(MypageVO vo);//닉네임으로 댓글 검색
 
