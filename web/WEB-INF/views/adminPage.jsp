@@ -12,6 +12,9 @@
 
     <title>관리자페이지</title>
     <!-- Bootstrap core CSS -->
+    <link href="${pageContext.request.contextPath}/resources/css/paging5.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/paging4.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/paging3.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
@@ -27,6 +30,8 @@
     <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/footer.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/admin.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -120,68 +125,46 @@
                     <div class="tab-pane fade show active" id="pills-inform"
                          role="tabpanel" aria-labelledby="pills-home-tab">
                         <div class="mypage-table">
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="example5" style="width: 100%;">
                                 <caption>
                                     <div class="d-inline-block member-total">전체 회원수 ${membercount}명</div>
                                     <div class="d-inline-block" style="float: right;">
                                         <div class="input-group">
-                                            <input type="text" class="form-control form2"
-                                                   placeholder="검색">
-                                            <button class="btn11" type="submit">
-                                                <i class="fas fa-search fa-lg"></i>
-                                            </button>
                                         </div>
                                     </div>
                                 </caption>
+                                <thead>
                                 <tr class="table-header">
-                                    <td>No.</td>
+                                    <td class="numtd" style="width: 6%;">No.</td>
                                     <td>ID</td>
                                     <td>닉네임</td>
                                     <td>전화번호</td>
                                     <td>가입일자</td>
                                 </tr>
+                                </thead>
+                                <tbody>
                                 <c:forEach items="${AllUser}" var="AllUser">
                                     <fmt:formatDate value="${AllUser.date_created}" var="date"
                                                     pattern="yyyy-MM-dd"/>
                                     <tr class="table-child">
-                                        <td>${AllUser.id}</td>
+                                        <td class="numtd" style="width: 6%;">${AllUser.id}</td>
                                         <td>${AllUser.username}</td>
                                         <td>${AllUser.nickname}</td>
                                         <td>${AllUser.tel}</td>
                                         <td>${date}</td>
                                     </tr>
                                 </c:forEach>
+                                </tbody>
                             </table>
-                            <!-- <div class="container page1">
-                                <div class="container">
-                                    <div class="text-center">
-                                        <ul class="pagination justify-content-center">
-                                            <li class="page-item"><a class="page-link"
-                                                href="javascript:void(0);">처음</a></li>
-                                            <li class="page-item"><a class="page-link"
-                                                href="javascript:void(0);">1</a></li>
-                                            <li class="page-item"><a class="page-link"
-                                                href="javascript:void(0);">2</a></li>
-                                            <li class="page-item"><a class="page-link"
-                                                href="javascript:void(0);">끝</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-write" role="tabpanel"
                          aria-labelledby="pills-profile-tab">
                         <div class="mypage-table">
-                            <table class="table table-hover">
+                            <table class="table table-borderless" id="example4" style="width: 100%;">
                                 <caption>
                                     <div class="d-inline-block" style="float: right;">
                                         <div class="input-group">
-                                            <input type="text" class="form-control form2"
-                                                   placeholder="검색">
-                                            <button class="btn11" type="submit">
-                                                <i class="fas fa-search fa-lg"></i>
-                                            </button>
                                             <button class="btn11" name="admin-check" id="admin-check"
                                                     onclick="$('.chk2').toggle();">
                                                 <i class="fas fa-check-circle"></i>
@@ -189,22 +172,25 @@
                                         </div>
                                     </div>
                                 </caption>
+                                <thead>
                                 <tr class="table-header">
-                                    <td><input type="checkbox" id="product_check_all2"
+                                   <td style="background-color: white; width: 1%; margin:0; padding:0; vertical-align: middle"><input type="checkbox" id="product_check_all2"
                                                class="chk2"></td>
-                                    <td>No.</td>
+                                    <td class="numtd">No.</td>
                                     <td>제목</td>
                                     <td>닉네임</td>
                                     <td>작성일자</td>
                                     <td>게시판</td>
                                 </tr>
+                                </thead>
+                                <tbody>
                                 <c:forEach items="${deleteArt}" var="deleteArt">
                                     <fmt:formatDate value="${deleteArt.date_created}" var="date"
                                                     pattern="yyyy-MM-dd"/>
                                     <tr class="table-child">
-                                        <td><input type="checkbox" name="_selected_2"
+                                       <td style="width: 1%; margin:0; padding:0; vertical-align: middle;"><input type="checkbox" name="_selected_2"
                                                    class="chk2" value="${deleteArt.article_id}"></td>
-                                        <td>${deleteArt.article_id}</td>
+                                        <td class="numtd">${deleteArt.article_id}</td>
                                         <td><a href="showfreeboard.do?id=${deleteArt.article_id}">${deleteArt.title}</a>
                                         </td>
                                         <td>${deleteArt.writer}</td>
@@ -212,6 +198,7 @@
                                         <td>${deleteArt.boardname}</td>
                                     </tr>
                                 </c:forEach>
+                                </tbody>
                                 <tr>
                                     <td colspan=7 class="btn-td">
                                         <div
@@ -226,44 +213,26 @@
                                     </td>
                                 </tr>
                             </table>
-                            <!-- 	<div class="container page1">
-                                    <div class="container">
-                                        <div class="text-center">
-                                            <ul class="pagination justify-content-center">
-                                                <li class="page-item"><a class="page-link"
-                                                    href="javascript:void(0);">처음</a></li>
-                                                <li class="page-item"><a class="page-link"
-                                                    href="javascript:void(0);">1</a></li>
-                                                <li class="page-item"><a class="page-link"
-                                                    href="javascript:void(0);">2</a></li>
-                                                <li class="page-item"><a class="page-link"
-                                                    href="javascript:void(0);">끝</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>  -->
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-write22" role="tabpanel"
                          aria-labelledby="pills-contact-tab">
                         <div class="mypage-table">
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="example3" style="width: 100%;">
                                 <caption>
                                     <div class="d-inline-block" style="float: right;">
                                         <div class="input-group">
-                                            <input type="text" class="form-control form2"
-                                                   placeholder="검색">
-                                            <button class="btn11" type="submit">
-                                                <i class="fas fa-search fa-lg"></i>
-                                            </button>
                                         </div>
                                     </div>
                                 </caption>
-                                <tr class="table-header">
-                                    <td>No.</td>
-                                    <td>제목</td>
-                                    <td>작성일자</td>
-                                </tr>
+                                <thead>
+                                    <tr class="table-header">
+                                        <td>No.</td>
+                                        <td>제목</td>
+                                        <td>작성일자</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
                                 <c:forEach items="${AdminArtList}" var="myArtList">
                                     <fmt:formatDate value="${myArtList.date_created}" var="date"
                                                     pattern="yyyy-MM-dd"/>
@@ -274,23 +243,8 @@
                                         <td>${date}</td>
                                     </tr>
                                 </c:forEach>
+                                </tbody>
                             </table>
-                            <!-- 									<div class="container page1">
-                                                                    <div class="container">
-                                                                        <div class="text-center">
-                                                                            <ul class="pagination justify-content-center">
-                                                                                <li class="page-item"><a class="page-link"
-                                                                                    href="javascript:void(0);">처음</a></li>
-                                                                                <li class="page-item"><a class="page-link"
-                                                                                    href="javascript:void(0);">1</a></li>
-                                                                                <li class="page-item"><a class="page-link"
-                                                                                    href="javascript:void(0);">2</a></li>
-                                                                                <li class="page-item"><a class="page-link"
-                                                                                    href="javascript:void(0);">끝</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div> -->
                         </div>
                     </div>
                 </div>
@@ -298,10 +252,69 @@
         </div>
     </div>
 </div>
-
+<script>
+    $(document).ready(function() {
+        // DataTable initialisation
+        $('#example5').DataTable({
+            "paging": true,
+            "autoWidth": true,
+            "columnDefs": [
+                {
+                    "targets": 4,
+                    render: function(data, type, full, meta) {
+                        //alert('asd');
+                        if (type === 'display' && data == 'Done') {
+                            var rowIndex = meta.row+1;
+                            return data;
+                        } else {
+                            return data;
+                        }
+                    }
+                }]
+        });
+    });
+    $(document).ready(function() {
+        // DataTable initialisation
+        $('#example4').DataTable({
+            "paging": true,
+            "autoWidth": true,
+            "columnDefs": [
+                {
+                    "targets": 4,
+                    render: function(data, type, full, meta) {
+                        //alert('asd');
+                        if (type === 'display' && data == 'Done') {
+                            var rowIndex = meta.row+1;
+                            return data;
+                        } else {
+                            return data;
+                        }
+                    }
+                }]
+        });
+    });
+    $(document).ready(function() {
+        // DataTable initialisation
+        $('#example3').DataTable({
+            "paging": true,
+            "autoWidth": true,
+            "columnDefs": [
+                {
+                    "targets": 2,
+                    render: function(data, type, full, meta) {
+                        //alert('asd');
+                        if (type === 'display' && data == 'Done') {
+                            var rowIndex = meta.row+1;
+                            return data;
+                        } else {
+                            return data;
+                        }
+                    }
+                }]
+        });
+    });
+</script>
 <hr>
-
-
 <!-- Start Footer Section -->
 <section id="footer-section" class="footer-section">
     <div class="container">
@@ -323,8 +336,6 @@
                     </ul>
                 </div>
             </div>
-
-
             <div class="col-md-4">
                 <div class="section-heading-2">
                     <h3 class="section-title">
@@ -360,7 +371,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="col-md-4">
                 <div class="section-heading-2">
                     <h3 class="section-title">
@@ -411,6 +421,8 @@
 
 <!-- Custom scripts for this template -->
 <script src="${pageContext.request.contextPath}/resources/js/clean-blog.min.js"></script>
+
+
 </body>
 <script>
     $("#product_check_all2").click(function () {
@@ -455,5 +467,8 @@
         location.href = "airinfo.do?schStTime=" + stime + "00&schEdTime=" + dtime + "00&schLineType=D&schIOType=O&schAirCode=GMP"
     }
 </script>
+
+<%--paging js--%>
+<script src="${pageContext.request.contextPath}/resources/js/paging.js"></script>
 </html>
 

@@ -1,4 +1,7 @@
-@font-face { 
+*,::after,::before{
+	box-sizing: unset;
+}
+@font-face {
 	font-family: 'S-CoreDream-3Light'; 
 	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); 
 	font-weight: normal; 
@@ -122,12 +125,38 @@ table td #nameresult{
   color: black;
   font-weight: bold;
  }
-@media only screen and (max-width: 768px) {
+
+@media only screen and (max-width: 992px) {
 	.mypage-border .mypage-table .table-header{
-		width: 150px;
 		font-size: 15px;
+		overflow:hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 	.mypage-border .mypage-table .table-child{
 		font-size:15px;
+		overflow:hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.numtd{
+		display: none;
+	}
+}
+@media only screen and (max-width: 450px) {
+	.mypage-border .mypage-table .table-header{
+		font-size: 13px;
+		overflow:hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.mypage-border .mypage-table .table-child{
+		font-size:12px;
+		overflow:hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.numtd{
+		display:none;
 	}
 }

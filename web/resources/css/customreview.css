@@ -162,7 +162,7 @@
 	cursor: pointer;
 }
 #firsttd1{
-	max-width: 85%;
+	width: 85%;
 	padding-top: 20px;
 }
 #secondtd1{
@@ -176,6 +176,7 @@
 .a1 .btn11:hover{
 	color: #999;
 }
+
 
 @media only screen and (max-width:992px) {
   .a2 button{

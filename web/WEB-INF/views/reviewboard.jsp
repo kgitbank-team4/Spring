@@ -172,7 +172,7 @@
             <c:forEach var="Artlist" items="${ArtList}">
                 <fmt:formatDate value="${Artlist.date_created}" var="date" pattern="yyyy-MM-dd"/>
 
-                <table class="table table-borderless">
+                <table class="table table-borderless" style="max-width:100%; overflow: hidden;">
                     <tr style="border-bottom: 1px solid; border-top: 1px solid; border-color: #000000">
                         <td class="content11" id="firsttd1">
                             <h5><a href="showfreeboard.do?id=${Artlist.id}">[${Artlist.category}]${Artlist.title}
@@ -184,18 +184,18 @@
                                 ${Artlist.writer}<br>${date}
                         </td>
                     </tr>
-                    <tr style="width: 100%;">
-                        <td class="${Artlist.id}" colspan="2"></td>
+                    <tr style="width: 100%">
+                        <td class="${Artlist.id}" colspan="2" style="width: 100%"></td>
                     </tr>
                     <tr>
                         <td style="display:none;" id="${Artlist.id}">${Artlist.text}</td>
                     </tr>
                 </table>
                 <script>
-                    var text11 = "";
-                    $("#" +"${Artlist.id}").find('p').each(function () {
-                        text11 = text11 + $(this).text() + "<br>"
-                        $("." +"${Artlist.id}").html(text11)
+                        var text11 = "";
+                        $("#" +"${Artlist.id}").find('p').each(function () {
+                            text11 = text11 + $(this).text() + "<br>"
+                            $("." +"${Artlist.id}").html(text11)
 
                     })
                 </script>
