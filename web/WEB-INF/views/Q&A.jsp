@@ -200,7 +200,7 @@
                     <div class="col">
                         <ul class="pagination justify-content-center">
                             <c:if test="${paging.curBlock > 1}">
-                                <a class="page-link" href="javascript:list('${paging.prevPage}')">이전</a>
+                                <a class="page-link" href="javascript:list('${paging.prevPage}','${sort}')">이전</a>
                             </c:if>
 
                             <c:forEach var="num" begin="${paging.blockBegin}" end="${paging.blockEnd}">
@@ -209,17 +209,17 @@
                                         <a class="page-link"><span>${num}</span></a>&nbsp;
                                     </c:when>
                                     <c:otherwise>
-                                        <a class="page-link" href="javascript:list('${num}')">${num}</a>&nbsp;
+                                        <a class="page-link" href="javascript:list('${num}','${sort}')">${num}</a>&nbsp;
                                     </c:otherwise>
                                 </c:choose>
                             </c:forEach>
 
                             <c:if test="${paging.curBlock <= paging.totBlock}">
-                                <a class="page-link" href="javascript:list('${paging.nextPage}')">다음</a>
+                                <a class="page-link" href="javascript:list('${paging.nextPage}','${sort}')">다음</a>
                             </c:if>
 
                             <c:if test="${paging.curPage <= paging.totPage}">
-                                <a class="page-link" href="javascript:list('${paging.totPage}')">끝</a>
+                                <a class="page-link" href="javascript:list('${paging.totPage}','${sort}')">끝</a>
                             </c:if>
                         </ul>
                     </div>
@@ -422,7 +422,7 @@
 
 
     function list(page) {
-        location.href = "freeboard.do?curPage=" + page + "&id=104&sort=lately";
+        location.href = "freeboard.do?curPage=" + page + "&id=104&sort="+sort;
     }
 
     function x1() {
