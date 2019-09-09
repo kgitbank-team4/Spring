@@ -165,14 +165,14 @@
                                 <c:if test="${not doneLoop}">
                                     <c:if test="${ArtList.board_id eq 102}">
                                         <tr>
-                                            <td style="color: red">${ArtList.category}</td>
-                                            <td><a href="showfreeboard.do?id=${ArtList.id}">${ArtList.title}
+                                            <td class="maintable-category" style="color: red">${ArtList.category}</td>
+                                            <td class="maintable-title"><a href="showfreeboard.do?id=${ArtList.id}">${ArtList.title}
                                                 <c:if test="${ArtList.comment_cnt!=0}"><span
                                                     class="badge badge-warning">${ArtList.comment_cnt}</span></c:if>
                                                 <c:if test="${ArtList.up_cnt!=0}"><span class="badge badge-warning"
                                                                                         style="color: white; background-color: red;">${ArtList.up_cnt}</span></c:if></a>
                                             </td>
-                                            <td>${ArtList.view_cnt}</td>
+                                            <td class="maintable-view">${ArtList.view_cnt}</td>
                                             <c:set var="cnt" value="${cnt+1}"/>
                                         </tr>
                                         <c:if test="${cnt>5}">
@@ -203,7 +203,7 @@
                                 <c:if test="${not doneLoop}">
                                     <c:if test="${ArtList2.board_id eq 103}">
                                         <tr>
-                                            <td style="color: red" class="maintable-category">${ArtList2.category}</td>
+                                            <td class="maintable-category" style="color: red">${ArtList2.category}</td>
                                             <td class="maintable-title"><a
                                                     href="showfreeboard.do?id=${ArtList2.id}">${ArtList2.title}
                                                 <c:if test="${ArtList2.comment_cnt!=0}"><span
@@ -272,7 +272,7 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="info">
-                        <table class="table table-bordered tab-table1">
+                        <table class="table table-hover tab-table1">
                             <c:set var="cnt" value="1"/>
                             <c:set var="doneLoop" value="false"/>
                             <c:forEach var="ArtList" items="${AllArtList}">

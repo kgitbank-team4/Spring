@@ -166,6 +166,8 @@
 
     <!-- review -->
     <div class="container list1">
+        <div class="row">
+            <div class="col-11">
         <ul class="list-group">
             <c:forEach var="Artlist" items="${ArtList}">
                 <fmt:formatDate value="${Artlist.date_created}" var="date" pattern="yyyy-MM-dd"/>
@@ -199,6 +201,7 @@
                 </script>
             </c:forEach>
         </ul>
+        </div>
     </div>
 </div>
 <br>

@@ -216,7 +216,7 @@
                                 </div>
 								<div class="show1-bottom">
 									<span style="color: #808080;">${Cdate}</span>
-									<span><a href="javascript:void(0);" id="update"
+									<span><a href="javascript:void(0);" id="update${Comment.id}"
                                              onclick="updateOn(${Comment.id})" style="display: none;" class="upanddel">수정</a></span>
 									<span><a href="javascript:void(0);" onclick="aa('${Comment.id}','${Article.id}')" style="display: none;" class="upanddel">삭제</a></span>
 								</div>
@@ -254,13 +254,13 @@
         document.getElementById("id" + id).innerHTML = "<textarea class='insertta' style='width:100%; height: 60px; resize: none;'>";
         document.getElementById("id" + id).firstChild.setAttribute('id', 'updatetext' + id)
         document.getElementById("updatetext" + id).value = text;
-        document.getElementById("update").setAttribute('onclick', 'updateExecute(' + '\"' + updatetext + '\"' + ')')
+        document.getElementById("update"+id).setAttribute('onclick', 'updateExecute(' + '\"' + updatetext + '\"' + ')')
 
     }
 
     function updateExecute(id) {
         var content = document.getElementById(id).value;
-        location.href = "updateComment.do?content=" + content + "&id=" + id.substring(10, 12) + "&article_id=" +
+        location.href = "updateComment.do?content=" + content + "&id=" + id.substring(10, id.length) + "&article_id=" +
         ${Article.id}
     }
 

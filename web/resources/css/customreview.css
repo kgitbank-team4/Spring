@@ -176,6 +176,7 @@
 .a1 .btn11:hover{
 	color: #999;
 }
+
 @media only screen and (max-width:992px) {
   .a2 button{
   	display: none;
