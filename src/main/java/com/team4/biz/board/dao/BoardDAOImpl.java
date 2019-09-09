@@ -80,8 +80,12 @@ public class BoardDAOImpl implements BoardDAO{
     }
 
     @Override
-    public List<ArticleVO> searchList(BoardVO vo) {
-        return sqlSession.selectList(namespace+".searchArt",vo);
+    public List<ArticleVO> searchList(BoardVO vo, int start, int end) {
+    	Map<String, Object> map = new HashMap<String,Object>();
+    	map.put("BoardVO", vo);
+    	map.put("start", start);
+    	map.put("end", end);
+        return sqlSession.selectList(namespace+".searchArt",map);
     }
 
     @Override

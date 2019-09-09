@@ -30,9 +30,12 @@
     	) T) where rnum between #{start} and #{end}
     </sql>
 
-    <select id="searchArt" parameterType="BoardVO" resultType="ArticleVO">
-        select * from ARTICLE where BOARD_ID=#{id} and VISIBLE=1
-        and (case when #{search_style}='title' then TITLE ELSE WRITER end) like '%'||#{keyword}||'%'
+    <select id="searchArt" parameterType="hashmap" resultType="ArticleVO">
+    <include refid="pagingHeader"></include>
+		select * from ARTICLE where BOARD_ID=#{BoardVO.id} and VISIBLE=1
+        and (case when #{BoardVO.search_style}='title' then TITLE ELSE WRITER end) like '%'||#{BoardVO.keyword}||'%'
+        order by id desc
+    <include refid="pagingFooter"></include> 
     </select>
 
     <resultMap id="MypageMap" type="MypageVO">
@@ -109,7 +112,7 @@
 
 
 	<select id="getCountArt" parameterType="BoardVO" resultType="int">
-		select count(*) from article a, board b where a.board_id = b.id and b.id=#{id}
+		select count(*) from article a, board b where a.board_id = b.id and b.id=#{id} and a.visible=1
 	</select>
 	<select id="getCountUser" resultType="int">
 		select count(*) from users

@@ -16,7 +16,7 @@ public interface BoardService {
     public BoardVO selectBoard(BoardVO vo) throws ClassNotFoundException, SQLException;
     public List<ArticleVO> selectAllArtList(BoardVO vo) throws ClassNotFoundException, SQLException;
     public List<ArticleVO> selectArtList(BoardVO vo, int start, int end) throws ClassNotFoundException, SQLException;
-    public List<ArticleVO> searchArtList(BoardVO vo) throws ClassNotFoundException, SQLException;
+    public List<ArticleVO> searchArtList(BoardVO vo, int start, int end) throws ClassNotFoundException, SQLException;
     public List<MypageVO> searchArtListFromUser(MypageVO vo) throws ClassNotFoundException, SQLException;
     public List<MypageVO> searchMyComment(MypageVO vo) throws ClassNotFoundException, SQLException;
 

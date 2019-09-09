@@ -84,8 +84,8 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public List<ArticleVO> searchArtList(BoardVO vo) throws ClassNotFoundException, SQLException {
-        return boardDAO.searchList(vo);
+    public List<ArticleVO> searchArtList(BoardVO vo, int start, int end) throws ClassNotFoundException, SQLException {
+        return boardDAO.searchList(vo, start, end);
     }
 
     @Override

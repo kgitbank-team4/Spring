@@ -97,7 +97,7 @@
                     <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
                 </li>
                 <li class="nav-item logout login-inactive">
-                    <a class="nav-link-login" href="logout.do">로그아웃</a>
+                    <a class="nav-link-login" href="javascript:void(0);" onclick="location.replace('logout.do')">로그아웃</a>
                 </li>
             </ul>
         </div>
@@ -147,7 +147,7 @@
                     </div>
                     <div class="p-2 align-self-center a1">
                         <div class="input-group">
-                            <input type="text" id=searchinput class="form-control form2" placeholder="검색">
+                            <input type="text" id="searchinput" class="form-control form2" placeholder="검색">
                             <button class="btn11" onclick="x()">
                                 <i class="fas fa-search fa-lg"></i>
                             </button>

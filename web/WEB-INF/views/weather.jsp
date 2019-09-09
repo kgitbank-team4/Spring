@@ -55,7 +55,7 @@ $.ajax({
     dataType: "json",//밑의 데이터를 사용하는 글자
     type: "GET",
     success: function(city){//성공했을때 호출되는 함수
-       console.log(city);
+       //console.log(city);
        $("table #city").append(cityname);
               
    	// 오늘 날짜 구하는 코딩
@@ -245,7 +245,7 @@ $.ajax({
                     <a class="nav-link-login" data-target="#modal1" data-toggle="modal" >로그인</a>
                 </li>
                 <li class="nav-item logout login-inactive">
-                     <a class="nav-link-login" href="logout.do">로그아웃</a>                   
+                     <a class="nav-link-login" href="javascript:void(0);" onclick="location.replace('logout.do')">로그아웃</a>                   
                 </li>
 				</ul>
 			</div>
@@ -285,7 +285,6 @@ $(document).ready(function(){
 					<div class="weather-container">
 						<h3>날씨정보</h3>
 						<div id="well" class="well-sm">
-							<form name="weatherform">
 								<ul>
 									<li style="font-size: 16px;">도시명&nbsp;</li>
 									<li><input type="text" id="cityname"
@@ -293,9 +292,8 @@ $(document).ready(function(){
 										style="font-size: 15px; height: 35px;"></li>
 									<li><input type="button" onclick="javascript:getWeather()"
 										value="검색" style="font-size: 16px;" class="weather-searchbt"></li>
-									<li><a href=""><i class="fas fa-search"></i></a></li>
+									<li><a href="javascript:getWeather()"><i class="fas fa-search"></i></a></li>
 								</ul>
-							</form>
 							<!-- tabparent -->
 							<div class="pills-container">
 								<ul class="nav nav-pills navpills" id="pills-tab" role="tablist">
@@ -522,14 +520,15 @@ function citycheck(){
 	return true;
 }
 
-function getWeather(){
-	
+function getWeather(){	
 	if(citycheck()){
-		var cityname = $("#cityname").val();	
+		var cityname = $("#cityname").val();		
 		location.href = "weatherinfo.do?cityname=" + cityname;
 	}
 }
 
+
+	
 var width = $(window).width();
 
 function x1() {
@@ -653,6 +652,13 @@ function x1() {
 	<!-- 아이디 저장 -->
 <script>
 $(document).ready(function() {
+	
+	$('#cityname').keydown(function() {	
+		  if (event.keyCode === 13) {
+			  getWeather();
+		  }
+		});
+	
 	var userInputId = getCookie("userInputId");
 	$("#inputId1").val(userInputId);
 	

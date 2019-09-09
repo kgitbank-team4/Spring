@@ -94,7 +94,7 @@
                     <a class="nav-link-login" data-target="#modal1" data-toggle="modal">로그인</a>
                 </li>
                 <li class="nav-item logout login-inactive">
-                    <a class="nav-link-login" href="logout.do">로그아웃</a>
+                    <a class="nav-link-login" href="javascript:void(0);" onclick="location.replace('logout.do')">로그아웃</a>
                 </li>
             </ul>
         </div>
@@ -138,14 +138,14 @@
                 <hr>
                 <div id="well" class="d-flex">
                     <div class="p-2 align-self-center a1">
-                        <select>
-                            <option value="제목" selected>제목<span class="caret"></span></option>
-                            <option value="닉네임">닉네임</option>
+                        <select id="selectbox">
+                            <option value="title" selected>제목<span class="caret"></span></option>
+                            <option value="nickname">닉네임</option>
                         </select>
                     </div>
                     <div class="p-2 align-self-center a1">
                         <div class="input-group">
-                            <input type="text" class="form-control form2" placeholder="검색">
+                            <input type="text" id="searchinput" class="form-control form2" placeholder="검색">
                             <button class="btn11" onclick="x()">
                                 <i class="fas fa-search fa-lg"></i>
                             </button>
@@ -409,7 +409,7 @@
     function x() {
         var target = $("#selectbox option:selected").val();
         var keyword = $("#searchinput").val();
-        location.href = 'search.do?id=103&search_style=' + target + '&keyword=' + keyword
+        location.href = 'search.do?id=105&search_style=' + target + '&keyword=' + keyword
     }
 
     function list(page) {
