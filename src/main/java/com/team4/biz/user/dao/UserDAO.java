@@ -8,6 +8,8 @@ public interface UserDAO {
 	public void insertUser(UserVO vo); 
 	public void updateUser(UserVO vo);
 	public void deleteUser(UserVO vo);
+	public void hideUserArt(UserVO vo);
+	public void hideUserNick(UserVO vo);
 	public UserVO selectOneUser(UserVO vo);
 	public List<UserVO> selectAllUser(UserVO vo);
 	

@@ -29,8 +29,18 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void deleteUser(UserVO vo) {
-		sqlSession.delete(namespace+".deleteUser", vo);
+		sqlSession.update(namespace+".deleteUser", vo);
 		
+	}
+
+	@Override
+	public void hideUserArt(UserVO vo) {
+		sqlSession.update(namespace+".hideUserArt",vo);
+	}
+
+	@Override
+	public void hideUserNick(UserVO vo) {
+		sqlSession.update(namespace+".hideUserNick",vo);
 	}
 
 	@Override

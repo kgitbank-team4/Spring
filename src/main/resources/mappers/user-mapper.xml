@@ -2,24 +2,29 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team4.biz.user.dao.UserDAO">
 	<insert id="insertUser" parameterType="UserVO">
-		insert into users(id,username,password,nickname,tel,date_created) values
-		(null, #{username}, #{password}, #{nickname}, #{tel}, sysdate)
+		insert into users(id,username,password,nickname,tel,date_created,FLAG) values
+		(null, #{username}, #{password}, #{nickname}, #{tel}, sysdate,1)
 	</insert>
 	<update id="updateUser" parameterType="UserVO">
 		update users set password=#{password}, nickname=#{nickname}, tel=#{tel}
 		where id=#{id}
 	</update>
-	<delete id="deleteUser" parameterType="UserVO">
-		delete from users where id=#{id}
-	</delete>
+	<update id="deleteUser" parameterType="UserVO">
+		update users set FLAG=0 where id=#{id}
+	</update>
+	<update id="hideUserArt" parameterType="UserVO">
+		update ARTICLE set VISIBLE=0 where WRITER_ID=#{id}
+	</update>
+	<update id="hideUserNick" parameterType="UserVO">
+		update USERS set NICKNAME='탈퇴한회원' where ID=#{id}
+	</update>
 	<select id="selectOneUser" parameterType="UserVO"
 		resultType="UserVO">
-		select * from users where username=#{username} and password=#{password}
+		select * from users where username=#{username} and password=#{password} and FLAG=1
 	</select>
 	<select id="selectAllUser" resultType="UserVO">
 		select * from users order by id asc
 	</select>
-
 	<select id="selectUsername" parameterType="string" resultType="string">
 		select username from users where username=#{username} 
 	</select>
