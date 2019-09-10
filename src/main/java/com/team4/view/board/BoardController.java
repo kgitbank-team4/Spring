@@ -94,7 +94,7 @@ public class BoardController {
 		int start = paging.getPageBegin();
 		int end = paging.getPageEnd();
 		////
-		System.out.println(vo.getKeyword());
+		//System.out.println(vo.getKeyword());
 		model.addAttribute("ArtList", boardService.searchArtList(vo, start, end));
 		model.addAttribute("paging", paging);
         if(vo.getId() == 101)
