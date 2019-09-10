@@ -124,8 +124,9 @@ public class UserController {
 		
 	//회원탈퇴
 	@RequestMapping(value="/userDELETE.do")
-	public String DeleteUser(UserVO vo, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException {
+	public String DeleteUser(UserVO vo, HttpServletResponse response, HttpSession session) throws ClassNotFoundException, SQLException, IOException {
 		userService.deleteUser(vo);
+		session.removeAttribute("user");  //탈퇴 후 세션 삭제
 		response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
         out.println("<script>alert('탈퇴되었습니다.');</script>");

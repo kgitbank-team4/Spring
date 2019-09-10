@@ -177,9 +177,9 @@
                                    <td style="background-color: white; width: 1%; margin:0; padding:0; vertical-align: middle"><input type="checkbox" id="product_check_all2"
                                                class="chk2"></td>
                                     <td class="numtd">No.</td>
-                                    <td>제목</td>
+                                    <td class="titletd">제목</td>
                                     <td>닉네임</td>
-                                    <td>작성일자</td>
+                                    <td class="datetd">작성일자</td>
                                     <td>게시판</td>
                                 </tr>
                                 </thead>
@@ -191,10 +191,10 @@
                                        <td style="width: 1%; margin:0; padding:0; vertical-align: middle;"><input type="checkbox" name="_selected_2"
                                                    class="chk2" value="${deleteArt.article_id}"></td>
                                         <td class="numtd">${deleteArt.article_id}</td>
-                                        <td><a href="showfreeboard.do?id=${deleteArt.article_id}">${deleteArt.title}</a>
+                                        <td class="titletd"><a href="showfreeboard.do?id=${deleteArt.article_id}">${deleteArt.title}</a>
                                         </td>
                                         <td>${deleteArt.writer}</td>
-                                        <td>${date}</td>
+                                        <td class="datetd">${date}</td>
                                         <td>${deleteArt.boardname}</td>
                                     </tr>
                                 </c:forEach>
@@ -227,9 +227,9 @@
                                 </caption>
                                 <thead>
                                     <tr class="table-header">
-                                        <td>No.</td>
-                                        <td>제목</td>
-                                        <td>작성일자</td>
+                                        <td class="numtd3">No.</td>
+                                        <td class="titletd3">제목</td>
+                                        <td class="datetd3">작성일자</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -237,10 +237,10 @@
                                     <fmt:formatDate value="${myArtList.date_created}" var="date"
                                                     pattern="yyyy-MM-dd"/>
                                     <tr class="table-child">
-                                        <td>${myArtList.article_id}</td>
-                                        <td><a href="showfreeboard.do?id=${myArtList.article_id}">${myArtList.title}</a>
+                                        <td class="numtd3">${myArtList.article_id}</td>
+                                        <td class="titletd3"><a href="showfreeboard.do?id=${myArtList.article_id}">${myArtList.title}</a>
                                         </td>
-                                        <td>${date}</td>
+                                        <td class="datetd3">${date}</td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
