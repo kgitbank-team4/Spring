@@ -53,6 +53,7 @@ public class BoardController {
     		//System.out.println(vo.getId());
     		model.addAttribute("ArtList", boardService.selectArtList(vo, start, end));
     		model.addAttribute("paging", paging);
+    		model.addAttribute("sort", vo.getSort());
             if(vo.getId() == 101)
     			return "reviewboard";
             if(vo.getId() == 102)

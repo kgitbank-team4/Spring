@@ -7,9 +7,7 @@
 #bootstrap-override{
 	font-family: 'S-CoreDream-3Light'; 
 }
-.navbar-brand {
-	font-size:40px;
-}
+
 #bootstrap-override #td{
 	text-align:center;
 }

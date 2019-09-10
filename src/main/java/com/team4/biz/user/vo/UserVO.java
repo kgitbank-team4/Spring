@@ -10,6 +10,7 @@ public class UserVO {
 	private String nickname;
 	private String tel;
 	private Date date_created;
+	private String flag;
 	
 	
 	public int getId() {
@@ -48,6 +49,12 @@ public class UserVO {
 	public void setDate_created(Date date_created) {
 		this.date_created = date_created;
 	}
-	
-	
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
 }

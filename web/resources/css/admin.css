@@ -126,37 +126,63 @@ table td #nameresult{
   font-weight: bold;
  }
 
+.titletd{
+	width:35%;
+}
+
+
+.numtd3{
+	width: 15%;
+}
+.titletd3{
+	width: 55%;
+}
+.datetd3{
+	width:30%;
+}
+
+
+.mypage1 .mypage-border .mypage-table table tr td{
+	vertical-align: middle;
+}
 @media only screen and (max-width: 992px) {
 	.mypage-border .mypage-table .table-header{
 		font-size: 15px;
-		overflow:hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
+		
 	}
 	.mypage-border .mypage-table .table-child{
 		font-size:15px;
-		overflow:hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
+		
 	}
 	.numtd{
 		display: none;
 	}
+	.titletd{
+		width: 25%;
+	}
+	
 }
 @media only screen and (max-width: 450px) {
 	.mypage-border .mypage-table .table-header{
 		font-size: 13px;
-		overflow:hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
+		
 	}
 	.mypage-border .mypage-table .table-child{
 		font-size:12px;
-		overflow:hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
+		
 	}
 	.numtd{
 		display:none;
 	}
+	.datetd{
+		display:none;
+	}
+	
+	.titletd3{
+		width: 50%;
+	}
+	.datetd3{
+		width:35%;
+	}
+	
 }

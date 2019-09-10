@@ -8,7 +8,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.team4.biz.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +20,7 @@ import com.team4.biz.user.vo.UserVO;
 
 @Controller
 public class UserController {
+	
 	@Autowired
 	private UserService userService;
 
@@ -124,7 +124,7 @@ public class UserController {
 		
 	//회원탈퇴
 	@RequestMapping(value="/userDELETE.do")
-	public String DeleteUser(UserVO vo, HttpServletResponse response,HttpSession session) throws ClassNotFoundException, SQLException, IOException {
+	public String DeleteUser(UserVO vo, HttpServletResponse response, HttpSession session) throws ClassNotFoundException, SQLException, IOException {
 		userService.deleteUser(vo);
 		response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();

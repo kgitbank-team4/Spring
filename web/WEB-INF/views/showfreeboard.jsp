@@ -243,7 +243,7 @@
         }
     }
     $(function () {
-        if(${user.id}==${Article.writer_id}) {
+        if(("${user.id}"=="${Article.writer_id}")||("${user.username}"=="root")) {
             $(".upanddel2").attr("style", "display: inline-block;");
         }
     });
